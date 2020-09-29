@@ -1,0 +1,12 @@
+C:\Users\robak\Desktop\ob1\Obligatorio 1 - DA1\Obligatorio 1 - DA1\bin\Debug\Obligatorio 1 - DA1.dll
+C:\Users\robak\Desktop\ob1\Obligatorio 1 - DA1\Obligatorio 1 - DA1\bin\Debug\Obligatorio 1 - DA1.pdb
+C:\Users\robak\Desktop\ob1\Obligatorio 1 - DA1\Obligatorio 1 - DA1\obj\Debug\Dominio.csprojAssemblyReference.cache
+C:\Users\robak\Desktop\ob1\Obligatorio 1 - DA1\Obligatorio 1 - DA1\obj\Debug\Dominio.csproj.CoreCompileInputs.cache
+C:\Users\robak\Desktop\ob1\Obligatorio 1 - DA1\Obligatorio 1 - DA1\obj\Debug\Obligatorio 1 - DA1.dll
+C:\Users\robak\Desktop\ob1\Obligatorio 1 - DA1\Obligatorio 1 - DA1\obj\Debug\Obligatorio 1 - DA1.pdb
+C:\Users\robak\Desktop\development\Obligatorio 1 - DA1\Obligatorio 1 - DA1\bin\Debug\Obligatorio 1 - DA1.dll
+C:\Users\robak\Desktop\development\Obligatorio 1 - DA1\Obligatorio 1 - DA1\bin\Debug\Obligatorio 1 - DA1.pdb
+C:\Users\robak\Desktop\development\Obligatorio 1 - DA1\Obligatorio 1 - DA1\obj\Debug\Dominio.csprojAssemblyReference.cache
+C:\Users\robak\Desktop\development\Obligatorio 1 - DA1\Obligatorio 1 - DA1\obj\Debug\Dominio.csproj.CoreCompileInputs.cache
+C:\Users\robak\Desktop\development\Obligatorio 1 - DA1\Obligatorio 1 - DA1\obj\Debug\Obligatorio 1 - DA1.dll
+C:\Users\robak\Desktop\development\Obligatorio 1 - DA1\Obligatorio 1 - DA1\obj\Debug\Obligatorio 1 - DA1.pdb
