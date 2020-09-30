@@ -11,6 +11,11 @@ namespace Obligatorio_1___DA1
         public String Nombre { set; get; }
         List<String> ListaPalabras;
 
+        public Categoria()
+        {
+            this.Nombre = "";
+            this.ListaPalabras = new List<string>();
+        }
         public Categoria(String unNombre,  List<String> unasPalabras) {
             this.Nombre = unNombre;
             this.ListaPalabras = unasPalabras;
@@ -20,6 +25,8 @@ namespace Obligatorio_1___DA1
             this.Nombre = unNombre;
             this.ListaPalabras = new List<string>();
         }
+
+        
 
     }
 }
