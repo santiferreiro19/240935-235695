@@ -17,7 +17,7 @@ namespace Interfaz
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Categoria());
+            Application.Run(new Menu());
          
         }
     }

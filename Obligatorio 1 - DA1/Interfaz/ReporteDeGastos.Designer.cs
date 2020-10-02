@@ -18,6 +18,8 @@
                 components.Dispose();
             }
             base.Dispose(disposing);
+            Menu inicio = new Menu();
+            inicio.Show();
         }
 
         #region Windows Form Designer generated code
@@ -165,6 +167,7 @@
             this.Controls.Add(this.label1);
             this.Name = "ReporteDeGastos";
             this.Text = "ReporteDeGastos";
+            this.Load += new System.EventHandler(this.ReporteDeGastos_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

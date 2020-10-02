@@ -21,5 +21,10 @@ namespace Interfaz
         {
 
         }
+
+        private void ReporteDeGastos_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

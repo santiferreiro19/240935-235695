@@ -31,5 +31,10 @@ namespace Interfaz
         {
 
         }
+
+        private void Presupuesto_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

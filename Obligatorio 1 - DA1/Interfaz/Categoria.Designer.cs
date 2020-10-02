@@ -1,4 +1,6 @@
-﻿namespace Interfaces
+﻿using Interfaz;
+
+namespace Interfaces
 {
     partial class Categoria
     {
@@ -18,6 +20,8 @@
                 components.Dispose();
             }
             base.Dispose(disposing);
+            Menu inicio = new Menu();
+            inicio.Show();
         }
 
         #region Windows Form Designer generated code

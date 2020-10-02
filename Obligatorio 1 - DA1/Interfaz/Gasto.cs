@@ -26,5 +26,10 @@ namespace Interfaces
         {
 
         }
+
+        private void Gasto_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

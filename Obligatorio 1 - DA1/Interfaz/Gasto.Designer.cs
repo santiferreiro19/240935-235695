@@ -1,4 +1,6 @@
-﻿namespace Interfaces
+﻿using Interfaz;
+
+namespace Interfaces
 {
     partial class Gasto
     {
@@ -18,6 +20,8 @@
                 components.Dispose();
             }
             base.Dispose(disposing);
+            Menu inicio = new Menu();
+            inicio.Show();
         }
 
         #region Windows Form Designer generated code
@@ -132,6 +136,7 @@
             this.Controls.Add(this.btnAceptar);
             this.Name = "Gasto";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Gasto_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

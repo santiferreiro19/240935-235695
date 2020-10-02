@@ -16,5 +16,10 @@ namespace Interfaz
         {
             InitializeComponent();
         }
+
+        private void ReportePresupuesto_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
