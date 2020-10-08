@@ -1,22 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Obligatorio_1___DA1
 {
+
     public class Categoria
     {
         public String Nombre { set; get; }
-        List<String> ListaPalabras;
+        public List<String> ListaPalabras;
 
         public Categoria()
         {
             this.Nombre = "";
             this.ListaPalabras = new List<string>();
         }
-        public Categoria(String unNombre,  List<String> unasPalabras) {
+        public Categoria(String unNombre, List<String> unasPalabras)
+        {
             this.Nombre = unNombre;
             this.ListaPalabras = unasPalabras;
         }
@@ -26,7 +26,33 @@ namespace Obligatorio_1___DA1
             this.ListaPalabras = new List<string>();
         }
 
-        
+        public void ModificarNombreCategoria(String NuevoNombre)
+        {
+            Logica unaLogica = new Logica();
+            unaLogica.ValidacionNombreCategoria(NuevoNombre);
+            this.Nombre = NuevoNombre;
+        }
 
+        public void AgregarUnaPalabraClave(String NuevaPalabra)
+        {
+            Logica unaLogica = new Logica();
+            unaLogica.PalabraClaveRepetida(this.ListaPalabras, NuevaPalabra);
+            unaLogica.ListaPalabrasClaveLLena(this.ListaPalabras);
+            this.ListaPalabras.Add(NuevaPalabra);
+        }
+
+        public void ModificacionDePalabraClave(String PalabraBuscada, String NuevaPalabraClave)
+        {
+            Logica unaLogica = new Logica();
+            unaLogica.PalabraClaveRepetida(this.ListaPalabras, NuevaPalabraClave);
+            for (int i = 0; i < this.ListaPalabras.Count(); i++)
+            {
+                if (PalabraBuscada == this.ListaPalabras[i])
+                {
+                    this.ListaPalabras.RemoveAt(i);
+                    this.ListaPalabras.Add(NuevaPalabraClave);
+                }
+            }
+        }
     }
 }
