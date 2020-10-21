@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{594F90CB-67A6-4AF8-B680-90FE89681ED8}</ProjectGuid>
+    <ProjectGuid>{F2FC4F44-421D-4F17-8049-BB2C624F0472}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Obligatorio_1___DA1</RootNamespace>
-    <AssemblyName>Obligatorio 1 - DA1</AssemblyName>
+    <RootNamespace>Persistencia</RootNamespace>
+    <AssemblyName>Persistencia</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -30,13 +30,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject />
-  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -45,18 +41,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Categoria.cs" />
-    <Compile Include="Excepciones\ExceptionListaPalabrasClaveLlena.cs" />
-    <Compile Include="Excepciones\ExceptionNombreCategoria.cs" />
-    <Compile Include="Excepciones\ExceptionNombreCategoriaRepetido.cs" />
-    <Compile Include="Excepciones\ExceptionPalabraClaveRepetida.cs" />
+    <Compile Include="Repositorio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\.editorconfig">
-      <Link>.editorconfig</Link>
-    </None>
+    <ProjectReference Include="..\Obligatorio 1 - DA1\Dominio.csproj">
+      <Project>{594F90CB-67A6-4AF8-B680-90FE89681ED8}</Project>
+      <Name>Dominio</Name>
+    </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

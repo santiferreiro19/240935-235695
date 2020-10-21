@@ -25,34 +25,5 @@ namespace Obligatorio_1___DA1
             this.Nombre = unNombre;
             this.ListaPalabras = new List<string>();
         }
-
-        public void ModificarNombreCategoria(String NuevoNombre)
-        {
-            Logica unaLogica = new Logica();
-            unaLogica.ValidacionNombreCategoria(NuevoNombre);
-            this.Nombre = NuevoNombre;
-        }
-
-        public void AgregarUnaPalabraClave(String NuevaPalabra)
-        {
-            Logica unaLogica = new Logica();
-            unaLogica.PalabraClaveRepetida(this.ListaPalabras, NuevaPalabra);
-            unaLogica.ListaPalabrasClaveLLena(this.ListaPalabras);
-            this.ListaPalabras.Add(NuevaPalabra);
-        }
-
-        public void ModificacionDePalabraClave(String PalabraBuscada, String NuevaPalabraClave)
-        {
-            Logica unaLogica = new Logica();
-            unaLogica.PalabraClaveRepetida(this.ListaPalabras, NuevaPalabraClave);
-            for (int i = 0; i < this.ListaPalabras.Count(); i++)
-            {
-                if (PalabraBuscada == this.ListaPalabras[i])
-                {
-                    this.ListaPalabras.RemoveAt(i);
-                    this.ListaPalabras.Add(NuevaPalabraClave);
-                }
-            }
-        }
     }
 }

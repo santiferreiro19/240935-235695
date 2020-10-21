@@ -1,11 +1,11 @@
 ﻿using System;
 namespace Obligatorio_1___DA1
 {
-    public class ExcepcionNombreCategoria : Exception
+    public class ExceptionNombreCategoria : Exception
     {
-        public ExcepcionNombreCategoria() : base() { }
-        public ExcepcionNombreCategoria(string message) : base(message) { }
-        public ExcepcionNombreCategoria(string message, System.Exception inner) : base(message, inner) { }
+        public ExceptionNombreCategoria() : base() { }
+        public ExceptionNombreCategoria(string message) : base(message) { }
+        public ExceptionNombreCategoria(string message, System.Exception inner) : base(message, inner) { }
 
     }
 }

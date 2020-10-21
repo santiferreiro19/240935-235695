@@ -1,22 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using Managers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Obligatorio_1___DA1;
 using Obligatorio_1___DA1.Excepciones;
+using Persistencia;
 
 namespace Testing
 {
     [TestClass]
     public class CategoriaTest
     {
-        private Logica unaLogica;
-
-        [TestInitialize]
-        public void Setup()
-        {
-            unaLogica = new Logica();
-        }
-
+   
         [TestMethod]
         public void ConstructorSinParametrosTest()
         {
@@ -52,111 +47,153 @@ namespace Testing
             Assert.IsNotNull(c);
         }
 
-        [ExpectedException(typeof(ExcepcionNombreCategoria))]
+        [ExpectedException(typeof(ExceptionNombreCategoria))]
         [TestMethod]
         public void ValidacionNombreConMasDe15CaracteresTest()
         {
+            Repositorio Repositorio = new Repositorio();
+            ManagerCategoria Manager = new ManagerCategoria(Repositorio);
             String Nombre = "Entretenimientos para Niños";
-            unaLogica.ValidacionNombreCategoria(Nombre);
+            Manager.ValidarNombreCategoria(Nombre);
         }
 
-        [ExpectedException(typeof(ExcepcionNombreCategoria))]
+        [ExpectedException(typeof(ExceptionNombreCategoria))]
         [TestMethod]
         public void ValidacionNombreConMenosDe3CaracteresTest()
         {
+            Repositorio Repositorio = new Repositorio();
+            ManagerCategoria Manager = new ManagerCategoria(Repositorio);
             String Nombre = "EP";
-            unaLogica.ValidacionNombreCategoria(Nombre);
+            Manager.ValidarNombreCategoria(Nombre);
         }
 
+        [TestMethod]
+        public void ValidacionAgregarCategoriaTest()
+        {
+            Repositorio Repositorio = new Repositorio();
+            ManagerCategoria Manager = new ManagerCategoria(Repositorio);
+            Categoria c = new Categoria("Cine");
+            Manager.ValidacionAgregarCategoria(c);
+            Assert.AreEqual(c.Nombre, Repositorio.GetCategorias()[0].Nombre) ;
+        }
         [TestMethod]
         public void ModificacionDeNombreCategoriaTest()
         {
+            Repositorio Repositorio = new Repositorio();
+            ManagerCategoria Manager = new ManagerCategoria(Repositorio);
             String NuevoNombre = "Cine";
             String NombreAnterior = "Entretenimiento";
             Categoria c = new Categoria(NombreAnterior);
-            c.ModificarNombreCategoria(NuevoNombre);
+            Manager.ValidacionAgregarCategoria(c);
+            Manager.ValidacionModificarNombreCategoria(c, NuevoNombre);
             Assert.AreEqual(c.Nombre, NuevoNombre);
         }
 
-        [ExpectedException(typeof(ExcepcionNombreCategoria))]
+        [ExpectedException(typeof(ExceptionNombreCategoria))]
         [TestMethod]
         public void ModificacionDeNombreConMasDe15CaracteresTest()
         {
-            String NuevoNombre = "Entretenimiento para niños";
-            Categoria c = new Categoria("Entretenimiento");
-            c.ModificarNombreCategoria(NuevoNombre);
+            Repositorio Repositorio = new Repositorio();
+            ManagerCategoria Manager = new ManagerCategoria(Repositorio);
+            String NombreAnterior = "Cine";
+            String NuevoNombre = "Entretenimientos";
+            Categoria c = new Categoria(NombreAnterior);
+            Manager.ValidacionAgregarCategoria(c);
+            Manager.ValidacionModificarNombreCategoria(c, NuevoNombre);
+
         }
 
-        [ExpectedException(typeof(ExcepcionNombreCategoria))]
+        [ExpectedException(typeof(ExceptionNombreCategoria))]
         [TestMethod]
         public void ModificacionDeNombreConMenosDe3CaracteresTest()
         {
-            String NuevoNombre = "EP";
+            Repositorio Repositorio = new Repositorio();
+            ManagerCategoria Manager = new ManagerCategoria(Repositorio);
+            String NuevoNombre = "PE";
             String NombreAnterior = "Entretenimiento";
             Categoria c = new Categoria(NombreAnterior);
-            c.ModificarNombreCategoria(NuevoNombre);
+            Manager.ValidacionAgregarCategoria(c);
+            Manager.ValidacionModificarNombreCategoria(c, NuevoNombre);
+        }
+       
+        [TestMethod]
+        public void AgregarUnaPalabraClaveCuandoHayLugarTest()
+        {
+            Repositorio Repositorio = new Repositorio();
+            ManagerCategoria Manager = new ManagerCategoria(Repositorio);
+            String nuevaPalabra = "Cine Mudo";
+            List<string> Lista = new List<string> { "Cine", "Carreras", "Futbol", "Teatro", "Parque" };
+            Categoria c = new Categoria("Cine", Lista);
+            Manager.ValidacionAgregarCategoria(c);
+            Manager.ValidacionAgregarUnaPalabraClave(c, nuevaPalabra);
+            Assert.AreEqual(c.ListaPalabras[5], nuevaPalabra);
         }
 
         [ExpectedException(typeof(ExceptionPalabraClaveRepetida))]
         [TestMethod]
         public void AgregarPalabraClaveRepetidaTest()
         {
+            Repositorio Repositorio = new Repositorio();
+            ManagerCategoria Manager = new ManagerCategoria(Repositorio);
             String Repetida = "Cine";
             List<string> Lista = new List<string> { "Cine", "Carreras", "Futbol", "Teatro", "Parque" };
             Categoria c = new Categoria("Cine", Lista);
-            c.AgregarUnaPalabraClave(Repetida);
+            Manager.ValidacionAgregarCategoria(c);
+            Manager.ValidacionAgregarUnaPalabraClave(c, Repetida);
         }
 
-        [TestMethod]
-        public void ModificacionDeUnaPalabraClaveTest()
-        {
-            List<string> Lista = new List<string> { "Cine", "Carreras", "Futbol", "Teatro", "Parque" };
-            Categoria c = new Categoria("Cine", Lista);
-            c.ModificacionDePalabraClave("Futbol", "Bar");
-            Assert.AreEqual(Lista[4], "Bar");
-        }
-
-
-        [TestMethod]
-        public void AgregarUnaPalabraClaveCuandoHayLugarTest()
-        {
-            String nuevaPalabra = "Cine Mudo";
-            List<string> Lista = new List<string> { "Cine", "Carreras", "Futbol", "Teatro", "Parque" };
-            Categoria c = new Categoria("Cine", Lista);
-            c.AgregarUnaPalabraClave(nuevaPalabra);
-            Assert.AreEqual(Lista[5], nuevaPalabra);
-        }
 
         [ExpectedException(typeof(ExceptionListaPalabrasClaveLlena))]
         [TestMethod]
         public void AgregarUnaPalabraClaveCuandoNoHayLugarTest()
         {
+            Repositorio Repositorio = new Repositorio();
+            ManagerCategoria Manager = new ManagerCategoria(Repositorio);
             String nuevaPalabra = "Cine Mudo";
             List<string> Lista = new List<string>
             {"Palabra1","Palabra2","Palabra3","Palabra4", "Palabra5","Palabra6",
                 "Palabra7","Palabra8","Palabra9","Palabra10"};
             Categoria c = new Categoria("Cine", Lista);
-            c.AgregarUnaPalabraClave(nuevaPalabra);
+            Manager.ValidacionAgregarCategoria(c);
+            Manager.ValidacionAgregarUnaPalabraClave(c, nuevaPalabra);
+        }
+
+        [TestMethod]
+        public void ModificacionDeUnaPalabraClaveTest()
+        {
+            Repositorio Repositorio = new Repositorio();
+            ManagerCategoria Manager = new ManagerCategoria(Repositorio);
+            List<string> Lista = new List<string> { "Cine", "Carreras", "Futbol", "Teatro", "Parque" };
+            Categoria c = new Categoria("Cine", Lista);
+            Manager.ValidacionAgregarCategoria(c);
+            Manager.ValidacionModificacionDePalabraClave(c, "Futbol", "Bar");
+            Assert.AreEqual(Lista[4], "Bar");
         }
 
         [ExpectedException(typeof(ExceptionListaPalabrasClaveLlena))]
         [TestMethod]
         public void ValidacionListaPalabrasLlena()
         {
+            Repositorio Repositorio = new Repositorio();
+            ManagerCategoria Manager = new ManagerCategoria(Repositorio);
             List<string> Lista = new List<string>
             {"Palabra1","Palabra2","Palabra3","Palabra4", "Palabra5","Palabra6", "Palabra7","Palabra8","Palabra9","Palabra10"};
-            unaLogica.ListaPalabrasClaveLLena(Lista);
+            Categoria c = new Categoria("Cine", Lista);
+            Manager.ListaPalabrasClaveLLena(c);
         }
 
         [ExpectedException(typeof(ExceptionPalabraClaveRepetida))]
         [TestMethod]
         public void ValidacionPalabraClaveRepetida()
         {
+            Repositorio Repositorio = new Repositorio();
+            ManagerCategoria Manager = new ManagerCategoria(Repositorio);
             List<string> Lista = new List<string>
-            {"Palabra1","Palabra2","Palabra3","Palabra4", "Palabra5","Palabra6", "Palabra7","Palabra8","Palabra9","Palabra10"};
+            {"Palabra1","Palabra2","Palabra3","Palabra4", "Palabra5","Palabra6", "Palabra7","Palabra8"};
             Categoria c = new Categoria("Entretenimiento", Lista);
             String Repetida = "Palabra3";
-            unaLogica.PalabraClaveRepetida(Lista, Repetida);
+            Manager.ValidacionAgregarCategoria(c);
+            Manager.ValidarPalabraClaveRepetida(Repetida);
         }
     }
 }

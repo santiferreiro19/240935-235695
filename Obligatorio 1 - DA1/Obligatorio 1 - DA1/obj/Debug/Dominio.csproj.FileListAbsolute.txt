@@ -22,3 +22,9 @@ C:\Users\robak\Desktop\development2\Obligatorio 1 - DA1\obj\Debug\Dominio.csproj
 C:\Users\robak\Desktop\development2\Obligatorio 1 - DA1\obj\Debug\Dominio.csproj.CoreCompileInputs.cache
 C:\Users\robak\Desktop\development2\Obligatorio 1 - DA1\obj\Debug\Obligatorio 1 - DA1.dll
 C:\Users\robak\Desktop\development2\Obligatorio 1 - DA1\obj\Debug\Obligatorio 1 - DA1.pdb
+C:\Users\santi\OneDrive\Escritorio\240935-235695-develop\Obligatorio 1 - DA1\Obligatorio 1 - DA1\bin\Debug\Obligatorio 1 - DA1.dll
+C:\Users\santi\OneDrive\Escritorio\240935-235695-develop\Obligatorio 1 - DA1\Obligatorio 1 - DA1\bin\Debug\Obligatorio 1 - DA1.pdb
+C:\Users\santi\OneDrive\Escritorio\240935-235695-develop\Obligatorio 1 - DA1\Obligatorio 1 - DA1\obj\Debug\Dominio.csprojAssemblyReference.cache
+C:\Users\santi\OneDrive\Escritorio\240935-235695-develop\Obligatorio 1 - DA1\Obligatorio 1 - DA1\obj\Debug\Dominio.csproj.CoreCompileInputs.cache
+C:\Users\santi\OneDrive\Escritorio\240935-235695-develop\Obligatorio 1 - DA1\Obligatorio 1 - DA1\obj\Debug\Obligatorio 1 - DA1.dll
+C:\Users\santi\OneDrive\Escritorio\240935-235695-develop\Obligatorio 1 - DA1\Obligatorio 1 - DA1\obj\Debug\Obligatorio 1 - DA1.pdb
