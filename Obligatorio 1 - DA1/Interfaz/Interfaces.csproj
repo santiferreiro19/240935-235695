@@ -46,70 +46,70 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Menu.cs">
+    <Compile Include="MenuUI.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Menu.Designer.cs">
-      <DependentUpon>Menu.cs</DependentUpon>
+    <Compile Include="MenuUI.Designer.cs">
+      <DependentUpon>MenuUI.cs</DependentUpon>
     </Compile>
-    <Compile Include="Presupuesto.cs">
+    <Compile Include="PresupuestoUI.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Presupuesto.Designer.cs">
-      <DependentUpon>Presupuesto.cs</DependentUpon>
+    <Compile Include="PresupuestoUI.Designer.cs">
+      <DependentUpon>PresupuestoUI.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ReporteDeGastos.cs">
+    <Compile Include="ReporteDeGastosUI.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ReporteDeGastos.Designer.cs">
-      <DependentUpon>ReporteDeGastos.cs</DependentUpon>
+    <Compile Include="ReporteDeGastosUI.Designer.cs">
+      <DependentUpon>ReporteDeGastosUI.cs</DependentUpon>
     </Compile>
-    <Compile Include="ReportePresupuesto.cs">
+    <Compile Include="ReportePresupuestoUI.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ReportePresupuesto.Designer.cs">
-      <DependentUpon>ReportePresupuesto.cs</DependentUpon>
+    <Compile Include="ReportePresupuestoUI.Designer.cs">
+      <DependentUpon>ReportePresupuestoUI.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Categoria.resx">
-      <DependentUpon>Categoria.cs</DependentUpon>
+    <EmbeddedResource Include="CategoriaUI.resx">
+      <DependentUpon>CategoriaUI.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Gasto.resx">
-      <DependentUpon>Gasto.cs</DependentUpon>
+    <EmbeddedResource Include="GastoUI.resx">
+      <DependentUpon>GastoUI.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Menu.resx">
-      <DependentUpon>Menu.cs</DependentUpon>
+    <EmbeddedResource Include="MenuUI.resx">
+      <DependentUpon>MenuUI.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Presupuesto.resx">
-      <DependentUpon>Presupuesto.cs</DependentUpon>
+    <EmbeddedResource Include="PresupuestoUI.resx">
+      <DependentUpon>PresupuestoUI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <Compile Include="Categoria.cs">
+    <Compile Include="CategoriaUI.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Categoria.Designer.cs">
-      <DependentUpon>Categoria.cs</DependentUpon>
+    <Compile Include="CategoriaUI.Designer.cs">
+      <DependentUpon>CategoriaUI.cs</DependentUpon>
     </Compile>
-    <Compile Include="Gasto.cs">
+    <Compile Include="GastoUI.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Gasto.Designer.cs">
-      <DependentUpon>Gasto.cs</DependentUpon>
+    <Compile Include="GastoUI.Designer.cs">
+      <DependentUpon>GastoUI.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="ReporteDeGastos.resx">
-      <DependentUpon>ReporteDeGastos.cs</DependentUpon>
+    <EmbeddedResource Include="ReporteDeGastosUI.resx">
+      <DependentUpon>ReporteDeGastosUI.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ReportePresupuesto.resx">
-      <DependentUpon>ReportePresupuesto.cs</DependentUpon>
+    <EmbeddedResource Include="ReportePresupuestoUI.resx">
+      <DependentUpon>ReportePresupuestoUI.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -123,6 +123,20 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Managers\Managers.csproj">
+      <Project>{F9D45F28-1AD2-4B9F-9C73-138D892B2F81}</Project>
+      <Name>Managers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Obligatorio 1 - DA1\Dominio.csproj">
+      <Project>{594F90CB-67A6-4AF8-B680-90FE89681ED8}</Project>
+      <Name>Dominio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Persistencia\Persistencia.csproj">
+      <Project>{F2FC4F44-421D-4F17-8049-BB2C624F0472}</Project>
+      <Name>Persistencia</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -2,7 +2,7 @@
 
 namespace Interfaces
 {
-    partial class Categoria
+    partial class CategoriaUI
     {
         /// <summary>
         /// Required designer variable.
@@ -20,7 +20,7 @@ namespace Interfaces
                 components.Dispose();
             }
             base.Dispose(disposing);
-            Menu inicio = new Menu();
+            MenuUI inicio = new MenuUI(this.Repo);
             inicio.Show();
         }
 
@@ -91,22 +91,24 @@ namespace Interfaces
             this.btnAgregar.TabIndex = 5;
             this.btnAgregar.Text = "+";
             this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // btnAceptar
             // 
-            this.btnAceptar.Location = new System.Drawing.Point(226, 182);
+            this.btnAceptar.Location = new System.Drawing.Point(187, 179);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(75, 23);
             this.btnAceptar.TabIndex = 6;
             this.btnAceptar.Text = "Aceptar";
             this.btnAceptar.UseVisualStyleBackColor = true;
+            this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
-            // Categoria
+            // CategoriaUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.WindowFrame;
-            this.ClientSize = new System.Drawing.Size(313, 227);
+            this.ClientSize = new System.Drawing.Size(298, 214);
             this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.btnAgregar);
             this.Controls.Add(this.txtPalabraClave);
@@ -114,7 +116,7 @@ namespace Interfaces
             this.Controls.Add(this.lstPalabrasClave);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Name = "Categoria";
+            this.Name = "CategoriaUI";
             this.Text = "Categoria";
             this.Load += new System.EventHandler(this.Categoria_Load);
             this.ResumeLayout(false);
