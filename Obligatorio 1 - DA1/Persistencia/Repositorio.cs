@@ -61,6 +61,16 @@ namespace Persistencia
                 }
             }
         }
+
+        public void EliminarPalabraClave(String PalabraABorrar) {
+            foreach (Categoria buscada in this.ListaCategorias)
+            {
+                if (buscada.ListaPalabras.Contains(PalabraABorrar))
+                {
+                    buscada.ListaPalabras.Remove(PalabraABorrar);
+                }
+            }
+        }
         
     }
 }
