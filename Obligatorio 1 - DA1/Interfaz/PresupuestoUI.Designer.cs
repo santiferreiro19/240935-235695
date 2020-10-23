@@ -1,6 +1,6 @@
 ﻿namespace Interfaz
 {
-    partial class Presupuesto
+    partial class PresupuestoUI
     {
         /// <summary>
         /// Required designer variable.
@@ -18,7 +18,7 @@
                 components.Dispose();
             }
             base.Dispose(disposing);
-            Menu inicio = new Menu();
+            MenuUI inicio = new MenuUI(Repo);
             inicio.Show();
         }
 

@@ -1,4 +1,5 @@
 ﻿using Interfaces;
+using Persistencia;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +18,8 @@ namespace Interfaz
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Menu());
+            Repositorio Repo = new Repositorio();
+            Application.Run(new MenuUI(Repo));
          
         }
     }
