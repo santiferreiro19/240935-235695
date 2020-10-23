@@ -25,11 +25,5 @@ namespace Obligatorio_1___DA1
             this.Nombre = unNombre;
             this.ListaPalabras = new List<string>();
         }
-       
-        override
-        public string ToString()
-        {
-            return Nombre;
-        }
     }
 }

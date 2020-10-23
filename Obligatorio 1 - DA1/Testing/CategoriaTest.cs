@@ -195,17 +195,5 @@ namespace Testing
             Manager.ValidacionAgregarCategoria(c);
             Manager.ValidarPalabraClaveRepetida(Repetida);
         }
-
-        [TestMethod]
-        public void EliminarPalabraClaveTest()
-        {
-            Categoria c = new Categoria("Entretenimiento");
-            Repositorio repo = new Repositorio();
-            repo.AgregarCategoria(c);
-            repo.AgregarPalabraClave(c, "Cine");
-            ManagerCategoria manager = new ManagerCategoria(repo);
-            manager.EliminarPalabraClave("Cine");
-            Assert.AreEqual(c.ListaPalabras.Count, 0);
-        }
     }
 }

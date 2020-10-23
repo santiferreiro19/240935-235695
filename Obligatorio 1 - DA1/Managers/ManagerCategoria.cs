@@ -64,19 +64,12 @@ namespace Managers
                 throw new ExceptionPalabraClaveRepetida("El nombre de la palabra clave debe de ser unico");
             }
         }
-          public void ListaPalabrasClaveLLena(Categoria Unacategoria)
+          public void ListaPalabrasClaveLLena(Categoria unacategoria)
           {
-            if (Unacategoria.ListaPalabras.Count() >= 10)
+            if (unacategoria.ListaPalabras.Count() >= 10)
             {
                 throw new ExceptionListaPalabrasClaveLlena("Lista de palabras clave llena");
             }
           }
-        public void EliminarPalabraClave(String PalabraEliminar) {
-            List<Categoria> categorias = Repo.GetCategorias();
-            if (categorias.Any(categoria => categoria.ListaPalabras.Contains(PalabraEliminar)))
-            {
-                Repo.EliminarPalabraClave(PalabraEliminar);
-            }
-        }
     }
 }

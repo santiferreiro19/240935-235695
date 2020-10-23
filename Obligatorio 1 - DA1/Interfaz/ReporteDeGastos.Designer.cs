@@ -1,6 +1,6 @@
 ﻿namespace Interfaz
 {
-    partial class ReporteDeGastosUI
+    partial class ReporteDeGastos
     {
         /// <summary>
         /// Required designer variable.
@@ -18,7 +18,7 @@
                 components.Dispose();
             }
             base.Dispose(disposing);
-            MenuUI inicio = new MenuUI(Repo);
+            Menu inicio = new Menu();
             inicio.Show();
         }
 

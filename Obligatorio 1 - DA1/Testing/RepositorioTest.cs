@@ -52,16 +52,5 @@ namespace Testing
             repo.ModificarPalabraClave(c, "Carreras", "Cine");
             Assert.AreEqual(c.ListaPalabras[0], "Carreras");
         }
-
-        [TestMethod]
-        public void EliminarPalabraClaveTest()
-        {
-            Categoria c = new Categoria("Entretenimiento");
-            Repositorio repo = new Repositorio();
-            repo.AgregarCategoria(c);
-            repo.AgregarPalabraClave(c, "Cine");
-            repo.EliminarPalabraClave("Cine");
-            Assert.AreEqual(c.ListaPalabras.Count, 0);
-        }
     }
 }

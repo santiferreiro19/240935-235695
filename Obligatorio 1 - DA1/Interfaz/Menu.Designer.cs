@@ -1,6 +1,6 @@
 ﻿namespace Interfaz
 {
-    partial class MenuUI
+    partial class Menu
     {
         /// <summary>
         /// Required designer variable.
@@ -96,7 +96,7 @@
             this.btnSalir.UseVisualStyleBackColor = true;
             this.btnSalir.Click += new System.EventHandler(this.button6_Click);
             // 
-            // MenuUI
+            // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -107,9 +107,8 @@
             this.Controls.Add(this.btnPresupuesto);
             this.Controls.Add(this.btnGasto);
             this.Controls.Add(this.btnCategoria);
-            this.Name = "MenuUI";
+            this.Name = "Menu";
             this.Text = "Menu";
-            this.Load += new System.EventHandler(this.MenuUI_Load);
             this.ResumeLayout(false);
 
         }

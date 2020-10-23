@@ -1,5 +1,4 @@
-﻿using Persistencia;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,12 +10,10 @@ using System.Windows.Forms;
 
 namespace Interfaz
 {
-    public partial class ReportePresupuestoUI : Form
+    public partial class ReportePresupuesto : Form
     {
-        private Repositorio Repo;
-        public ReportePresupuestoUI(Repositorio unRepositorio)
+        public ReportePresupuesto()
         {
-            Repo = unRepositorio;
             InitializeComponent();
         }
 
