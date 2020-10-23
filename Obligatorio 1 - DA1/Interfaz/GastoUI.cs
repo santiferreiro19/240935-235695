@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Persistencia;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,8 +13,10 @@ namespace Interfaces
 {
     public partial class Gasto : Form
     {
-        public Gasto()
+        private Repositorio Repo;
+        public Gasto(Repositorio unRepositorio)
         {
+            Repo = unRepositorio;
             InitializeComponent();
         }
 

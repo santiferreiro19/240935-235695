@@ -1,4 +1,5 @@
 ﻿using Interfaces;
+using Persistencia;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,10 +12,12 @@ using System.Windows.Forms;
 
 namespace Interfaz
 {
-    public partial class Menu : Form
+    public partial class MenuUI : Form
     {
-        public Menu()
+        private Repositorio Repo;
+        public MenuUI(Repositorio unRepositorio)
         {
+            Repo = unRepositorio;
             InitializeComponent();
         }
 
@@ -25,37 +28,42 @@ namespace Interfaz
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Categoria unaCategoria = new Categoria();
+            CategoriaUI unaCategoria = new CategoriaUI(Repo);
             this.Hide();
             unaCategoria.Show();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Gasto unGasto = new Gasto();
+            Gasto unGasto = new Gasto(Repo);
             this.Hide();
             unGasto.Show();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-             Presupuesto unPresupuesto = new Presupuesto();
+             PresupuestoUI unPresupuesto = new PresupuestoUI(Repo);
             this.Hide();
             unPresupuesto.Show();
         }
 
         private void btnReporteGastos_Click(object sender, EventArgs e)
         {
-            ReporteDeGastos unReporteDeGastos = new ReporteDeGastos();
+            ReporteDeGastosUI unReporteDeGastos = new ReporteDeGastosUI(Repo);
             this.Hide();
             unReporteDeGastos.Show();
         }
 
         private void btnReportePresupuestos_Click(object sender, EventArgs e)
         {
-            ReportePresupuesto unReportePresupuesto = new ReportePresupuesto();
+            ReportePresupuestoUI unReportePresupuesto = new ReportePresupuestoUI(Repo);
             this.Hide();
             unReportePresupuesto.Show();
+        }
+
+        private void MenuUI_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

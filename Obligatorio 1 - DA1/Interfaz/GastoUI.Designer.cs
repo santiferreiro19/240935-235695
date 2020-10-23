@@ -20,7 +20,7 @@ namespace Interfaces
                 components.Dispose();
             }
             base.Dispose(disposing);
-            Menu inicio = new Menu();
+            MenuUI inicio = new MenuUI(Repo);
             inicio.Show();
         }
 
