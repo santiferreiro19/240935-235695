@@ -37,48 +37,18 @@
             this.lstPalabrasClave = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
-<<<<<<< HEAD:Obligatorio 1 - DA1/Interfaz/Categoria.Designer.cs
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(26, 26);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(44, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Nombre";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(13, 61);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(78, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Palabras Clave";
-            // 
-            // lstPalabrasClave
-            // 
-            this.lstPalabrasClave.FormattingEnabled = true;
-            this.lstPalabrasClave.Location = new System.Drawing.Point(114, 87);
-            this.lstPalabrasClave.Name = "lstPalabrasClave";
-            this.lstPalabrasClave.Size = new System.Drawing.Size(180, 290);
-            this.lstPalabrasClave.TabIndex = 2;
-            // 
-=======
->>>>>>> feature/ImplementacionInterfazCategoria:Obligatorio 1 - DA1/Interfaz/RegistroCategorias.Designer.cs
             // txtNombre
             // 
             this.txtNombre.Location = new System.Drawing.Point(104, 26);
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(152, 20);
+            this.txtNombre.Size = new System.Drawing.Size(120, 20);
             this.txtNombre.TabIndex = 3;
             // 
             // txtPalabraClave
             // 
             this.txtPalabraClave.Location = new System.Drawing.Point(104, 61);
             this.txtPalabraClave.Name = "txtPalabraClave";
-            this.txtPalabraClave.Size = new System.Drawing.Size(152, 20);
+            this.txtPalabraClave.Size = new System.Drawing.Size(120, 20);
             this.txtPalabraClave.TabIndex = 4;
             // 
             // label2
@@ -93,11 +63,7 @@
             // btnAgregar
             // 
             this.btnAgregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.World);
-<<<<<<< HEAD:Obligatorio 1 - DA1/Interfaz/Categoria.Designer.cs
-            this.btnAgregar.Location = new System.Drawing.Point(272, 55);
-=======
             this.btnAgregar.Location = new System.Drawing.Point(230, 61);
->>>>>>> feature/ImplementacionInterfazCategoria:Obligatorio 1 - DA1/Interfaz/RegistroCategorias.Designer.cs
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(22, 23);
             this.btnAgregar.TabIndex = 5;
@@ -116,19 +82,13 @@
             // 
             // btnAceptar
             // 
-<<<<<<< HEAD:Obligatorio 1 - DA1/Interfaz/Categoria.Designer.cs
-            this.btnAceptar.Location = new System.Drawing.Point(321, 354);
-=======
             this.btnAceptar.Location = new System.Drawing.Point(177, 182);
->>>>>>> feature/ImplementacionInterfazCategoria:Obligatorio 1 - DA1/Interfaz/RegistroCategorias.Designer.cs
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(75, 23);
             this.btnAceptar.TabIndex = 6;
             this.btnAceptar.Text = "Aceptar";
             this.btnAceptar.UseVisualStyleBackColor = true;
             this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
-<<<<<<< HEAD:Obligatorio 1 - DA1/Interfaz/Categoria.Designer.cs
-=======
             // 
             // lstPalabrasClave
             // 
@@ -137,18 +97,12 @@
             this.lstPalabrasClave.Name = "lstPalabrasClave";
             this.lstPalabrasClave.Size = new System.Drawing.Size(120, 95);
             this.lstPalabrasClave.TabIndex = 2;
->>>>>>> feature/ImplementacionInterfazCategoria:Obligatorio 1 - DA1/Interfaz/RegistroCategorias.Designer.cs
             // 
             // RegistroCategorias
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-<<<<<<< HEAD:Obligatorio 1 - DA1/Interfaz/Categoria.Designer.cs
-            this.BackColor = System.Drawing.SystemColors.WindowFrame;
-            this.ClientSize = new System.Drawing.Size(515, 398);
-=======
             this.Controls.Add(this.lstPalabrasClave);
->>>>>>> feature/ImplementacionInterfazCategoria:Obligatorio 1 - DA1/Interfaz/RegistroCategorias.Designer.cs
             this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.txtPalabraClave);
             this.Controls.Add(this.label1);
