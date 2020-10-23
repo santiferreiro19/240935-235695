@@ -74,7 +74,7 @@ namespace Testing
             ManagerCategoria Manager = new ManagerCategoria(Repositorio);
             Categoria c = new Categoria("Cine");
             Manager.ValidacionAgregarCategoria(c);
-            Assert.AreEqual(c.Nombre, Repositorio.GetCategorias()[0].Nombre) ;
+            Assert.AreEqual(c.Nombre, Repositorio.GetCategorias()[0].Nombre);
         }
         [TestMethod]
         public void ModificacionDeNombreCategoriaTest()
@@ -172,7 +172,7 @@ namespace Testing
 
         [ExpectedException(typeof(ExceptionListaPalabrasClaveLlena))]
         [TestMethod]
-        public void ValidacionListaPalabrasLlena()
+        public void ValidacionListaPalabrasLlenaTest()
         {
             Repositorio Repositorio = new Repositorio();
             ManagerCategoria Manager = new ManagerCategoria(Repositorio);
@@ -184,7 +184,7 @@ namespace Testing
 
         [ExpectedException(typeof(ExceptionPalabraClaveRepetida))]
         [TestMethod]
-        public void ValidacionPalabraClaveRepetida()
+        public void ValidacionPalabraClaveRepetidaTest()
         {
             Repositorio Repositorio = new Repositorio();
             ManagerCategoria Manager = new ManagerCategoria(Repositorio);

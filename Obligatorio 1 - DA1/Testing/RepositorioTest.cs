@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Obligatorio_1___DA1;
-using Obligatorio_1___DA1.Excepciones;
 using Persistencia;
 
 namespace Testing
@@ -18,7 +16,8 @@ namespace Testing
         }
 
         [TestMethod]
-        public void AgregarCategoriaTest() {
+        public void AgregarCategoriaTest()
+        {
             Categoria c = new Categoria("Entretenimiento");
             Repositorio repo = new Repositorio();
             repo.AgregarCategoria(c);
@@ -26,7 +25,8 @@ namespace Testing
         }
 
         [TestMethod]
-        public void ModificarNombreCategoriaTest() {
+        public void ModificarNombreCategoriaTest()
+        {
             Categoria c = new Categoria("Entretenimiento");
             Repositorio repo = new Repositorio();
             repo.AgregarCategoria(c);
@@ -35,16 +35,18 @@ namespace Testing
         }
 
         [TestMethod]
-        public void AgregarPalabraClaveTest() {
+        public void AgregarPalabraClaveTest()
+        {
             Categoria c = new Categoria("Entretenimiento");
             Repositorio repo = new Repositorio();
             repo.AgregarCategoria(c);
-            repo.AgregarPalabraClave(c,"Cine");
+            repo.AgregarPalabraClave(c, "Cine");
             Assert.IsTrue(c.ListaPalabras.Contains("Cine"));
         }
 
         [TestMethod]
-        public void ModificarPalabraClaveTest() {
+        public void ModificarPalabraClaveTest()
+        {
             Categoria c = new Categoria("Entretenimiento");
             Repositorio repo = new Repositorio();
             repo.AgregarCategoria(c);
@@ -62,6 +64,71 @@ namespace Testing
             repo.AgregarPalabraClave(c, "Cine");
             repo.EliminarPalabraClave("Cine");
             Assert.AreEqual(c.ListaPalabras.Count, 0);
+        }
+
+        [TestMethod]
+        public void AgregarGastoTest()
+        {
+            Categoria c = new Categoria("Cine");
+            decimal DecimalRandom = 1.22M;
+            DateTime FechaRandom = new DateTime(2018, 02, 01);
+            Gasto g = new Gasto("Entradas al cine", DecimalRandom, c, FechaRandom);
+            Repositorio repo = new Repositorio();
+            repo.AgregarGasto(g);
+            Assert.IsTrue(repo.GetGastos().Contains(g));
+        }
+
+        [TestMethod]
+        public void EliminarGastoTest()
+        {
+            Categoria c = new Categoria("Cine");
+            decimal DecimalRandom = 1.22M;
+            DateTime FechaRandom = new DateTime(2018, 02, 01);
+            Gasto g = new Gasto("Entradas al cine", DecimalRandom, c, FechaRandom);
+            Repositorio repo = new Repositorio();
+            repo.AgregarGasto(g);
+            repo.EliminarGasto(g);
+            Assert.IsFalse(repo.GetGastos().Contains(g));
+        }
+
+        [TestMethod]
+        public void ModificarDescripcionGastoTest() {
+            Repositorio repo = new Repositorio();
+            Categoria c = new Categoria("Cine");
+            decimal DecimalRandom = 1.22M;
+            DateTime FechaRandom = new DateTime(2018, 02, 01);
+            Gasto g = new Gasto("Entradas al cine", DecimalRandom, c, FechaRandom);
+            String nuevaDescripcion = "Hola";
+            repo.AgregarGasto(g);
+            repo.ModificarDescripcion(nuevaDescripcion, g);
+            Assert.AreEqual(nuevaDescripcion, g.Descripcion);
+        }
+
+        [TestMethod]
+        public void ModificarMontoGastoTest() {
+            Repositorio repo = new Repositorio();
+            Categoria c = new Categoria("Cine");
+            decimal DecimalRandom = 1.22M;
+            DateTime FechaRandom = new DateTime(2018, 02, 01);
+            Gasto g = new Gasto("Entradas al cine", DecimalRandom, c, FechaRandom);
+            decimal nuevoMonto = 102.22M;
+            repo.AgregarGasto(g);
+            repo.ModificarMontoGasto(g, nuevoMonto);
+            Assert.AreEqual(nuevoMonto, g.Monto);
+        }
+
+        [TestMethod]
+        public void ModificarFechaGastoTest()
+        {
+            Repositorio repo = new Repositorio();
+            Categoria c = new Categoria("Cine");
+            decimal DecimalRandom = 1.22M;
+            DateTime FechaAnterior = new DateTime(2018, 02, 01);
+            Gasto g = new Gasto("Entradas al cine", DecimalRandom, c, FechaAnterior);
+            DateTime nuevaFecha = new DateTime(2019, 1, 1);
+            repo.AgregarGasto(g);
+            repo.ModificarFechaGasto(g, nuevaFecha);
+            Assert.AreEqual(nuevaFecha, g.Fecha);
         }
     }
 }
