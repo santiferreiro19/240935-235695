@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Obligatorio_1___DA1;
 using Persistencia;
@@ -92,7 +93,8 @@ namespace Testing
         }
 
         [TestMethod]
-        public void ModificarDescripcionGastoTest() {
+        public void ModificarDescripcionGastoTest()
+        {
             Repositorio repo = new Repositorio();
             Categoria c = new Categoria("Cine");
             decimal DecimalRandom = 1.22M;
@@ -105,7 +107,8 @@ namespace Testing
         }
 
         [TestMethod]
-        public void ModificarMontoGastoTest() {
+        public void ModificarMontoGastoTest()
+        {
             Repositorio repo = new Repositorio();
             Categoria c = new Categoria("Cine");
             decimal DecimalRandom = 1.22M;
@@ -129,6 +132,52 @@ namespace Testing
             repo.AgregarGasto(g);
             repo.ModificarFechaGasto(g, nuevaFecha);
             Assert.AreEqual(nuevaFecha, g.Fecha);
+        }
+
+        [TestMethod]
+        public void BusquedaCategoriasConUnaPalabraClaveTest()
+        {
+            Repositorio repo = new Repositorio();
+            String[] array = { "Cine" };
+            List<string> Lista = new List<string> { "Cine", "Carreras", "Teatro", "Caballos" };
+            Categoria c = new Categoria("Entretenimiento", Lista);
+            repo.AgregarCategoria(c);
+            Assert.AreEqual("Entretenimiento", repo.BusquedaCategorias(array));
+        }
+
+        [TestMethod]
+        public void BusquedaCategoriasConMasDeUnaPalabraClaveTest()
+        {
+            Repositorio repo = new Repositorio();
+            String[] array = { "Cine", "Carreras" };
+            List<string> Lista = new List<string> { "Cine", "Carreras", "Teatro", "Caballos" };
+            Categoria c = new Categoria("Entretenimiento", Lista);
+            repo.AgregarCategoria(c);
+            Assert.AreEqual("", repo.BusquedaCategorias(array));
+        }
+
+        [TestMethod]
+        public void BusquedaCategoriasPalabraClaveQueNoExisteTest()
+        {
+            Repositorio Repo = new Repositorio();
+            String[] DescripcionEnArray = { "Autos" };
+            List<string> Lista = new List<string> { "Cine", "Carreras", "Teatro", "Caballos" };
+            Categoria c = new Categoria("Entretenimiento", Lista);
+            Repo.AgregarCategoria(c);
+            Assert.AreEqual("", Repo.BusquedaCategorias(DescripcionEnArray));
+        }
+
+        [TestMethod]
+        public void ModificacionCategoriaGastoTest()
+        {
+            Repositorio Repo = new Repositorio();
+            DateTime FechaRandom = new DateTime(2020, 1, 1);
+            Categoria categoria = new Categoria("Entretenimiento");
+            Gasto gasto = new Gasto("Entradas al cine", 10.00M, categoria, FechaRandom);
+            Repo.AgregarGasto(gasto);
+            Categoria categorianueva = new Categoria("Formula 1");
+            Repo.ModificacionCategoriaGasto(gasto, categorianueva);
+            Assert.AreEqual("Formula 1", Repo.GetGastos()[0].unaCategoria.Nombre);
         }
     }
 }

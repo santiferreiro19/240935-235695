@@ -93,9 +93,12 @@ namespace Persistencia
             }
         }
 
-        public void ModificarDescripcion(String nuevaD, Gasto g) {
-            foreach (Gasto buscado in this.ListaGastos) {
-                if (buscado.Equals(g)) {
+        public void ModificarDescripcion(String nuevaD, Gasto g)
+        {
+            foreach (Gasto buscado in this.ListaGastos)
+            {
+                if (buscado.Equals(g))
+                {
                     buscado.Descripcion = nuevaD;
                 }
             }
@@ -119,6 +122,43 @@ namespace Persistencia
                 if (buscado.Equals(g))
                 {
                     buscado.Fecha = nuevaFecha;
+                }
+            }
+        }
+
+        public String BusquedaCategorias(String[] palabrasBuscadas)
+        {
+            String Retorno = "";
+            var Contador = 0;
+            foreach (String buscada in palabrasBuscadas)
+            {
+                foreach (Categoria cadaCategoria in this.ListaCategorias)
+                {
+                    if (cadaCategoria.ListaPalabras.Contains(buscada))
+                    {
+                        Retorno = cadaCategoria.Nombre;
+                        Contador++;
+                    }
+                }
+            }
+
+            if (Contador == 0 || Contador > 1)
+            {
+                Retorno = "";
+                return Retorno;
+            }
+            else
+            {
+                return Retorno;
+            }
+        }
+        public void ModificacionCategoriaGasto(Gasto g, Categoria categoria)
+        {
+            foreach (Gasto buscado in this.ListaGastos)
+            {
+                if (buscado.Equals(g))
+                {
+                    buscado.unaCategoria = categoria;
                 }
             }
         }

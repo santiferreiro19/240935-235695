@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Managers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Obligatorio_1___DA1;
@@ -185,6 +186,32 @@ namespace Testing
             DateTime nuevaFecha = new DateTime(2019, 1, 1);
             unManager.ValidacionModificacionFechaGasto(g, nuevaFecha);
             Assert.AreEqual(nuevaFecha, g.Fecha);
+        }
+
+        [TestMethod]
+        public void ValidacionBusquedaCategoriaGastoTest()
+        {
+            Repositorio unRepositorio = new Repositorio();
+            ManagerGasto unManager = new ManagerGasto(unRepositorio);
+            List<string> Lista = new List<string> { "Cine", "Carreras", "Teatro", "Autos" };
+            Categoria c = new Categoria("CategoriaConAutos", Lista);
+            String DescripcionGasto = "Autos";
+            unRepositorio.AgregarCategoria(c);
+            Assert.AreEqual("CategoriaConAutos", unManager.ValidacionBusquedaCategorias(DescripcionGasto));
+        }
+
+        [TestMethod]
+        public void ValidacionModificacionCategoriaGasto()
+        {
+            Repositorio Repo = new Repositorio();
+            ManagerGasto unManager = new ManagerGasto(Repo);
+            DateTime FechaRandom = new DateTime(2020, 1, 1);
+            Categoria categoria = new Categoria("Entretenimiento");
+            Gasto gasto = new Gasto("Entradas al cine", 10.00M, categoria, FechaRandom);
+            Repo.AgregarGasto(gasto);
+            Categoria categoriaNueva = new Categoria("Formula 1");
+            unManager.ValidacionModificacionCategoriaGasto(gasto, categoriaNueva);
+            Assert.AreEqual("Formula 1", Repo.GetGastos()[0].unaCategoria.Nombre);
         }
     }
 }

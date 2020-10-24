@@ -10,7 +10,7 @@ namespace Obligatorio_1___DA1
     {
         public String Descripcion { get; set; }
         public decimal Monto { get; set; }
-        private Categoria unaCategoria;
+        public Categoria unaCategoria;
         public DateTime Fecha { get; set; }
         public Gasto()
         {
