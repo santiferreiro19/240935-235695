@@ -1,4 +1,5 @@
 ﻿using Interfaces;
+using Obligatorio_1___DA1;
 using Persistencia;
 using System;
 using System.Collections.Generic;
@@ -35,7 +36,7 @@ namespace Interfaz
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Gasto unGasto = new Gasto(Repo);
+            GastoUI unGasto = new GastoUI(Repo);
             this.Hide();
             unGasto.Show();
         }

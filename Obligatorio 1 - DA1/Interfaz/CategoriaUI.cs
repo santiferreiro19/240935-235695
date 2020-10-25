@@ -38,5 +38,10 @@ namespace Interfaces
             UserControl modificarCategoria = new ModificacionCategorias(Repo);
             panelAgregar.Controls.Add(modificarCategoria);
         }
+
+        private void panelAgregar_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

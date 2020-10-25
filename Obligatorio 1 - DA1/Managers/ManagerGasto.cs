@@ -71,10 +71,10 @@ namespace Managers
             Repo.ModificarFechaGasto(g, nuevaFecha);
         }
 
-        public String ValidacionBusquedaCategorias(String Descripcion) {
+        public Categoria ValidacionBusquedaCategorias(String Descripcion) {
             String[] PalabrasParaBuscar = Descripcion.Split(' ');
-            String CategoriasEncontradas = Repo.BusquedaCategorias(PalabrasParaBuscar);
-            return CategoriasEncontradas;
+            Categoria CategoriaEncontrada = Repo.BusquedaCategorias(PalabrasParaBuscar);
+            return CategoriaEncontrada;
         }
 
         public void ValidacionModificacionCategoriaGasto(Gasto g, Categoria nuevaCategoria)

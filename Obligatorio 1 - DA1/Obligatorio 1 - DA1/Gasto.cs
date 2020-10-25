@@ -27,5 +27,10 @@ namespace Obligatorio_1___DA1
             this.unaCategoria = unaCategoria;
             this.Fecha = unaFecha;
         }
+      override
+      public string ToString()
+        {
+            return this.Descripcion;
+        }
     }
 }

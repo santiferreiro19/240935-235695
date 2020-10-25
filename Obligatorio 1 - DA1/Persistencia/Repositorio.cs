@@ -126,9 +126,9 @@ namespace Persistencia
             }
         }
 
-        public String BusquedaCategorias(String[] palabrasBuscadas)
+        public Categoria BusquedaCategorias(String[] palabrasBuscadas)
         {
-            String Retorno = "";
+            Categoria Retorno = new Categoria();
             var Contador = 0;
             foreach (String buscada in palabrasBuscadas)
             {
@@ -136,7 +136,7 @@ namespace Persistencia
                 {
                     if (cadaCategoria.ListaPalabras.Contains(buscada))
                     {
-                        Retorno = cadaCategoria.Nombre;
+                        Retorno = cadaCategoria;
                         Contador++;
                     }
                 }
@@ -144,7 +144,7 @@ namespace Persistencia
 
             if (Contador == 0 || Contador > 1)
             {
-                Retorno = "";
+                Retorno = new Categoria();
                 return Retorno;
             }
             else

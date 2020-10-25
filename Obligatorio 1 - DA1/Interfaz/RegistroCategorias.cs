@@ -3,6 +3,7 @@ using Obligatorio_1___DA1;
 using Obligatorio_1___DA1.Excepciones;
 using Persistencia;
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace Interfaz
@@ -102,7 +103,6 @@ namespace Interfaz
 
         private void RegistroCategorias_Load(object sender, EventArgs e)
         {
-
         }
     }
 }

@@ -125,3 +125,6 @@ C:\Users\robak\Desktop\240935-235695\Obligatorio 1 - DA1\Testing\bin\Debug\Persi
 C:\Users\robak\Desktop\240935-235695\Obligatorio 1 - DA1\Testing\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
 C:\Users\robak\Desktop\240935-235695\Obligatorio 1 - DA1\Testing\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
 C:\Users\robak\Desktop\240935-235695\Obligatorio 1 - DA1\Testing\obj\Debug\Testing.csproj.CopyComplete
+C:\Users\santi\OneDrive\Escritorio\ObligatorioRaro\240935-235695\Obligatorio 1 - DA1\Testing\bin\Debug\Interfaz.exe
+C:\Users\santi\OneDrive\Escritorio\ObligatorioRaro\240935-235695\Obligatorio 1 - DA1\Testing\bin\Debug\Interfaz.pdb
+C:\Users\santi\OneDrive\Escritorio\ObligatorioRaro\240935-235695\Obligatorio 1 - DA1\Testing\bin\Debug\Interfaz.exe.config

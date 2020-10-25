@@ -2,7 +2,7 @@
 
 namespace Interfaces
 {
-    partial class Gasto
+    partial class GastoUI
     {
         /// <summary>
         /// Required designer variable.
@@ -41,11 +41,13 @@ namespace Interfaces
             this.txtMonto = new System.Windows.Forms.TextBox();
             this.cboCategoria = new System.Windows.Forms.ComboBox();
             this.dateFecha = new System.Windows.Forms.DateTimePicker();
+            this.btnActualizar = new System.Windows.Forms.Button();
+            this.listBox1 = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // btnAceptar
             // 
-            this.btnAceptar.Location = new System.Drawing.Point(214, 180);
+            this.btnAceptar.Location = new System.Drawing.Point(214, 171);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(75, 23);
             this.btnAceptar.TabIndex = 0;
@@ -96,6 +98,7 @@ namespace Interfaces
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(147, 20);
             this.txtDescripcion.TabIndex = 5;
+            this.txtDescripcion.TextChanged += new System.EventHandler(this.txtDescripcion_TextChanged);
             // 
             // txtMonto
             // 
@@ -120,11 +123,31 @@ namespace Interfaces
             this.dateFecha.Size = new System.Drawing.Size(147, 20);
             this.dateFecha.TabIndex = 8;
             // 
-            // Gasto
+            // btnActualizar
+            // 
+            this.btnActualizar.Location = new System.Drawing.Point(133, 171);
+            this.btnActualizar.Name = "btnActualizar";
+            this.btnActualizar.Size = new System.Drawing.Size(75, 23);
+            this.btnActualizar.TabIndex = 9;
+            this.btnActualizar.Text = "Actualizar";
+            this.btnActualizar.UseVisualStyleBackColor = true;
+            this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
+            // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Location = new System.Drawing.Point(340, 52);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(120, 95);
+            this.listBox1.TabIndex = 10;
+            // 
+            // GastoUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(316, 227);
+            this.ClientSize = new System.Drawing.Size(511, 227);
+            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.btnActualizar);
             this.Controls.Add(this.dateFecha);
             this.Controls.Add(this.cboCategoria);
             this.Controls.Add(this.txtMonto);
@@ -134,7 +157,7 @@ namespace Interfaces
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnAceptar);
-            this.Name = "Gasto";
+            this.Name = "GastoUI";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Gasto_Load);
             this.ResumeLayout(false);
@@ -153,5 +176,7 @@ namespace Interfaces
         private System.Windows.Forms.TextBox txtMonto;
         private System.Windows.Forms.ComboBox cboCategoria;
         private System.Windows.Forms.DateTimePicker dateFecha;
+        private System.Windows.Forms.Button btnActualizar;
+        private System.Windows.Forms.ListBox listBox1;
     }
 }
