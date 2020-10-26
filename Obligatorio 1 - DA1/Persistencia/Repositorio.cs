@@ -9,10 +9,12 @@ namespace Persistencia
     {
         private List<Categoria> ListaCategorias { get; set; }
         private List<Gasto> ListaGastos { get; set; }
+        private List<Presupuesto> ListaPresupuestos { get; set; }
         public Repositorio()
         {
             this.ListaCategorias = new List<Categoria>();
             this.ListaGastos = new List<Gasto>();
+            this.ListaPresupuestos = new List<Presupuesto>();
         }
 
         public List<Categoria> GetCategorias()
@@ -24,9 +26,14 @@ namespace Persistencia
         {
             return this.ListaGastos;
         }
+        public List<Presupuesto> GetPresupuestos()
+        {
+            return this.ListaPresupuestos;
+        }
         public void AgregarCategoria(Categoria unacategoria)
         {
             this.ListaCategorias.Add(unacategoria);
+            ActualizarCategoriaEnPresupuestos(unacategoria);
         }
 
         public void ModificarNombreCategoria(Categoria unacategoria, String NuevoNombre)
@@ -160,6 +167,30 @@ namespace Persistencia
                 {
                     buscado.unaCategoria = categoria;
                 }
+            }
+        }
+
+        public void AgregarPresupuesto(Presupuesto unPresupuesto)
+        {
+            this.ListaPresupuestos.Add(unPresupuesto);
+        }
+
+        public void ModificarMontoPresupuesto(Presupuesto unPresupuesto, Categoria unaCategoria, decimal unNuevoMonto)
+        {
+            foreach (Presupuesto Buscado in this.ListaPresupuestos)
+            {
+                if (Buscado == unPresupuesto)
+                {
+                    unPresupuesto.PresupuestosCategorias[unaCategoria] = unNuevoMonto;
+                }
+            }
+        }
+
+        public void ActualizarCategoriaEnPresupuestos(Categoria nuevaCategoria)
+        {
+            foreach (Presupuesto actualizar in this.ListaPresupuestos)
+            {
+                actualizar.PresupuestosCategorias.Add(nuevaCategoria, 0M);
             }
         }
     }

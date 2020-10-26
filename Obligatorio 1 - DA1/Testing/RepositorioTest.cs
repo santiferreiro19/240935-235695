@@ -179,5 +179,41 @@ namespace Testing
             Repo.ModificacionCategoriaGasto(gasto, categorianueva);
             Assert.AreEqual("Formula 1", Repo.GetGastos()[0].unaCategoria.Nombre);
         }
+
+        [TestMethod]
+        public void AgregarPresupuestoTest()
+        {
+            Presupuesto p = new Presupuesto(2018, "Octubre", new Dictionary<Categoria, decimal>());
+            Repositorio repo = new Repositorio();
+            repo.AgregarPresupuesto(p);
+            Assert.IsTrue(repo.GetPresupuestos().Contains(p));
+        }
+
+        [TestMethod]
+        public void ModificarMontoPresupuestoTest()
+        {
+            Dictionary<Categoria, decimal> Diccionario = new Dictionary<Categoria, decimal>();
+            Categoria c = new Categoria();
+            Diccionario.Add(c, 100.00M);
+            Presupuesto p = new Presupuesto(2018, "Octubre", Diccionario);
+            Repositorio repo = new Repositorio();
+            repo.AgregarPresupuesto(p);
+            repo.ModificarMontoPresupuesto(p, c, 120.00M);
+            Assert.AreEqual(repo.GetPresupuestos()[0].PresupuestosCategorias[c], 120.00M);
+        }
+
+        [TestMethod]
+        public void ActualizarCategoriasEnPresupuestosTest()
+        {
+            Dictionary<Categoria, decimal> Diccionario = new Dictionary<Categoria, decimal>();
+            Categoria c1 = new Categoria();
+            Diccionario.Add(c1, 100.00M);
+            Presupuesto p = new Presupuesto(2018, "Octubre", Diccionario);
+            Repositorio repo = new Repositorio();
+            repo.AgregarPresupuesto(p);
+            Categoria c2 = new Categoria("Categoria2");
+            repo.AgregarCategoria(c2);
+            Assert.IsTrue(repo.GetPresupuestos()[0].PresupuestosCategorias.ContainsKey(c1));
+        }
     }
 }

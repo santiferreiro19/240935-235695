@@ -8,21 +8,22 @@ namespace Obligatorio_1___DA1
 {
     public class Presupuesto
     {
-        public int Anio { set; get; }
-        public String Mes { set; get; }
-        public Dictionary<string, decimal> PresupuestosCategorias;
+        public int Año { get; set; }
+        public string Mes { get; set; }
+        public Dictionary<Categoria, decimal> PresupuestosCategorias { get; set; }
+
         public Presupuesto()
         {
-            this.Anio = 0;
+            this.Año = 0;
             this.Mes = "";
-            Dictionary<string, decimal> PresupuestosCategorias = new Dictionary<string, decimal>();
+            this.PresupuestosCategorias = new Dictionary<Categoria, decimal>();
         }
-        public Presupuesto(int UnAnio, String UnMes, Dictionary<string, decimal> UnPresupuestoCategoria )
+
+        public Presupuesto(int unAño, string unMes, Dictionary<Categoria, decimal> unPresupuestoCategorias)
         {
-            this.Anio = UnAnio;
-            this.Mes = UnMes;
-            this.PresupuestosCategorias = UnPresupuestoCategoria;
+            this.Año = unAño;
+            this.Mes = unMes;
+            this.PresupuestosCategorias = unPresupuestoCategorias;
         }
     }
-
 }
