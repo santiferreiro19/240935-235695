@@ -8,11 +8,11 @@ using System.Windows.Forms;
 
 namespace Interfaz
 {
-    public partial class RegistroCategorias : UserControl
+    public partial class RegistroCategoriasUI : UserControl
     {
         private Repositorio Repo;
         private Categoria unaCategoriaLocal;
-        public RegistroCategorias(Repositorio unRepositorio)
+        public RegistroCategoriasUI(Repositorio unRepositorio)
         {
             Repo = unRepositorio;
             unaCategoriaLocal = new Categoria();

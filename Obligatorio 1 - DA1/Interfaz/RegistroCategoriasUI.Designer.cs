@@ -1,6 +1,6 @@
 ﻿namespace Interfaz
 {
-    partial class RegistroCategorias
+    partial class RegistroCategoriasUI
     {
         /// <summary> 
         /// Required designer variable.

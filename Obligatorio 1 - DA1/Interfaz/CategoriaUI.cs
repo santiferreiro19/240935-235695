@@ -23,7 +23,7 @@ namespace Interfaces
         private void agregarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             panelAgregar.Controls.Clear();
-            UserControl registrarCategoria = new RegistroCategorias(Repo);
+            UserControl registrarCategoria = new RegistroCategoriasUI(Repo);
             panelAgregar.Controls.Add(registrarCategoria);
         }
 
@@ -35,7 +35,7 @@ namespace Interfaces
         private void modificarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             panelAgregar.Controls.Clear();
-            UserControl modificarCategoria = new ModificacionCategorias(Repo);
+            UserControl modificarCategoria = new ModificacionCategoriasUI(Repo);
             panelAgregar.Controls.Add(modificarCategoria);
         }
 
