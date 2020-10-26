@@ -70,6 +70,7 @@ namespace Interfaces
             this.panelAgregar.Name = "panelAgregar";
             this.panelAgregar.Size = new System.Drawing.Size(680, 260);
             this.panelAgregar.TabIndex = 10;
+            this.panelAgregar.Paint += new System.Windows.Forms.PaintEventHandler(this.panelAgregar_Paint);
             // 
             // CategoriaUI
             // 

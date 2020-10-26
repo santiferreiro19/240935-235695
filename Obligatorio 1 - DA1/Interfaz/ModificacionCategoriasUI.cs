@@ -14,11 +14,11 @@ using Obligatorio_1___DA1.Excepciones;
 
 namespace Interfaz
 {
-    public partial class ModificacionCategorias : UserControl
+    public partial class ModificacionCategoriasUI : UserControl
     {
         private Categoria CategoriaSeleccionada;
         private Repositorio Repo;
-        public ModificacionCategorias(Repositorio UnRepositorio)
+        public ModificacionCategoriasUI(Repositorio UnRepositorio)
         {
             CategoriaSeleccionada = new Categoria();
             Repo = UnRepositorio;

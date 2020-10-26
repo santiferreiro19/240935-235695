@@ -1,6 +1,6 @@
 ﻿namespace Interfaz
 {
-    partial class ModificacionCategorias
+    partial class ModificacionCategoriasUI
     {
         /// <summary> 
         /// Required designer variable.

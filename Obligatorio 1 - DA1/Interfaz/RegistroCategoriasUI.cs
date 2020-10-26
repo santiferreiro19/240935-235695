@@ -3,15 +3,16 @@ using Obligatorio_1___DA1;
 using Obligatorio_1___DA1.Excepciones;
 using Persistencia;
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace Interfaz
 {
-    public partial class RegistroCategorias : UserControl
+    public partial class RegistroCategoriasUI : UserControl
     {
         private Repositorio Repo;
         private Categoria unaCategoriaLocal;
-        public RegistroCategorias(Repositorio unRepositorio)
+        public RegistroCategoriasUI(Repositorio unRepositorio)
         {
             Repo = unRepositorio;
             unaCategoriaLocal = new Categoria();
@@ -102,7 +103,6 @@ namespace Interfaz
 
         private void RegistroCategorias_Load(object sender, EventArgs e)
         {
-
         }
     }
 }

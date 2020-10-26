@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Obligatorio_1___DA1;
 
 namespace Persistencia
@@ -10,9 +8,11 @@ namespace Persistencia
     public class Repositorio
     {
         private List<Categoria> ListaCategorias { get; set; }
+        private List<Gasto> ListaGastos { get; set; }
         public Repositorio()
         {
             this.ListaCategorias = new List<Categoria>();
+            this.ListaGastos = new List<Gasto>();
         }
 
         public List<Categoria> GetCategorias()
@@ -20,6 +20,10 @@ namespace Persistencia
             return this.ListaCategorias;
         }
 
+        public List<Gasto> GetGastos()
+        {
+            return this.ListaGastos;
+        }
         public void AgregarCategoria(Categoria unacategoria)
         {
             this.ListaCategorias.Add(unacategoria);
@@ -27,7 +31,8 @@ namespace Persistencia
 
         public void ModificarNombreCategoria(Categoria unacategoria, String NuevoNombre)
         {
-            foreach(Categoria buscada in this.ListaCategorias){
+            foreach (Categoria buscada in this.ListaCategorias)
+            {
                 if (buscada.Equals(unacategoria))
                 {
                     buscada.Nombre = NuevoNombre;
@@ -35,7 +40,8 @@ namespace Persistencia
             }
         }
 
-        public void AgregarPalabraClave(Categoria unacategoria, String NuevaPalabra) {
+        public void AgregarPalabraClave(Categoria unacategoria, String NuevaPalabra)
+        {
             foreach (Categoria buscada in this.ListaCategorias)
             {
                 if (buscada.Equals(unacategoria))
@@ -45,7 +51,8 @@ namespace Persistencia
             }
         }
 
-        public void ModificarPalabraClave(Categoria unacategoria, String NuevaPalabra, String PalabraAnterior) {
+        public void ModificarPalabraClave(Categoria unacategoria, String NuevaPalabra, String PalabraAnterior)
+        {
             foreach (Categoria buscada in this.ListaCategorias)
             {
                 if (buscada.Equals(unacategoria))
@@ -62,7 +69,8 @@ namespace Persistencia
             }
         }
 
-        public void EliminarPalabraClave(String PalabraABorrar) {
+        public void EliminarPalabraClave(String PalabraABorrar)
+        {
             foreach (Categoria buscada in this.ListaCategorias)
             {
                 if (buscada.ListaPalabras.Contains(PalabraABorrar))
@@ -71,6 +79,88 @@ namespace Persistencia
                 }
             }
         }
-        
+
+        public void AgregarGasto(Gasto unGasto)
+        {
+            this.ListaGastos.Add(unGasto);
+        }
+
+        public void EliminarGasto(Gasto unGastoBorrar)
+        {
+            if (this.ListaGastos.Contains(unGastoBorrar))
+            {
+                this.ListaGastos.Remove(unGastoBorrar);
+            }
+        }
+
+        public void ModificarDescripcion(String nuevaD, Gasto g)
+        {
+            foreach (Gasto buscado in this.ListaGastos)
+            {
+                if (buscado.Equals(g))
+                {
+                    buscado.Descripcion = nuevaD;
+                }
+            }
+        }
+
+        public void ModificarMontoGasto(Gasto g, decimal nuevoMonto)
+        {
+            foreach (Gasto buscado in this.ListaGastos)
+            {
+                if (buscado.Equals(g))
+                {
+                    buscado.Monto = nuevoMonto;
+                }
+            }
+        }
+
+        public void ModificarFechaGasto(Gasto g, DateTime nuevaFecha)
+        {
+            foreach (Gasto buscado in this.ListaGastos)
+            {
+                if (buscado.Equals(g))
+                {
+                    buscado.Fecha = nuevaFecha;
+                }
+            }
+        }
+
+        public Categoria BusquedaCategorias(String[] palabrasBuscadas)
+        {
+            Categoria Retorno = new Categoria();
+            var Contador = 0;
+            foreach (String buscada in palabrasBuscadas)
+            {
+                foreach (Categoria cadaCategoria in this.ListaCategorias)
+                {
+                    if (cadaCategoria.ListaPalabras.Contains(buscada))
+                    {
+                        Retorno = cadaCategoria;
+                        Contador++;
+                    }
+                }
+            }
+
+            if (Contador == 0 || Contador > 1)
+            {
+                Retorno = new Categoria();
+                return Retorno;
+            }
+            else
+            {
+                return Retorno;
+            }
+        }
+        public void ModificacionCategoriaGasto(Gasto g, Categoria categoria)
+        {
+            foreach (Gasto buscado in this.ListaGastos)
+            {
+                if (buscado.Equals(g))
+                {
+                    buscado.unaCategoria = categoria;
+                }
+            }
+        }
     }
 }

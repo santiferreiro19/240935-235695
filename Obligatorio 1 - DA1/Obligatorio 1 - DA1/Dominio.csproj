@@ -46,10 +46,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Categoria.cs" />
+    <Compile Include="Excepciones\ExceptionDescripcionGasto.cs" />
+    <Compile Include="Excepciones\ExceptionFechaGasto.cs" />
     <Compile Include="Excepciones\ExceptionListaPalabrasClaveLlena.cs" />
+    <Compile Include="Excepciones\ExceptionMonto.cs" />
     <Compile Include="Excepciones\ExceptionNombreCategoria.cs" />
     <Compile Include="Excepciones\ExceptionNombreCategoriaRepetido.cs" />
     <Compile Include="Excepciones\ExceptionPalabraClaveRepetida.cs" />
+    <Compile Include="Gasto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
