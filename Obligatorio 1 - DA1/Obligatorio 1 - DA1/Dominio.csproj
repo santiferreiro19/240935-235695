@@ -55,6 +55,7 @@
     <Compile Include="Excepciones\ExceptionNombreCategoria.cs" />
     <Compile Include="Excepciones\ExceptionNombreCategoriaRepetido.cs" />
     <Compile Include="Excepciones\ExceptionPalabraClaveRepetida.cs" />
+    <Compile Include="Excepciones\ExceptionPresupuestoRepetido.cs" />
     <Compile Include="Gasto.cs" />
     <Compile Include="Presupuesto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
