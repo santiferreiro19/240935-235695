@@ -157,7 +157,8 @@ namespace Testing
             Dictionary<Categoria, decimal> MontoCategorias = Manager.CargarCategoriasPresupuesto();
             int unAño = 2018;
             string unMes = "Julio";
-            Manager.ValidacionAgregarPresupuesto(unAño, unMes, MontoCategorias);
+            Presupuesto presupuestoNuevo = new Presupuesto(unAño, unMes, MontoCategorias);
+            Manager.ValidacionAgregarPresupuesto(presupuestoNuevo);
             Assert.AreEqual(Repositorio.GetPresupuestos()[0].Año, unAño);
         }
 
@@ -171,10 +172,11 @@ namespace Testing
             Dictionary<Categoria, decimal> MontoCategorias = Manager.CargarCategoriasPresupuesto();
             int unAño = 2018;
             string unMes = "Julio";
-            Manager.ValidacionAgregarPresupuesto(unAño, unMes, MontoCategorias);
+            Presupuesto presupuestoNuevo = new Presupuesto(unAño, unMes, MontoCategorias);
+            Manager.ValidacionAgregarPresupuesto(presupuestoNuevo);
             decimal nuevoMontoDeC1 = 15000.00M;
             Manager.ValidacionModificarPresupuesto(Repositorio.GetPresupuestos()[0], c1, nuevoMontoDeC1);
-            Assert.AreEqual(Repositorio.GetPresupuestos()[0].PresupuestosCategorias[c1], nuevoMontoDeC1);
+            Assert.AreEqual(Repositorio.GetPresupuestos()[0].getPresupuestosCategorias()[c1], nuevoMontoDeC1);
         }
     }
 }

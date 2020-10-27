@@ -17,6 +17,7 @@ namespace Managers
         {
             this.Repo = unRepositorio;
         }
+ 
         public void ValidacionAño(int unAño)
         {
             if (unAño > 2030 || unAño < 2018)
@@ -71,11 +72,10 @@ namespace Managers
             unPresupuestosMonto[unaCategoria] = MontoTransformado;
         }
 
-        public void ValidacionAgregarPresupuesto(int unAño, string unMes, Dictionary<Categoria, decimal> unPresupuestosMonto)
+        public void ValidacionAgregarPresupuesto(Presupuesto unPresupuesto)
         {
-            this.ValidacionAño(unAño);
-            Presupuesto nuevoPresupuesto = new Presupuesto(unAño, unMes, unPresupuestosMonto);
-            Repo.AgregarPresupuesto(nuevoPresupuesto);
+            this.ValidacionAño(unPresupuesto.Año);
+            Repo.AgregarPresupuesto(unPresupuesto);
         }
 
         public void ValidacionModificarPresupuesto(Presupuesto unPresupuesto, Categoria unaCategoria, decimal unMonto)

@@ -199,7 +199,7 @@ namespace Testing
             Repositorio repo = new Repositorio();
             repo.AgregarPresupuesto(p);
             repo.ModificarMontoPresupuesto(p, c, 120.00M);
-            Assert.AreEqual(repo.GetPresupuestos()[0].PresupuestosCategorias[c], 120.00M);
+            Assert.AreEqual(repo.GetPresupuestos()[0].getPresupuestosCategorias()[c], 120.00M);
         }
 
         [TestMethod]
@@ -213,7 +213,7 @@ namespace Testing
             repo.AgregarPresupuesto(p);
             Categoria c2 = new Categoria("Categoria2");
             repo.AgregarCategoria(c2);
-            Assert.IsTrue(repo.GetPresupuestos()[0].PresupuestosCategorias.ContainsKey(c1));
+            Assert.IsTrue(repo.GetPresupuestos()[0].getPresupuestosCategorias().ContainsKey(c1));
         }
     }
 }

@@ -181,7 +181,7 @@ namespace Persistencia
             {
                 if (Buscado == unPresupuesto)
                 {
-                    unPresupuesto.PresupuestosCategorias[unaCategoria] = unNuevoMonto;
+                    unPresupuesto.getPresupuestosCategorias()[unaCategoria] = unNuevoMonto;
                 }
             }
         }
@@ -190,7 +190,7 @@ namespace Persistencia
         {
             foreach (Presupuesto actualizar in this.ListaPresupuestos)
             {
-                actualizar.PresupuestosCategorias.Add(nuevaCategoria, 0M);
+                actualizar.getPresupuestosCategorias().Add(nuevaCategoria, 0M);
             }
         }
     }

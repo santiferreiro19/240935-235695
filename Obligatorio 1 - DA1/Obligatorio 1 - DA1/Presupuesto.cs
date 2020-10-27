@@ -10,7 +10,7 @@ namespace Obligatorio_1___DA1
     {
         public int Año { get; set; }
         public string Mes { get; set; }
-        public Dictionary<Categoria, decimal> PresupuestosCategorias { get; set; }
+        private Dictionary<Categoria, decimal> PresupuestosCategorias { get; set; }
 
         public Presupuesto()
         {
@@ -24,6 +24,20 @@ namespace Obligatorio_1___DA1
             this.Año = unAño;
             this.Mes = unMes;
             this.PresupuestosCategorias = unPresupuestoCategorias;
+        }
+        public Dictionary<Categoria, decimal> getPresupuestosCategorias() {
+            return this.PresupuestosCategorias;
+
+        }
+        public void setPresupuestosCategorias(Dictionary<Categoria, decimal> unDiccionario)
+        {
+             this.PresupuestosCategorias = unDiccionario;
+
+        }
+        override
+             public string ToString()
+        {
+            return this.Mes + " " + this.Año;
         }
     }
 }

@@ -20,24 +20,28 @@ namespace Interfaz
             InitializeComponent();
         }
 
-        private void txtAño_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cboMes_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void Presupuesto_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void agregarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            panelGeneral.Controls.Clear();
+            UserControl registrarPresupuesto = new RegistroPresupuestoUI(Repo);
+            panelGeneral.Controls.Add(registrarPresupuesto);
+        }
+
+        private void panelGeneral_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void modificarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            panelGeneral.Controls.Clear();
+            UserControl modificarPresupuesto = new ModificacionPresupuesto(Repo);
+            panelGeneral.Controls.Add(modificarPresupuesto);
         }
     }
 }
