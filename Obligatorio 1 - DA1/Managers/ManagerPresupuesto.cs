@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Obligatorio_1___DA1;
 using Obligatorio_1___DA1.Excepciones;
 using Persistencia;
@@ -17,7 +15,7 @@ namespace Managers
         {
             this.Repo = unRepositorio;
         }
- 
+
         public void ValidacionAño(int unAño)
         {
             if (unAño > 2030 || unAño < 2018)
@@ -72,11 +70,27 @@ namespace Managers
             unPresupuestosMonto[unaCategoria] = MontoTransformado;
         }
 
-        public void ValidacionAgregarPresupuesto(Presupuesto unPresupuesto)
+        public void ValidacionAgregarPresupuesto(Presupuesto nuevoPresupuesto)
         {
-            this.ValidacionAño(unPresupuesto.Año);
-            Repo.AgregarPresupuesto(unPresupuesto);
+            this.ValidacionAño(nuevoPresupuesto.Año);
+            bool repetido = false;
+            foreach (Presupuesto unPresupuesto in Repo.GetPresupuestos())
+            {
+                if (nuevoPresupuesto.Mes == unPresupuesto.Mes && unPresupuesto.Año == nuevoPresupuesto.Año)
+                {
+                    repetido = true;
+                }
+            }
+            if (!repetido)
+            {
+                Repo.AgregarPresupuesto(nuevoPresupuesto);
+            }
+            else
+            {
+                throw new ExceptionPresupuestoRepetido();
+            }
         }
+
 
         public void ValidacionModificarPresupuesto(Presupuesto unPresupuesto, Categoria unaCategoria, decimal unMonto)
         {

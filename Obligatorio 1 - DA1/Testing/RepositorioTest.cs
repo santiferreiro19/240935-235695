@@ -135,36 +135,14 @@ namespace Testing
         }
 
         [TestMethod]
-        public void BusquedaCategoriasConUnaPalabraClaveTest()
+        public void BusquedaCategoriasTest()
         {
             Repositorio repo = new Repositorio();
             String[] array = { "Cine" };
             List<string> Lista = new List<string> { "Cine", "Carreras", "Teatro", "Caballos" };
             Categoria c = new Categoria("Entretenimiento", Lista);
             repo.AgregarCategoria(c);
-            Assert.AreEqual("Entretenimiento", repo.BusquedaCategorias(array));
-        }
-
-        [TestMethod]
-        public void BusquedaCategoriasConMasDeUnaPalabraClaveTest()
-        {
-            Repositorio repo = new Repositorio();
-            String[] array = { "Cine", "Carreras" };
-            List<string> Lista = new List<string> { "Cine", "Carreras", "Teatro", "Caballos" };
-            Categoria c = new Categoria("Entretenimiento", Lista);
-            repo.AgregarCategoria(c);
-            Assert.AreEqual("", repo.BusquedaCategorias(array));
-        }
-
-        [TestMethod]
-        public void BusquedaCategoriasPalabraClaveQueNoExisteTest()
-        {
-            Repositorio Repo = new Repositorio();
-            String[] DescripcionEnArray = { "Autos" };
-            List<string> Lista = new List<string> { "Cine", "Carreras", "Teatro", "Caballos" };
-            Categoria c = new Categoria("Entretenimiento", Lista);
-            Repo.AgregarCategoria(c);
-            Assert.AreEqual("", Repo.BusquedaCategorias(DescripcionEnArray));
+            Assert.AreEqual(c, repo.BusquedaCategorias(array));
         }
 
         [TestMethod]

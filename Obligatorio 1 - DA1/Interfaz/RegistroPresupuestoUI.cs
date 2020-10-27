@@ -80,7 +80,6 @@ namespace Interfaz
                     PresupuestoGuardar.Mes = (String)cboMes.SelectedItem;
                     PresupuestoGuardar.setPresupuestosCategorias(PresupuestoTemporal.getPresupuestosCategorias());
                     manager.ValidacionAgregarPresupuesto(PresupuestoGuardar);
-                    //presupuesto tiene que ser unico VALIDAR
                     txtAño.Text = "";
                     cboMes.SelectedIndex = -1;
                     
@@ -91,7 +90,12 @@ namespace Interfaz
                 catch (ExceptionAñoPresupuesto año) {
                     MessageBox.Show("El año tiene que ser entre 2018 - 2030");
                 }
-            }else
+                catch (ExceptionPresupuestoRepetido repetido)
+                {
+                    MessageBox.Show("Presupuesto para año y mes ya ingresado");
+                }
+            }
+            else
             {
                 MessageBox.Show("Los campos Año y Mes son obligatorios");
             }

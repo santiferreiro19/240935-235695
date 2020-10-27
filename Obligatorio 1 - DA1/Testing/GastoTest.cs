@@ -197,7 +197,7 @@ namespace Testing
             Categoria c = new Categoria("CategoriaConAutos", Lista);
             String DescripcionGasto = "Autos";
             unRepositorio.AgregarCategoria(c);
-            Assert.AreEqual("CategoriaConAutos", unManager.ValidacionBusquedaCategorias(DescripcionGasto));
+            Assert.AreEqual(c, unManager.ValidacionBusquedaCategorias(DescripcionGasto));
         }
 
         [TestMethod]
@@ -213,6 +213,7 @@ namespace Testing
             unManager.ValidacionModificacionCategoriaGasto(gasto, categoriaNueva);
             Assert.AreEqual("Formula 1", Repo.GetGastos()[0].unaCategoria.Nombre);
         }
+
         [TestMethod]
         public void CargarFechasDondeHuboGastosTest()
         {
