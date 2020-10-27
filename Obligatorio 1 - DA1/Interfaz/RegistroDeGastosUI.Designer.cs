@@ -31,7 +31,6 @@
             this.btnActualizar = new System.Windows.Forms.Button();
             this.dateFecha = new System.Windows.Forms.DateTimePicker();
             this.cboCategoria = new System.Windows.Forms.ComboBox();
-            this.txtMonto = new System.Windows.Forms.TextBox();
             this.txtDescripcion = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -39,6 +38,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnAceptar = new System.Windows.Forms.Button();
             this.listBox1 = new System.Windows.Forms.ListBox();
+            this.nroMonto = new System.Windows.Forms.NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)(this.nroMonto)).BeginInit();
             this.SuspendLayout();
             // 
             // btnActualizar
@@ -66,13 +67,6 @@
             this.cboCategoria.Name = "cboCategoria";
             this.cboCategoria.Size = new System.Drawing.Size(147, 21);
             this.cboCategoria.TabIndex = 17;
-            // 
-            // txtMonto
-            // 
-            this.txtMonto.Location = new System.Drawing.Point(170, 107);
-            this.txtMonto.Name = "txtMonto";
-            this.txtMonto.Size = new System.Drawing.Size(147, 20);
-            this.txtMonto.TabIndex = 16;
             // 
             // txtDescripcion
             // 
@@ -136,15 +130,29 @@
             this.listBox1.TabIndex = 20;
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
+            // nroMonto
+            // 
+            this.nroMonto.DecimalPlaces = 2;
+            this.nroMonto.InterceptArrowKeys = false;
+            this.nroMonto.Location = new System.Drawing.Point(170, 108);
+            this.nroMonto.Maximum = new decimal(new int[] {
+            -1,
+            -1,
+            -1,
+            0});
+            this.nroMonto.Name = "nroMonto";
+            this.nroMonto.Size = new System.Drawing.Size(147, 20);
+            this.nroMonto.TabIndex = 25;
+            // 
             // RegistroDeGastosUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.nroMonto);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.btnActualizar);
             this.Controls.Add(this.dateFecha);
             this.Controls.Add(this.cboCategoria);
-            this.Controls.Add(this.txtMonto);
             this.Controls.Add(this.txtDescripcion);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -154,6 +162,7 @@
             this.Name = "RegistroDeGastosUI";
             this.Size = new System.Drawing.Size(602, 302);
             this.Load += new System.EventHandler(this.RegistroDeGastosUI_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.nroMonto)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -164,7 +173,6 @@
         private System.Windows.Forms.Button btnActualizar;
         private System.Windows.Forms.DateTimePicker dateFecha;
         private System.Windows.Forms.ComboBox cboCategoria;
-        private System.Windows.Forms.TextBox txtMonto;
         private System.Windows.Forms.TextBox txtDescripcion;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
@@ -172,5 +180,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnAceptar;
         private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.NumericUpDown nroMonto;
     }
 }

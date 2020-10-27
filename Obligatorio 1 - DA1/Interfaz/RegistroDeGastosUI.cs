@@ -47,7 +47,7 @@ namespace Interfaz
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             ManagerGasto manager = new ManagerGasto(Repo);
-            decimal monto = Decimal.Parse(txtMonto.Text);
+            decimal monto = Decimal.Parse(nroMonto.Text);
             monto = manager.TransformarMonto(monto);
             if (txtDescripcion.Text != "" && cboCategoria.SelectedIndex != -1)
             {
@@ -61,7 +61,7 @@ namespace Interfaz
                     unGasto.Fecha = dateFecha.Value;
                     unGasto.unaCategoria = (Categoria)cboCategoria.SelectedItem;
                     txtDescripcion.Text = "";
-                    txtMonto.Text = "";
+                    nroMonto.Text = "";
                     cboCategoria.SelectedIndex = -1;
                     manager.ValidacionAgregarGasto(unGasto);
                     unGasto = new Gasto();

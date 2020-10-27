@@ -31,7 +31,6 @@
             this.lstGastos = new System.Windows.Forms.ListBox();
             this.dateFecha = new System.Windows.Forms.DateTimePicker();
             this.cboCategoria = new System.Windows.Forms.ComboBox();
-            this.txtMonto = new System.Windows.Forms.TextBox();
             this.txtDescripcion = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -40,7 +39,9 @@
             this.panelModificacion = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.btnSeleccionar = new System.Windows.Forms.Button();
+            this.nroMonto = new System.Windows.Forms.NumericUpDown();
             this.panelModificacion.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nroMonto)).BeginInit();
             this.SuspendLayout();
             // 
             // lstGastos
@@ -69,14 +70,6 @@
             this.cboCategoria.Size = new System.Drawing.Size(147, 21);
             this.cboCategoria.TabIndex = 25;
             this.cboCategoria.SelectedIndexChanged += new System.EventHandler(this.cboCategoria_SelectedIndexChanged);
-            // 
-            // txtMonto
-            // 
-            this.txtMonto.Location = new System.Drawing.Point(127, 95);
-            this.txtMonto.Name = "txtMonto";
-            this.txtMonto.Size = new System.Drawing.Size(147, 20);
-            this.txtMonto.TabIndex = 24;
-            this.txtMonto.TextChanged += new System.EventHandler(this.txtMonto_TextChanged);
             // 
             // txtDescripcion
             // 
@@ -128,13 +121,13 @@
             // 
             // panelModificacion
             // 
+            this.panelModificacion.Controls.Add(this.nroMonto);
             this.panelModificacion.Controls.Add(this.button1);
             this.panelModificacion.Controls.Add(this.txtDescripcion);
             this.panelModificacion.Controls.Add(this.dateFecha);
             this.panelModificacion.Controls.Add(this.label1);
             this.panelModificacion.Controls.Add(this.cboCategoria);
             this.panelModificacion.Controls.Add(this.label2);
-            this.panelModificacion.Controls.Add(this.txtMonto);
             this.panelModificacion.Controls.Add(this.label3);
             this.panelModificacion.Controls.Add(this.label4);
             this.panelModificacion.Location = new System.Drawing.Point(200, 3);
@@ -163,6 +156,20 @@
             this.btnSeleccionar.UseVisualStyleBackColor = true;
             this.btnSeleccionar.Click += new System.EventHandler(this.btnSeleccionar_Click);
             // 
+            // nroMonto
+            // 
+            this.nroMonto.DecimalPlaces = 2;
+            this.nroMonto.InterceptArrowKeys = false;
+            this.nroMonto.Location = new System.Drawing.Point(127, 96);
+            this.nroMonto.Maximum = new decimal(new int[] {
+            -1,
+            -1,
+            -1,
+            0});
+            this.nroMonto.Name = "nroMonto";
+            this.nroMonto.Size = new System.Drawing.Size(147, 20);
+            this.nroMonto.TabIndex = 28;
+            // 
             // ModificacionGastoUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -175,6 +182,7 @@
             this.Load += new System.EventHandler(this.ModificacionGastoUI_Load);
             this.panelModificacion.ResumeLayout(false);
             this.panelModificacion.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nroMonto)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -184,7 +192,6 @@
         private System.Windows.Forms.ListBox lstGastos;
         private System.Windows.Forms.DateTimePicker dateFecha;
         private System.Windows.Forms.ComboBox cboCategoria;
-        private System.Windows.Forms.TextBox txtMonto;
         private System.Windows.Forms.TextBox txtDescripcion;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
@@ -193,5 +200,6 @@
         private System.Windows.Forms.Panel panelModificacion;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnSeleccionar;
+        private System.Windows.Forms.NumericUpDown nroMonto;
     }
 }

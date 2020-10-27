@@ -89,9 +89,9 @@ namespace Interfaz
         {
             ManagerGasto manager = new ManagerGasto(Repo);
 
-            if (txtDescripcion.Text != "" && cboCategoria.SelectedIndex != -1 && txtMonto.Text != "")
+            if (txtDescripcion.Text != "" && cboCategoria.SelectedIndex != -1 && nroMonto.Text != "")
             {
-                decimal monto = Decimal.Parse(txtMonto.Text);
+                decimal monto = Decimal.Parse(nroMonto.Text);
                 monto = manager.TransformarMonto(monto);
                 try
                 {                
@@ -101,7 +101,7 @@ namespace Interfaz
                     manager.ValidacionModificacionMontoGasto(GastoSeleccionado, monto);
                     GastoSeleccionado = new Gasto();
                     txtDescripcion.Text = "";
-                    txtMonto.Text = "";
+                    nroMonto.Text = "";
                     cboCategoria.SelectedIndex = -1;
                     panelModificacion.Visible = false;
                 }
@@ -131,7 +131,7 @@ namespace Interfaz
             panelModificacion.Visible = true;
             GastoSeleccionado = (Gasto)lstGastos.SelectedItem;
             txtDescripcion.Text = GastoSeleccionado.Descripcion;
-            txtMonto.Text = GastoSeleccionado.Monto.ToString();
+            nroMonto.Text = GastoSeleccionado.Monto.ToString();
             CargarComboBox();
             cboCategoria.SelectedItem = GastoSeleccionado.unaCategoria;
         }

@@ -70,6 +70,12 @@
     <Compile Include="ModificacionGastoUI.Designer.cs">
       <DependentUpon>ModificacionGastoUI.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModificacionPresupuesto.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ModificacionPresupuesto.Designer.cs">
+      <DependentUpon>ModificacionPresupuesto.cs</DependentUpon>
+    </Compile>
     <Compile Include="PresupuestoUI.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -89,6 +95,12 @@
     </Compile>
     <Compile Include="RegistroDeGastosUI.Designer.cs">
       <DependentUpon>RegistroDeGastosUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RegistroPresupuestoUI.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="RegistroPresupuestoUI.Designer.cs">
+      <DependentUpon>RegistroPresupuestoUI.cs</DependentUpon>
     </Compile>
     <Compile Include="ReporteDeGastosUI.cs">
       <SubType>Form</SubType>
@@ -120,6 +132,9 @@
     <EmbeddedResource Include="ModificacionGastoUI.resx">
       <DependentUpon>ModificacionGastoUI.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ModificacionPresupuesto.resx">
+      <DependentUpon>ModificacionPresupuesto.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PresupuestoUI.resx">
       <DependentUpon>PresupuestoUI.cs</DependentUpon>
     </EmbeddedResource>
@@ -149,6 +164,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RegistroDeGastosUI.resx">
       <DependentUpon>RegistroDeGastosUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RegistroPresupuestoUI.resx">
+      <DependentUpon>RegistroPresupuestoUI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ReporteDeGastosUI.resx">
       <DependentUpon>ReporteDeGastosUI.cs</DependentUpon>
