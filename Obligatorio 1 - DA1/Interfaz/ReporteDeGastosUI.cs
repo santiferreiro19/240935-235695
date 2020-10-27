@@ -1,4 +1,5 @@
-﻿using Persistencia;
+﻿using Managers;
+using Persistencia;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -27,7 +28,31 @@ namespace Interfaz
 
         private void ReporteDeGastos_Load(object sender, EventArgs e)
         {
+            ManagerGasto unManager = new ManagerGasto(Repo);
+            cboMes.DataSource = unManager.CargarFechasDondeHuboGastos();
+        }
 
+        private void lbl_resultado_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void data_gastos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void btnConsultar_Click(object sender, EventArgs e)
+        {
+            ManagerGasto unManager = new ManagerGasto(Repo);
+            if (cboMes.SelectedIndex != -1)
+            {
+                var list = unManager.FiltrarGastosPorFecha(cboMes.SelectedItem.ToString()).OrderBy(x => x.Fecha).ToList();
+                data_gastos.DataSource = list;
+                data_gastos.Columns["Fecha"].DisplayIndex = 0;
+                data_gastos.RowHeadersVisible = false;
+                lbl_resultado.Text = (unManager.SumaDeGastosParaFecha(unManager.FiltrarGastosPorFecha(cboMes.SelectedItem.ToString())));
+            }
         }
     }
 }

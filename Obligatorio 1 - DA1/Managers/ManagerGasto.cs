@@ -81,5 +81,44 @@ namespace Managers
         {
             Repo.ModificacionCategoriaGasto(g, nuevaCategoria);
         }
+
+        public List<String> CargarFechasDondeHuboGastos()
+        {
+            List<String> ListaDeFechasGastos = new List<String>();
+            foreach (Gasto unGasto in Repo.GetGastos())
+            {
+                String FechaFormateada = unGasto.Fecha.ToString("MMMM yyyy");
+                if (!ListaDeFechasGastos.Contains(FechaFormateada))
+                {
+
+                    ListaDeFechasGastos.Add(FechaFormateada);
+                }
+            }
+            return ListaDeFechasGastos;
+        }
+
+        public List<Gasto> FiltrarGastosPorFecha(String unPeriodo)
+        {
+            List<Gasto> ListaDeGastosParaFecha = new List<Gasto>();
+            foreach (Gasto unGasto in Repo.GetGastos())
+            {
+                String FechaFormateada = unGasto.Fecha.ToString("MMMM yyyy");
+                if (FechaFormateada == unPeriodo)
+                {
+                    ListaDeGastosParaFecha.Add(unGasto);
+                }
+            }
+            return ListaDeGastosParaFecha;
+        }
+
+        public string SumaDeGastosParaFecha(List<Gasto> ListaGastosParaFecha)
+        {
+            decimal Total = 0.00M;
+            foreach (Gasto unGasto in ListaGastosParaFecha)
+            {
+                Total += unGasto.Monto;
+            }
+            return Total.ToString();
+        }
     }
 }

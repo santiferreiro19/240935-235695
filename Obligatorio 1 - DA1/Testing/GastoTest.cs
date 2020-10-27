@@ -213,6 +213,51 @@ namespace Testing
             unManager.ValidacionModificacionCategoriaGasto(gasto, categoriaNueva);
             Assert.AreEqual("Formula 1", Repo.GetGastos()[0].unaCategoria.Nombre);
         }
+        [TestMethod]
+        public void CargarFechasDondeHuboGastosTest()
+        {
+            Repositorio Repo = new Repositorio();
+            ManagerGasto unManager = new ManagerGasto(Repo);
+            Gasto g1 = new Gasto("Gasto1", 100.00M, new Categoria("Cine"), new DateTime(2019, 1, 1));
+            Gasto g2 = new Gasto("Gasto2", 100.00M, new Categoria("Entretenimiento"), new DateTime(2019, 1, 20));
+            Gasto g3 = new Gasto("Gasto3", 100.00M, new Categoria("Autos"), new DateTime(2020, 1, 14));
+            Repo.AgregarGasto(g1);
+            Repo.AgregarGasto(g2);
+            Repo.AgregarGasto(g3);
+            List<string> Lista = unManager.CargarFechasDondeHuboGastos();
+            Assert.AreEqual(Lista[1], "January 2020");
+        }
+
+        [TestMethod]
+        public void FiltrarGastosPorFechaTest()
+        {
+            Repositorio Repo = new Repositorio();
+            ManagerGasto unManager = new ManagerGasto(Repo);
+            string FechaAFiltrar = new DateTime(2018, 1, 2).ToString("MMMM yyyy");
+            Gasto g1 = new Gasto("Gasto1", 100.00M, new Categoria("Cine"), new DateTime(2019, 1, 1));
+            Gasto g2 = new Gasto("Gasto2", 100.00M, new Categoria("Entretenimiento"), new DateTime(2019, 1, 1));
+            Gasto g3 = new Gasto("Gasto3", 100.00M, new Categoria("Autos"), new DateTime(2018, 1, 2));
+            Repo.AgregarGasto(g1);
+            Repo.AgregarGasto(g2);
+            Repo.AgregarGasto(g3);
+            List<Gasto> ListaFiltrada = unManager.FiltrarGastosPorFecha(FechaAFiltrar);
+            Assert.AreEqual(1, ListaFiltrada.Count);
+        }
+
+        [TestMethod]
+        public void SumaDeGastosParaFechaTest()
+        {
+            Repositorio Repo = new Repositorio();
+            ManagerGasto unManager = new ManagerGasto(Repo);
+            List<Gasto> ListParaSumarMontos = new List<Gasto>();
+            Gasto g1 = new Gasto("Gasto1", 100.00M, new Categoria("Cine"), new DateTime(2019, 1, 1));
+            Gasto g2 = new Gasto("Gasto2", 100.00M, new Categoria("Entretenimiento"), new DateTime(2019, 1, 20));
+            Gasto g3 = new Gasto("Gasto3", 100.00M, new Categoria("Autos"), new DateTime(2019, 1, 12));
+            ListParaSumarMontos.Add(g1);
+            ListParaSumarMontos.Add(g2);
+            ListParaSumarMontos.Add(g3);
+            Assert.AreEqual(300.00M, decimal.Parse(unManager.SumaDeGastosParaFecha(ListParaSumarMontos)));
+        }
     }
 }
 
