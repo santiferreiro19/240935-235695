@@ -32,6 +32,13 @@ namespace Testing
         }
 
         [TestMethod]
+        public void toStringTest()
+        {
+            Categoria c = new Categoria("Entretenimiento");
+            Assert.AreEqual("Entretenimiento", c.ToString()) ;
+        }
+
+        [TestMethod]
         public void CreacionDeCategoriaValida()
         {
             List<string> Lista = new List<string>
@@ -67,6 +74,17 @@ namespace Testing
             Manager.ValidarNombreCategoria(Nombre);
         }
 
+        [ExpectedException(typeof(ExceptionNombreCategoriaRepetido))]
+        [TestMethod]
+        public void ValidacionNombreCategoriaRepetido() 
+        {
+            Repositorio Repositorio = new Repositorio();
+            ManagerCategoria Manager = new ManagerCategoria(Repositorio);
+            String Nombre = "EP";
+            Repositorio.AgregarCategoria(new Categoria(Nombre));
+            Manager.ValidarNombreCategoria(Nombre);
+        }
+
         [TestMethod]
         public void ValidacionAgregarCategoriaTest()
         {
@@ -76,6 +94,7 @@ namespace Testing
             Manager.ValidacionAgregarCategoria(c);
             Assert.AreEqual(c.Nombre, Repositorio.GetCategorias()[0].Nombre);
         }
+
         [TestMethod]
         public void ModificacionDeNombreCategoriaTest()
         {
@@ -194,6 +213,21 @@ namespace Testing
             String Repetida = "Palabra3";
             Manager.ValidacionAgregarCategoria(c);
             Manager.ValidarPalabraClaveRepetida(Repetida);
+        }
+
+        [TestMethod]
+        public void EliminarPalabraClaveTest() 
+        {
+            Repositorio Repositorio = new Repositorio();
+            ManagerCategoria Manager = new ManagerCategoria(Repositorio);
+            String PalabraElminar = "Palabra10";
+            List<string> Lista = new List<string>
+            {"Palabra1","Palabra2","Palabra3","Palabra4", "Palabra5","Palabra6",
+                "Palabra7","Palabra8","Palabra9","Palabra10"};
+            Categoria c = new Categoria("Cine", Lista);
+            Repositorio.AgregarCategoria(c);
+            Manager.EliminarPalabraClave(PalabraElminar);
+            Assert.AreEqual(9, c.ListaPalabras.Count);
         }
     }
 }

@@ -31,6 +31,27 @@ namespace Testing
         }
 
         [TestMethod]
+        public void toStringTest()
+        {
+            int Año = 2020;
+            string Mes = "Octubre";
+            Presupuesto p = new Presupuesto(Año, Mes, new Dictionary<Categoria, decimal>());
+            Assert.AreEqual("Octubre 2020", p.ToString());
+        }
+
+        [TestMethod]
+        public void setPresupuestoCategoriasTest()
+        {
+            int Año = 2020;
+            string Mes = "Octubre";
+            Dictionary<Categoria, decimal> d = new Dictionary<Categoria, decimal>();
+            d.Add(new Categoria(), 0.00M);
+            Presupuesto p = new Presupuesto(Año, Mes, new Dictionary<Categoria, decimal>());
+            p.setPresupuestosCategorias(d);
+            Assert.AreEqual(d, p.getPresupuestosCategorias());
+        }
+
+        [TestMethod]
         public void RegistroDePresupuestoValidoTest()
         {
             int Año = 2021;
@@ -147,6 +168,17 @@ namespace Testing
             Assert.AreEqual(MontoCategorias[c1], unMonto);
         }
 
+        [ExpectedException(typeof(ExceptionPresupuestoRepetido))]
+        [TestMethod]
+        public void PresupuestoRepetidoTest() 
+        {
+            Repositorio Repositorio = new Repositorio();
+            ManagerPresupuesto Manager = new ManagerPresupuesto(Repositorio);
+            Presupuesto p = new Presupuesto(2020, "Octubre", new Dictionary<Categoria, decimal>());
+            Repositorio.AgregarPresupuesto(p);
+            Manager.ValidacionAgregarPresupuesto(p);
+        }
+
         [TestMethod]
         public void ValidacionAgregarPresupuestoTest()
         {
@@ -177,6 +209,27 @@ namespace Testing
             decimal nuevoMontoDeC1 = 15000.00M;
             Manager.ValidacionModificarPresupuesto(Repositorio.GetPresupuestos()[0], c1, nuevoMontoDeC1);
             Assert.AreEqual(Repositorio.GetPresupuestos()[0].getPresupuestosCategorias()[c1], nuevoMontoDeC1);
+        }
+
+        [TestMethod]
+        public void BuscarPresupuestosPorFechaTest() {
+            Repositorio Repositorio = new Repositorio();
+            ManagerPresupuesto Manager = new ManagerPresupuesto(Repositorio);
+            Presupuesto p1 = new Presupuesto(2020, "March", new Dictionary<Categoria, decimal>());
+            Repositorio.AgregarPresupuesto(p1);
+            string Periodo = "March 2020";
+            Assert.AreEqual(p1, Manager.BuscarPresupuestosPorFecha(Periodo));
+        }
+
+        [TestMethod]
+        public void CargarListaDondeHuboPresupuestosTest() {
+            Repositorio Repositorio = new Repositorio();
+            ManagerPresupuesto Manager = new ManagerPresupuesto(Repositorio);
+            Dictionary<Categoria, decimal> MontoCategorias = Manager.CargarCategoriasPresupuesto();
+            Presupuesto presupuestoNuevo = new Presupuesto(2020, "March", MontoCategorias);
+            Repositorio.AgregarPresupuesto(presupuestoNuevo);
+            List<string> Lista = Manager.CargarListaDondeHuboPresupuestos();
+            Assert.AreEqual(1, Lista.Count);
         }
     }
 }
