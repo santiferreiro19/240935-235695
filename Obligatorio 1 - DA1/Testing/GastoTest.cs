@@ -38,6 +38,15 @@ namespace Testing
         }
 
         [TestMethod]
+        public void toStringTest()
+        {
+            Categoria c = new Categoria("Teatro");
+            DateTime FechaRandom = new DateTime(2019, 04, 05);
+            Gasto g = new Gasto("Entradas al teatro", 1.34M, c, FechaRandom);
+            Assert.AreEqual("Entradas al teatro", g.ToString());
+        }
+
+        [TestMethod]
         public void ValidacionDeDescripcionValidaTest()
         {
             Repositorio unRepositorio = new Repositorio();

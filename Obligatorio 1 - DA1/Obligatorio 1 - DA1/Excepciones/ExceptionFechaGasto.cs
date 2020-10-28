@@ -8,8 +8,6 @@ namespace Obligatorio_1___DA1.Excepciones
 {
     public class ExceptionFechaGasto : Exception
     {
-        public ExceptionFechaGasto() : base() { }
         public ExceptionFechaGasto(string message) : base(message) { }
-        public ExceptionFechaGasto(string message, System.Exception inner) : base(message, inner) { }
     }
 }

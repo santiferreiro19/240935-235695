@@ -8,8 +8,6 @@ namespace Obligatorio_1___DA1.Excepciones
 {
     public class ExceptionMonto : Exception
     {
-        public ExceptionMonto() : base() { }
         public ExceptionMonto(string message) : base(message) { }
-        public ExceptionMonto(string message, System.Exception inner) : base(message, inner) { }
     }
 }

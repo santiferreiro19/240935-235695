@@ -87,7 +87,7 @@ namespace Managers
             }
             else
             {
-                throw new ExceptionPresupuestoRepetido();
+                throw new ExceptionPresupuestoRepetido("Presupuesto ya existente");
             }
         }
 
