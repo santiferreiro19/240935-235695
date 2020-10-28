@@ -59,7 +59,7 @@ namespace Interfaz
                     unGasto.Descripcion = txtDescripcion.Text;
                     unGasto.Monto = monto;
                     unGasto.Fecha = dateFecha.Value;
-                    unGasto.unaCategoria = (Categoria)cboCategoria.SelectedItem;
+                    unGasto.Categoria = (Categoria)cboCategoria.SelectedItem;
                     txtDescripcion.Text = "";
                     nroMonto.Text = "";
                     cboCategoria.SelectedIndex = -1;

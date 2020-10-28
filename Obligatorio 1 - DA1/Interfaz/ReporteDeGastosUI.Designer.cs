@@ -30,6 +30,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ReporteDeGastosUI));
             this.label1 = new System.Windows.Forms.Label();
             this.lblTotal = new System.Windows.Forms.Label();
             this.cboMes = new System.Windows.Forms.ComboBox();
@@ -111,6 +112,7 @@
             this.Controls.Add(this.cboMes);
             this.Controls.Add(this.lblTotal);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ReporteDeGastosUI";
             this.Text = "ReporteDeGastos";
             this.Load += new System.EventHandler(this.ReporteDeGastos_Load);

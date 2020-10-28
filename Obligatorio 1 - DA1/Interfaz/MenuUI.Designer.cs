@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MenuUI));
             this.btnCategoria = new System.Windows.Forms.Button();
             this.btnGasto = new System.Windows.Forms.Button();
             this.btnPresupuesto = new System.Windows.Forms.Button();
@@ -107,6 +108,7 @@
             this.Controls.Add(this.btnPresupuesto);
             this.Controls.Add(this.btnGasto);
             this.Controls.Add(this.btnCategoria);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MenuUI";
             this.Text = "Menu";
             this.Load += new System.EventHandler(this.MenuUI_Load);

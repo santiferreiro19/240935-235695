@@ -128,12 +128,18 @@ namespace Interfaz
 
         private void btnSeleccionar_Click(object sender, EventArgs e)
         {
-            panelModificacion.Visible = true;
-            GastoSeleccionado = (Gasto)lstGastos.SelectedItem;
-            txtDescripcion.Text = GastoSeleccionado.Descripcion;
-            nroMonto.Text = GastoSeleccionado.Monto.ToString();
-            CargarComboBox();
-            cboCategoria.SelectedItem = GastoSeleccionado.unaCategoria;
+            if (lstGastos.Text != "")
+            {
+                panelModificacion.Visible = true;
+                GastoSeleccionado = (Gasto)lstGastos.SelectedItem;
+                txtDescripcion.Text = GastoSeleccionado.Descripcion;
+                nroMonto.Text = GastoSeleccionado.Monto.ToString();
+                CargarComboBox();
+                cboCategoria.SelectedItem = GastoSeleccionado.Categoria;
+            }
+            else {
+                MessageBox.Show("Seleccione un gasto");
+            }
         }
     }
 }

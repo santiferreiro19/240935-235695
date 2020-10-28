@@ -90,7 +90,6 @@ namespace Managers
                 String FechaFormateada = unGasto.Fecha.ToString("MMMM yyyy");
                 if (!ListaDeFechasGastos.Contains(FechaFormateada))
                 {
-
                     ListaDeFechasGastos.Add(FechaFormateada);
                 }
             }
@@ -119,6 +118,20 @@ namespace Managers
                 Total += unGasto.Monto;
             }
             return Total.ToString();
+        }
+
+        public List<Gasto> ObtenerGastosPorFechaCategoria(Categoria unaCategoriaP, string unaFecha)
+        {
+            List<Gasto> ListaDeGastosParaFechaCategoria = new List<Gasto>();
+            foreach (Gasto unGasto in Repo.GetGastos())
+            {
+                string FechaFormateada = unGasto.Fecha.ToString("MMMM yyyy");
+                if (FechaFormateada == unaFecha && unGasto.Categoria.Equals(unaCategoriaP))
+                {
+                    ListaDeGastosParaFechaCategoria.Add(unGasto);
+                }
+            }
+            return ListaDeGastosParaFechaCategoria;
         }
     }
 }

@@ -32,6 +32,7 @@ namespace Interfaces
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GastoUI));
             this.panelGeneral = new System.Windows.Forms.Panel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.agregarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -87,8 +88,9 @@ namespace Interfaces
             this.ClientSize = new System.Drawing.Size(658, 304);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.panelGeneral);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "GastoUI";
-            this.Text = "Form1";
+            this.Text = "Gasto";
             this.Load += new System.EventHandler(this.Gasto_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

@@ -49,6 +49,7 @@
             this.lstGastos.Name = "lstGastos";
             this.lstGastos.Size = new System.Drawing.Size(132, 238);
             this.lstGastos.TabIndex = 29;
+            this.lstGastos.SelectedIndexChanged += new System.EventHandler(this.lstGastos_SelectedIndexChanged);
             // 
             // EliminacionGastoUI
             // 

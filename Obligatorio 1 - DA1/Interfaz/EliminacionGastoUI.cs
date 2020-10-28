@@ -41,5 +41,10 @@ namespace Interfaz
             manager.ValidacionEliminarGasto(GastoSeleccionado);
             CargarListBox();
         }
+
+        private void lstGastos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -28,10 +28,16 @@ namespace Interfaz
         private void CargarListas() {
             lstCategorias.Items.Clear();
             lstMontos.Items.Clear();
-            foreach (Categoria elemento in PresupuestoAModificar.getPresupuestosCategorias().Keys)
+            if (cboxPresupuestos.Text != "")
             {
-                lstCategorias.Items.Add(elemento);
-                lstMontos.Items.Add(PresupuestoAModificar.getPresupuestosCategorias()[elemento].ToString());
+                foreach (Categoria elemento in PresupuestoAModificar.getPresupuestosCategorias().Keys)
+                {
+                    lstCategorias.Items.Add(elemento);
+                    lstMontos.Items.Add(PresupuestoAModificar.getPresupuestosCategorias()[elemento].ToString());
+                }
+            }
+            else {
+                MessageBox.Show("Seleccione un presupuesto");
             }
         }
         private void ModificacionPresupuesto_Load(object sender, EventArgs e)

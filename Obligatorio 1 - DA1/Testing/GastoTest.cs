@@ -211,7 +211,7 @@ namespace Testing
             Repo.AgregarGasto(gasto);
             Categoria categoriaNueva = new Categoria("Formula 1");
             unManager.ValidacionModificacionCategoriaGasto(gasto, categoriaNueva);
-            Assert.AreEqual("Formula 1", Repo.GetGastos()[0].unaCategoria.Nombre);
+            Assert.AreEqual("Formula 1", Repo.GetGastos()[0].Categoria.Nombre);
         }
 
         [TestMethod]
@@ -258,6 +258,19 @@ namespace Testing
             ListParaSumarMontos.Add(g2);
             ListParaSumarMontos.Add(g3);
             Assert.AreEqual(300.00M, decimal.Parse(unManager.SumaDeGastosParaFecha(ListParaSumarMontos)));
+        }
+
+        [TestMethod]
+        public void ObtenerGastosPorFechaCategoriaTest()
+        {
+            Repositorio Repo = new Repositorio();
+            ManagerGasto unManager = new ManagerGasto(Repo);
+            Categoria c = new Categoria("Entretenimiento");
+            Gasto g = new Gasto("Gasto1", 100.00M, c, new DateTime(2019, 1, 1));
+            string FechaFormateada = g.Fecha.ToString("MMMM yyyy");
+            Repo.AgregarGasto(g);
+            List<Gasto> GastosRetorno = unManager.ObtenerGastosPorFechaCategoria(c, FechaFormateada);
+            Assert.AreEqual(g, GastosRetorno[0]);
         }
     }
 }

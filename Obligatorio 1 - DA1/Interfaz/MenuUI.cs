@@ -64,7 +64,7 @@ namespace Interfaz
 
         private void MenuUI_Load(object sender, EventArgs e)
         {
-
+            
         }
     }
 }

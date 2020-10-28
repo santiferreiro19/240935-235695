@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.cboMes = new System.Windows.Forms.ComboBox();
-            this.txtAño = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -40,7 +39,9 @@
             this.button1 = new System.Windows.Forms.Button();
             this.nroMonto = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
+            this.nmr_Año = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.nroMonto)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nmr_Año)).BeginInit();
             this.SuspendLayout();
             // 
             // cboMes
@@ -63,13 +64,6 @@
             this.cboMes.Name = "cboMes";
             this.cboMes.Size = new System.Drawing.Size(135, 21);
             this.cboMes.TabIndex = 17;
-            // 
-            // txtAño
-            // 
-            this.txtAño.Location = new System.Drawing.Point(57, 55);
-            this.txtAño.Name = "txtAño";
-            this.txtAño.Size = new System.Drawing.Size(135, 20);
-            this.txtAño.TabIndex = 16;
             // 
             // label3
             // 
@@ -172,10 +166,34 @@
             this.label5.Text = "Monto";
             this.label5.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
+            // nmr_Año
+            // 
+            this.nmr_Año.Location = new System.Drawing.Point(57, 58);
+            this.nmr_Año.Maximum = new decimal(new int[] {
+            2030,
+            0,
+            0,
+            0});
+            this.nmr_Año.Minimum = new decimal(new int[] {
+            2018,
+            0,
+            0,
+            0});
+            this.nmr_Año.Name = "nmr_Año";
+            this.nmr_Año.Size = new System.Drawing.Size(135, 20);
+            this.nmr_Año.TabIndex = 26;
+            this.nmr_Año.Value = new decimal(new int[] {
+            2018,
+            0,
+            0,
+            0});
+            this.nmr_Año.ValueChanged += new System.EventHandler(this.nmr_Año_ValueChanged);
+            // 
             // RegistroPresupuestoUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.nmr_Año);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.nroMonto);
             this.Controls.Add(this.button1);
@@ -183,7 +201,6 @@
             this.Controls.Add(this.lstCategorias);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.cboMes);
-            this.Controls.Add(this.txtAño);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -192,6 +209,7 @@
             this.Size = new System.Drawing.Size(382, 333);
             this.Load += new System.EventHandler(this.RegistroPresupuestoUI_Load);
             ((System.ComponentModel.ISupportInitialize)(this.nroMonto)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nmr_Año)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -199,7 +217,6 @@
 
         #endregion
         private System.Windows.Forms.ComboBox cboMes;
-        private System.Windows.Forms.TextBox txtAño;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
@@ -210,5 +227,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.NumericUpDown nroMonto;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.NumericUpDown nmr_Año;
     }
 }

@@ -71,16 +71,16 @@ namespace Interfaz
         private void button1_Click(object sender, EventArgs e)
         {
             ManagerPresupuesto manager = new ManagerPresupuesto(Repo);
-            if (txtAño.Text != "" && cboMes.SelectedIndex != -1) {
+            if (nmr_Año.Text != "" && cboMes.SelectedIndex != -1) {
                 Presupuesto PresupuestoGuardar = new Presupuesto();
                 try
                 {
-                    manager.ValidacionAño(int.Parse(txtAño.Text));
-                    PresupuestoGuardar.Año = int.Parse(txtAño.Text);
+                    manager.ValidacionAño(int.Parse(nmr_Año.Text));
+                    PresupuestoGuardar.Año = int.Parse(nmr_Año.Text);
                     PresupuestoGuardar.Mes = (String)cboMes.SelectedItem;
                     PresupuestoGuardar.setPresupuestosCategorias(PresupuestoTemporal.getPresupuestosCategorias());
                     manager.ValidacionAgregarPresupuesto(PresupuestoGuardar);
-                    txtAño.Text = "";
+                    nmr_Año.Text = "";
                     cboMes.SelectedIndex = -1;
                     
                     PresupuestoTemporal = new Presupuesto();
@@ -112,6 +112,11 @@ namespace Interfaz
         }
 
         private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void nmr_Año_ValueChanged(object sender, EventArgs e)
         {
 
         }

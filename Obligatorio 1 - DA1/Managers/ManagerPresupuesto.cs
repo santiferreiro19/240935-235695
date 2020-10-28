@@ -98,5 +98,37 @@ namespace Managers
             decimal nuevoMonto = this.TransformarMonto(unMonto);
             Repo.ModificarMontoPresupuesto(unPresupuesto, unaCategoria, nuevoMonto);
         }
+
+        public List<string> CargarListaDondeHuboPresupuestos()
+        {
+            List<string> ListaDePresupuestosFecha = new List<string>();
+            foreach (Presupuesto unPresupuesto in Repo.GetPresupuestos())
+            {
+                string BuscarMes = unPresupuesto.Mes;
+                string BuscarAño = unPresupuesto.Año.ToString();
+                string AñoYMes = BuscarMes + " " + BuscarAño;
+                if (!ListaDePresupuestosFecha.Contains(AñoYMes))
+                {
+                    ListaDePresupuestosFecha.Add(AñoYMes);
+                }
+            }
+            return ListaDePresupuestosFecha;
+        }
+
+        public Presupuesto BuscarPresupuestosPorFecha(string unPeriodo)
+        {
+            Presupuesto Encontrado = new Presupuesto();
+            string[] PalabraDividida = unPeriodo.Split(' ');
+            string unMes = PalabraDividida[0];
+            string unAño = PalabraDividida[1];
+            foreach (Presupuesto unPresupuesto in Repo.GetPresupuestos())
+            {
+                if (unPresupuesto.Mes == unMes && unPresupuesto.Año == int.Parse(unAño))
+                {
+                    Encontrado = unPresupuesto;
+                }
+            }
+            return Encontrado;
+        }
     }
 }

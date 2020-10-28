@@ -155,7 +155,7 @@ namespace Testing
             Repo.AgregarGasto(gasto);
             Categoria categorianueva = new Categoria("Formula 1");
             Repo.ModificacionCategoriaGasto(gasto, categorianueva);
-            Assert.AreEqual("Formula 1", Repo.GetGastos()[0].unaCategoria.Nombre);
+            Assert.AreEqual("Formula 1", Repo.GetGastos()[0].Categoria.Nombre);
         }
 
         [TestMethod]

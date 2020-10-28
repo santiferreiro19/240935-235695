@@ -10,13 +10,13 @@ namespace Obligatorio_1___DA1
     {
         public String Descripcion { get; set; }
         public decimal Monto { get; set; }
-        public Categoria unaCategoria { get; set; }
+        public Categoria Categoria { get; set; }
         public DateTime Fecha { get; set; }
         public Gasto()
         {
             this.Descripcion = "";
             this.Monto = 0;
-            this.unaCategoria = new Categoria();
+            this.Categoria = new Categoria();
             this.Fecha = new DateTime();
         }
 
@@ -24,7 +24,7 @@ namespace Obligatorio_1___DA1
         {
             this.Descripcion = unaDescripcion;
             this.Monto = unMonto;
-            this.unaCategoria = unaCategoria;
+            this.Categoria = unaCategoria;
             this.Fecha = unaFecha;
         }
       override

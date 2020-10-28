@@ -165,7 +165,7 @@ namespace Persistencia
             {
                 if (buscado.Equals(g))
                 {
-                    buscado.unaCategoria = categoria;
+                    buscado.Categoria = categoria;
                 }
             }
         }
