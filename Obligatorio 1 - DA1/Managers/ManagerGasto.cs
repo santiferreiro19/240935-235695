@@ -55,31 +55,16 @@ namespace Managers
             Repo.EliminarGasto(unGasto);
         }
 
-        public void ValidacionModificacionDescripcionGasto(Gasto unGasto, String nuevaDescripcion) {
-            this.ValidacionDescripcionGasto(nuevaDescripcion);
-            Repo.ModificarDescripcion(nuevaDescripcion, unGasto);
+       public void ValidacionModificacionGasto(Gasto unGasto, Gasto Modificado) {
+            this.ValidacionDescripcionGasto(Modificado.Descripcion);
+            this.ValidarMonto(Modificado.Monto);
+            this.ValidacionFechaGasto(Modificado.Fecha);
+            Repo.ModificarGasto(unGasto, Modificado);
         }
-        public void ValidacionModificacionMontoGasto(Gasto unGasto, decimal nuevoMonto)
-        {
-            this.ValidarMonto(nuevoMonto);
-            Repo.ModificarMontoGasto(unGasto, nuevoMonto);
-        }
-
-        public void ValidacionModificacionFechaGasto(Gasto unGasto, DateTime nuevaFecha)
-        {
-            this.ValidacionFechaGasto(nuevaFecha);
-            Repo.ModificarFechaGasto(unGasto, nuevaFecha);
-        }
-
         public Categoria ValidacionBusquedaCategorias(String Descripcion) {
             String[] PalabrasParaBuscar = Descripcion.Split(' ');
             Categoria CategoriaEncontrada = Repo.BusquedaCategorias(PalabrasParaBuscar);
             return CategoriaEncontrada;
-        }
-
-        public void ValidacionModificacionCategoriaGasto(Gasto unGasto, Categoria nuevaCategoria)
-        {
-            Repo.ModificacionCategoriaGasto(unGasto, nuevaCategoria);
         }
 
         public List<String> CargarFechasDondeHuboGastos()

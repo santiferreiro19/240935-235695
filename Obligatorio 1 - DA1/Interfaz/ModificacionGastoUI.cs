@@ -94,11 +94,17 @@ namespace Interfaz
                 decimal monto = Decimal.Parse(nroMonto.Text);
                 monto = manager.TransformarMonto(monto);
                 try
-                {                
-                    manager.ValidacionModificacionCategoriaGasto(GastoSeleccionado, (Categoria)cboCategoria.SelectedItem);
+                {
+                    /*manager.ValidacionModificacionCategoriaGasto(GastoSeleccionado, (Categoria)cboCategoria.SelectedItem);
                     manager.ValidacionModificacionDescripcionGasto(GastoSeleccionado, txtDescripcion.Text);
                     manager.ValidacionModificacionFechaGasto(GastoSeleccionado, dateFecha.Value);
-                    manager.ValidacionModificacionMontoGasto(GastoSeleccionado, monto);
+                    manager.ValidacionModificacionMontoGasto(GastoSeleccionado, monto);*/
+                    Gasto GastoTemporal = new Gasto();
+                    GastoTemporal.Fecha = dateFecha.Value;
+                    GastoTemporal.Categoria = (Categoria)cboCategoria.SelectedItem;
+                    GastoTemporal.Monto = monto;
+                    GastoTemporal.Descripcion = txtDescripcion.Text;
+                    manager.ValidacionModificacionGasto(GastoSeleccionado, GastoTemporal);
                     GastoSeleccionado = new Gasto();
                     txtDescripcion.Text = "";
                     nroMonto.Text = "";

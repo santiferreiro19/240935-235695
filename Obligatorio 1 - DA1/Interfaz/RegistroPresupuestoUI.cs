@@ -75,7 +75,6 @@ namespace Interfaz
                 Presupuesto PresupuestoGuardar = new Presupuesto();
                 try
                 {
-                    manager.ValidacionAño(int.Parse(nmr_Año.Text));
                     PresupuestoGuardar.Año = int.Parse(nmr_Año.Text);
                     PresupuestoGuardar.Mes = (String)cboMes.SelectedItem;
                     PresupuestoGuardar.setPresupuestosCategorias(PresupuestoTemporal.getPresupuestosCategorias());

@@ -102,7 +102,8 @@ namespace Testing
             Gasto UnGasto = new Gasto("Entradas al cine", DecimalRandom, UnaCategoria, FechaRandom);
             String nuevaDescripcion = "Hola";
             Repo.AgregarGasto(UnGasto);
-            Repo.ModificarDescripcion(nuevaDescripcion, UnGasto);
+            Gasto GastoModificado = new Gasto("Hola", DecimalRandom, UnaCategoria, FechaRandom);
+            Repo.ModificarGasto(UnGasto, GastoModificado);
             Assert.AreEqual(nuevaDescripcion, UnGasto.Descripcion);
         }
 
@@ -116,7 +117,8 @@ namespace Testing
             Gasto UnGasto = new Gasto("Entradas al cine", DecimalRandom, UnaCategoria, FechaRandom);
             decimal nuevoMonto = 102.22M;
             Repo.AgregarGasto(UnGasto);
-            Repo.ModificarMontoGasto(UnGasto, nuevoMonto);
+            Gasto GastoModificado = new Gasto("Entradas al cine", nuevoMonto, UnaCategoria, FechaRandom);
+            Repo.ModificarGasto(UnGasto, GastoModificado);
             Assert.AreEqual(nuevoMonto, UnGasto.Monto);
         }
 
@@ -130,7 +132,8 @@ namespace Testing
             Gasto UnGasto = new Gasto("Entradas al cine", DecimalRandom, UnaCategoria, FechaAnterior);
             DateTime nuevaFecha = new DateTime(2019, 1, 1);
             Repo.AgregarGasto(UnGasto);
-            Repo.ModificarFechaGasto(UnGasto, nuevaFecha);
+            Gasto GastoModificado = new Gasto("Entradas al cine", DecimalRandom, UnaCategoria, nuevaFecha);
+            Repo.ModificarGasto(UnGasto, GastoModificado);
             Assert.AreEqual(nuevaFecha, UnGasto.Fecha);
         }
 

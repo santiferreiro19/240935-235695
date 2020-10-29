@@ -53,9 +53,6 @@ namespace Interfaz
             {
                 try
                 {
-                    manager.ValidacionDescripcionGasto(txtDescripcion.Text);
-                    manager.ValidacionFechaGasto(dateFecha.Value);
-                    manager.ValidarMonto(monto);
                     unGasto.Descripcion = txtDescripcion.Text;
                     unGasto.Monto = monto;
                     unGasto.Fecha = dateFecha.Value;

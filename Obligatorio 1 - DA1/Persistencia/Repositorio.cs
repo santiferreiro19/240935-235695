@@ -100,35 +100,16 @@ namespace Persistencia
             }
         }
 
-        public void ModificarDescripcion(String nuevaD, Gasto unGasto)
+        public void ModificarGasto(Gasto unGasto, Gasto GastoModificado)
         {
             foreach (Gasto buscado in this.ListaGastos)
             {
                 if (buscado.Equals(unGasto))
                 {
-                    buscado.Descripcion = nuevaD;
-                }
-            }
-        }
-
-        public void ModificarMontoGasto(Gasto unGasto, decimal nuevoMonto)
-        {
-            foreach (Gasto buscado in this.ListaGastos)
-            {
-                if (buscado.Equals(unGasto))
-                {
-                    buscado.Monto = nuevoMonto;
-                }
-            }
-        }
-
-        public void ModificarFechaGasto(Gasto unGasto, DateTime nuevaFecha)
-        {
-            foreach (Gasto buscado in this.ListaGastos)
-            {
-                if (buscado.Equals(unGasto))
-                {
-                    buscado.Fecha = nuevaFecha;
+                    buscado.Fecha = GastoModificado.Fecha;
+                    buscado.Monto = GastoModificado.Monto;
+                    buscado.Categoria = GastoModificado.Categoria;
+                    buscado.Descripcion = GastoModificado.Descripcion;
                 }
             }
         }

@@ -168,7 +168,8 @@ namespace Testing
             String nuevaDescripcion = "Nueva descrp";
             Gasto UnGasto = new Gasto("Descripcion x", 100.00M, UnaCategoria, new DateTime(2018, 1, 1));
             unManager.ValidacionAgregarGasto(UnGasto);
-            unManager.ValidacionModificacionDescripcionGasto(UnGasto, nuevaDescripcion);
+            Gasto GastoModificado = new Gasto("Nueva descrp", 100.00M, UnaCategoria, new DateTime(2018, 1, 1));
+            unManager.ValidacionModificacionGasto(UnGasto, GastoModificado);
             Assert.AreEqual(UnGasto.Descripcion, nuevaDescripcion);
         }
 
@@ -180,7 +181,8 @@ namespace Testing
             Categoria UnaCategoria = new Categoria();
             Gasto UnGasto = new Gasto("Descripcion x", 100.00M, UnaCategoria, new DateTime(2018, 1, 1));
             unManager.ValidacionAgregarGasto(UnGasto);
-            unManager.ValidacionModificacionMontoGasto(UnGasto, 102.00M);
+            Gasto GastoModificado = new Gasto("Descripcion x", 102.00M, UnaCategoria, new DateTime(2018, 1, 1));
+            unManager.ValidacionModificacionGasto(UnGasto, GastoModificado);
             Assert.AreEqual((decimal)102.00M, UnGasto.Monto);
         }
 
@@ -193,7 +195,8 @@ namespace Testing
             Gasto UnGasto = new Gasto("Descripcion x", 100.00M, UnaCategoria, new DateTime(2018, 1, 1));
             unManager.ValidacionAgregarGasto(UnGasto);
             DateTime nuevaFecha = new DateTime(2019, 1, 1);
-            unManager.ValidacionModificacionFechaGasto(UnGasto, nuevaFecha);
+            Gasto GastoModificado = new Gasto("Descripcion x", 100.00M, UnaCategoria, nuevaFecha);
+            unManager.ValidacionModificacionGasto(UnGasto, GastoModificado);
             Assert.AreEqual(nuevaFecha, UnGasto.Fecha);
         }
 
@@ -230,7 +233,8 @@ namespace Testing
             Gasto UnGasto = new Gasto("Entradas al cine", 10.00M, categoria, FechaRandom);
             Repo.AgregarGasto(UnGasto);
             Categoria categoriaNueva = new Categoria("Formula 1");
-            unManager.ValidacionModificacionCategoriaGasto(UnGasto, categoriaNueva);
+            Gasto GastoModificado = new Gasto("Entradas al cine", 10.00M, categoriaNueva, FechaRandom);
+            unManager.ValidacionModificacionGasto(UnGasto, GastoModificado);
             Assert.AreEqual("Formula 1", Repo.GetGastos()[0].Categoria.Nombre);
         }
 
