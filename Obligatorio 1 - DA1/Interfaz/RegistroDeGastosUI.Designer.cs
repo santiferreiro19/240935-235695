@@ -44,7 +44,7 @@
             // 
             // btnActualizar
             // 
-            this.btnActualizar.Location = new System.Drawing.Point(161, 213);
+            this.btnActualizar.Location = new System.Drawing.Point(120, 162);
             this.btnActualizar.Name = "btnActualizar";
             this.btnActualizar.Size = new System.Drawing.Size(75, 23);
             this.btnActualizar.TabIndex = 19;
@@ -55,7 +55,7 @@
             // dateFecha
             // 
             this.dateFecha.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateFecha.Location = new System.Drawing.Point(170, 146);
+            this.dateFecha.Location = new System.Drawing.Point(129, 95);
             this.dateFecha.Name = "dateFecha";
             this.dateFecha.Size = new System.Drawing.Size(147, 20);
             this.dateFecha.TabIndex = 18;
@@ -63,14 +63,14 @@
             // cboCategoria
             // 
             this.cboCategoria.FormattingEnabled = true;
-            this.cboCategoria.Location = new System.Drawing.Point(170, 186);
+            this.cboCategoria.Location = new System.Drawing.Point(129, 135);
             this.cboCategoria.Name = "cboCategoria";
             this.cboCategoria.Size = new System.Drawing.Size(147, 21);
             this.cboCategoria.TabIndex = 17;
             // 
             // txtDescripcion
             // 
-            this.txtDescripcion.Location = new System.Drawing.Point(170, 67);
+            this.txtDescripcion.Location = new System.Drawing.Point(129, 16);
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(147, 20);
             this.txtDescripcion.TabIndex = 15;
@@ -78,7 +78,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(52, 189);
+            this.label4.Location = new System.Drawing.Point(11, 138);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(52, 13);
             this.label4.TabIndex = 14;
@@ -87,7 +87,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(52, 152);
+            this.label3.Location = new System.Drawing.Point(11, 101);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(37, 13);
             this.label3.TabIndex = 13;
@@ -96,7 +96,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(52, 110);
+            this.label2.Location = new System.Drawing.Point(11, 59);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(37, 13);
             this.label2.TabIndex = 12;
@@ -105,7 +105,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(52, 70);
+            this.label1.Location = new System.Drawing.Point(11, 19);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(63, 13);
             this.label1.TabIndex = 11;
@@ -113,7 +113,7 @@
             // 
             // btnAceptar
             // 
-            this.btnAceptar.Location = new System.Drawing.Point(242, 213);
+            this.btnAceptar.Location = new System.Drawing.Point(201, 162);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(75, 23);
             this.btnAceptar.TabIndex = 10;
@@ -124,9 +124,10 @@
             // listBox1
             // 
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(374, 67);
+            this.listBox1.HorizontalScrollbar = true;
+            this.listBox1.Location = new System.Drawing.Point(282, 12);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(143, 173);
+            this.listBox1.Size = new System.Drawing.Size(317, 173);
             this.listBox1.TabIndex = 20;
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
@@ -134,7 +135,7 @@
             // 
             this.nroMonto.DecimalPlaces = 2;
             this.nroMonto.InterceptArrowKeys = false;
-            this.nroMonto.Location = new System.Drawing.Point(170, 108);
+            this.nroMonto.Location = new System.Drawing.Point(129, 57);
             this.nroMonto.Maximum = new decimal(new int[] {
             -1,
             -1,

@@ -30,7 +30,7 @@ namespace Managers
         {
             DateTime Minimo = new DateTime(2018, 01, 01);
             DateTime Maximo = new DateTime(2031, 01, 01);
-            if (unaFecha.CompareTo(Minimo) == -1 || unaFecha.CompareTo(Maximo) > 0)
+            if (unaFecha.CompareTo(Minimo) == -1 || unaFecha.CompareTo(Maximo) >= 0)
                 throw new ExceptionFechaGasto("La fecha debe ser entre 01/01/2018 y 31/12/2030");
         }
 

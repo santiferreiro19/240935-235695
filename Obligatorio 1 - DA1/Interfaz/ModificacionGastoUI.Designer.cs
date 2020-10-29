@@ -37,9 +37,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panelModificacion = new System.Windows.Forms.Panel();
+            this.nroMonto = new System.Windows.Forms.NumericUpDown();
             this.button1 = new System.Windows.Forms.Button();
             this.btnSeleccionar = new System.Windows.Forms.Button();
-            this.nroMonto = new System.Windows.Forms.NumericUpDown();
             this.panelModificacion.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nroMonto)).BeginInit();
             this.SuspendLayout();
@@ -47,9 +47,10 @@
             // lstGastos
             // 
             this.lstGastos.FormattingEnabled = true;
-            this.lstGastos.Location = new System.Drawing.Point(27, 3);
+            this.lstGastos.HorizontalScrollbar = true;
+            this.lstGastos.Location = new System.Drawing.Point(3, 3);
             this.lstGastos.Name = "lstGastos";
-            this.lstGastos.Size = new System.Drawing.Size(132, 238);
+            this.lstGastos.Size = new System.Drawing.Size(358, 238);
             this.lstGastos.TabIndex = 0;
             this.lstGastos.SelectedIndexChanged += new System.EventHandler(this.lstGastos_SelectedIndexChanged);
             // 
@@ -130,31 +131,11 @@
             this.panelModificacion.Controls.Add(this.label2);
             this.panelModificacion.Controls.Add(this.label3);
             this.panelModificacion.Controls.Add(this.label4);
-            this.panelModificacion.Location = new System.Drawing.Point(200, 3);
+            this.panelModificacion.Location = new System.Drawing.Point(367, 3);
             this.panelModificacion.Name = "panelModificacion";
-            this.panelModificacion.Size = new System.Drawing.Size(336, 272);
+            this.panelModificacion.Size = new System.Drawing.Size(287, 272);
             this.panelModificacion.TabIndex = 27;
             this.panelModificacion.Visible = false;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(199, 201);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 27;
-            this.button1.Text = "Modificar";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // btnSeleccionar
-            // 
-            this.btnSeleccionar.Location = new System.Drawing.Point(84, 247);
-            this.btnSeleccionar.Name = "btnSeleccionar";
-            this.btnSeleccionar.Size = new System.Drawing.Size(75, 23);
-            this.btnSeleccionar.TabIndex = 28;
-            this.btnSeleccionar.Text = "Seleccionar";
-            this.btnSeleccionar.UseVisualStyleBackColor = true;
-            this.btnSeleccionar.Click += new System.EventHandler(this.btnSeleccionar_Click);
             // 
             // nroMonto
             // 
@@ -169,6 +150,26 @@
             this.nroMonto.Name = "nroMonto";
             this.nroMonto.Size = new System.Drawing.Size(147, 20);
             this.nroMonto.TabIndex = 28;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(199, 201);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 27;
+            this.button1.Text = "Modificar";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // btnSeleccionar
+            // 
+            this.btnSeleccionar.Location = new System.Drawing.Point(286, 247);
+            this.btnSeleccionar.Name = "btnSeleccionar";
+            this.btnSeleccionar.Size = new System.Drawing.Size(75, 23);
+            this.btnSeleccionar.TabIndex = 28;
+            this.btnSeleccionar.Text = "Seleccionar";
+            this.btnSeleccionar.UseVisualStyleBackColor = true;
+            this.btnSeleccionar.Click += new System.EventHandler(this.btnSeleccionar_Click);
             // 
             // ModificacionGastoUI
             // 

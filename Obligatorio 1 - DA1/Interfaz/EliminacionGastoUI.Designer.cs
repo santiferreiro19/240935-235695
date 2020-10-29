@@ -34,9 +34,9 @@
             // 
             // btnEliminar
             // 
-            this.btnEliminar.Location = new System.Drawing.Point(62, 248);
+            this.btnEliminar.Location = new System.Drawing.Point(468, 242);
             this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(75, 23);
+            this.btnEliminar.Size = new System.Drawing.Size(88, 35);
             this.btnEliminar.TabIndex = 30;
             this.btnEliminar.Text = "Borrar";
             this.btnEliminar.UseVisualStyleBackColor = true;
@@ -45,9 +45,10 @@
             // lstGastos
             // 
             this.lstGastos.FormattingEnabled = true;
+            this.lstGastos.HorizontalScrollbar = true;
             this.lstGastos.Location = new System.Drawing.Point(5, 4);
             this.lstGastos.Name = "lstGastos";
-            this.lstGastos.Size = new System.Drawing.Size(132, 238);
+            this.lstGastos.Size = new System.Drawing.Size(551, 238);
             this.lstGastos.TabIndex = 29;
             this.lstGastos.SelectedIndexChanged += new System.EventHandler(this.lstGastos_SelectedIndexChanged);
             // 
@@ -58,7 +59,7 @@
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.lstGastos);
             this.Name = "EliminacionGastoUI";
-            this.Size = new System.Drawing.Size(158, 277);
+            this.Size = new System.Drawing.Size(559, 277);
             this.Load += new System.EventHandler(this.EliminacionGastoUI_Load);
             this.ResumeLayout(false);
 

@@ -50,6 +50,7 @@ namespace Interfaz
                 var list = unManager.FiltrarGastosPorFecha(cboMes.SelectedItem.ToString()).OrderBy(x => x.Fecha).ToList();
                 data_gastos.DataSource = list;
                 data_gastos.Columns["Fecha"].DisplayIndex = 0;
+                data_gastos.Columns["Fecha"].DefaultCellStyle.Format = "dd'/'MM'/'yyyy";
                 data_gastos.RowHeadersVisible = false;
                 lbl_resultado.Text = (unManager.SumaDeGastosParaFecha(unManager.FiltrarGastosPorFecha(cboMes.SelectedItem.ToString())));
             }
