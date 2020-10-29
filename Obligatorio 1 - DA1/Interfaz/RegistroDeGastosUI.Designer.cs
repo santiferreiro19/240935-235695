@@ -140,6 +140,11 @@
             -1,
             -1,
             0});
+            this.nroMonto.Minimum = new decimal(new int[] {
+            -1,
+            -1,
+            -1,
+            -2147483648});
             this.nroMonto.Name = "nroMonto";
             this.nroMonto.Size = new System.Drawing.Size(147, 20);
             this.nroMonto.TabIndex = 25;

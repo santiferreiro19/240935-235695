@@ -12,137 +12,137 @@ namespace Testing
         [TestMethod]
         public void ConstructorTest()
         {
-            Repositorio repo = new Repositorio();
-            Assert.IsNotNull(repo);
+            Repositorio Repo = new Repositorio();
+            Assert.IsNotNull(Repo);
         }
 
         [TestMethod]
         public void AgregarCategoriaTest()
         {
-            Categoria c = new Categoria("Entretenimiento");
-            Repositorio repo = new Repositorio();
-            repo.AgregarCategoria(c);
-            Assert.IsTrue(repo.GetCategorias().Contains(c));
+            Categoria UnaCategoria = new Categoria("Entretenimiento");
+            Repositorio Repo = new Repositorio();
+            Repo.AgregarCategoria(UnaCategoria);
+            Assert.IsTrue(Repo.GetCategorias().Contains(UnaCategoria));
         }
 
         [TestMethod]
         public void ModificarNombreCategoriaTest()
         {
-            Categoria c = new Categoria("Entretenimiento");
-            Repositorio repo = new Repositorio();
-            repo.AgregarCategoria(c);
-            repo.ModificarNombreCategoria(c, "Futbol");
-            Assert.AreEqual(c.Nombre, "Futbol");
+            Categoria UnaCategoria = new Categoria("Entretenimiento");
+            Repositorio Repo = new Repositorio();
+            Repo.AgregarCategoria(UnaCategoria);
+            Repo.ModificarNombreCategoria(UnaCategoria, "Futbol");
+            Assert.AreEqual(UnaCategoria.Nombre, "Futbol");
         }
 
         [TestMethod]
         public void AgregarPalabraClaveTest()
         {
-            Categoria c = new Categoria("Entretenimiento");
-            Repositorio repo = new Repositorio();
-            repo.AgregarCategoria(c);
-            repo.AgregarPalabraClave(c, "Cine");
-            Assert.IsTrue(c.ListaPalabras.Contains("Cine"));
+            Categoria UnaCategoria = new Categoria("Entretenimiento");
+            Repositorio Repo = new Repositorio();
+            Repo.AgregarCategoria(UnaCategoria);
+            Repo.AgregarPalabraClave(UnaCategoria, "Cine");
+            Assert.IsTrue(UnaCategoria.ListaPalabras.Contains("Cine"));
         }
 
         [TestMethod]
         public void ModificarPalabraClaveTest()
         {
-            Categoria c = new Categoria("Entretenimiento");
-            Repositorio repo = new Repositorio();
-            repo.AgregarCategoria(c);
-            repo.AgregarPalabraClave(c, "Cine");
-            repo.ModificarPalabraClave(c, "Carreras", "Cine");
-            Assert.AreEqual(c.ListaPalabras[0], "Carreras");
+            Categoria UnaCategoria = new Categoria("Entretenimiento");
+            Repositorio Repo = new Repositorio();
+            Repo.AgregarCategoria(UnaCategoria);
+            Repo.AgregarPalabraClave(UnaCategoria, "Cine");
+            Repo.ModificarPalabraClave(UnaCategoria, "Carreras", "Cine");
+            Assert.AreEqual(UnaCategoria.ListaPalabras[0], "Carreras");
         }
 
         [TestMethod]
         public void BorrarPalabraClaveTest()
         {
-            Categoria c = new Categoria("Entretenimiento");
-            Repositorio repo = new Repositorio();
-            repo.AgregarCategoria(c);
-            repo.AgregarPalabraClave(c, "Cine");
-            repo.EliminarPalabraClave("Cine");
-            Assert.AreEqual(c.ListaPalabras.Count, 0);
+            Categoria UnaCategoria = new Categoria("Entretenimiento");
+            Repositorio Repo = new Repositorio();
+            Repo.AgregarCategoria(UnaCategoria);
+            Repo.AgregarPalabraClave(UnaCategoria, "Cine");
+            Repo.EliminarPalabraClave("Cine");
+            Assert.AreEqual(UnaCategoria.ListaPalabras.Count, 0);
         }
 
         [TestMethod]
         public void AgregarGastoTest()
         {
-            Categoria c = new Categoria("Cine");
+            Categoria UnaCategoria = new Categoria("Cine");
             decimal DecimalRandom = 1.22M;
             DateTime FechaRandom = new DateTime(2018, 02, 01);
-            Gasto g = new Gasto("Entradas al cine", DecimalRandom, c, FechaRandom);
-            Repositorio repo = new Repositorio();
-            repo.AgregarGasto(g);
-            Assert.IsTrue(repo.GetGastos().Contains(g));
+            Gasto UnGasto = new Gasto("Entradas al cine", DecimalRandom, UnaCategoria, FechaRandom);
+            Repositorio Repo = new Repositorio();
+            Repo.AgregarGasto(UnGasto);
+            Assert.IsTrue(Repo.GetGastos().Contains(UnGasto));
         }
 
         [TestMethod]
         public void EliminarGastoTest()
         {
-            Categoria c = new Categoria("Cine");
+            Categoria UnaCategoria = new Categoria("Cine");
             decimal DecimalRandom = 1.22M;
             DateTime FechaRandom = new DateTime(2018, 02, 01);
-            Gasto g = new Gasto("Entradas al cine", DecimalRandom, c, FechaRandom);
-            Repositorio repo = new Repositorio();
-            repo.AgregarGasto(g);
-            repo.EliminarGasto(g);
-            Assert.IsFalse(repo.GetGastos().Contains(g));
+            Gasto UnGasto = new Gasto("Entradas al cine", DecimalRandom, UnaCategoria, FechaRandom);
+            Repositorio Repo = new Repositorio();
+            Repo.AgregarGasto(UnGasto);
+            Repo.EliminarGasto(UnGasto);
+            Assert.IsFalse(Repo.GetGastos().Contains(UnGasto));
         }
 
         [TestMethod]
         public void ModificarDescripcionGastoTest()
         {
-            Repositorio repo = new Repositorio();
-            Categoria c = new Categoria("Cine");
+            Repositorio Repo = new Repositorio();
+            Categoria UnaCategoria = new Categoria("Cine");
             decimal DecimalRandom = 1.22M;
             DateTime FechaRandom = new DateTime(2018, 02, 01);
-            Gasto g = new Gasto("Entradas al cine", DecimalRandom, c, FechaRandom);
+            Gasto UnGasto = new Gasto("Entradas al cine", DecimalRandom, UnaCategoria, FechaRandom);
             String nuevaDescripcion = "Hola";
-            repo.AgregarGasto(g);
-            repo.ModificarDescripcion(nuevaDescripcion, g);
-            Assert.AreEqual(nuevaDescripcion, g.Descripcion);
+            Repo.AgregarGasto(UnGasto);
+            Repo.ModificarDescripcion(nuevaDescripcion, UnGasto);
+            Assert.AreEqual(nuevaDescripcion, UnGasto.Descripcion);
         }
 
         [TestMethod]
         public void ModificarMontoGastoTest()
         {
-            Repositorio repo = new Repositorio();
-            Categoria c = new Categoria("Cine");
+            Repositorio Repo = new Repositorio();
+            Categoria UnaCategoria = new Categoria("Cine");
             decimal DecimalRandom = 1.22M;
             DateTime FechaRandom = new DateTime(2018, 02, 01);
-            Gasto g = new Gasto("Entradas al cine", DecimalRandom, c, FechaRandom);
+            Gasto UnGasto = new Gasto("Entradas al cine", DecimalRandom, UnaCategoria, FechaRandom);
             decimal nuevoMonto = 102.22M;
-            repo.AgregarGasto(g);
-            repo.ModificarMontoGasto(g, nuevoMonto);
-            Assert.AreEqual(nuevoMonto, g.Monto);
+            Repo.AgregarGasto(UnGasto);
+            Repo.ModificarMontoGasto(UnGasto, nuevoMonto);
+            Assert.AreEqual(nuevoMonto, UnGasto.Monto);
         }
 
         [TestMethod]
         public void ModificarFechaGastoTest()
         {
-            Repositorio repo = new Repositorio();
-            Categoria c = new Categoria("Cine");
+            Repositorio Repo = new Repositorio();
+            Categoria UnaCategoria = new Categoria("Cine");
             decimal DecimalRandom = 1.22M;
             DateTime FechaAnterior = new DateTime(2018, 02, 01);
-            Gasto g = new Gasto("Entradas al cine", DecimalRandom, c, FechaAnterior);
+            Gasto UnGasto = new Gasto("Entradas al cine", DecimalRandom, UnaCategoria, FechaAnterior);
             DateTime nuevaFecha = new DateTime(2019, 1, 1);
-            repo.AgregarGasto(g);
-            repo.ModificarFechaGasto(g, nuevaFecha);
-            Assert.AreEqual(nuevaFecha, g.Fecha);
+            Repo.AgregarGasto(UnGasto);
+            Repo.ModificarFechaGasto(UnGasto, nuevaFecha);
+            Assert.AreEqual(nuevaFecha, UnGasto.Fecha);
         }
 
         [TestMethod]
         public void BusquedaCategoriasTest()
         {
-            Repositorio repo = new Repositorio();
+            Repositorio Repo = new Repositorio();
             String[] array = { "Cine" };
             List<string> Lista = new List<string> { "Cine", "Carreras", "Teatro", "Caballos" };
-            Categoria c = new Categoria("Entretenimiento", Lista);
-            repo.AgregarCategoria(c);
-            Assert.AreEqual(c, repo.BusquedaCategorias(array));
+            Categoria UnaCategoria = new Categoria("Entretenimiento", Lista);
+            Repo.AgregarCategoria(UnaCategoria);
+            Assert.AreEqual(UnaCategoria, Repo.BusquedaCategorias(array));
         }
 
         [TestMethod]
@@ -161,37 +161,37 @@ namespace Testing
         [TestMethod]
         public void AgregarPresupuestoTest()
         {
-            Presupuesto p = new Presupuesto(2018, "Octubre", new Dictionary<Categoria, decimal>());
-            Repositorio repo = new Repositorio();
-            repo.AgregarPresupuesto(p);
-            Assert.IsTrue(repo.GetPresupuestos().Contains(p));
+            Presupuesto Unpresupuesto = new Presupuesto(2018, "Octubre", new Dictionary<Categoria, decimal>());
+            Repositorio Repo = new Repositorio();
+            Repo.AgregarPresupuesto(Unpresupuesto);
+            Assert.IsTrue(Repo.GetPresupuestos().Contains(Unpresupuesto));
         }
 
         [TestMethod]
         public void ModificarMontoPresupuestoTest()
         {
             Dictionary<Categoria, decimal> Diccionario = new Dictionary<Categoria, decimal>();
-            Categoria c = new Categoria();
-            Diccionario.Add(c, 100.00M);
-            Presupuesto p = new Presupuesto(2018, "Octubre", Diccionario);
-            Repositorio repo = new Repositorio();
-            repo.AgregarPresupuesto(p);
-            repo.ModificarMontoPresupuesto(p, c, 120.00M);
-            Assert.AreEqual(repo.GetPresupuestos()[0].getPresupuestosCategorias()[c], 120.00M);
+            Categoria UnaCategoria = new Categoria();
+            Diccionario.Add(UnaCategoria, 100.00M);
+            Presupuesto Unpresupuesto = new Presupuesto(2018, "Octubre", Diccionario);
+            Repositorio Repo = new Repositorio();
+            Repo.AgregarPresupuesto(Unpresupuesto);
+            Repo.ModificarMontoPresupuesto(Unpresupuesto, UnaCategoria, 120.00M);
+            Assert.AreEqual(Repo.GetPresupuestos()[0].getPresupuestosCategorias()[UnaCategoria], 120.00M);
         }
 
         [TestMethod]
         public void ActualizarCategoriasEnPresupuestosTest()
         {
             Dictionary<Categoria, decimal> Diccionario = new Dictionary<Categoria, decimal>();
-            Categoria c1 = new Categoria();
-            Diccionario.Add(c1, 100.00M);
-            Presupuesto p = new Presupuesto(2018, "Octubre", Diccionario);
-            Repositorio repo = new Repositorio();
-            repo.AgregarPresupuesto(p);
-            Categoria c2 = new Categoria("Categoria2");
-            repo.AgregarCategoria(c2);
-            Assert.IsTrue(repo.GetPresupuestos()[0].getPresupuestosCategorias().ContainsKey(c1));
+            Categoria Categoria1 = new Categoria();
+            Diccionario.Add(Categoria1, 100.00M);
+            Presupuesto Unpresupuesto = new Presupuesto(2018, "Octubre", Diccionario);
+            Repositorio Repo = new Repositorio();
+            Repo.AgregarPresupuesto(Unpresupuesto);
+            Categoria Categoria2 = new Categoria("Categoria2");
+            Repo.AgregarCategoria(Categoria2);
+            Assert.IsTrue(Repo.GetPresupuestos()[0].getPresupuestosCategorias().ContainsKey(Categoria1));
         }
     }
 }

@@ -45,7 +45,7 @@
             this.btnCategoria.TabIndex = 0;
             this.btnCategoria.Text = "Categoria";
             this.btnCategoria.UseVisualStyleBackColor = true;
-            this.btnCategoria.Click += new System.EventHandler(this.button1_Click);
+            this.btnCategoria.Click += new System.EventHandler(this.btnCategoria_Click);
             // 
             // btnGasto
             // 
@@ -55,7 +55,7 @@
             this.btnGasto.TabIndex = 1;
             this.btnGasto.Text = "Gasto";
             this.btnGasto.UseVisualStyleBackColor = true;
-            this.btnGasto.Click += new System.EventHandler(this.button2_Click);
+            this.btnGasto.Click += new System.EventHandler(this.btnGasto_Click);
             // 
             // btnPresupuesto
             // 
@@ -65,7 +65,7 @@
             this.btnPresupuesto.TabIndex = 2;
             this.btnPresupuesto.Text = "Presupuesto";
             this.btnPresupuesto.UseVisualStyleBackColor = true;
-            this.btnPresupuesto.Click += new System.EventHandler(this.button3_Click);
+            this.btnPresupuesto.Click += new System.EventHandler(this.btnPresupuesto_Click);
             // 
             // btnReporteGastos
             // 
@@ -79,7 +79,7 @@
             // 
             // btnReportePresupuestos
             // 
-            this.btnReportePresupuestos.Location = new System.Drawing.Point(96, 144);
+            this.btnReportePresupuestos.Location = new System.Drawing.Point(92, 144);
             this.btnReportePresupuestos.Name = "btnReportePresupuestos";
             this.btnReportePresupuestos.Size = new System.Drawing.Size(124, 60);
             this.btnReportePresupuestos.TabIndex = 4;
@@ -95,12 +95,13 @@
             this.btnSalir.TabIndex = 5;
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = true;
-            this.btnSalir.Click += new System.EventHandler(this.button6_Click);
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // MenuUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.WindowFrame;
             this.ClientSize = new System.Drawing.Size(462, 211);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.btnReportePresupuestos);

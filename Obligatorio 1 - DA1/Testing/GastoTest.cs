@@ -14,36 +14,36 @@ namespace Testing
         [TestMethod]
         public void ConstructorSinParametrosTest()
         {
-            Gasto g = new Gasto();
-            Assert.IsNotNull(g);
+            Gasto UnGasto = new Gasto();
+            Assert.IsNotNull(UnGasto);
         }
 
         [TestMethod]
         public void ConstructorConParametrosTest()
         {
-            Categoria c = new Categoria("Cine");
+            Categoria UnaCategoria = new Categoria("Cine");
             decimal DecimalRandom = 1.22M;
             DateTime FechaRandom = new DateTime(2018, 02, 01);
-            Gasto g = new Gasto("Entradas al cine", DecimalRandom, c, FechaRandom);
-            Assert.IsNotNull(g);
+            Gasto UnGasto = new Gasto("Entradas al cine", DecimalRandom, UnaCategoria, FechaRandom);
+            Assert.IsNotNull(UnGasto);
         }
 
         [TestMethod]
         public void CreacionDeGastoValidoTest()
         {
-            Categoria c = new Categoria("Teatro");
+            Categoria UnaCategoria = new Categoria("Teatro");
             DateTime FechaRandom = new DateTime(2019, 04, 05);
-            Gasto g = new Gasto("Entradas al teatro", 1.34M, c, FechaRandom);
-            Assert.IsNotNull(g);
+            Gasto UnaGasto = new Gasto("Entradas al teatro", 1.34M, UnaCategoria, FechaRandom);
+            Assert.IsNotNull(UnaGasto);
         }
 
         [TestMethod]
         public void toStringTest()
         {
-            Categoria c = new Categoria("Teatro");
+            Categoria UnaCategoria = new Categoria("Teatro");
             DateTime FechaRandom = new DateTime(2019, 04, 05);
-            Gasto g = new Gasto("Entradas al teatro", 1.34M, c, FechaRandom);
-            Assert.AreEqual("Entradas al teatro", g.ToString());
+            Gasto UnaGasto = new Gasto("Entradas al teatro", 1.34M, UnaCategoria, FechaRandom);
+            Assert.AreEqual("Entradas al teatro", UnaGasto.ToString());
         }
 
         [TestMethod]
@@ -141,10 +141,10 @@ namespace Testing
         {
             Repositorio Repositorio = new Repositorio();
             ManagerGasto unManager = new ManagerGasto(Repositorio);
-            Categoria c = new Categoria();
-            Gasto g = new Gasto("Descripcion x", 100.00M, c, new DateTime(2018, 1, 1));
-            unManager.ValidacionAgregarGasto(g);
-            Assert.AreEqual(g.Descripcion, Repositorio.GetGastos()[0].Descripcion);
+            Categoria UnaCategoria = new Categoria();
+            Gasto UnGasto = new Gasto("Descripcion x", 100.00M, UnaCategoria, new DateTime(2018, 1, 1));
+            unManager.ValidacionAgregarGasto(UnGasto);
+            Assert.AreEqual(UnGasto.Descripcion, Repositorio.GetGastos()[0].Descripcion);
         }
 
         [TestMethod]
@@ -152,11 +152,11 @@ namespace Testing
         {
             Repositorio Repositorio = new Repositorio();
             ManagerGasto unManager = new ManagerGasto(Repositorio);
-            Categoria c = new Categoria();
-            Gasto g = new Gasto("Descripcion x", 100.00M, c, new DateTime(2018, 1, 1));
-            unManager.ValidacionAgregarGasto(g);
-            unManager.ValidacionEliminarGasto(g);
-            Assert.IsFalse(Repositorio.GetGastos().Contains(g));
+            Categoria UnaCategoria = new Categoria();
+            Gasto UnGasto = new Gasto("Descripcion x", 100.00M, UnaCategoria, new DateTime(2018, 1, 1));
+            unManager.ValidacionAgregarGasto(UnGasto);
+            unManager.ValidacionEliminarGasto(UnGasto);
+            Assert.IsFalse(Repositorio.GetGastos().Contains(UnGasto));
         }
 
         [TestMethod]
@@ -164,12 +164,12 @@ namespace Testing
         {
             Repositorio Repositorio = new Repositorio();
             ManagerGasto unManager = new ManagerGasto(Repositorio);
-            Categoria c = new Categoria();
+            Categoria UnaCategoria = new Categoria();
             String nuevaDescripcion = "Nueva descrp";
-            Gasto g = new Gasto("Descripcion x", 100.00M, c, new DateTime(2018, 1, 1));
-            unManager.ValidacionAgregarGasto(g);
-            unManager.ValidacionModificacionDescripcionGasto(g, nuevaDescripcion);
-            Assert.AreEqual(g.Descripcion, nuevaDescripcion);
+            Gasto UnGasto = new Gasto("Descripcion x", 100.00M, UnaCategoria, new DateTime(2018, 1, 1));
+            unManager.ValidacionAgregarGasto(UnGasto);
+            unManager.ValidacionModificacionDescripcionGasto(UnGasto, nuevaDescripcion);
+            Assert.AreEqual(UnGasto.Descripcion, nuevaDescripcion);
         }
 
         [TestMethod]
@@ -177,11 +177,11 @@ namespace Testing
         {
             Repositorio Repositorio = new Repositorio();
             ManagerGasto unManager = new ManagerGasto(Repositorio);
-            Categoria c = new Categoria();
-            Gasto g = new Gasto("Descripcion x", 100.00M, c, new DateTime(2018, 1, 1));
-            unManager.ValidacionAgregarGasto(g);
-            unManager.ValidacionModificacionMontoGasto(g, 102.00M);
-            Assert.AreEqual((decimal)102.00M, g.Monto);
+            Categoria UnaCategoria = new Categoria();
+            Gasto UnGasto = new Gasto("Descripcion x", 100.00M, UnaCategoria, new DateTime(2018, 1, 1));
+            unManager.ValidacionAgregarGasto(UnGasto);
+            unManager.ValidacionModificacionMontoGasto(UnGasto, 102.00M);
+            Assert.AreEqual((decimal)102.00M, UnGasto.Monto);
         }
 
         [TestMethod]
@@ -189,12 +189,12 @@ namespace Testing
         {
             Repositorio Repositorio = new Repositorio();
             ManagerGasto unManager = new ManagerGasto(Repositorio);
-            Categoria c = new Categoria();
-            Gasto g = new Gasto("Descripcion x", 100.00M, c, new DateTime(2018, 1, 1));
-            unManager.ValidacionAgregarGasto(g);
+            Categoria UnaCategoria = new Categoria();
+            Gasto UnGasto = new Gasto("Descripcion x", 100.00M, UnaCategoria, new DateTime(2018, 1, 1));
+            unManager.ValidacionAgregarGasto(UnGasto);
             DateTime nuevaFecha = new DateTime(2019, 1, 1);
-            unManager.ValidacionModificacionFechaGasto(g, nuevaFecha);
-            Assert.AreEqual(nuevaFecha, g.Fecha);
+            unManager.ValidacionModificacionFechaGasto(UnGasto, nuevaFecha);
+            Assert.AreEqual(nuevaFecha, UnGasto.Fecha);
         }
 
         [TestMethod]
@@ -203,10 +203,21 @@ namespace Testing
             Repositorio unRepositorio = new Repositorio();
             ManagerGasto unManager = new ManagerGasto(unRepositorio);
             List<string> Lista = new List<string> { "Cine", "Carreras", "Teatro", "Autos" };
-            Categoria c = new Categoria("CategoriaConAutos", Lista);
+            Categoria UnaCategoria = new Categoria("CategoriaConAutos", Lista);
             String DescripcionGasto = "Autos";
-            unRepositorio.AgregarCategoria(c);
-            Assert.AreEqual(c, unManager.ValidacionBusquedaCategorias(DescripcionGasto));
+            unRepositorio.AgregarCategoria(UnaCategoria);
+            Assert.AreEqual(UnaCategoria, unManager.ValidacionBusquedaCategorias(DescripcionGasto));
+        }
+        [TestMethod]
+        public void ValidacionBusquedaCategoriaMultiplesPalabrasClaveGastoTest()
+        {
+            Repositorio unRepositorio = new Repositorio();
+            ManagerGasto unManager = new ManagerGasto(unRepositorio);
+            List<string> Lista = new List<string> { "Cine", "Carreras", "Teatro", "Autos" };
+            Categoria UnaCategoria = new Categoria("CategoriaConAutos", Lista);
+            String DescripcionGasto = "Autos de Carreras";
+            unRepositorio.AgregarCategoria(UnaCategoria);
+            Assert.AreEqual(UnaCategoria, unManager.ValidacionBusquedaCategorias(DescripcionGasto));
         }
 
         [TestMethod]
@@ -216,10 +227,10 @@ namespace Testing
             ManagerGasto unManager = new ManagerGasto(Repo);
             DateTime FechaRandom = new DateTime(2020, 1, 1);
             Categoria categoria = new Categoria("Entretenimiento");
-            Gasto gasto = new Gasto("Entradas al cine", 10.00M, categoria, FechaRandom);
-            Repo.AgregarGasto(gasto);
+            Gasto UnGasto = new Gasto("Entradas al cine", 10.00M, categoria, FechaRandom);
+            Repo.AgregarGasto(UnGasto);
             Categoria categoriaNueva = new Categoria("Formula 1");
-            unManager.ValidacionModificacionCategoriaGasto(gasto, categoriaNueva);
+            unManager.ValidacionModificacionCategoriaGasto(UnGasto, categoriaNueva);
             Assert.AreEqual("Formula 1", Repo.GetGastos()[0].Categoria.Nombre);
         }
 
@@ -228,12 +239,12 @@ namespace Testing
         {
             Repositorio Repo = new Repositorio();
             ManagerGasto unManager = new ManagerGasto(Repo);
-            Gasto g1 = new Gasto("Gasto1", 100.00M, new Categoria("Cine"), new DateTime(2019, 1, 1));
-            Gasto g2 = new Gasto("Gasto2", 100.00M, new Categoria("Entretenimiento"), new DateTime(2019, 1, 20));
-            Gasto g3 = new Gasto("Gasto3", 100.00M, new Categoria("Autos"), new DateTime(2020, 1, 14));
-            Repo.AgregarGasto(g1);
-            Repo.AgregarGasto(g2);
-            Repo.AgregarGasto(g3);
+            Gasto Gasto1 = new Gasto("Gasto1", 100.00M, new Categoria("Cine"), new DateTime(2019, 1, 1));
+            Gasto Gasto2 = new Gasto("Gasto2", 100.00M, new Categoria("Entretenimiento"), new DateTime(2019, 1, 20));
+            Gasto Gasto3 = new Gasto("Gasto3", 100.00M, new Categoria("Autos"), new DateTime(2020, 1, 14));
+            Repo.AgregarGasto(Gasto1);
+            Repo.AgregarGasto(Gasto2);
+            Repo.AgregarGasto(Gasto3);
             List<string> Lista = unManager.CargarFechasDondeHuboGastos();
             Assert.AreEqual(Lista[1], "January 2020");
         }
@@ -244,12 +255,12 @@ namespace Testing
             Repositorio Repo = new Repositorio();
             ManagerGasto unManager = new ManagerGasto(Repo);
             string FechaAFiltrar = new DateTime(2018, 1, 2).ToString("MMMM yyyy");
-            Gasto g1 = new Gasto("Gasto1", 100.00M, new Categoria("Cine"), new DateTime(2019, 1, 1));
-            Gasto g2 = new Gasto("Gasto2", 100.00M, new Categoria("Entretenimiento"), new DateTime(2019, 1, 1));
-            Gasto g3 = new Gasto("Gasto3", 100.00M, new Categoria("Autos"), new DateTime(2018, 1, 2));
-            Repo.AgregarGasto(g1);
-            Repo.AgregarGasto(g2);
-            Repo.AgregarGasto(g3);
+            Gasto Gasto1 = new Gasto("Gasto1", 100.00M, new Categoria("Cine"), new DateTime(2019, 1, 1));
+            Gasto Gasto2 = new Gasto("Gasto2", 100.00M, new Categoria("Entretenimiento"), new DateTime(2019, 1, 1));
+            Gasto Gasto3 = new Gasto("Gasto3", 100.00M, new Categoria("Autos"), new DateTime(2018, 1, 2));
+            Repo.AgregarGasto(Gasto1);
+            Repo.AgregarGasto(Gasto2);
+            Repo.AgregarGasto(Gasto3);
             List<Gasto> ListaFiltrada = unManager.FiltrarGastosPorFecha(FechaAFiltrar);
             Assert.AreEqual(1, ListaFiltrada.Count);
         }
@@ -260,12 +271,12 @@ namespace Testing
             Repositorio Repo = new Repositorio();
             ManagerGasto unManager = new ManagerGasto(Repo);
             List<Gasto> ListParaSumarMontos = new List<Gasto>();
-            Gasto g1 = new Gasto("Gasto1", 100.00M, new Categoria("Cine"), new DateTime(2019, 1, 1));
-            Gasto g2 = new Gasto("Gasto2", 100.00M, new Categoria("Entretenimiento"), new DateTime(2019, 1, 20));
-            Gasto g3 = new Gasto("Gasto3", 100.00M, new Categoria("Autos"), new DateTime(2019, 1, 12));
-            ListParaSumarMontos.Add(g1);
-            ListParaSumarMontos.Add(g2);
-            ListParaSumarMontos.Add(g3);
+            Gasto Gasto1 = new Gasto("Gasto1", 100.00M, new Categoria("Cine"), new DateTime(2019, 1, 1));
+            Gasto Gasto2 = new Gasto("Gasto2", 100.00M, new Categoria("Entretenimiento"), new DateTime(2019, 1, 20));
+            Gasto Gasto3 = new Gasto("Gasto3", 100.00M, new Categoria("Autos"), new DateTime(2019, 1, 12));
+            ListParaSumarMontos.Add(Gasto1);
+            ListParaSumarMontos.Add(Gasto2);
+            ListParaSumarMontos.Add(Gasto3);
             Assert.AreEqual(300.00M, decimal.Parse(unManager.SumaDeGastosParaFecha(ListParaSumarMontos)));
         }
 
@@ -274,12 +285,12 @@ namespace Testing
         {
             Repositorio Repo = new Repositorio();
             ManagerGasto unManager = new ManagerGasto(Repo);
-            Categoria c = new Categoria("Entretenimiento");
-            Gasto g = new Gasto("Gasto1", 100.00M, c, new DateTime(2019, 1, 1));
-            string FechaFormateada = g.Fecha.ToString("MMMM yyyy");
-            Repo.AgregarGasto(g);
-            List<Gasto> GastosRetorno = unManager.ObtenerGastosPorFechaCategoria(c, FechaFormateada);
-            Assert.AreEqual(g, GastosRetorno[0]);
+            Categoria UnaCategoria = new Categoria("Entretenimiento");
+            Gasto UnGasto = new Gasto("Gasto1", 100.00M, UnaCategoria, new DateTime(2019, 1, 1));
+            string FechaFormateada = UnGasto.Fecha.ToString("MMMM yyyy");
+            Repo.AgregarGasto(UnGasto);
+            List<Gasto> GastosRetorno = unManager.ObtenerGastosPorFechaCategoria(UnaCategoria, FechaFormateada);
+            Assert.AreEqual(UnGasto, GastosRetorno[0]);
         }
     }
 }

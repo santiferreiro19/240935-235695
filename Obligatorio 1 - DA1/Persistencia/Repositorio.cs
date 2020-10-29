@@ -100,33 +100,33 @@ namespace Persistencia
             }
         }
 
-        public void ModificarDescripcion(String nuevaD, Gasto g)
+        public void ModificarDescripcion(String nuevaD, Gasto unGasto)
         {
             foreach (Gasto buscado in this.ListaGastos)
             {
-                if (buscado.Equals(g))
+                if (buscado.Equals(unGasto))
                 {
                     buscado.Descripcion = nuevaD;
                 }
             }
         }
 
-        public void ModificarMontoGasto(Gasto g, decimal nuevoMonto)
+        public void ModificarMontoGasto(Gasto unGasto, decimal nuevoMonto)
         {
             foreach (Gasto buscado in this.ListaGastos)
             {
-                if (buscado.Equals(g))
+                if (buscado.Equals(unGasto))
                 {
                     buscado.Monto = nuevoMonto;
                 }
             }
         }
 
-        public void ModificarFechaGasto(Gasto g, DateTime nuevaFecha)
+        public void ModificarFechaGasto(Gasto unGasto, DateTime nuevaFecha)
         {
             foreach (Gasto buscado in this.ListaGastos)
             {
-                if (buscado.Equals(g))
+                if (buscado.Equals(unGasto))
                 {
                     buscado.Fecha = nuevaFecha;
                 }
@@ -143,8 +143,11 @@ namespace Persistencia
                 {
                     if (cadaCategoria.ListaPalabras.Contains(buscada))
                     {
-                        Retorno = cadaCategoria;
-                        Contador++;
+                        if (Retorno != cadaCategoria)
+                        {
+                            Retorno = cadaCategoria;
+                            Contador++;
+                        }
                     }
                 }
             }
@@ -159,11 +162,11 @@ namespace Persistencia
                 return Retorno;
             }
         }
-        public void ModificacionCategoriaGasto(Gasto g, Categoria categoria)
+        public void ModificacionCategoriaGasto(Gasto unGasto, Categoria categoria)
         {
             foreach (Gasto buscado in this.ListaGastos)
             {
-                if (buscado.Equals(g))
+                if (buscado.Equals(unGasto))
                 {
                     buscado.Categoria = categoria;
                 }

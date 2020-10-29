@@ -67,6 +67,7 @@ namespace Interfaces
             // 
             // panelAgregar
             // 
+            this.panelAgregar.ForeColor = System.Drawing.SystemColors.ControlText;
             this.panelAgregar.Location = new System.Drawing.Point(0, 27);
             this.panelAgregar.Name = "panelAgregar";
             this.panelAgregar.Size = new System.Drawing.Size(680, 260);

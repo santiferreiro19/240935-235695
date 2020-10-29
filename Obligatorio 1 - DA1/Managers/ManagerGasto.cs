@@ -29,8 +29,8 @@ namespace Managers
         public void ValidacionFechaGasto(DateTime unaFecha)
         {
             DateTime Minimo = new DateTime(2018, 01, 01);
-            DateTime Maximo = new DateTime(2030, 12, 31);
-            if (unaFecha.CompareTo(Minimo) == -1 || unaFecha.CompareTo(Maximo) == 1)
+            DateTime Maximo = new DateTime(2031, 01, 01);
+            if (unaFecha.CompareTo(Minimo) == -1 || unaFecha.CompareTo(Maximo) > 0)
                 throw new ExceptionFechaGasto("La fecha debe ser entre 01/01/2018 y 31/12/2030");
         }
 
@@ -40,8 +40,8 @@ namespace Managers
         }
 
         public void ValidarMonto(decimal unMonto) {
-            if (unMonto < 0)
-                throw new ExceptionMonto("El monto no debe ser menor a 0");
+            if (unMonto <= 0)
+                throw new ExceptionMonto("El monto  debe ser mayor a 0");
         }
 
         public void ValidacionAgregarGasto(Gasto unGasto) {
@@ -65,10 +65,10 @@ namespace Managers
             Repo.ModificarMontoGasto(unGasto, nuevoMonto);
         }
 
-        public void ValidacionModificacionFechaGasto(Gasto g, DateTime nuevaFecha)
+        public void ValidacionModificacionFechaGasto(Gasto unGasto, DateTime nuevaFecha)
         {
             this.ValidacionFechaGasto(nuevaFecha);
-            Repo.ModificarFechaGasto(g, nuevaFecha);
+            Repo.ModificarFechaGasto(unGasto, nuevaFecha);
         }
 
         public Categoria ValidacionBusquedaCategorias(String Descripcion) {
@@ -77,9 +77,9 @@ namespace Managers
             return CategoriaEncontrada;
         }
 
-        public void ValidacionModificacionCategoriaGasto(Gasto g, Categoria nuevaCategoria)
+        public void ValidacionModificacionCategoriaGasto(Gasto unGasto, Categoria nuevaCategoria)
         {
-            Repo.ModificacionCategoriaGasto(g, nuevaCategoria);
+            Repo.ModificacionCategoriaGasto(unGasto, nuevaCategoria);
         }
 
         public List<String> CargarFechasDondeHuboGastos()

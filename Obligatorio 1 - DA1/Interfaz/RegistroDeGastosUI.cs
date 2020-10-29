@@ -64,6 +64,7 @@ namespace Interfaz
                     nroMonto.Text = "";
                     cboCategoria.SelectedIndex = -1;
                     manager.ValidacionAgregarGasto(unGasto);
+                    MessageBox.Show("El gasto fue registrado correctamente");
                     unGasto = new Gasto();
                 }
                 catch (ExceptionDescripcionGasto descripcion)
