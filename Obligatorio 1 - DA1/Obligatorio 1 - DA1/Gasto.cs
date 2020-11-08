@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,6 +10,7 @@ namespace Obligatorio_1___DA1
     public class Gasto
     {
         public int Id { get; set; }
+        [MaxLength(20), MinLength(3)]
         public String Descripcion { get; set; }
         public decimal Monto { get; set; }
         public Categoria Categoria { get; set; }
