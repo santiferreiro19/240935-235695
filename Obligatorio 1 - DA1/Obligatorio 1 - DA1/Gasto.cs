@@ -8,6 +8,7 @@ namespace Obligatorio_1___DA1
 {
     public class Gasto
     {
+        public int Id { get; set; }
         public String Descripcion { get; set; }
         public decimal Monto { get; set; }
         public Categoria Categoria { get; set; }

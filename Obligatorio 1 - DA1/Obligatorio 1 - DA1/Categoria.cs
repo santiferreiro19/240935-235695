@@ -7,6 +7,7 @@ namespace Obligatorio_1___DA1
 
     public class Categoria
     {
+        public int Id { get; set; }
         public String Nombre { set; get; }
         public List<String> ListaPalabras;
 
