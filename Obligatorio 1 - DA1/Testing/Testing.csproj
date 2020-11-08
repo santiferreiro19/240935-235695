@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="CategoriaTest.cs" />
     <Compile Include="GastoTest.cs" />
+    <Compile Include="MonedaTest.cs" />
     <Compile Include="PresupuestoTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RepositorioTest.cs" />

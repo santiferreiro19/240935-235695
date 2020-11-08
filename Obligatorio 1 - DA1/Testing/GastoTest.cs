@@ -43,7 +43,7 @@ namespace Testing
             Categoria UnaCategoria = new Categoria("Teatro");
             DateTime FechaRandom = new DateTime(2019, 04, 05);
             Gasto UnaGasto = new Gasto("Entradas al teatro", 1.34M, UnaCategoria, FechaRandom);
-            Assert.AreEqual("Descripcion: Entradas al teatro Monto: 1.34 Categoria: Teatro Fecha: 4/5/2019", UnaGasto.ToString());
+            Assert.AreEqual("Descripcion: Entradas al teatro Monto: 1.34 Categoria: Teatro Fecha: 05/04/2019", UnaGasto.ToString());
         }
 
         [TestMethod]

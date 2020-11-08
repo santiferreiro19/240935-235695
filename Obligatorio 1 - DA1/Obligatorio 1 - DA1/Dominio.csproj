@@ -57,6 +57,7 @@
   <ItemGroup>
     <Compile Include="Categoria.cs" />
     <Compile Include="Excepciones\ExceptionAñoPresupuesto.cs" />
+    <Compile Include="Excepciones\ExceptionCotizacion.cs" />
     <Compile Include="Excepciones\ExceptionDescripcionGasto.cs" />
     <Compile Include="Excepciones\ExceptionFechaGasto.cs" />
     <Compile Include="Excepciones\ExceptionListaPalabrasClaveLlena.cs" />
@@ -64,9 +65,12 @@
     <Compile Include="Excepciones\ExceptionMontoPresupuesto.cs" />
     <Compile Include="Excepciones\ExceptionNombreCategoria.cs" />
     <Compile Include="Excepciones\ExceptionNombreCategoriaRepetido.cs" />
+    <Compile Include="Excepciones\ExceptionNombreMoneda.cs" />
     <Compile Include="Excepciones\ExceptionPalabraClaveRepetida.cs" />
     <Compile Include="Excepciones\ExceptionPresupuestoRepetido.cs" />
+    <Compile Include="Excepciones\ExceptionSimboloMoneda.cs" />
     <Compile Include="Gasto.cs" />
+    <Compile Include="Moneda.cs" />
     <Compile Include="Presupuesto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -77,7 +81,6 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
