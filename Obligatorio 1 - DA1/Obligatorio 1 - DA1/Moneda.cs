@@ -2,6 +2,7 @@
 {
     public class Moneda
     {
+        public int Id { set; get; }
         public string Nombre { set; get; }
         public string Simbolo { set; get; }
         public decimal Cotizacion { set; get; }

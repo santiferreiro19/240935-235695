@@ -12,7 +12,7 @@
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        Nombre = c.String(),
+                        Nombre = c.String(nullable: false, maxLength: 15),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -21,7 +21,7 @@
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        Descripcion = c.String(),
+                        Descripcion = c.String(nullable: false, maxLength: 20),
                         Monto = c.Decimal(nullable: false, precision: 18, scale: 2),
                         Fecha = c.DateTime(nullable: false),
                         Categoria_Id = c.Int(),
@@ -31,12 +31,23 @@
                 .Index(t => t.Categoria_Id);
             
             CreateTable(
+                "dbo.Monedas",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Nombre = c.String(nullable: false, maxLength: 20),
+                        Simbolo = c.String(nullable: false, maxLength: 3),
+                        Cotizacion = c.Decimal(nullable: false, precision: 18, scale: 2),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
                 "dbo.Presupuestoes",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
                         Año = c.Int(nullable: false),
-                        Mes = c.String(),
+                        Mes = c.String(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -47,6 +58,7 @@
             DropForeignKey("dbo.Gastoes", "Categoria_Id", "dbo.Categorias");
             DropIndex("dbo.Gastoes", new[] { "Categoria_Id" });
             DropTable("dbo.Presupuestoes");
+            DropTable("dbo.Monedas");
             DropTable("dbo.Gastoes");
             DropTable("dbo.Categorias");
         }

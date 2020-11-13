@@ -51,16 +51,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CategoriaDataAccess.cs" />
+    <Compile Include="Configuraciones\ConfiguracionCategoria.cs" />
+    <Compile Include="Configuraciones\ConfiguracionGasto.cs" />
+    <Compile Include="Configuraciones\ConfiguracionMoneda.cs" />
+    <Compile Include="Configuraciones\ConfiguracionPresupuesto.cs" />
     <Compile Include="ContextoFinanzas.cs" />
-    <Compile Include="Migrations\202011061242395_CrearTablas.cs" />
-    <Compile Include="Migrations\202011061242395_CrearTablas.designer.cs">
-      <DependentUpon>202011061242395_CrearTablas.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202011081911488_MaxLengthYMinLengthCreados.cs" />
-    <Compile Include="Migrations\202011081911488_MaxLengthYMinLengthCreados.designer.cs">
-      <DependentUpon>202011081911488_MaxLengthYMinLengthCreados.cs</DependentUpon>
+    <Compile Include="GastoDataAccess.cs" />
+    <Compile Include="IDataAccess.cs" />
+    <Compile Include="Migrations\202011131240322_CrearTablas.cs" />
+    <Compile Include="Migrations\202011131240322_CrearTablas.designer.cs">
+      <DependentUpon>202011131240322_CrearTablas.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="MonedaDataAccess.cs" />
+    <Compile Include="PresupuestoDataAccess.cs" />
     <Compile Include="Repositorio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -75,11 +80,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202011061242395_CrearTablas.resx">
-      <DependentUpon>202011061242395_CrearTablas.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202011081911488_MaxLengthYMinLengthCreados.resx">
-      <DependentUpon>202011081911488_MaxLengthYMinLengthCreados.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202011131240322_CrearTablas.resx">
+      <DependentUpon>202011131240322_CrearTablas.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
