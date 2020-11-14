@@ -56,10 +56,11 @@ namespace Persistencia
                 Categoria Entidad = Contexto.Categorias.FirstOrDefault(u => u.Id == unaCategoria.Id);
                 foreach (var Palabra in Entidad.ListaPalabras)
                 {
-                    if (PalabraAnterior == Palabra)
+                    if (PalabraAnterior == Palabra.Palabra)
                     {
                         Entidad.ListaPalabras.Remove(Palabra);
-                        Entidad.ListaPalabras.Add(NuevaPalabra);
+                        PalabraClave PalabraClaveNueva = new PalabraClave(NuevaPalabra);
+                        Entidad.ListaPalabras.Add(PalabraClaveNueva);
                     }
                 }
                 Contexto.SaveChanges();
@@ -71,7 +72,8 @@ namespace Persistencia
             using (var Contexto = new ContextoFinanzas())
             {
                 Categoria Entidad = Contexto.Categorias.FirstOrDefault(u => u.Id == unaCategoria.Id);
-                Entidad.ListaPalabras.Add(NuevaPalabra);
+                PalabraClave PalabraClaveNueva = new PalabraClave(NuevaPalabra);
+                Entidad.ListaPalabras.Add(PalabraClaveNueva);
                 Contexto.SaveChanges();
             }
         }
@@ -83,7 +85,7 @@ namespace Persistencia
                 Categoria Entidad = Contexto.Categorias.FirstOrDefault(u => u.Id == unaCategoria.Id);
                 foreach (var Palabra in Entidad.ListaPalabras)
                 {
-                    if (PalabraBorrar == Palabra)
+                    if (PalabraBorrar == Palabra.Palabra)
                     {
                         Entidad.ListaPalabras.Remove(Palabra);
                     }

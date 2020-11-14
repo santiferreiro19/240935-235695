@@ -49,5 +49,10 @@ namespace Interfaces
             UserControl eliminarGasto = new EliminacionGastoUI(Repo);
             panelGeneral.Controls.Add(eliminarGasto);
         }
+
+        private void panelGeneral_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

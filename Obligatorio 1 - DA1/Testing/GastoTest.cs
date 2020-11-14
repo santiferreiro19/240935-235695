@@ -205,7 +205,11 @@ namespace Testing
         {
             Repositorio unRepositorio = new Repositorio();
             ManagerGasto unManager = new ManagerGasto(unRepositorio);
-            List<string> Lista = new List<string> { "Cine", "Carreras", "Teatro", "Autos" };
+            PalabraClave palabraTemporal1 = new PalabraClave("Cine");
+            PalabraClave palabraTemporal2 = new PalabraClave("Carreras");
+            PalabraClave palabraTemporal3 = new PalabraClave("Teatro");
+            PalabraClave palabraTemporal4 = new PalabraClave("Autos");
+            List<PalabraClave> Lista = new List<PalabraClave> { palabraTemporal1, palabraTemporal2, palabraTemporal3, palabraTemporal4 };
             Categoria UnaCategoria = new Categoria("CategoriaConAutos", Lista);
             String DescripcionGasto = "Autos";
             unRepositorio.AgregarCategoria(UnaCategoria);
@@ -216,7 +220,11 @@ namespace Testing
         {
             Repositorio unRepositorio = new Repositorio();
             ManagerGasto unManager = new ManagerGasto(unRepositorio);
-            List<string> Lista = new List<string> { "Cine", "Carreras", "Teatro", "Autos" };
+            PalabraClave palabraTemporal1 = new PalabraClave("Cine");
+            PalabraClave palabraTemporal2 = new PalabraClave("Carreras");
+            PalabraClave palabraTemporal3 = new PalabraClave("Teatro");
+            PalabraClave palabraTemporal4 = new PalabraClave("Autos");
+            List<PalabraClave> Lista = new List<PalabraClave> { palabraTemporal1, palabraTemporal2, palabraTemporal3, palabraTemporal4 };
             Categoria UnaCategoria = new Categoria("CategoriaConAutos", Lista);
             String DescripcionGasto = "Autos de Carreras";
             unRepositorio.AgregarCategoria(UnaCategoria);

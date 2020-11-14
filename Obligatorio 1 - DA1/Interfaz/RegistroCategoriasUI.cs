@@ -39,7 +39,8 @@ namespace Interfaz
                     PalabraRepetidaEnCategoriaLocal();
                     manager.ValidarPalabraClaveRepetida(txtPalabraClave.Text);
                     manager.ListaPalabrasClaveLLena(this.unaCategoriaLocal);
-                    unaCategoriaLocal.ListaPalabras.Add(txtPalabraClave.Text);
+                    PalabraClave palabraTemporal = new PalabraClave(txtPalabraClave.Text);
+                    unaCategoriaLocal.ListaPalabras.Add(palabraTemporal);
                     ActualizarVincularListBox();
                     txtPalabraClave.Text = "";
                 }
@@ -61,7 +62,8 @@ namespace Interfaz
         }
         private void PalabraRepetidaEnCategoriaLocal()
         {
-            if (this.unaCategoriaLocal.ListaPalabras.Contains(txtPalabraClave.Text))
+            PalabraClave palabraTemporal = new PalabraClave(txtPalabraClave.Text);
+            if (this.unaCategoriaLocal.ListaPalabras.Contains(palabraTemporal))
             {
                 throw new ExceptionPalabraClaveRepetida("la palabra clave esta repetida"); ;
             }

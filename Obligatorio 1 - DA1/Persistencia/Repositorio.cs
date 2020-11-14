@@ -53,7 +53,8 @@ namespace Persistencia
             {
                 if (buscada.Equals(unacategoria))
                 {
-                    buscada.ListaPalabras.Add(NuevaPalabra);
+                    PalabraClave palabra = new PalabraClave(NuevaPalabra);
+                    buscada.ListaPalabras.Add(palabra);
                 }
             }
         }
@@ -66,10 +67,11 @@ namespace Persistencia
                 {
                     for (int i = 0; i < unacategoria.ListaPalabras.Count(); i++)
                     {
-                        if (PalabraAnterior == unacategoria.ListaPalabras[i])
+                        if (PalabraAnterior == unacategoria.ListaPalabras[i].Palabra)
                         {
                             unacategoria.ListaPalabras.RemoveAt(i);
-                            unacategoria.ListaPalabras.Add(NuevaPalabra);
+                            PalabraClave palabra = new PalabraClave(NuevaPalabra);
+                            unacategoria.ListaPalabras.Add(palabra);
                         }
                     }
                 }
@@ -80,9 +82,10 @@ namespace Persistencia
         {
             foreach (Categoria buscada in this.ListaCategorias)
             {
-                if (buscada.ListaPalabras.Contains(PalabraABorrar))
+                PalabraClave buscar = new PalabraClave(PalabraABorrar);
+                if (buscada.ListaPalabras.Any(x => x.Palabra == PalabraABorrar))
                 {
-                    buscada.ListaPalabras.Remove(PalabraABorrar);
+                    buscada.ListaPalabras.RemoveAll(x => x.Palabra == PalabraABorrar);
                 }
             }
         }
@@ -122,7 +125,8 @@ namespace Persistencia
             {
                 foreach (Categoria cadaCategoria in this.ListaCategorias)
                 {
-                    if (cadaCategoria.ListaPalabras.Contains(buscada))
+                    PalabraClave palabraABuscar = new PalabraClave(buscada);
+                    if (cadaCategoria.ListaPalabras.Any(x => x.Palabra == buscada))
                     {
                         if (Retorno != cadaCategoria)
                         {

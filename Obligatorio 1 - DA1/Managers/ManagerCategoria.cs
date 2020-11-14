@@ -59,23 +59,32 @@ namespace Managers
         public void ValidarPalabraClaveRepetida(String PalabraBuscar)
         {
             List<Categoria> categorias = Repo.GetCategorias();
-            if (categorias.Any(categoria => categoria.ListaPalabras.Contains(PalabraBuscar)))
+            PalabraClave palabra = new PalabraClave(PalabraBuscar);
+            foreach (Categoria cadaCategoria in categorias)
             {
-                throw new ExceptionPalabraClaveRepetida("El nombre de la palabra clave debe de ser unico");
+                if (cadaCategoria.ListaPalabras.Any(x => x.Palabra == PalabraBuscar))
+                {
+                    throw new ExceptionPalabraClaveRepetida("El nombre de la palabra clave debe de ser unico");
+                }
             }
         }
-          public void ListaPalabrasClaveLLena(Categoria Unacategoria)
+        public void ListaPalabrasClaveLLena(Categoria Unacategoria)
           {
             if (Unacategoria.ListaPalabras.Count() >= 10)
             {
                 throw new ExceptionListaPalabrasClaveLlena("Lista de palabras clave llena");
             }
           }
-        public void EliminarPalabraClave(String PalabraEliminar) {
+        public void EliminarPalabraClave(String PalabraEliminar)
+        {
             List<Categoria> categorias = Repo.GetCategorias();
-            if (categorias.Any(categoria => categoria.ListaPalabras.Contains(PalabraEliminar)))
+            PalabraClave palabra = new PalabraClave(PalabraEliminar);
+            foreach (Categoria cadaCategoria in categorias)
             {
-                Repo.EliminarPalabraClave(PalabraEliminar);
+                if (cadaCategoria.ListaPalabras.Any(x => x.Palabra == PalabraEliminar))
+                {
+                    Repo.EliminarPalabraClave(PalabraEliminar);
+                }
             }
         }
     }

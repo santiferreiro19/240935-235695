@@ -42,7 +42,16 @@ namespace Testing
             Repositorio Repo = new Repositorio();
             Repo.AgregarCategoria(UnaCategoria);
             Repo.AgregarPalabraClave(UnaCategoria, "Cine");
-            Assert.IsTrue(UnaCategoria.ListaPalabras.Contains("Cine"));
+            PalabraClave palabra = new PalabraClave("Cine");
+            bool ok = false;
+            foreach (PalabraClave palabras in UnaCategoria.ListaPalabras)
+            {
+                if (palabras.Palabra == palabra.Palabra)
+                {
+                    ok = true;
+                }
+            }
+            Assert.IsTrue(ok);
         }
 
         [TestMethod]
@@ -53,7 +62,7 @@ namespace Testing
             Repo.AgregarCategoria(UnaCategoria);
             Repo.AgregarPalabraClave(UnaCategoria, "Cine");
             Repo.ModificarPalabraClave(UnaCategoria, "Carreras", "Cine");
-            Assert.AreEqual(UnaCategoria.ListaPalabras[0], "Carreras");
+            Assert.AreEqual(UnaCategoria.ListaPalabras[0].Palabra, "Carreras");
         }
 
         [TestMethod]
@@ -142,7 +151,11 @@ namespace Testing
         {
             Repositorio Repo = new Repositorio();
             String[] array = { "Cine" };
-            List<string> Lista = new List<string> { "Cine", "Carreras", "Teatro", "Caballos" };
+            PalabraClave palabra1 = new PalabraClave("Cine");
+            PalabraClave palabra2 = new PalabraClave("Carreras");
+            PalabraClave palabra3 = new PalabraClave("Teatro");
+            PalabraClave palabra4 = new PalabraClave("Caballos");
+            List<PalabraClave> Lista = new List<PalabraClave> { palabra1, palabra2, palabra3, palabra4 };
             Categoria UnaCategoria = new Categoria("Entretenimiento", Lista);
             Repo.AgregarCategoria(UnaCategoria);
             Assert.AreEqual(UnaCategoria, Repo.BusquedaCategorias(array));
