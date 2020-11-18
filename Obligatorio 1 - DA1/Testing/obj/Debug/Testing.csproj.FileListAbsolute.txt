@@ -243,3 +243,30 @@ C:\Users\robak\Desktop\Moneda\240935-235695\Obligatorio 1 - DA1\Testing\obj\Debu
 C:\Users\robak\Desktop\Moneda\240935-235695\Obligatorio 1 - DA1\Testing\obj\Debug\Testing.csproj.CopyComplete
 C:\Users\robak\Desktop\Moneda\240935-235695\Obligatorio 1 - DA1\Testing\obj\Debug\Testing.dll
 C:\Users\robak\Desktop\Moneda\240935-235695\Obligatorio 1 - DA1\Testing\obj\Debug\Testing.pdb
+C:\Users\robak\Desktop\pene\240935-235695\Obligatorio 1 - DA1\Testing\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+C:\Users\robak\Desktop\pene\240935-235695\Obligatorio 1 - DA1\Testing\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+C:\Users\robak\Desktop\pene\240935-235695\Obligatorio 1 - DA1\Testing\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+C:\Users\robak\Desktop\pene\240935-235695\Obligatorio 1 - DA1\Testing\bin\Debug\Testing.dll
+C:\Users\robak\Desktop\pene\240935-235695\Obligatorio 1 - DA1\Testing\bin\Debug\Testing.pdb
+C:\Users\robak\Desktop\pene\240935-235695\Obligatorio 1 - DA1\Testing\bin\Debug\Interfaz.exe
+C:\Users\robak\Desktop\pene\240935-235695\Obligatorio 1 - DA1\Testing\bin\Debug\Managers.dll
+C:\Users\robak\Desktop\pene\240935-235695\Obligatorio 1 - DA1\Testing\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
+C:\Users\robak\Desktop\pene\240935-235695\Obligatorio 1 - DA1\Testing\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
+C:\Users\robak\Desktop\pene\240935-235695\Obligatorio 1 - DA1\Testing\bin\Debug\Obligatorio 1 - DA1.dll
+C:\Users\robak\Desktop\pene\240935-235695\Obligatorio 1 - DA1\Testing\bin\Debug\Persistencia.dll
+C:\Users\robak\Desktop\pene\240935-235695\Obligatorio 1 - DA1\Testing\bin\Debug\EntityFramework.dll
+C:\Users\robak\Desktop\pene\240935-235695\Obligatorio 1 - DA1\Testing\bin\Debug\Interfaz.pdb
+C:\Users\robak\Desktop\pene\240935-235695\Obligatorio 1 - DA1\Testing\bin\Debug\Interfaz.exe.config
+C:\Users\robak\Desktop\pene\240935-235695\Obligatorio 1 - DA1\Testing\bin\Debug\Managers.pdb
+C:\Users\robak\Desktop\pene\240935-235695\Obligatorio 1 - DA1\Testing\bin\Debug\Obligatorio 1 - DA1.pdb
+C:\Users\robak\Desktop\pene\240935-235695\Obligatorio 1 - DA1\Testing\bin\Debug\Obligatorio 1 - DA1.dll.config
+C:\Users\robak\Desktop\pene\240935-235695\Obligatorio 1 - DA1\Testing\bin\Debug\Persistencia.pdb
+C:\Users\robak\Desktop\pene\240935-235695\Obligatorio 1 - DA1\Testing\bin\Debug\Persistencia.dll.config
+C:\Users\robak\Desktop\pene\240935-235695\Obligatorio 1 - DA1\Testing\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
+C:\Users\robak\Desktop\pene\240935-235695\Obligatorio 1 - DA1\Testing\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
+C:\Users\robak\Desktop\pene\240935-235695\Obligatorio 1 - DA1\Testing\bin\Debug\EntityFramework.xml
+C:\Users\robak\Desktop\pene\240935-235695\Obligatorio 1 - DA1\Testing\obj\Debug\Testing.csprojAssemblyReference.cache
+C:\Users\robak\Desktop\pene\240935-235695\Obligatorio 1 - DA1\Testing\obj\Debug\Testing.csproj.CoreCompileInputs.cache
+C:\Users\robak\Desktop\pene\240935-235695\Obligatorio 1 - DA1\Testing\obj\Debug\Testing.csproj.CopyComplete
+C:\Users\robak\Desktop\pene\240935-235695\Obligatorio 1 - DA1\Testing\obj\Debug\Testing.dll
+C:\Users\robak\Desktop\pene\240935-235695\Obligatorio 1 - DA1\Testing\obj\Debug\Testing.pdb

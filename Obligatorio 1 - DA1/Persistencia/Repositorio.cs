@@ -117,6 +117,7 @@ namespace Persistencia
                 {
                     buscado.Fecha = GastoModificado.Fecha;
                     buscado.Monto = GastoModificado.Monto;
+                    buscado.Moneda = GastoModificado.Moneda;
                     buscado.Categoria = GastoModificado.Categoria;
                     buscado.Descripcion = GastoModificado.Descripcion;
                 }
