@@ -7,13 +7,13 @@ namespace Persistencia.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class TablaPalabraClave : IMigrationMetadata
+    public sealed partial class CrearTablas : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(TablaPalabraClave));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(CrearTablas));
         
         string IMigrationMetadata.Id
         {
-            get { return "202011181238356_TablaPalabraClave"; }
+            get { return "202011181859091_CrearTablas"; }
         }
         
         string IMigrationMetadata.Source

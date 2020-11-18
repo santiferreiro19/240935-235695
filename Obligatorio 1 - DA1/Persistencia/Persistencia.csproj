@@ -59,17 +59,13 @@
     <Compile Include="ContextoFinanzas.cs" />
     <Compile Include="IListaGastos.cs" />
     <Compile Include="ILista.cs" />
-    <Compile Include="Migrations\202011131240322_CrearTablas.cs" />
-    <Compile Include="Migrations\202011131240322_CrearTablas.designer.cs">
-      <DependentUpon>202011131240322_CrearTablas.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202011181238356_TablaPalabraClave.cs" />
-    <Compile Include="Migrations\202011181238356_TablaPalabraClave.designer.cs">
-      <DependentUpon>202011181238356_TablaPalabraClave.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="IListaMonedas.cs" />
     <Compile Include="IListaPresupuestos.cs" />
+    <Compile Include="Migrations\202011181859091_CrearTablas.cs" />
+    <Compile Include="Migrations\202011181859091_CrearTablas.designer.cs">
+      <DependentUpon>202011181859091_CrearTablas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Repositorio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -84,11 +80,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202011131240322_CrearTablas.resx">
-      <DependentUpon>202011131240322_CrearTablas.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202011181238356_TablaPalabraClave.resx">
-      <DependentUpon>202011181238356_TablaPalabraClave.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202011181859091_CrearTablas.resx">
+      <DependentUpon>202011181859091_CrearTablas.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
