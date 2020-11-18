@@ -8,6 +8,7 @@ namespace Obligatorio_1___DA1
 {
     public class PalabraClave
     {
+        public int Id { get; set; }
         public String Palabra { set; get; }
 
         public PalabraClave()
