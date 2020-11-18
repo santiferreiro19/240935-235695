@@ -1,16 +1,22 @@
-﻿using Obligatorio_1___DA1.Excepciones;
+﻿using Obligatorio_1___DA1;
+using Obligatorio_1___DA1.Excepciones;
+using Persistencia;
 using System.Linq;
 
 namespace Managers
 {
     public class ManagerMoneda
     {
+        private Repositorio Repo;
         private const int MAX_CARACTERES_NOMBRE = 20;
         private const int MIN_CARACTERES_NOMBRE = 3;
         private const int MAX_CARACTERES_SIMBOLO = 3;
         private const int MIN_CARACTERES_SIMBOLO = 1;
         private const int CARACTERES_PERMITIDOS_COTIZACION = 3;
-        public ManagerMoneda() { }
+        public ManagerMoneda(Repositorio unRepositorio)
+        {
+            this.Repo = unRepositorio;
+        }
         public void ValidacionNombreMoneda(string unNombre)
         {
             if (unNombre.Length > MAX_CARACTERES_NOMBRE || unNombre.Length < MIN_CARACTERES_NOMBRE)
@@ -50,6 +56,25 @@ namespace Managers
                         throw new ExceptionCotizacion("El monto debe tener . y dos decimales");
                 }
             }
+        }
+        public void ValidacionAgregarMoneda(Moneda unaMoneda)
+        {
+            this.ValidacionNombreMoneda(unaMoneda.Nombre);
+            this.ValidacionSimboloMoneda(unaMoneda.Simbolo);
+            this.ValidacionCotizacionMoneda(unaMoneda.Cotizacion);
+            Repo.AgregarMoneda(unaMoneda);
+        }
+
+        public void ValidacionEliminarMoneda(Moneda unaMoneda)
+        {
+            Repo.EliminarMoneda(unaMoneda);
+        }
+        public void ValidacionModificacionMoneda(Moneda unaMoneda, Moneda Modificada)
+        {
+            this.ValidacionNombreMoneda(Modificada.Nombre);
+            this.ValidacionSimboloMoneda(Modificada.Simbolo);
+            this.ValidacionCotizacionMoneda(Modificada.Cotizacion);
+            Repo.ModificarMoneda(unaMoneda, Modificada);
         }
     }
 }

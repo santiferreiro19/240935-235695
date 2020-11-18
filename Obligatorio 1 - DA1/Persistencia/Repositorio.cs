@@ -10,11 +10,13 @@ namespace Persistencia
         private List<Categoria> ListaCategorias { get; set; }
         private List<Gasto> ListaGastos { get; set; }
         private List<Presupuesto> ListaPresupuestos { get; set; }
+        private List<Moneda> ListaMonedas { get; set; }
         public Repositorio()
         {
             this.ListaCategorias = new List<Categoria>();
             this.ListaGastos = new List<Gasto>();
             this.ListaPresupuestos = new List<Presupuesto>();
+            this.ListaMonedas = new List<Moneda>();
         }
 
         public List<Categoria> GetCategorias()
@@ -29,6 +31,10 @@ namespace Persistencia
         public List<Presupuesto> GetPresupuestos()
         {
             return this.ListaPresupuestos;
+        }
+        public List<Moneda> GetMonedas()
+        {
+            return this.ListaMonedas;
         }
         public void AgregarCategoria(Categoria unacategoria)
         {
@@ -179,6 +185,29 @@ namespace Persistencia
             foreach (Presupuesto actualizar in this.ListaPresupuestos)
             {
                 actualizar.getPresupuestosCategorias().Add(nuevaCategoria, 0M);
+            }
+        }
+
+        public void AgregarMoneda(Moneda NuevaMoneda) 
+        {
+            this.ListaMonedas.Add(NuevaMoneda);
+        }
+
+        public void EliminarMoneda(Moneda MonedaBorrar) 
+        {
+            this.ListaMonedas.Remove(MonedaBorrar);
+        }
+
+        public void ModificarMoneda(Moneda unaMoneda, Moneda MonedaModificada)
+        {
+            foreach (Moneda buscada in this.ListaMonedas)
+            {
+                if (buscada.Equals(unaMoneda))
+                {
+                    buscada.Nombre = MonedaModificada.Nombre;
+                    buscada.Simbolo = MonedaModificada.Simbolo;
+                    buscada.Cotizacion = MonedaModificada.Cotizacion;
+                }
             }
         }
     }

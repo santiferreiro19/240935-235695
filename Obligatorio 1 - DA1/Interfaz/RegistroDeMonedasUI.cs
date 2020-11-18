@@ -31,7 +31,7 @@ namespace Interfaz
 
         private void button1_Click(object sender, EventArgs e)
         {
-            ManagerMoneda manager = new ManagerMoneda();
+            ManagerMoneda manager = new ManagerMoneda(Repo);
 
         }
     }
