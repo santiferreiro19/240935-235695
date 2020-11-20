@@ -24,7 +24,11 @@ namespace Testing
         {
             String Nombre1 = "Entretenimiento";
             String Nombre2 = "Entretenimiento";
-            List<string> ListaPalabras = new List<string> { "Cine", "Carreras", "Teatro", "Caballos" };
+            PalabraClave palabra1 = new PalabraClave("Cine");
+            PalabraClave palabra2 = new PalabraClave("Carreras");
+            PalabraClave palabra3 = new PalabraClave("Teatro");
+            PalabraClave palabra4 = new PalabraClave("Caballos");
+            List<PalabraClave> ListaPalabras = new List<PalabraClave> { palabra1, palabra2, palabra3, palabra4 };
             Categoria Categoria1 = new Categoria(Nombre1, ListaPalabras);
             Categoria Categoria2 = new Categoria(Nombre2);
             Assert.IsNotNull(Categoria1);
@@ -41,8 +45,11 @@ namespace Testing
         [TestMethod]
         public void CreacionDeCategoriaValida()
         {
-            List<string> ListaPalabras = new List<string>
-            {"Cine","Carreras","Teatro","Caballos"};
+            PalabraClave palabra1 = new PalabraClave("Cine");
+            PalabraClave palabra2 = new PalabraClave("Carreras");
+            PalabraClave palabra3 = new PalabraClave("Teatro");
+            PalabraClave palabra4 = new PalabraClave("Caballos");
+            List<PalabraClave> ListaPalabras = new List<PalabraClave> { palabra1, palabra2, palabra3, palabra4 };
             Categoria UnaCategoria = new Categoria("Entretenimiento", ListaPalabras);
             Assert.IsNotNull(UnaCategoria);
         }
@@ -141,11 +148,16 @@ namespace Testing
             Repositorio Repositorio = new Repositorio();
             ManagerCategoria Manager = new ManagerCategoria(Repositorio);
             String nuevaPalabra = "Cine Mudo";
-            List<string> ListaPalabras = new List<string> { "Cine", "Carreras", "Futbol", "Teatro", "Parque" };
+            PalabraClave palabra1 = new PalabraClave("Cine");
+            PalabraClave palabra2 = new PalabraClave("Carreras");
+            PalabraClave palabra3 = new PalabraClave("Futbol");
+            PalabraClave palabra4 = new PalabraClave("Teatro");
+            PalabraClave palabra5 = new PalabraClave("Parque");
+            List<PalabraClave> ListaPalabras = new List<PalabraClave> { palabra1, palabra2, palabra3, palabra4, palabra5 };
             Categoria UnaCategoria = new Categoria("Cine", ListaPalabras);
             Manager.ValidacionAgregarCategoria(UnaCategoria);
             Manager.ValidacionAgregarUnaPalabraClave(UnaCategoria, nuevaPalabra);
-            Assert.AreEqual(UnaCategoria.ListaPalabras[5], nuevaPalabra);
+            Assert.AreEqual(UnaCategoria.ListaPalabras[5].Palabra, nuevaPalabra);
         }
 
         [ExpectedException(typeof(ExceptionPalabraClaveRepetida))]
@@ -155,7 +167,12 @@ namespace Testing
             Repositorio Repositorio = new Repositorio();
             ManagerCategoria Manager = new ManagerCategoria(Repositorio);
             String Repetida = "Cine";
-            List<string> ListaPalabras = new List<string> { "Cine", "Carreras", "Futbol", "Teatro", "Parque" };
+            PalabraClave palabra1 = new PalabraClave("Cine");
+            PalabraClave palabra2 = new PalabraClave("Carreras");
+            PalabraClave palabra3 = new PalabraClave("Futbol");
+            PalabraClave palabra4 = new PalabraClave("Teatro");
+            PalabraClave palabra5 = new PalabraClave("Parque");
+            List<PalabraClave> ListaPalabras = new List<PalabraClave> { palabra1, palabra2, palabra3, palabra4, palabra5 };
             Categoria UnaCategoria = new Categoria("Cine", ListaPalabras);
             Manager.ValidacionAgregarCategoria(UnaCategoria);
             Manager.ValidacionAgregarUnaPalabraClave(UnaCategoria, Repetida);
@@ -169,9 +186,19 @@ namespace Testing
             Repositorio Repositorio = new Repositorio();
             ManagerCategoria Manager = new ManagerCategoria(Repositorio);
             String nuevaPalabra = "Cine Mudo";
-            List<string> ListaPalabras = new List<string>
-            {"Palabra1","Palabra2","Palabra3","Palabra4", "Palabra5","Palabra6",
-                "Palabra7","Palabra8","Palabra9","Palabra10"};
+            PalabraClave palabra1 = new PalabraClave("palabra1");
+            PalabraClave palabra2 = new PalabraClave("palabra2");
+            PalabraClave palabra3 = new PalabraClave("palabra3");
+            PalabraClave palabra4 = new PalabraClave("palabra4");
+            PalabraClave palabra5 = new PalabraClave("palabra5");
+            PalabraClave palabra6 = new PalabraClave("palabra6");
+            PalabraClave palabra7 = new PalabraClave("palabra7");
+            PalabraClave palabra8 = new PalabraClave("palabra8");
+            PalabraClave palabra9 = new PalabraClave("palabra9");
+            PalabraClave palabra10 = new PalabraClave("palabra10");
+            List<PalabraClave> ListaPalabras = new List<PalabraClave>
+            {palabra1,palabra2,palabra3,palabra4,palabra5,palabra6,
+                palabra7,palabra8,palabra9,palabra10};
             Categoria UnaCategoria = new Categoria("Cine", ListaPalabras);
             Manager.ValidacionAgregarCategoria(UnaCategoria);
             Manager.ValidacionAgregarUnaPalabraClave(UnaCategoria, nuevaPalabra);
@@ -182,11 +209,16 @@ namespace Testing
         {
             Repositorio Repositorio = new Repositorio();
             ManagerCategoria Manager = new ManagerCategoria(Repositorio);
-            List<string> ListaPalabras = new List<string> { "Cine", "Carreras", "Futbol", "Teatro", "Parque" };
+            PalabraClave palabra1 = new PalabraClave("Cine");
+            PalabraClave palabra2 = new PalabraClave("Carreras");
+            PalabraClave palabra3 = new PalabraClave("Futbol");
+            PalabraClave palabra4 = new PalabraClave("Teatro");
+            PalabraClave palabra5 = new PalabraClave("Parque");
+            List<PalabraClave> ListaPalabras = new List<PalabraClave> { palabra1, palabra2, palabra3, palabra4, palabra5 };
             Categoria UnaCategoria = new Categoria("Cine", ListaPalabras);
             Manager.ValidacionAgregarCategoria(UnaCategoria);
             Manager.ValidacionModificacionDePalabraClave(UnaCategoria, "Futbol", "Bar");
-            Assert.AreEqual(ListaPalabras[4], "Bar");
+            Assert.AreEqual(ListaPalabras[4].Palabra, "Bar");
         }
 
         [ExpectedException(typeof(ExceptionListaPalabrasClaveLlena))]
@@ -195,8 +227,19 @@ namespace Testing
         {
             Repositorio Repositorio = new Repositorio();
             ManagerCategoria Manager = new ManagerCategoria(Repositorio);
-            List<string> ListaPalabras = new List<string>
-            {"Palabra1","Palabra2","Palabra3","Palabra4", "Palabra5","Palabra6", "Palabra7","Palabra8","Palabra9","Palabra10"};
+            PalabraClave palabra1 = new PalabraClave("palabra1");
+            PalabraClave palabra2 = new PalabraClave("palabra2");
+            PalabraClave palabra3 = new PalabraClave("palabra3");
+            PalabraClave palabra4 = new PalabraClave("palabra4");
+            PalabraClave palabra5 = new PalabraClave("palabra5");
+            PalabraClave palabra6 = new PalabraClave("palabra6");
+            PalabraClave palabra7 = new PalabraClave("palabra7");
+            PalabraClave palabra8 = new PalabraClave("palabra8");
+            PalabraClave palabra9 = new PalabraClave("palabra9");
+            PalabraClave palabra10 = new PalabraClave("palabra10");
+            List<PalabraClave> ListaPalabras = new List<PalabraClave>
+            {palabra1,palabra2,palabra3,palabra4,palabra5,palabra6,
+                palabra7,palabra8,palabra9,palabra10};
             Categoria UnaCategoria = new Categoria("Cine", ListaPalabras);
             Manager.ListaPalabrasClaveLLena(UnaCategoria);
         }
@@ -207,8 +250,17 @@ namespace Testing
         {
             Repositorio Repositorio = new Repositorio();
             ManagerCategoria Manager = new ManagerCategoria(Repositorio);
-            List<string> ListaPalabras = new List<string>
-            {"Palabra1","Palabra2","Palabra3","Palabra4", "Palabra5","Palabra6", "Palabra7","Palabra8"};
+            PalabraClave palabra1 = new PalabraClave("palabra1");
+            PalabraClave palabra2 = new PalabraClave("palabra2");
+            PalabraClave palabra3 = new PalabraClave("Palabra3");
+            PalabraClave palabra4 = new PalabraClave("palabra4");
+            PalabraClave palabra5 = new PalabraClave("palabra5");
+            PalabraClave palabra6 = new PalabraClave("palabra6");
+            PalabraClave palabra7 = new PalabraClave("palabra7");
+            PalabraClave palabra8 = new PalabraClave("palabra8");
+            List<PalabraClave> ListaPalabras = new List<PalabraClave>
+            {palabra1,palabra2,palabra3,palabra4,palabra5,palabra6,
+                palabra7,palabra8};
             Categoria UnaCategoria = new Categoria("Entretenimiento", ListaPalabras);
             String Repetida = "Palabra3";
             Manager.ValidacionAgregarCategoria(UnaCategoria);
@@ -216,14 +268,24 @@ namespace Testing
         }
 
         [TestMethod]
-        public void EliminarPalabraClaveTest() 
+        public void EliminarPalabraClaveTest()
         {
             Repositorio Repositorio = new Repositorio();
             ManagerCategoria Manager = new ManagerCategoria(Repositorio);
-            String PalabraElminar = "Palabra10";
-            List<string> ListaPalabras = new List<string>
-            {"Palabra1","Palabra2","Palabra3","Palabra4", "Palabra5","Palabra6",
-                "Palabra7","Palabra8","Palabra9","Palabra10"};
+            String PalabraElminar = "palabra10";
+            PalabraClave palabra1 = new PalabraClave("palabra1");
+            PalabraClave palabra2 = new PalabraClave("palabra2");
+            PalabraClave palabra3 = new PalabraClave("palabra3");
+            PalabraClave palabra4 = new PalabraClave("palabra4");
+            PalabraClave palabra5 = new PalabraClave("palabra5");
+            PalabraClave palabra6 = new PalabraClave("palabra6");
+            PalabraClave palabra7 = new PalabraClave("palabra7");
+            PalabraClave palabra8 = new PalabraClave("palabra8");
+            PalabraClave palabra9 = new PalabraClave("palabra9");
+            PalabraClave palabra10 = new PalabraClave("palabra10");
+            List<PalabraClave> ListaPalabras = new List<PalabraClave>
+            {palabra1,palabra2,palabra3,palabra4,palabra5,palabra6,
+                palabra7,palabra8,palabra9,palabra10};
             Categoria UnaCategoria = new Categoria("Cine", ListaPalabras);
             Repositorio.AgregarCategoria(UnaCategoria);
             Manager.EliminarPalabraClave(PalabraElminar);

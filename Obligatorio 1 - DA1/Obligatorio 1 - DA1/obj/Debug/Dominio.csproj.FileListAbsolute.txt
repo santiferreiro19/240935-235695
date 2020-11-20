@@ -46,3 +46,57 @@ C:\Users\santi\OneDrive\Escritorio\240935-235695\Obligatorio 1 - DA1\Obligatorio
 C:\Users\santi\OneDrive\Escritorio\240935-235695\Obligatorio 1 - DA1\Obligatorio 1 - DA1\obj\Debug\Dominio.csproj.CoreCompileInputs.cache
 C:\Users\santi\OneDrive\Escritorio\240935-235695\Obligatorio 1 - DA1\Obligatorio 1 - DA1\obj\Debug\Obligatorio 1 - DA1.dll
 C:\Users\santi\OneDrive\Escritorio\240935-235695\Obligatorio 1 - DA1\Obligatorio 1 - DA1\obj\Debug\Obligatorio 1 - DA1.pdb
+C:\Users\robak\Desktop\Development\Obligatorio 1 - DA1\Obligatorio 1 - DA1\bin\Debug\Obligatorio 1 - DA1.dll.config
+C:\Users\robak\Desktop\Development\Obligatorio 1 - DA1\Obligatorio 1 - DA1\bin\Debug\EntityFramework.dll
+C:\Users\robak\Desktop\Development\Obligatorio 1 - DA1\Obligatorio 1 - DA1\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\robak\Desktop\Development\Obligatorio 1 - DA1\Obligatorio 1 - DA1\bin\Debug\EntityFramework.xml
+C:\Users\robak\Desktop\Development\Obligatorio 1 - DA1\Obligatorio 1 - DA1\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\robak\Desktop\Development\Obligatorio 1 - DA1\Obligatorio 1 - DA1\obj\Debug\Dominio.csproj.CopyComplete
+C:\Users\santi\OneDrive\Escritorio\240935-235695-feature-ImplementacionMoneda\Obligatorio 1 - DA1\Obligatorio 1 - DA1\bin\Debug\Obligatorio 1 - DA1.dll.config
+C:\Users\santi\OneDrive\Escritorio\240935-235695-feature-ImplementacionMoneda\Obligatorio 1 - DA1\Obligatorio 1 - DA1\bin\Debug\Obligatorio 1 - DA1.dll
+C:\Users\santi\OneDrive\Escritorio\240935-235695-feature-ImplementacionMoneda\Obligatorio 1 - DA1\Obligatorio 1 - DA1\bin\Debug\Obligatorio 1 - DA1.pdb
+C:\Users\santi\OneDrive\Escritorio\240935-235695-feature-ImplementacionMoneda\Obligatorio 1 - DA1\Obligatorio 1 - DA1\bin\Debug\EntityFramework.dll
+C:\Users\santi\OneDrive\Escritorio\240935-235695-feature-ImplementacionMoneda\Obligatorio 1 - DA1\Obligatorio 1 - DA1\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\santi\OneDrive\Escritorio\240935-235695-feature-ImplementacionMoneda\Obligatorio 1 - DA1\Obligatorio 1 - DA1\bin\Debug\EntityFramework.xml
+C:\Users\santi\OneDrive\Escritorio\240935-235695-feature-ImplementacionMoneda\Obligatorio 1 - DA1\Obligatorio 1 - DA1\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\santi\OneDrive\Escritorio\240935-235695-feature-ImplementacionMoneda\Obligatorio 1 - DA1\Obligatorio 1 - DA1\obj\Debug\Dominio.csprojAssemblyReference.cache
+C:\Users\santi\OneDrive\Escritorio\240935-235695-feature-ImplementacionMoneda\Obligatorio 1 - DA1\Obligatorio 1 - DA1\obj\Debug\Dominio.csproj.CoreCompileInputs.cache
+C:\Users\santi\OneDrive\Escritorio\240935-235695-feature-ImplementacionMoneda\Obligatorio 1 - DA1\Obligatorio 1 - DA1\obj\Debug\Dominio.csproj.CopyComplete
+C:\Users\santi\OneDrive\Escritorio\240935-235695-feature-ImplementacionMoneda\Obligatorio 1 - DA1\Obligatorio 1 - DA1\obj\Debug\Obligatorio 1 - DA1.dll
+C:\Users\santi\OneDrive\Escritorio\240935-235695-feature-ImplementacionMoneda\Obligatorio 1 - DA1\Obligatorio 1 - DA1\obj\Debug\Obligatorio 1 - DA1.pdb
+C:\Users\robak\Desktop\Arreglar\240935-235695\Obligatorio 1 - DA1\Obligatorio 1 - DA1\bin\Debug\Obligatorio 1 - DA1.dll.config
+C:\Users\robak\Desktop\Arreglar\240935-235695\Obligatorio 1 - DA1\Obligatorio 1 - DA1\bin\Debug\Obligatorio 1 - DA1.dll
+C:\Users\robak\Desktop\Arreglar\240935-235695\Obligatorio 1 - DA1\Obligatorio 1 - DA1\bin\Debug\Obligatorio 1 - DA1.pdb
+C:\Users\robak\Desktop\Arreglar\240935-235695\Obligatorio 1 - DA1\Obligatorio 1 - DA1\bin\Debug\EntityFramework.dll
+C:\Users\robak\Desktop\Arreglar\240935-235695\Obligatorio 1 - DA1\Obligatorio 1 - DA1\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\robak\Desktop\Arreglar\240935-235695\Obligatorio 1 - DA1\Obligatorio 1 - DA1\bin\Debug\EntityFramework.xml
+C:\Users\robak\Desktop\Arreglar\240935-235695\Obligatorio 1 - DA1\Obligatorio 1 - DA1\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\robak\Desktop\Arreglar\240935-235695\Obligatorio 1 - DA1\Obligatorio 1 - DA1\obj\Debug\Dominio.csprojAssemblyReference.cache
+C:\Users\robak\Desktop\Arreglar\240935-235695\Obligatorio 1 - DA1\Obligatorio 1 - DA1\obj\Debug\Dominio.csproj.CoreCompileInputs.cache
+C:\Users\robak\Desktop\Arreglar\240935-235695\Obligatorio 1 - DA1\Obligatorio 1 - DA1\obj\Debug\Dominio.csproj.CopyComplete
+C:\Users\robak\Desktop\Arreglar\240935-235695\Obligatorio 1 - DA1\Obligatorio 1 - DA1\obj\Debug\Obligatorio 1 - DA1.dll
+C:\Users\robak\Desktop\Arreglar\240935-235695\Obligatorio 1 - DA1\Obligatorio 1 - DA1\obj\Debug\Obligatorio 1 - DA1.pdb
+C:\Users\robak\Desktop\Moneda\240935-235695\Obligatorio 1 - DA1\Obligatorio 1 - DA1\bin\Debug\Obligatorio 1 - DA1.dll.config
+C:\Users\robak\Desktop\Moneda\240935-235695\Obligatorio 1 - DA1\Obligatorio 1 - DA1\bin\Debug\Obligatorio 1 - DA1.dll
+C:\Users\robak\Desktop\Moneda\240935-235695\Obligatorio 1 - DA1\Obligatorio 1 - DA1\bin\Debug\Obligatorio 1 - DA1.pdb
+C:\Users\robak\Desktop\Moneda\240935-235695\Obligatorio 1 - DA1\Obligatorio 1 - DA1\bin\Debug\EntityFramework.dll
+C:\Users\robak\Desktop\Moneda\240935-235695\Obligatorio 1 - DA1\Obligatorio 1 - DA1\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\robak\Desktop\Moneda\240935-235695\Obligatorio 1 - DA1\Obligatorio 1 - DA1\bin\Debug\EntityFramework.xml
+C:\Users\robak\Desktop\Moneda\240935-235695\Obligatorio 1 - DA1\Obligatorio 1 - DA1\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\robak\Desktop\Moneda\240935-235695\Obligatorio 1 - DA1\Obligatorio 1 - DA1\obj\Debug\Dominio.csprojAssemblyReference.cache
+C:\Users\robak\Desktop\Moneda\240935-235695\Obligatorio 1 - DA1\Obligatorio 1 - DA1\obj\Debug\Dominio.csproj.CoreCompileInputs.cache
+C:\Users\robak\Desktop\Moneda\240935-235695\Obligatorio 1 - DA1\Obligatorio 1 - DA1\obj\Debug\Dominio.csproj.CopyComplete
+C:\Users\robak\Desktop\Moneda\240935-235695\Obligatorio 1 - DA1\Obligatorio 1 - DA1\obj\Debug\Obligatorio 1 - DA1.dll
+C:\Users\robak\Desktop\Moneda\240935-235695\Obligatorio 1 - DA1\Obligatorio 1 - DA1\obj\Debug\Obligatorio 1 - DA1.pdb
+C:\Users\robak\Desktop\pene\240935-235695\Obligatorio 1 - DA1\Obligatorio 1 - DA1\bin\Debug\Obligatorio 1 - DA1.dll.config
+C:\Users\robak\Desktop\pene\240935-235695\Obligatorio 1 - DA1\Obligatorio 1 - DA1\bin\Debug\Obligatorio 1 - DA1.dll
+C:\Users\robak\Desktop\pene\240935-235695\Obligatorio 1 - DA1\Obligatorio 1 - DA1\bin\Debug\Obligatorio 1 - DA1.pdb
+C:\Users\robak\Desktop\pene\240935-235695\Obligatorio 1 - DA1\Obligatorio 1 - DA1\bin\Debug\EntityFramework.dll
+C:\Users\robak\Desktop\pene\240935-235695\Obligatorio 1 - DA1\Obligatorio 1 - DA1\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\robak\Desktop\pene\240935-235695\Obligatorio 1 - DA1\Obligatorio 1 - DA1\bin\Debug\EntityFramework.xml
+C:\Users\robak\Desktop\pene\240935-235695\Obligatorio 1 - DA1\Obligatorio 1 - DA1\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\robak\Desktop\pene\240935-235695\Obligatorio 1 - DA1\Obligatorio 1 - DA1\obj\Debug\Dominio.csprojAssemblyReference.cache
+C:\Users\robak\Desktop\pene\240935-235695\Obligatorio 1 - DA1\Obligatorio 1 - DA1\obj\Debug\Dominio.csproj.CoreCompileInputs.cache
+C:\Users\robak\Desktop\pene\240935-235695\Obligatorio 1 - DA1\Obligatorio 1 - DA1\obj\Debug\Dominio.csproj.CopyComplete
+C:\Users\robak\Desktop\pene\240935-235695\Obligatorio 1 - DA1\Obligatorio 1 - DA1\obj\Debug\Obligatorio 1 - DA1.dll
+C:\Users\robak\Desktop\pene\240935-235695\Obligatorio 1 - DA1\Obligatorio 1 - DA1\obj\Debug\Obligatorio 1 - DA1.pdb

@@ -1,10 +1,6 @@
 ﻿using Obligatorio_1___DA1;
-using System;
-using System.Collections.Generic;
+using Persistencia.Configuraciones;
 using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Persistencia
 {
@@ -13,6 +9,14 @@ namespace Persistencia
         public DbSet<Categoria> Categorias { get; set; }
         public DbSet<Gasto> Gastos { get; set; }
         public DbSet<Presupuesto> Presupuestos { get; set; }
+        public DbSet<Moneda> Monedas { get; set; }
 
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Configurations.Add(new ConfiguracionCategoria());
+            modelBuilder.Configurations.Add(new ConfiguracionGasto());
+            modelBuilder.Configurations.Add(new ConfiguracionPresupuesto());
+            modelBuilder.Configurations.Add(new ConfiguracionMoneda());
+        }
     }
 }

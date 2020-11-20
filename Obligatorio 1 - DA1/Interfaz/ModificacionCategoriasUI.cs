@@ -53,7 +53,7 @@ namespace Interfaz
         {
             if (lstPalabrasClave.SelectedIndex != -1)
             {
-                txtPalabraClave.Text = (String)lstPalabrasClave.SelectedItem;
+                txtPalabraClave.Text = (lstPalabrasClave.SelectedItem).ToString();
                 lstPalabrasClave.DataSource = CategoriaSeleccionada.ListaPalabras;
             }
         }
