@@ -1,6 +1,7 @@
 ﻿using Obligatorio_1___DA1;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 
 namespace Persistencia
@@ -19,7 +20,8 @@ namespace Persistencia
         {
             using (var Contexto = new ContextoFinanzas())
             {
-                Contexto.Monedas.Remove(entidad);
+                Moneda unaMoneda = Contexto.Monedas.FirstOrDefault(u => u.Id == entidad.Id);
+                Contexto.Monedas.Remove(unaMoneda);
                 Contexto.SaveChanges();
             }
         }
@@ -43,8 +45,20 @@ namespace Persistencia
         {
             using (var Contexto = new ContextoFinanzas())
             {
-                List<Moneda> Lista = Contexto.Monedas.Where(x => x.Equals(entidad)).ToList();
-                return Lista.Count() != 0;
+                Moneda unaMoneda = Contexto.Monedas.FirstOrDefault(u => u.Id == entidad.Id);
+                return unaMoneda != null;
+            }
+        }
+        public void Update(Moneda unaMoneda)
+        {
+            using (var Contexto = new ContextoFinanzas())
+            {
+                Moneda monedaEnBd = Contexto.Monedas.FirstOrDefault(u => u.Id == unaMoneda.Id);
+                monedaEnBd.Cotizacion = unaMoneda.Cotizacion;
+                monedaEnBd.Nombre = unaMoneda.Nombre;
+                monedaEnBd.Simbolo = unaMoneda.Simbolo;
+                Contexto.Entry(monedaEnBd).State = EntityState.Modified;
+                Contexto.SaveChanges();
             }
         }
     }

@@ -11,7 +11,18 @@ namespace Testing
     [TestClass]
     public class CategoriaTest
     {
-   
+        Repositorio Repo;
+
+        [TestInitialize]
+        public void Initialize()
+        {
+            using (ContextoFinanzas db = new ContextoFinanzas())
+            {
+                db.Database.Initialize(true);
+            }
+
+        }
+
         [TestMethod]
         public void ConstructorSinParametrosTest()
         {
@@ -99,7 +110,7 @@ namespace Testing
             ManagerCategoria Manager = new ManagerCategoria(Repositorio);
             Categoria UnaCategoria = new Categoria("Cine");
             Manager.ValidacionAgregarCategoria(UnaCategoria);
-            Assert.AreEqual(UnaCategoria.Nombre, Repositorio.GetCategorias()[0].Nombre);
+            Assert.AreEqual(UnaCategoria.Nombre, Repositorio.GetCategorias().GetAll()[0].Nombre);
         }
 
         [TestMethod]
@@ -112,7 +123,8 @@ namespace Testing
             Categoria UnaCategoria = new Categoria(NombreAnterior);
             Manager.ValidacionAgregarCategoria(UnaCategoria);
             Manager.ValidacionModificarNombreCategoria(UnaCategoria, NuevoNombre);
-            Assert.AreEqual(UnaCategoria.Nombre, NuevoNombre);
+            Categoria palabraDB = Repositorio.GetCategorias().Get(UnaCategoria.Id);
+            Assert.AreEqual(palabraDB.Nombre, NuevoNombre);
         }
 
         [ExpectedException(typeof(ExceptionNombreCategoria))]
@@ -141,7 +153,7 @@ namespace Testing
             Manager.ValidacionAgregarCategoria(UnaCategoria);
             Manager.ValidacionModificarNombreCategoria(UnaCategoria, NuevoNombre);
         }
-       
+
         [TestMethod]
         public void AgregarUnaPalabraClaveCuandoHayLugarTest()
         {
@@ -154,10 +166,11 @@ namespace Testing
             PalabraClave palabra4 = new PalabraClave("Teatro");
             PalabraClave palabra5 = new PalabraClave("Parque");
             List<PalabraClave> ListaPalabras = new List<PalabraClave> { palabra1, palabra2, palabra3, palabra4, palabra5 };
-            Categoria UnaCategoria = new Categoria("Cine", ListaPalabras);
+            Categoria UnaCategoria = new Categoria("Mudo", ListaPalabras);
             Manager.ValidacionAgregarCategoria(UnaCategoria);
             Manager.ValidacionAgregarUnaPalabraClave(UnaCategoria, nuevaPalabra);
-            Assert.AreEqual(UnaCategoria.ListaPalabras[5].Palabra, nuevaPalabra);
+            Categoria palabraDB = Repositorio.GetCategorias().Get(UnaCategoria.Id);
+            Assert.IsNotNull(palabraDB.ListaPalabras.Find(x => x.Palabra == nuevaPalabra));
         }
 
         [ExpectedException(typeof(ExceptionPalabraClaveRepetida))]
@@ -173,7 +186,7 @@ namespace Testing
             PalabraClave palabra4 = new PalabraClave("Teatro");
             PalabraClave palabra5 = new PalabraClave("Parque");
             List<PalabraClave> ListaPalabras = new List<PalabraClave> { palabra1, palabra2, palabra3, palabra4, palabra5 };
-            Categoria UnaCategoria = new Categoria("Cine", ListaPalabras);
+            Categoria UnaCategoria = new Categoria("Balet", ListaPalabras);
             Manager.ValidacionAgregarCategoria(UnaCategoria);
             Manager.ValidacionAgregarUnaPalabraClave(UnaCategoria, Repetida);
         }
@@ -217,8 +230,9 @@ namespace Testing
             List<PalabraClave> ListaPalabras = new List<PalabraClave> { palabra1, palabra2, palabra3, palabra4, palabra5 };
             Categoria UnaCategoria = new Categoria("Cine", ListaPalabras);
             Manager.ValidacionAgregarCategoria(UnaCategoria);
-            Manager.ValidacionModificacionDePalabraClave(UnaCategoria, "Futbol", "Bar");
-            Assert.AreEqual(ListaPalabras[4].Palabra, "Bar");
+            Manager.ValidacionModificacionDePalabraClave(UnaCategoria, "Parque", "Bar");
+            Categoria categoriaValidar = Repositorio.GetCategorias().Get(UnaCategoria.Id);
+            Assert.AreEqual(categoriaValidar.ListaPalabras[4].Palabra, "Bar");
         }
 
         [ExpectedException(typeof(ExceptionListaPalabrasClaveLlena))]
@@ -289,7 +303,23 @@ namespace Testing
             Categoria UnaCategoria = new Categoria("Cine", ListaPalabras);
             Repositorio.AgregarCategoria(UnaCategoria);
             Manager.EliminarPalabraClave(PalabraElminar);
-            Assert.AreEqual(9, UnaCategoria.ListaPalabras.Count);
+            Categoria categoriaValidar = Repositorio.GetCategorias().Get(UnaCategoria.Id);
+            Assert.AreEqual(9, categoriaValidar.ListaPalabras.Count);
+        }
+        
+        [TestCleanup]
+        public void CleanUp()
+        {
+
+            using (ContextoFinanzas db = new ContextoFinanzas())
+            {
+                db.Database.ExecuteSqlCommand("DELETE FROM PRESUPUESTOES;");
+                db.Database.ExecuteSqlCommand("DELETE FROM GASTOES;");
+                db.Database.ExecuteSqlCommand("DELETE FROM PALABRACLAVES;");
+                db.Database.ExecuteSqlCommand("DELETE FROM CATEGORIAS;");
+                db.Database.ExecuteSqlCommand("DELETE FROM MONEDAS;");
+
+            }
         }
     }
 }

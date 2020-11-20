@@ -7,32 +7,38 @@ namespace Persistencia
 {
     public class Repositorio
     {
-        private List<Categoria> ListaCategorias { get; set; }
-        private List<Gasto> ListaGastos { get; set; }
-        private List<Presupuesto> ListaPresupuestos { get; set; }
-        private List<Moneda> ListaMonedas { get; set; }
+        private ILista<Categoria> ListaCategorias { get; set; }
+        private ILista<Gasto> ListaGastos { get; set; }
+        private ILista<Presupuesto> ListaPresupuestos { get; set; }
+        private ILista<Moneda> ListaMonedas { get; set; }
+        private ILista<PalabraClave> ListaPalabrasClave { get; set; }
         public Repositorio()
         {
-            this.ListaCategorias = new List<Categoria>();
-            this.ListaGastos = new List<Gasto>();
-            this.ListaPresupuestos = new List<Presupuesto>();
-            this.ListaMonedas = new List<Moneda>();
+            this.ListaCategorias = new IListaCategorias();
+            this.ListaGastos = new IListaGastos();
+            this.ListaPresupuestos = new IListaPresupuestos();
+            this.ListaMonedas = new IListaMonedas();
+            this.ListaPalabrasClave = new IListaPalabraClave();
         }
 
-        public List<Categoria> GetCategorias()
+        public ILista<Categoria> GetCategorias()
         {
             return this.ListaCategorias;
         }
+        public ILista<PalabraClave> GetPalabrasClave()
+        {
+            return this.ListaPalabrasClave;
+        }
 
-        public List<Gasto> GetGastos()
+        public ILista<Gasto> GetGastos()
         {
             return this.ListaGastos;
         }
-        public List<Presupuesto> GetPresupuestos()
+        public ILista<Presupuesto> GetPresupuestos()
         {
             return this.ListaPresupuestos;
         }
-        public List<Moneda> GetMonedas()
+        public ILista<Moneda> GetMonedas()
         {
             return this.ListaMonedas;
         }
@@ -44,40 +50,42 @@ namespace Persistencia
 
         public void ModificarNombreCategoria(Categoria unacategoria, String NuevoNombre)
         {
-            foreach (Categoria buscada in this.ListaCategorias)
+            foreach (Categoria buscada in this.ListaCategorias.GetAll())
             {
-                if (buscada.Equals(unacategoria))
+                if (buscada.Id == unacategoria.Id)
                 {
                     buscada.Nombre = NuevoNombre;
+                    this.GetCategorias().Update(buscada);
                 }
             }
         }
 
         public void AgregarPalabraClave(Categoria unacategoria, String NuevaPalabra)
         {
-            foreach (Categoria buscada in this.ListaCategorias)
+            foreach (Categoria buscada in this.ListaCategorias.GetAll())
             {
-                if (buscada.Equals(unacategoria))
+                if (buscada.Id == unacategoria.Id)
                 {
                     PalabraClave palabra = new PalabraClave(NuevaPalabra);
                     buscada.ListaPalabras.Add(palabra);
+                    this.GetCategorias().Update(buscada);
                 }
             }
         }
 
         public void ModificarPalabraClave(Categoria unacategoria, String NuevaPalabra, String PalabraAnterior)
         {
-            foreach (Categoria buscada in this.ListaCategorias)
+            foreach (Categoria buscada in this.ListaCategorias.GetAll())
             {
-                if (buscada.Equals(unacategoria))
+                if (buscada.Id==unacategoria.Id)
                 {
                     for (int i = 0; i < unacategoria.ListaPalabras.Count(); i++)
                     {
                         if (PalabraAnterior == unacategoria.ListaPalabras[i].Palabra)
                         {
-                            unacategoria.ListaPalabras.RemoveAt(i);
-                            PalabraClave palabra = new PalabraClave(NuevaPalabra);
-                            unacategoria.ListaPalabras.Add(palabra);
+                            buscada.ListaPalabras[i].Palabra = NuevaPalabra;
+                            this.GetCategorias().Update(buscada);
+                            
                         }
                     }
                 }
@@ -86,12 +94,15 @@ namespace Persistencia
 
         public void EliminarPalabraClave(String PalabraABorrar)
         {
-            foreach (Categoria buscada in this.ListaCategorias)
+            foreach (Categoria buscada in this.ListaCategorias.GetAll())
             {
-                PalabraClave buscar = new PalabraClave(PalabraABorrar);
-                if (buscada.ListaPalabras.Any(x => x.Palabra == PalabraABorrar))
+                foreach (PalabraClave palabraBusqueda in buscada.ListaPalabras)
                 {
-                    buscada.ListaPalabras.RemoveAll(x => x.Palabra == PalabraABorrar);
+                    if (palabraBusqueda.Palabra == PalabraABorrar)
+                    {
+                        this.GetPalabrasClave().Remove(palabraBusqueda);
+
+                    }
                 }
             }
         }
@@ -111,15 +122,17 @@ namespace Persistencia
 
         public void ModificarGasto(Gasto unGasto, Gasto GastoModificado)
         {
-            foreach (Gasto buscado in this.ListaGastos)
+            foreach (Gasto buscado in this.ListaGastos.GetAll())
             {
-                if (buscado.Equals(unGasto))
+                if (buscado.Id == unGasto.Id)
                 {
                     buscado.Fecha = GastoModificado.Fecha;
                     buscado.Monto = GastoModificado.Monto;
                     buscado.Moneda = GastoModificado.Moneda;
                     buscado.Categoria = GastoModificado.Categoria;
                     buscado.Descripcion = GastoModificado.Descripcion;
+                    GastoModificado.Id = unGasto.Id;
+                    this.ListaGastos.Update(GastoModificado);
                 }
             }
         }
@@ -130,7 +143,7 @@ namespace Persistencia
             var Contador = 0;
             foreach (String buscada in palabrasBuscadas)
             {
-                foreach (Categoria cadaCategoria in this.ListaCategorias)
+                foreach (Categoria cadaCategoria in this.ListaCategorias.GetAll())
                 {
                     PalabraClave palabraABuscar = new PalabraClave(buscada);
                     if (cadaCategoria.ListaPalabras.Any(x => x.Palabra == buscada))
@@ -144,7 +157,7 @@ namespace Persistencia
                 }
             }
 
-            if (Contador == 0 || Contador > 1)
+            if (Contador == 0)
             {
                 Retorno = new Categoria();
                 return Retorno;
@@ -156,11 +169,12 @@ namespace Persistencia
         }
         public void ModificacionCategoriaGasto(Gasto unGasto, Categoria categoria)
         {
-            foreach (Gasto buscado in this.ListaGastos)
+            foreach (Gasto buscado in this.ListaGastos.GetAll())
             {
-                if (buscado.Equals(unGasto))
+                if (buscado.Id == unGasto.Id)
                 {
                     buscado.Categoria = categoria;
+                    this.ListaGastos.Update(buscado);
                 }
             }
         }
@@ -172,9 +186,9 @@ namespace Persistencia
 
         public void ModificarMontoPresupuesto(Presupuesto unPresupuesto, Categoria unaCategoria, decimal unNuevoMonto)
         {
-            foreach (Presupuesto Buscado in this.ListaPresupuestos)
+            foreach (Presupuesto Buscado in this.ListaPresupuestos.GetAll())
             {
-                if (Buscado == unPresupuesto)
+                if (Buscado.Id == unPresupuesto.Id)
                 {
                     unPresupuesto.getPresupuestosCategorias()[unaCategoria] = unNuevoMonto;
                 }
@@ -183,7 +197,7 @@ namespace Persistencia
 
         public void ActualizarCategoriaEnPresupuestos(Categoria nuevaCategoria)
         {
-            foreach (Presupuesto actualizar in this.ListaPresupuestos)
+            foreach (Presupuesto actualizar in this.ListaPresupuestos.GetAll())
             {
                 actualizar.getPresupuestosCategorias().Add(nuevaCategoria, 0M);
             }
@@ -201,15 +215,8 @@ namespace Persistencia
 
         public void ModificarMoneda(Moneda unaMoneda, Moneda MonedaModificada)
         {
-            foreach (Moneda buscada in this.ListaMonedas)
-            {
-                if (buscada.Equals(unaMoneda))
-                {
-                    buscada.Nombre = MonedaModificada.Nombre;
-                    buscada.Simbolo = MonedaModificada.Simbolo;
-                    buscada.Cotizacion = MonedaModificada.Cotizacion;
-                }
-            }
+                    MonedaModificada.Id = unaMoneda.Id;
+            this.ListaMonedas.Update(MonedaModificada);
         }
     }
 }

@@ -11,6 +11,15 @@ namespace Testing
     [TestClass]
     public class GastoTest
     {
+        [TestInitialize]
+        public void Initialize()
+        {
+            using (ContextoFinanzas db = new ContextoFinanzas())
+            {
+                db.Database.Initialize(true);
+            }
+
+        }
         [TestMethod]
         public void ConstructorSinParametrosTest()
         {
@@ -46,7 +55,7 @@ namespace Testing
             DateTime FechaRandom = new DateTime(2019, 04, 05);
             Moneda NuevaMoneda = new Moneda("Dolar", "USD", 43.00M);
             Gasto UnaGasto = new Gasto("Entradas al teatro", 1.34M, UnaCategoria, FechaRandom, NuevaMoneda);
-            Assert.AreEqual("Descripcion: Entradas al teatro Monto: 1.34 Categoria: Teatro Fecha: 05/04/2019", UnaGasto.ToString());
+            Assert.AreEqual("Descripcion: Entradas al teatro Monto: 1.34 Categoria: Teatro Fecha: 4/5/2019", UnaGasto.ToString());
         }
 
         [TestMethod]
@@ -148,7 +157,7 @@ namespace Testing
             Moneda NuevaMoneda = new Moneda("Dolar", "USD", 43.00M);
             Gasto UnGasto = new Gasto("Descripcion x", 100.00M, UnaCategoria, new DateTime(2018, 1, 1), NuevaMoneda);
             unManager.ValidacionAgregarGasto(UnGasto);
-            Assert.AreEqual(UnGasto.Descripcion, Repositorio.GetGastos()[0].Descripcion);
+            Assert.AreEqual(UnGasto.Descripcion, Repositorio.GetGastos().GetAll()[0].Descripcion);
         }
 
         [TestMethod]
@@ -176,7 +185,8 @@ namespace Testing
             unManager.ValidacionAgregarGasto(UnGasto);
             Gasto GastoModificado = new Gasto("Nueva descrp", 100.00M, UnaCategoria, new DateTime(2018, 1, 1), NuevaMoneda);
             unManager.ValidacionModificacionGasto(UnGasto, GastoModificado);
-            Assert.AreEqual(UnGasto.Descripcion, nuevaDescripcion);
+            Gasto gastoValidar = Repositorio.GetGastos().Get(UnGasto.Id);
+            Assert.AreEqual(gastoValidar.Descripcion, nuevaDescripcion);
         }
 
         [TestMethod]
@@ -190,7 +200,8 @@ namespace Testing
             unManager.ValidacionAgregarGasto(UnGasto);
             Gasto GastoModificado = new Gasto("Descripcion x", 102.00M, UnaCategoria, new DateTime(2018, 1, 1), NuevaMoneda);
             unManager.ValidacionModificacionGasto(UnGasto, GastoModificado);
-            Assert.AreEqual((decimal)102.00M, UnGasto.Monto);
+            Gasto gastoValidar = Repositorio.GetGastos().Get(UnGasto.Id);
+            Assert.AreEqual((decimal)102.00M, gastoValidar.Monto);
         }
 
         [TestMethod]
@@ -205,7 +216,8 @@ namespace Testing
             DateTime nuevaFecha = new DateTime(2019, 1, 1);
             Gasto GastoModificado = new Gasto("Descripcion x", 100.00M, UnaCategoria, nuevaFecha, NuevaMoneda);
             unManager.ValidacionModificacionGasto(UnGasto, GastoModificado);
-            Assert.AreEqual(nuevaFecha, UnGasto.Fecha);
+            Gasto gastoValidar = Repositorio.GetGastos().Get(UnGasto.Id);
+            Assert.AreEqual(nuevaFecha, gastoValidar.Fecha);
         }
 
         [TestMethod]
@@ -213,30 +225,30 @@ namespace Testing
         {
             Repositorio unRepositorio = new Repositorio();
             ManagerGasto unManager = new ManagerGasto(unRepositorio);
-            PalabraClave palabraTemporal1 = new PalabraClave("Cine");
+            PalabraClave palabraTemporal1 = new PalabraClave("Cine Mudo");
             PalabraClave palabraTemporal2 = new PalabraClave("Carreras");
             PalabraClave palabraTemporal3 = new PalabraClave("Teatro");
             PalabraClave palabraTemporal4 = new PalabraClave("Autos");
             List<PalabraClave> Lista = new List<PalabraClave> { palabraTemporal1, palabraTemporal2, palabraTemporal3, palabraTemporal4 };
-            Categoria UnaCategoria = new Categoria("CategoriaConAutos", Lista);
+            Categoria UnaCategoria = new Categoria("CategoriaAuto", Lista);
             String DescripcionGasto = "Autos";
             unRepositorio.AgregarCategoria(UnaCategoria);
-            Assert.AreEqual(UnaCategoria, unManager.ValidacionBusquedaCategorias(DescripcionGasto));
+            Assert.IsTrue(UnaCategoria.Id == unManager.ValidacionBusquedaCategorias(DescripcionGasto).Id);
         }
         [TestMethod]
         public void ValidacionBusquedaCategoriaMultiplesPalabrasClaveGastoTest()
         {
             Repositorio unRepositorio = new Repositorio();
             ManagerGasto unManager = new ManagerGasto(unRepositorio);
-            PalabraClave palabraTemporal1 = new PalabraClave("Cine");
+            PalabraClave palabraTemporal1 = new PalabraClave("Cines");
             PalabraClave palabraTemporal2 = new PalabraClave("Carreras");
             PalabraClave palabraTemporal3 = new PalabraClave("Teatro");
             PalabraClave palabraTemporal4 = new PalabraClave("Autos");
             List<PalabraClave> Lista = new List<PalabraClave> { palabraTemporal1, palabraTemporal2, palabraTemporal3, palabraTemporal4 };
-            Categoria UnaCategoria = new Categoria("CategoriaConAutos", Lista);
+            Categoria UnaCategoria = new Categoria("CategoriaAutos", Lista);
             String DescripcionGasto = "Autos de Carreras";
             unRepositorio.AgregarCategoria(UnaCategoria);
-            Assert.AreEqual(UnaCategoria, unManager.ValidacionBusquedaCategorias(DescripcionGasto));
+            Assert.IsTrue(UnaCategoria.Id == unManager.ValidacionBusquedaCategorias(DescripcionGasto).Id);
         }
 
         [TestMethod]
@@ -252,7 +264,8 @@ namespace Testing
             Categoria categoriaNueva = new Categoria("Formula 1");
             Gasto GastoModificado = new Gasto("Entradas al cine", 10.00M, categoriaNueva, FechaRandom, NuevaMoneda);
             unManager.ValidacionModificacionGasto(UnGasto, GastoModificado);
-            Assert.AreEqual("Formula 1", Repo.GetGastos()[0].Categoria.Nombre);
+            Categoria categoriaValidar = Repo.GetGastos().Get(UnGasto.Id).Categoria;
+            Assert.AreEqual("Formula 1", categoriaValidar.Nombre);
         }
 
         [TestMethod]
@@ -315,7 +328,22 @@ namespace Testing
             string FechaFormateada = UnGasto.Fecha.ToString("MMMM yyyy");
             Repo.AgregarGasto(UnGasto);
             List<Gasto> GastosRetorno = unManager.ObtenerGastosPorFechaCategoria(UnaCategoria, FechaFormateada);
-            Assert.AreEqual(UnGasto, GastosRetorno[0]);
+            Assert.IsTrue(UnGasto.Id == GastosRetorno[0].Id);
+        }
+
+        [TestCleanup]
+        public void CleanUp()
+        {
+
+            using (ContextoFinanzas db = new ContextoFinanzas())
+            {
+                db.Database.ExecuteSqlCommand("DELETE FROM PRESUPUESTOES;");
+                db.Database.ExecuteSqlCommand("DELETE FROM GASTOES;");
+                db.Database.ExecuteSqlCommand("DELETE FROM PALABRACLAVES;");
+                db.Database.ExecuteSqlCommand("DELETE FROM CATEGORIAS;");
+                db.Database.ExecuteSqlCommand("DELETE FROM MONEDAS;");
+
+            }
         }
     }
 }

@@ -14,6 +14,16 @@ namespace Testing
     [TestClass]
     public class MonedaTest
     {
+        [TestInitialize]
+        public void Initialize()
+        {
+            using (ContextoFinanzas db = new ContextoFinanzas())
+            {
+                db.Database.Initialize(true);
+            }
+
+        }
+
         [TestMethod]
         public void MonedaValidaTest() {
             Moneda unaMoneda = new Moneda("Pesos Uruguayos", "UYU", 1.00M);
@@ -139,7 +149,7 @@ namespace Testing
             ManagerMoneda unManager = new ManagerMoneda(Repositorio);
             Moneda NuevaMoneda = new Moneda("Dolar", "USD", 43.00M);
             unManager.ValidacionAgregarMoneda(NuevaMoneda);
-            Assert.AreEqual(NuevaMoneda.Nombre, Repositorio.GetMonedas()[0].Nombre);
+            Assert.AreEqual(NuevaMoneda.Nombre, Repositorio.GetMonedas().GetAll()[0].Nombre);
         }
 
         [TestMethod]
@@ -162,7 +172,8 @@ namespace Testing
             unManager.ValidacionAgregarMoneda(MonedaVieja);
             Moneda MonedaNueva = new Moneda("Libra", "$$", 43.00M);
             unManager.ValidacionModificacionMoneda(MonedaVieja, MonedaNueva);
-            Assert.AreEqual(MonedaVieja.Nombre, "Libra");
+            Moneda MonedaDbVieja = Repositorio.GetMonedas().Get(MonedaVieja.Id);
+            Assert.AreEqual(MonedaDbVieja.Nombre, "Libra");
         }
 
         [TestMethod]
@@ -174,7 +185,8 @@ namespace Testing
             unManager.ValidacionAgregarMoneda(MonedaVieja);
             Moneda MonedaNueva = new Moneda("Libra", "$$", 43.00M);
             unManager.ValidacionModificacionMoneda(MonedaVieja, MonedaNueva);
-            Assert.AreEqual(MonedaVieja.Simbolo, "$$");
+            Moneda MonedaDbVieja = Repositorio.GetMonedas().Get(MonedaVieja.Id);
+            Assert.AreEqual(MonedaDbVieja.Simbolo, "$$");
         }
 
         [TestMethod]
@@ -186,7 +198,23 @@ namespace Testing
             unManager.ValidacionAgregarMoneda(MonedaVieja);
             Moneda MonedaNueva = new Moneda("Libra", "$$", 55.00M);
             unManager.ValidacionModificacionMoneda(MonedaVieja, MonedaNueva);
-            Assert.AreEqual(55.00M, MonedaVieja.Cotizacion);
+            Moneda MonedaDbVieja = Repositorio.GetMonedas().Get(MonedaVieja.Id);
+            Assert.AreEqual(55.00M, MonedaDbVieja.Cotizacion);
+        }
+       
+        [TestCleanup]
+        public void CleanUp()
+        {
+
+            using (ContextoFinanzas db = new ContextoFinanzas())
+            {
+                db.Database.ExecuteSqlCommand("DELETE FROM PRESUPUESTOES;");
+                db.Database.ExecuteSqlCommand("DELETE FROM GASTOES;");
+                db.Database.ExecuteSqlCommand("DELETE FROM PALABRACLAVES;");
+                db.Database.ExecuteSqlCommand("DELETE FROM CATEGORIAS;");
+                db.Database.ExecuteSqlCommand("DELETE FROM MONEDAS;");
+
+            }
         }
     }
 }
