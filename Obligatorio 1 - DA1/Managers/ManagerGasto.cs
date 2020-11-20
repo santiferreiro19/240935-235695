@@ -70,7 +70,7 @@ namespace Managers
         public List<String> CargarFechasDondeHuboGastos()
         {
             List<String> ListaDeFechasGastos = new List<String>();
-            foreach (Gasto unGasto in Repo.GetGastos())
+            foreach (Gasto unGasto in Repo.GetGastos().GetAll())
             {
                 String FechaFormateada = unGasto.Fecha.ToString("MMMM yyyy");
                 if (!ListaDeFechasGastos.Contains(FechaFormateada))
@@ -84,7 +84,7 @@ namespace Managers
         public List<Gasto> FiltrarGastosPorFecha(String unPeriodo)
         {
             List<Gasto> ListaDeGastosParaFecha = new List<Gasto>();
-            foreach (Gasto unGasto in Repo.GetGastos())
+            foreach (Gasto unGasto in Repo.GetGastos().GetAll())
             {
                 String FechaFormateada = unGasto.Fecha.ToString("MMMM yyyy");
                 if (FechaFormateada == unPeriodo)
@@ -108,10 +108,10 @@ namespace Managers
         public List<Gasto> ObtenerGastosPorFechaCategoria(Categoria unaCategoriaP, string unaFecha)
         {
             List<Gasto> ListaDeGastosParaFechaCategoria = new List<Gasto>();
-            foreach (Gasto unGasto in Repo.GetGastos())
+            foreach (Gasto unGasto in Repo.GetGastos().GetAll())
             {
                 string FechaFormateada = unGasto.Fecha.ToString("MMMM yyyy");
-                if (FechaFormateada == unaFecha && unGasto.Categoria.Equals(unaCategoriaP))
+                if (FechaFormateada == unaFecha && unGasto.Categoria.Id == unaCategoriaP.Id)
                 {
                     ListaDeGastosParaFechaCategoria.Add(unGasto);
                 }

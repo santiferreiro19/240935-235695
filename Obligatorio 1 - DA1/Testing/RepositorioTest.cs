@@ -9,6 +9,16 @@ namespace Testing
     [TestClass]
     public class RepositorioTest
     {
+        [TestInitialize]
+        public void Initialize()
+        {
+            using (ContextoFinanzas db = new ContextoFinanzas())
+            {
+                db.Database.Initialize(true);
+            }
+
+        }
+
         [TestMethod]
         public void ConstructorTest()
         {
@@ -22,7 +32,7 @@ namespace Testing
             Categoria UnaCategoria = new Categoria("Entretenimiento");
             Repositorio Repo = new Repositorio();
             Repo.AgregarCategoria(UnaCategoria);
-            Assert.IsTrue(Repo.GetCategorias().Contains(UnaCategoria));
+            Assert.AreEqual(UnaCategoria.Id, Repo.GetCategorias().GetAll()[0].Id);
         }
 
         [TestMethod]
@@ -32,7 +42,8 @@ namespace Testing
             Repositorio Repo = new Repositorio();
             Repo.AgregarCategoria(UnaCategoria);
             Repo.ModificarNombreCategoria(UnaCategoria, "Futbol");
-            Assert.AreEqual(UnaCategoria.Nombre, "Futbol");
+            Categoria categoriaModificadaBD = Repo.GetCategorias().Get(UnaCategoria.Id);
+            Assert.AreEqual(categoriaModificadaBD.Nombre, "Futbol");
         }
 
         [TestMethod]
@@ -116,7 +127,8 @@ namespace Testing
             Repo.AgregarGasto(UnGasto);
             Gasto GastoModificado = new Gasto("Hola", DecimalRandom, UnaCategoria, FechaRandom, NuevaMoneda);
             Repo.ModificarGasto(UnGasto, GastoModificado);
-            Assert.AreEqual(nuevaDescripcion, UnGasto.Descripcion);
+            Gasto GastoModificadaBD = Repo.GetGastos().Get(UnGasto.Id);
+            Assert.AreEqual(nuevaDescripcion, GastoModificadaBD.Descripcion);
         }
 
         [TestMethod]
@@ -132,7 +144,8 @@ namespace Testing
             Repo.AgregarGasto(UnGasto);
             Gasto GastoModificado = new Gasto("Entradas al cine", nuevoMonto, UnaCategoria, FechaRandom, NuevaMoneda);
             Repo.ModificarGasto(UnGasto, GastoModificado);
-            Assert.AreEqual(nuevoMonto, UnGasto.Monto);
+            Gasto GastoModificadaBD = Repo.GetGastos().Get(UnGasto.Id);
+            Assert.AreEqual(nuevoMonto, GastoModificadaBD.Monto);
         }
 
         [TestMethod]
@@ -148,7 +161,8 @@ namespace Testing
             Repo.AgregarGasto(UnGasto);
             Gasto GastoModificado = new Gasto("Entradas al cine", DecimalRandom, UnaCategoria, nuevaFecha, NuevaMoneda);
             Repo.ModificarGasto(UnGasto, GastoModificado);
-            Assert.AreEqual(nuevaFecha, UnGasto.Fecha);
+            Gasto GastoModificadaBD = Repo.GetGastos().Get(UnGasto.Id);
+            Assert.AreEqual(nuevaFecha, GastoModificadaBD.Fecha);
         }
 
         [TestMethod]
@@ -163,7 +177,7 @@ namespace Testing
             List<PalabraClave> Lista = new List<PalabraClave> { palabra1, palabra2, palabra3, palabra4 };
             Categoria UnaCategoria = new Categoria("Entretenimiento", Lista);
             Repo.AgregarCategoria(UnaCategoria);
-            Assert.AreEqual(UnaCategoria, Repo.BusquedaCategorias(array));
+            Assert.IsTrue(UnaCategoria.Nombre == Repo.BusquedaCategorias(array).Nombre);
         }
 
         [TestMethod]
@@ -177,7 +191,7 @@ namespace Testing
             Repo.AgregarGasto(gasto);
             Categoria categorianueva = new Categoria("Formula 1");
             Repo.ModificacionCategoriaGasto(gasto, categorianueva);
-            Assert.AreEqual("Formula 1", Repo.GetGastos()[0].Categoria.Nombre);
+            Assert.AreEqual("Formula 1", Repo.GetGastos().GetAll()[0].Categoria.Nombre);
         }
 
         [TestMethod]
@@ -186,7 +200,7 @@ namespace Testing
             Presupuesto Unpresupuesto = new Presupuesto(2018, "Octubre", new Dictionary<Categoria, decimal>());
             Repositorio Repo = new Repositorio();
             Repo.AgregarPresupuesto(Unpresupuesto);
-            Assert.IsTrue(Repo.GetPresupuestos().Contains(Unpresupuesto));
+            Assert.AreEqual(Unpresupuesto.Id, Repo.GetPresupuestos().GetAll()[0].Id);
         }
 
         [TestMethod]
@@ -199,7 +213,7 @@ namespace Testing
             Repositorio Repo = new Repositorio();
             Repo.AgregarPresupuesto(Unpresupuesto);
             Repo.ModificarMontoPresupuesto(Unpresupuesto, UnaCategoria, 120.00M);
-            Assert.AreEqual(Repo.GetPresupuestos()[0].getPresupuestosCategorias()[UnaCategoria], 120.00M);
+            Assert.AreEqual(Repo.GetPresupuestos().GetAll()[0].getPresupuestosCategorias()[UnaCategoria], 120.00M);
         }
 
         [TestMethod]
@@ -213,7 +227,7 @@ namespace Testing
             Repo.AgregarPresupuesto(Unpresupuesto);
             Categoria Categoria2 = new Categoria("Categoria2");
             Repo.AgregarCategoria(Categoria2);
-            Assert.IsTrue(Repo.GetPresupuestos()[0].getPresupuestosCategorias().ContainsKey(Categoria1));
+            Assert.IsTrue(Repo.GetPresupuestos().GetAll()[0].getPresupuestosCategorias().ContainsKey(Categoria1));
         }
 
         [TestMethod]
@@ -243,7 +257,22 @@ namespace Testing
             Moneda MonedaModificada = new Moneda("Pesos", "UUS", 66.00M);
             unRepositorio.AgregarMoneda(MonedaVieja);
             unRepositorio.ModificarMoneda(MonedaVieja, MonedaModificada);
-            Assert.AreEqual(66.00M, MonedaVieja.Cotizacion);
+            Moneda GastoModificadaBD = unRepositorio.GetMonedas().Get(MonedaVieja.Id);
+            Assert.AreEqual(66.00M, GastoModificadaBD.Cotizacion);
+        }
+
+        [TestCleanup]
+        public void CleanUp()
+        { 
+            using (ContextoFinanzas db = new ContextoFinanzas())
+            {
+                db.Database.ExecuteSqlCommand("DELETE FROM PRESUPUESTOES;");
+                db.Database.ExecuteSqlCommand("DELETE FROM GASTOES;");
+                db.Database.ExecuteSqlCommand("DELETE FROM PALABRACLAVES;");
+                db.Database.ExecuteSqlCommand("DELETE FROM CATEGORIAS;");
+                db.Database.ExecuteSqlCommand("DELETE FROM MONEDAS;");
+
+            }
         }
     }
 }

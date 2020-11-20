@@ -13,5 +13,7 @@ namespace Persistencia
         void Add(T entidad);
         void Remove(T entidad);
         bool Contains(T entidad);
+
+        void Update(T entidad);
     }
 }

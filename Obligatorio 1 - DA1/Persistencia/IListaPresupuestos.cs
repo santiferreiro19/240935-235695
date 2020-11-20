@@ -1,5 +1,6 @@
 ﻿using Obligatorio_1___DA1;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 
 namespace Persistencia
@@ -45,6 +46,17 @@ namespace Persistencia
             {
                 List<Presupuesto> Lista = Contexto.Presupuestos.Where(x => x.Equals(entidad)).ToList();
                 return Lista.Count() != 0;
+            }
+        }
+        public void Update(Presupuesto entidad)
+        {
+            using (var Contexto = new ContextoFinanzas())
+            {
+                Presupuesto unPresupuesto = Contexto.Presupuestos.FirstOrDefault(u => u.Id == entidad.Id);
+                unPresupuesto.Año = entidad.Año;
+                unPresupuesto.Mes = entidad.Mes;
+                Contexto.Entry(unPresupuesto).State = EntityState.Modified;
+                Contexto.SaveChanges();
             }
         }
     }

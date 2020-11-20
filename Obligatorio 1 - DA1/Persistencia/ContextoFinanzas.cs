@@ -10,6 +10,7 @@ namespace Persistencia
         public DbSet<Gasto> Gastos { get; set; }
         public DbSet<Presupuesto> Presupuestos { get; set; }
         public DbSet<Moneda> Monedas { get; set; }
+        public DbSet<PalabraClave> PalabrasClave { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -17,6 +18,7 @@ namespace Persistencia
             modelBuilder.Configurations.Add(new ConfiguracionGasto());
             modelBuilder.Configurations.Add(new ConfiguracionPresupuesto());
             modelBuilder.Configurations.Add(new ConfiguracionMoneda());
+            modelBuilder.Configurations.Add(new ConfiguracionPalabraClave());
         }
     }
 }

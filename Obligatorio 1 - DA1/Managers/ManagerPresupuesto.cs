@@ -59,7 +59,7 @@ namespace Managers
 
         public Dictionary<Categoria, decimal> CargarCategoriasPresupuesto()
         {
-            Dictionary<Categoria, decimal> Retorno = Repo.GetCategorias().ToDictionary(x => x, x => 0M);
+            Dictionary<Categoria, decimal> Retorno = Repo.GetCategorias().GetAll().ToDictionary(x => x, x => 0M);
             return Retorno;
         }
 
@@ -74,7 +74,7 @@ namespace Managers
         {
             this.ValidacionAño(nuevoPresupuesto.Año);
             bool repetido = false;
-            foreach (Presupuesto unPresupuesto in Repo.GetPresupuestos())
+            foreach (Presupuesto unPresupuesto in Repo.GetPresupuestos().GetAll())
             {
                 if (nuevoPresupuesto.Mes == unPresupuesto.Mes && unPresupuesto.Año == nuevoPresupuesto.Año)
                 {
@@ -102,7 +102,7 @@ namespace Managers
         public List<string> CargarListaDondeHuboPresupuestos()
         {
             List<string> ListaDePresupuestosFecha = new List<string>();
-            foreach (Presupuesto unPresupuesto in Repo.GetPresupuestos())
+            foreach (Presupuesto unPresupuesto in Repo.GetPresupuestos().GetAll())
             {
                 string BuscarMes = unPresupuesto.Mes;
                 string BuscarAño = unPresupuesto.Año.ToString();
@@ -121,7 +121,7 @@ namespace Managers
             string[] PalabraDividida = unPeriodo.Split(' ');
             string unMes = PalabraDividida[0];
             string unAño = PalabraDividida[1];
-            foreach (Presupuesto unPresupuesto in Repo.GetPresupuestos())
+            foreach (Presupuesto unPresupuesto in Repo.GetPresupuestos().GetAll())
             {
                 if (unPresupuesto.Mes == unMes && unPresupuesto.Año == int.Parse(unAño))
                 {

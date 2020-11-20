@@ -29,11 +29,11 @@ namespace Managers
             Repo.ModificarNombreCategoria(unacategoria, NuevoNombre);
         }
 
-        public void ValidacionAgregarUnaPalabraClave(Categoria unacategoria,String NuevaPalabra)
+        public void ValidacionAgregarUnaPalabraClave(Categoria unacategoria, string NuevaPalabra)
         {
             this.ListaPalabrasClaveLLena(unacategoria);
             this.ValidarPalabraClaveRepetida(NuevaPalabra);
-            Repo.AgregarPalabraClave(unacategoria,NuevaPalabra);
+            Repo.AgregarPalabraClave(unacategoria, NuevaPalabra);
         }
 
         public void ValidacionModificacionDePalabraClave(Categoria unacategoria,String PalabraBuscada, String NuevaPalabraClave)
@@ -44,7 +44,7 @@ namespace Managers
 
         public void ValidarNombreCategoria(String nombreCategoria)
         {
-            List<Categoria> categorias = Repo.GetCategorias();
+            List<Categoria> categorias = Repo.GetCategorias().GetAll();
             if (categorias.Any(categoria => categoria.Nombre.Equals(nombreCategoria)))
             {
                 throw new ExceptionNombreCategoriaRepetido("El nombre de la categoria tiene que ser unico");
@@ -58,7 +58,7 @@ namespace Managers
 
         public void ValidarPalabraClaveRepetida(String PalabraBuscar)
         {
-            List<Categoria> categorias = Repo.GetCategorias();
+            List<Categoria> categorias = Repo.GetCategorias().GetAll();
             PalabraClave palabra = new PalabraClave(PalabraBuscar);
             foreach (Categoria cadaCategoria in categorias)
             {
@@ -77,7 +77,7 @@ namespace Managers
           }
         public void EliminarPalabraClave(String PalabraEliminar)
         {
-            List<Categoria> categorias = Repo.GetCategorias();
+            List<Categoria> categorias = Repo.GetCategorias().GetAll();
             PalabraClave palabra = new PalabraClave(PalabraEliminar);
             foreach (Categoria cadaCategoria in categorias)
             {

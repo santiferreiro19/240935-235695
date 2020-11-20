@@ -14,6 +14,15 @@ namespace Testing
     [TestClass]
     public class PresupuestoTest
     {
+        [TestInitialize]
+        public void Initialize()
+        {
+            using (ContextoFinanzas db = new ContextoFinanzas())
+            {
+                db.Database.Initialize(true);
+            }
+
+        }
         [TestMethod]
         public void ConstructorSinParametrosTest()
         {
@@ -150,7 +159,7 @@ namespace Testing
             Repositorio.AgregarCategoria(Categoria1);
             Repositorio.AgregarCategoria(Categoria2);
             Dictionary<Categoria, decimal> MontoCategorias = Manager.CargarCategoriasPresupuesto();
-            Assert.AreEqual(MontoCategorias.ElementAt(1).Key, Categoria2);
+            Assert.AreEqual(MontoCategorias.ElementAt(1).Key.Id, Categoria2.Id);
         }
 
         [TestMethod]
@@ -191,7 +200,7 @@ namespace Testing
             string unMes = "Julio";
             Presupuesto presupuestoNuevo = new Presupuesto(unAño, unMes, MontoCategorias);
             Manager.ValidacionAgregarPresupuesto(presupuestoNuevo);
-            Assert.AreEqual(Repositorio.GetPresupuestos()[0].Año, unAño);
+            Assert.AreEqual(Repositorio.GetPresupuestos().GetAll()[0].Año, unAño);
         }
 
         [TestMethod]
@@ -207,18 +216,18 @@ namespace Testing
             Presupuesto presupuestoNuevo = new Presupuesto(unAño, unMes, MontoCategorias);
             Manager.ValidacionAgregarPresupuesto(presupuestoNuevo);
             decimal nuevoMontoDeC1 = 15000.00M;
-            Manager.ValidacionModificarPresupuesto(Repositorio.GetPresupuestos()[0], UnaCategoria, nuevoMontoDeC1);
-            Assert.AreEqual(Repositorio.GetPresupuestos()[0].getPresupuestosCategorias()[UnaCategoria], nuevoMontoDeC1);
+            Manager.ValidacionModificarPresupuesto(Repositorio.GetPresupuestos().GetAll()[0], UnaCategoria, nuevoMontoDeC1);
+            Assert.AreEqual(Repositorio.GetPresupuestos().GetAll()[0].getPresupuestosCategorias()[UnaCategoria], nuevoMontoDeC1);
         }
 
         [TestMethod]
         public void BuscarPresupuestosPorFechaTest() {
             Repositorio Repositorio = new Repositorio();
             ManagerPresupuesto Manager = new ManagerPresupuesto(Repositorio);
-            Presupuesto UnaCategoria = new Presupuesto(2020, "March", new Dictionary<Categoria, decimal>());
-            Repositorio.AgregarPresupuesto(UnaCategoria);
+            Presupuesto UnPresupuesto = new Presupuesto(2020, "March", new Dictionary<Categoria, decimal>());
+            Repositorio.AgregarPresupuesto(UnPresupuesto);
             string Periodo = "March 2020";
-            Assert.AreEqual(UnaCategoria, Manager.BuscarPresupuestosPorFecha(Periodo));
+            Assert.AreEqual(UnPresupuesto.Id, Manager.BuscarPresupuestosPorFecha(Periodo).Id);
         }
 
         [TestMethod]
@@ -230,6 +239,21 @@ namespace Testing
             Repositorio.AgregarPresupuesto(presupuestoNuevo);
             List<string> Lista = Manager.CargarListaDondeHuboPresupuestos();
             Assert.AreEqual(1, Lista.Count);
+        }
+
+        [TestCleanup]
+        public void CleanUp()
+        {
+
+            using (ContextoFinanzas db = new ContextoFinanzas())
+            {
+                db.Database.ExecuteSqlCommand("DELETE FROM PRESUPUESTOES;");
+                db.Database.ExecuteSqlCommand("DELETE FROM GASTOES;");
+                db.Database.ExecuteSqlCommand("DELETE FROM PALABRACLAVES;");
+                db.Database.ExecuteSqlCommand("DELETE FROM CATEGORIAS;");
+                db.Database.ExecuteSqlCommand("DELETE FROM MONEDAS;");
+
+            }
         }
     }
 }

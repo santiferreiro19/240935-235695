@@ -1,6 +1,7 @@
 ﻿using Obligatorio_1___DA1;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 
 namespace Persistencia
@@ -19,7 +20,8 @@ namespace Persistencia
         {
             using (var Contexto = new ContextoFinanzas())
             {
-                Contexto.Gastos.Remove(entidad);
+                Gasto unGasto = Contexto.Gastos.FirstOrDefault(u => u.Id == entidad.Id);
+                Contexto.Gastos.Remove(unGasto);
                 Contexto.SaveChanges();
             }
         }
@@ -28,7 +30,8 @@ namespace Persistencia
         {
             using (var Contexto = new ContextoFinanzas())
             {
-                return Contexto.Gastos.FirstOrDefault(u => u.Id == id);
+                Gasto unGasto = Contexto.Gastos.Include("Categoria").FirstOrDefault(u => u.Id == id);
+                return unGasto;
             }
         }
 
@@ -36,7 +39,7 @@ namespace Persistencia
         {
             using (var Contexto = new ContextoFinanzas())
             {
-                return Contexto.Gastos.ToList();
+                return Contexto.Gastos.Include("Categoria").ToList();
             }
         }
 
@@ -44,8 +47,22 @@ namespace Persistencia
         {
             using (var Contexto = new ContextoFinanzas())
             {
-                List<Gasto> Lista = Contexto.Gastos.Where(x => x.Equals(entidad)).ToList();
-                return Lista.Count() != 0;
+                Gasto unGasto = Contexto.Gastos.FirstOrDefault(u => u.Id == entidad.Id);
+                return unGasto != null;
+            }
+        }
+        public void Update(Gasto entidad)
+        {
+            using (var Contexto = new ContextoFinanzas())
+            {
+                Gasto unGasto = Contexto.Gastos.FirstOrDefault(u => u.Id == entidad.Id);
+                unGasto.Descripcion = entidad.Descripcion;
+                unGasto.Categoria = entidad.Categoria;
+                unGasto.Fecha = entidad.Fecha;
+                unGasto.Moneda = entidad.Moneda;
+                unGasto.Monto = entidad.Monto;
+                Contexto.Entry(unGasto).State = EntityState.Modified;
+                Contexto.SaveChanges();
             }
         }
     }
