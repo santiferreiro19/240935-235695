@@ -30,10 +30,10 @@ namespace Interfaz
             lstMontos.Items.Clear();
             if (cboxPresupuestos.Text != "")
             {
-                foreach (Categoria elemento in PresupuestoAModificar.getPresupuestosCategorias().Keys)
+                foreach (MontoCategoria elemento in PresupuestoAModificar.getPresupuestosCategorias())
                 {
-                    lstCategorias.Items.Add(elemento);
-                    lstMontos.Items.Add(PresupuestoAModificar.getPresupuestosCategorias()[elemento].ToString());
+                    lstCategorias.Items.Add(elemento.Cat);
+                    lstMontos.Items.Add(elemento.Monto);
                 }
             }
             else {

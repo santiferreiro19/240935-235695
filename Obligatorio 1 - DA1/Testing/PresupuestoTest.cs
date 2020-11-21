@@ -210,14 +210,14 @@ namespace Testing
             ManagerPresupuesto Manager = new ManagerPresupuesto(Repositorio);
             Categoria UnaCategoria = new Categoria("Entretenimiento");
             Repositorio.AgregarCategoria(UnaCategoria);
-            Dictionary<Categoria, decimal> MontoCategorias = Manager.CargarCategoriasPresupuesto();
+            List<MontoCategoria> montos = new List<MontoCategoria>();
             int unAño = 2018;
             string unMes = "Julio";
-            Presupuesto presupuestoNuevo = new Presupuesto(unAño, unMes, MontoCategorias);
+            Presupuesto presupuestoNuevo = new Presupuesto(unAño, unMes, montos);
             Manager.ValidacionAgregarPresupuesto(presupuestoNuevo);
             decimal nuevoMontoDeC1 = 15000.00M;
             Manager.ValidacionModificarPresupuesto(Repositorio.GetPresupuestos().GetAll()[0], UnaCategoria, nuevoMontoDeC1);
-            Assert.AreEqual(Repositorio.GetPresupuestos().GetAll()[0].getPresupuestosCategorias()[UnaCategoria], nuevoMontoDeC1);
+            Assert.AreEqual(Repositorio.GetPresupuestos().GetAll()[0].getPresupuestosCategorias()[0], nuevoMontoDeC1);
         }
 
         [TestMethod]

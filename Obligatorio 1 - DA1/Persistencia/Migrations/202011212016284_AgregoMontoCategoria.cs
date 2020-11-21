@@ -3,7 +3,7 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class CrearTablas : DbMigration
+    public partial class AgregoMontoCategoria : DbMigration
     {
         public override void Up()
         {
@@ -57,6 +57,21 @@
                 .PrimaryKey(t => t.Id);
             
             CreateTable(
+                "dbo.MontoCategorias",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Monto = c.Decimal(nullable: false, precision: 18, scale: 2),
+                        Cat_Id = c.Int(),
+                        Presupuesto_Id = c.Int(),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Categorias", t => t.Cat_Id)
+                .ForeignKey("dbo.Presupuestoes", t => t.Presupuesto_Id)
+                .Index(t => t.Cat_Id)
+                .Index(t => t.Presupuesto_Id);
+            
+            CreateTable(
                 "dbo.Presupuestoes",
                 c => new
                     {
@@ -70,13 +85,18 @@
         
         public override void Down()
         {
+            DropForeignKey("dbo.MontoCategorias", "Presupuesto_Id", "dbo.Presupuestoes");
+            DropForeignKey("dbo.MontoCategorias", "Cat_Id", "dbo.Categorias");
             DropForeignKey("dbo.Gastoes", "Moneda_Id", "dbo.Monedas");
             DropForeignKey("dbo.Gastoes", "Categoria_Id", "dbo.Categorias");
             DropForeignKey("dbo.PalabraClaves", "Categoria_Id", "dbo.Categorias");
+            DropIndex("dbo.MontoCategorias", new[] { "Presupuesto_Id" });
+            DropIndex("dbo.MontoCategorias", new[] { "Cat_Id" });
             DropIndex("dbo.Gastoes", new[] { "Moneda_Id" });
             DropIndex("dbo.Gastoes", new[] { "Categoria_Id" });
             DropIndex("dbo.PalabraClaves", new[] { "Categoria_Id" });
             DropTable("dbo.Presupuestoes");
+            DropTable("dbo.MontoCategorias");
             DropTable("dbo.Monedas");
             DropTable("dbo.Gastoes");
             DropTable("dbo.PalabraClaves");

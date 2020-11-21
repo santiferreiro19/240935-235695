@@ -12,6 +12,8 @@ namespace Persistencia
         private ILista<Presupuesto> ListaPresupuestos { get; set; }
         private ILista<Moneda> ListaMonedas { get; set; }
         private ILista<PalabraClave> ListaPalabrasClave { get; set; }
+        private ILista<MontoCategoria> ListaMontos { get; set; }
+
         public Repositorio()
         {
             this.ListaCategorias = new IListaCategorias();
@@ -79,9 +81,9 @@ namespace Persistencia
             {
                 if (buscada.Id==unacategoria.Id)
                 {
-                    for (int i = 0; i < unacategoria.ListaPalabras.Count(); i++)
+                    for (int i = 0; i < buscada.ListaPalabras.Count(); i++)
                     {
-                        if (PalabraAnterior == unacategoria.ListaPalabras[i].Palabra)
+                        if (PalabraAnterior == buscada.ListaPalabras[i].Palabra)
                         {
                             buscada.ListaPalabras[i].Palabra = NuevaPalabra;
                             this.GetCategorias().Update(buscada);
@@ -190,7 +192,12 @@ namespace Persistencia
             {
                 if (Buscado.Id == unPresupuesto.Id)
                 {
-                    unPresupuesto.getPresupuestosCategorias()[unaCategoria] = unNuevoMonto;
+                    foreach (MontoCategoria montoAmodificar in Buscado.getPresupuestosCategorias()) {
+                        if (unaCategoria.Id == montoAmodificar.Cat.Id) {
+                            montoAmodificar.Monto = unNuevoMonto;
+                            this.ListaPresupuestos.Update(Buscado);
+                        }
+                    }
                 }
             }
         }
@@ -199,7 +206,8 @@ namespace Persistencia
         {
             foreach (Presupuesto actualizar in this.ListaPresupuestos.GetAll())
             {
-                actualizar.getPresupuestosCategorias().Add(nuevaCategoria, 0M);
+                MontoCategoria nuevoMonto = new MontoCategoria(nuevaCategoria, 0M);
+                actualizar.getPresupuestosCategorias().Add(nuevoMonto);
             }
         }
 
