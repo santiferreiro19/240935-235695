@@ -65,5 +65,12 @@ namespace Interfaz
         {
             this.Dispose();
         }
+
+        private void btn_Moneda_Click(object sender, EventArgs e)
+        {
+            MonedaUI unaMoneda = new MonedaUI(Repo);
+            this.Hide();
+            unaMoneda.Show();
+        }
     }
 }

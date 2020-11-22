@@ -27,7 +27,7 @@ namespace Interfaz
         public void CargarListBox()
         {
             lstGastos.DataSource = null;
-            lstGastos.DataSource = Repo.GetGastos();
+            lstGastos.DataSource = Repo.GetGastos().GetAll();
             lstGastos.SelectedIndex = -1;
         }
         public void CargarComboBox()
@@ -95,10 +95,6 @@ namespace Interfaz
                 monto = manager.TransformarMonto(monto);
                 try
                 {
-                    /*manager.ValidacionModificacionCategoriaGasto(GastoSeleccionado, (Categoria)cboCategoria.SelectedItem);
-                    manager.ValidacionModificacionDescripcionGasto(GastoSeleccionado, txtDescripcion.Text);
-                    manager.ValidacionModificacionFechaGasto(GastoSeleccionado, dateFecha.Value);
-                    manager.ValidacionModificacionMontoGasto(GastoSeleccionado, monto);*/
                     Gasto GastoTemporal = new Gasto();
                     GastoTemporal.Fecha = dateFecha.Value;
                     GastoTemporal.Categoria = (Categoria)cboCategoria.SelectedItem;
@@ -146,6 +142,16 @@ namespace Interfaz
             else {
                 MessageBox.Show("Seleccione un gasto");
             }
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panelModificacion_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

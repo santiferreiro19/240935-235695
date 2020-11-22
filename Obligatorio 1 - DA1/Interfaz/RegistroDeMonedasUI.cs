@@ -1,14 +1,8 @@
-﻿using Obligatorio_1___DA1;
-using Managers;
+﻿using Managers;
+using Obligatorio_1___DA1;
+using Obligatorio_1___DA1.Excepciones;
 using Persistencia;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Interfaz
@@ -20,6 +14,7 @@ namespace Interfaz
 
         public RegistroDeMonedasUI(Repositorio unRepositorio)
         {
+            unaMonedaLocal = new Moneda();
             Repo = unRepositorio;
             InitializeComponent();
         }
@@ -32,6 +27,52 @@ namespace Interfaz
         private void button1_Click(object sender, EventArgs e)
         {
             ManagerMoneda manager = new ManagerMoneda(Repo);
+            if (txtNombre.Text != "" && txtSimbolo.Text != "" && nroCotizacion.Value > 0.00M)
+            {
+                try
+                {
+                    unaMonedaLocal.Nombre = txtNombre.Text;
+                    unaMonedaLocal.Simbolo = txtSimbolo.Text;
+                    unaMonedaLocal.Cotizacion = decimal.Parse(nroCotizacion.Text);
+                    manager.ValidacionAgregarMoneda(unaMonedaLocal);
+                    unaMonedaLocal.Nombre = "";
+                    unaMonedaLocal.Simbolo = "";
+                    unaMonedaLocal.Cotizacion = 0.00M;
+                    
+                    MessageBox.Show("La moneda fue registrada correctamente");
+                    unaMonedaLocal = new Moneda();
+                }
+                catch (ExceptionNombreMoneda nombre)
+                {
+                    MessageBox.Show("El nombre debe ser entre 3 y 20 caracteres");
+                }
+                catch (ExceptionSimboloMoneda simnolo)
+                {
+                    MessageBox.Show("El simbolo debe ser entre 1 y 3 caracteres");
+                }
+                catch (ExceptionCotizacion cotizacion)
+                {
+                    MessageBox.Show("La cotizacion debe de ser mayor a 0");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Hay campos vacios 0 cotizacion menor a 0");
+            }
+        }
+
+        private void txtNombre_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void nroCotizacion_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtSimbolo_TextChanged(object sender, EventArgs e)
+        {
 
         }
     }

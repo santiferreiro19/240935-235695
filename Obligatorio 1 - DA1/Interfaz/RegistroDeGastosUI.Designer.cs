@@ -39,12 +39,14 @@
             this.btnAceptar = new System.Windows.Forms.Button();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.nroMonto = new System.Windows.Forms.NumericUpDown();
+            this.label5 = new System.Windows.Forms.Label();
+            this.cbo_Monedas = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.nroMonto)).BeginInit();
             this.SuspendLayout();
             // 
             // btnActualizar
             // 
-            this.btnActualizar.Location = new System.Drawing.Point(120, 162);
+            this.btnActualizar.Location = new System.Drawing.Point(120, 207);
             this.btnActualizar.Name = "btnActualizar";
             this.btnActualizar.Size = new System.Drawing.Size(75, 23);
             this.btnActualizar.TabIndex = 19;
@@ -55,7 +57,7 @@
             // dateFecha
             // 
             this.dateFecha.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateFecha.Location = new System.Drawing.Point(129, 95);
+            this.dateFecha.Location = new System.Drawing.Point(129, 140);
             this.dateFecha.Name = "dateFecha";
             this.dateFecha.Size = new System.Drawing.Size(147, 20);
             this.dateFecha.TabIndex = 18;
@@ -63,7 +65,7 @@
             // cboCategoria
             // 
             this.cboCategoria.FormattingEnabled = true;
-            this.cboCategoria.Location = new System.Drawing.Point(129, 135);
+            this.cboCategoria.Location = new System.Drawing.Point(129, 180);
             this.cboCategoria.Name = "cboCategoria";
             this.cboCategoria.Size = new System.Drawing.Size(147, 21);
             this.cboCategoria.TabIndex = 17;
@@ -78,7 +80,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(11, 138);
+            this.label4.Location = new System.Drawing.Point(11, 183);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(52, 13);
             this.label4.TabIndex = 14;
@@ -87,7 +89,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(11, 101);
+            this.label3.Location = new System.Drawing.Point(11, 140);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(37, 13);
             this.label3.TabIndex = 13;
@@ -113,7 +115,7 @@
             // 
             // btnAceptar
             // 
-            this.btnAceptar.Location = new System.Drawing.Point(201, 162);
+            this.btnAceptar.Location = new System.Drawing.Point(201, 207);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(75, 23);
             this.btnAceptar.TabIndex = 10;
@@ -149,11 +151,33 @@
             this.nroMonto.Name = "nroMonto";
             this.nroMonto.Size = new System.Drawing.Size(147, 20);
             this.nroMonto.TabIndex = 25;
+            this.nroMonto.ValueChanged += new System.EventHandler(this.nroMonto_ValueChanged);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(11, 100);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(46, 13);
+            this.label5.TabIndex = 26;
+            this.label5.Text = "Moneda";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
+            // 
+            // cbo_Monedas
+            // 
+            this.cbo_Monedas.FormattingEnabled = true;
+            this.cbo_Monedas.Location = new System.Drawing.Point(129, 97);
+            this.cbo_Monedas.Name = "cbo_Monedas";
+            this.cbo_Monedas.Size = new System.Drawing.Size(147, 21);
+            this.cbo_Monedas.TabIndex = 27;
+            this.cbo_Monedas.SelectedIndexChanged += new System.EventHandler(this.cbo_Monedas_SelectedIndexChanged);
             // 
             // RegistroDeGastosUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.cbo_Monedas);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.nroMonto);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.btnActualizar);
@@ -187,5 +211,7 @@
         private System.Windows.Forms.Button btnAceptar;
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.NumericUpDown nroMonto;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ComboBox cbo_Monedas;
     }
 }

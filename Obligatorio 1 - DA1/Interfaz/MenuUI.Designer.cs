@@ -35,6 +35,7 @@
             this.btnReporteGastos = new System.Windows.Forms.Button();
             this.btnReportePresupuestos = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
+            this.btn_Moneda = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnCategoria
@@ -79,7 +80,7 @@
             // 
             // btnReportePresupuestos
             // 
-            this.btnReportePresupuestos.Location = new System.Drawing.Point(92, 144);
+            this.btnReportePresupuestos.Location = new System.Drawing.Point(29, 144);
             this.btnReportePresupuestos.Name = "btnReportePresupuestos";
             this.btnReportePresupuestos.Size = new System.Drawing.Size(124, 60);
             this.btnReportePresupuestos.TabIndex = 4;
@@ -97,12 +98,23 @@
             this.btnSalir.UseVisualStyleBackColor = true;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
+            // btn_Moneda
+            // 
+            this.btn_Moneda.Location = new System.Drawing.Point(159, 144);
+            this.btn_Moneda.Name = "btn_Moneda";
+            this.btn_Moneda.Size = new System.Drawing.Size(124, 60);
+            this.btn_Moneda.TabIndex = 6;
+            this.btn_Moneda.Text = "Moneda";
+            this.btn_Moneda.UseVisualStyleBackColor = true;
+            this.btn_Moneda.Click += new System.EventHandler(this.btn_Moneda_Click);
+            // 
             // MenuUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.WindowFrame;
             this.ClientSize = new System.Drawing.Size(462, 211);
+            this.Controls.Add(this.btn_Moneda);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.btnReportePresupuestos);
             this.Controls.Add(this.btnReporteGastos);
@@ -125,5 +137,6 @@
         private System.Windows.Forms.Button btnReporteGastos;
         private System.Windows.Forms.Button btnReportePresupuestos;
         private System.Windows.Forms.Button btnSalir;
+        private System.Windows.Forms.Button btn_Moneda;
     }
 }

@@ -45,7 +45,7 @@ namespace Interfaz
             this.borrarToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(300, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(586, 24);
             this.menuStrip1.TabIndex = 12;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -61,26 +61,29 @@ namespace Interfaz
             this.modificarToolStripMenuItem.Name = "modificarToolStripMenuItem";
             this.modificarToolStripMenuItem.Size = new System.Drawing.Size(70, 20);
             this.modificarToolStripMenuItem.Text = "Modificar";
+            this.modificarToolStripMenuItem.Click += new System.EventHandler(this.modificarToolStripMenuItem_Click);
             // 
             // borrarToolStripMenuItem
             // 
             this.borrarToolStripMenuItem.Name = "borrarToolStripMenuItem";
             this.borrarToolStripMenuItem.Size = new System.Drawing.Size(51, 20);
             this.borrarToolStripMenuItem.Text = "Borrar";
+            this.borrarToolStripMenuItem.Click += new System.EventHandler(this.borrarToolStripMenuItem_Click);
             // 
             // panelGeneral
             // 
             this.panelGeneral.BackColor = System.Drawing.SystemColors.WindowFrame;
             this.panelGeneral.Location = new System.Drawing.Point(0, 27);
             this.panelGeneral.Name = "panelGeneral";
-            this.panelGeneral.Size = new System.Drawing.Size(300, 142);
+            this.panelGeneral.Size = new System.Drawing.Size(586, 237);
             this.panelGeneral.TabIndex = 13;
+            this.panelGeneral.Paint += new System.Windows.Forms.PaintEventHandler(this.panelGeneral_Paint);
             // 
             // MonedaUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(300, 169);
+            this.ClientSize = new System.Drawing.Size(586, 263);
             this.Controls.Add(this.panelGeneral);
             this.Controls.Add(this.menuStrip1);
             this.Name = "MonedaUI";

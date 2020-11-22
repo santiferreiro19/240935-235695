@@ -25,9 +25,9 @@
             return Simbolo;
         }
 
-        public override bool Equals(object obj)
-        {
-            return ((Moneda)obj).Nombre == this.Nombre && ((Moneda)obj).Simbolo == this.Simbolo && ((Moneda)obj).Cotizacion == this.Cotizacion;
-        }
+        //public override bool Equals(object obj)
+        //{
+        //    return ((Moneda)obj).Nombre == this.Nombre && ((Moneda)obj).Simbolo == this.Simbolo && ((Moneda)obj).Cotizacion == this.Cotizacion;
+        //}
     }
 }

@@ -330,3 +330,10 @@ C:\Users\santi\OneDrive\Escritorio\development\240935-235695\Obligatorio 1 - DA1
 C:\Users\santi\OneDrive\Escritorio\development\240935-235695\Obligatorio 1 - DA1\Testing\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
 C:\Users\santi\OneDrive\Escritorio\development\240935-235695\Obligatorio 1 - DA1\Testing\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
 C:\Users\santi\OneDrive\Escritorio\development\240935-235695\Obligatorio 1 - DA1\Testing\obj\Debug\Testing.csproj.CopyComplete
+C:\Users\santi\OneDrive\Escritorio\240935-235695\Obligatorio 1 - DA1\Testing\bin\Debug\Testing.dll.config
+C:\Users\santi\OneDrive\Escritorio\240935-235695\Obligatorio 1 - DA1\Testing\bin\Debug\EntityFramework.dll
+C:\Users\santi\OneDrive\Escritorio\240935-235695\Obligatorio 1 - DA1\Testing\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\santi\OneDrive\Escritorio\240935-235695\Obligatorio 1 - DA1\Testing\bin\Debug\Obligatorio 1 - DA1.dll.config
+C:\Users\santi\OneDrive\Escritorio\240935-235695\Obligatorio 1 - DA1\Testing\bin\Debug\Persistencia.dll.config
+C:\Users\santi\OneDrive\Escritorio\240935-235695\Obligatorio 1 - DA1\Testing\bin\Debug\EntityFramework.xml
+C:\Users\santi\OneDrive\Escritorio\240935-235695\Obligatorio 1 - DA1\Testing\bin\Debug\EntityFramework.SqlServer.xml

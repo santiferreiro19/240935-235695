@@ -14,11 +14,11 @@ using Obligatorio_1___DA1.Excepciones;
 
 namespace Interfaz
 {
-    public partial class ModificacionCategoriasUI : UserControl
+    public partial class ModificacionMonedasUI : UserControl
     {
         private Categoria CategoriaSeleccionada;
         private Repositorio Repo;
-        public ModificacionCategoriasUI(Repositorio UnRepositorio)
+        public ModificacionMonedasUI(Repositorio UnRepositorio)
         {
             CategoriaSeleccionada = new Categoria();
             Repo = UnRepositorio;
@@ -26,8 +26,8 @@ namespace Interfaz
         }
         private void ActualizarVincularListBox()
         {
-            lstCategorias.DataSource = null; //se necesita para actualizar en cada ingreso
-            lstCategorias.DataSource = this.Repo.GetCategorias();
+            lstCategorias.DataSource = null; 
+            lstCategorias.DataSource = this.Repo.GetCategorias().GetAll();
         }
         private void ModificacionCategorias_Load(object sender, EventArgs e)
         {
@@ -67,8 +67,10 @@ namespace Interfaz
                 {
                     try
                     {
-                        String palabraAnterior = (String)lstPalabrasClave.SelectedItem;
-                        manager.ValidacionModificacionDePalabraClave(CategoriaSeleccionada, palabraAnterior, txtPalabraClave.Text);
+                        String Transformar = lstPalabrasClave.SelectedItem.ToString();
+                        PalabraClave palabraAnterior = new PalabraClave(Transformar);
+                        manager.ValidacionModificacionDePalabraClave(CategoriaSeleccionada, palabraAnterior.Palabra, txtPalabraClave.Text);
+                        CategoriaSeleccionada = Repo.GetCategorias().Get(CategoriaSeleccionada.Id);
                         lstPalabrasClave.DataSource = null;
                         lstPalabrasClave.DataSource = CategoriaSeleccionada.ListaPalabras;
                     }
@@ -122,6 +124,7 @@ namespace Interfaz
             ManagerCategoria manager = new ManagerCategoria(Repo);
             manager.EliminarPalabraClave(txtPalabraClave.Text);
             lstPalabrasClave.DataSource = null;
+            CategoriaSeleccionada = Repo.GetCategorias().Get(CategoriaSeleccionada.Id);
             lstPalabrasClave.DataSource = CategoriaSeleccionada.ListaPalabras;
             txtPalabraClave.Text = "";
         }
@@ -135,6 +138,7 @@ namespace Interfaz
                 {
                     manager.ValidacionAgregarUnaPalabraClave(CategoriaSeleccionada, txtPalabraClave.Text);
                     lstPalabrasClave.DataSource = null;
+                    CategoriaSeleccionada = Repo.GetCategorias().Get(CategoriaSeleccionada.Id);
                     lstPalabrasClave.DataSource = CategoriaSeleccionada.ListaPalabras;
                     txtPalabraClave.Text = "";
                 }

@@ -51,7 +51,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configuraciones\ConfiguracionMontoCategoria.cs" />
     <Compile Include="Configuraciones\ConfiguracionPalabraClave.cs" />
+    <Compile Include="DataAccesMontoCategoria.cs" />
     <Compile Include="IListaCategorias.cs" />
     <Compile Include="Configuraciones\ConfiguracionCategoria.cs" />
     <Compile Include="Configuraciones\ConfiguracionGasto.cs" />
@@ -63,9 +65,9 @@
     <Compile Include="IListaMonedas.cs" />
     <Compile Include="IListaPalabraClave.cs" />
     <Compile Include="IListaPresupuestos.cs" />
-    <Compile Include="Migrations\202011202117137_CrearTablas.cs" />
-    <Compile Include="Migrations\202011202117137_CrearTablas.designer.cs">
-      <DependentUpon>202011202117137_CrearTablas.cs</DependentUpon>
+    <Compile Include="Migrations\202011212016284_AgregoMontoCategoria.cs" />
+    <Compile Include="Migrations\202011212016284_AgregoMontoCategoria.designer.cs">
+      <DependentUpon>202011212016284_AgregoMontoCategoria.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Repositorio.cs" />
@@ -82,8 +84,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202011202117137_CrearTablas.resx">
-      <DependentUpon>202011202117137_CrearTablas.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202011212016284_AgregoMontoCategoria.resx">
+      <DependentUpon>202011212016284_AgregoMontoCategoria.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

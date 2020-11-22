@@ -40,6 +40,7 @@
             this.nroMonto = new System.Windows.Forms.NumericUpDown();
             this.button1 = new System.Windows.Forms.Button();
             this.btnSeleccionar = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
             this.panelModificacion.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nroMonto)).BeginInit();
             this.SuspendLayout();
@@ -48,9 +49,9 @@
             // 
             this.lstGastos.FormattingEnabled = true;
             this.lstGastos.HorizontalScrollbar = true;
-            this.lstGastos.Location = new System.Drawing.Point(3, 3);
+            this.lstGastos.Location = new System.Drawing.Point(3, 55);
             this.lstGastos.Name = "lstGastos";
-            this.lstGastos.Size = new System.Drawing.Size(358, 238);
+            this.lstGastos.Size = new System.Drawing.Size(358, 186);
             this.lstGastos.TabIndex = 0;
             this.lstGastos.SelectedIndexChanged += new System.EventHandler(this.lstGastos_SelectedIndexChanged);
             // 
@@ -136,6 +137,7 @@
             this.panelModificacion.Size = new System.Drawing.Size(287, 272);
             this.panelModificacion.TabIndex = 27;
             this.panelModificacion.Visible = false;
+            this.panelModificacion.Paint += new System.Windows.Forms.PaintEventHandler(this.panelModificacion_Paint);
             // 
             // nroMonto
             // 
@@ -176,10 +178,21 @@
             this.btnSeleccionar.UseVisualStyleBackColor = true;
             this.btnSeleccionar.Click += new System.EventHandler(this.btnSeleccionar_Click);
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(3, 29);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(80, 13);
+            this.label5.TabIndex = 29;
+            this.label5.Text = "Lista de Gastos";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
+            // 
             // ModificacionGastoUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.btnSeleccionar);
             this.Controls.Add(this.panelModificacion);
             this.Controls.Add(this.lstGastos);
@@ -190,6 +203,7 @@
             this.panelModificacion.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nroMonto)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -207,5 +221,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnSeleccionar;
         private System.Windows.Forms.NumericUpDown nroMonto;
+        private System.Windows.Forms.Label label5;
     }
 }

@@ -34,7 +34,7 @@ namespace Managers
 
         public void ValidacionCotizacionMoneda(decimal unaCotizacion)
         {
-            if (unaCotizacion < 0)
+            if (unaCotizacion < 0.00M)
             {
                 throw new ExceptionCotizacion("El monto debe ser mayor a 0");
             }

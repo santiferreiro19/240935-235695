@@ -35,7 +35,7 @@ namespace Interfaces
         private void modificarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             panelAgregar.Controls.Clear();
-            UserControl modificarCategoria = new ModificacionCategoriasUI(Repo);
+            UserControl modificarCategoria = new ModificacionMonedasUI(Repo);
             panelAgregar.Controls.Add(modificarCategoria);
         }
 

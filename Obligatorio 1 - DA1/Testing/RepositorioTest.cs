@@ -55,7 +55,8 @@ namespace Testing
             Repo.AgregarPalabraClave(UnaCategoria, "Cine");
             PalabraClave palabra = new PalabraClave("Cine");
             bool ok = false;
-            foreach (PalabraClave palabras in UnaCategoria.ListaPalabras)
+            Categoria CategoriaEnDB = Repo.GetCategorias().Get(UnaCategoria.Id);
+            foreach (PalabraClave palabras in CategoriaEnDB.ListaPalabras)
             {
                 if (palabras.Palabra == palabra.Palabra)
                 {
@@ -73,7 +74,8 @@ namespace Testing
             Repo.AgregarCategoria(UnaCategoria);
             Repo.AgregarPalabraClave(UnaCategoria, "Cine");
             Repo.ModificarPalabraClave(UnaCategoria, "Carreras", "Cine");
-            Assert.AreEqual(UnaCategoria.ListaPalabras[0].Palabra, "Carreras");
+            Categoria CategoriaEnDB = Repo.GetCategorias().Get(UnaCategoria.Id);
+            Assert.AreEqual(CategoriaEnDB.ListaPalabras[0].Palabra, "Carreras");
         }
 
         [TestMethod]
