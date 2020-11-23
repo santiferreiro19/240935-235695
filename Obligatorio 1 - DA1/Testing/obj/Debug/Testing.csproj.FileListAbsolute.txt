@@ -337,6 +337,7 @@ C:\Users\santi\OneDrive\Escritorio\240935-235695\Obligatorio 1 - DA1\Testing\bin
 C:\Users\santi\OneDrive\Escritorio\240935-235695\Obligatorio 1 - DA1\Testing\bin\Debug\Persistencia.dll.config
 C:\Users\santi\OneDrive\Escritorio\240935-235695\Obligatorio 1 - DA1\Testing\bin\Debug\EntityFramework.xml
 C:\Users\santi\OneDrive\Escritorio\240935-235695\Obligatorio 1 - DA1\Testing\bin\Debug\EntityFramework.SqlServer.xml
+<<<<<<< HEAD
 C:\Users\robak\Desktop\original\240935-235695\Obligatorio 1 - DA1\Testing\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
 C:\Users\robak\Desktop\original\240935-235695\Obligatorio 1 - DA1\Testing\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
 C:\Users\robak\Desktop\original\240935-235695\Obligatorio 1 - DA1\Testing\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
@@ -367,3 +368,19 @@ C:\Users\robak\Desktop\original\240935-235695\Obligatorio 1 - DA1\Testing\obj\De
 C:\Users\robak\Desktop\original\240935-235695\Obligatorio 1 - DA1\Testing\obj\Debug\Testing.csproj.CopyComplete
 C:\Users\robak\Desktop\original\240935-235695\Obligatorio 1 - DA1\Testing\obj\Debug\Testing.dll
 C:\Users\robak\Desktop\original\240935-235695\Obligatorio 1 - DA1\Testing\obj\Debug\Testing.pdb
+=======
+C:\Users\santi\OneDrive\Escritorio\obligatorioDA1\240935-235695\Obligatorio 1 - DA1\Testing\bin\Debug\Testing.dll.config
+C:\Users\santi\OneDrive\Escritorio\obligatorioDA1\240935-235695\Obligatorio 1 - DA1\Testing\bin\Debug\EntityFramework.dll
+C:\Users\santi\OneDrive\Escritorio\obligatorioDA1\240935-235695\Obligatorio 1 - DA1\Testing\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\santi\OneDrive\Escritorio\obligatorioDA1\240935-235695\Obligatorio 1 - DA1\Testing\bin\Debug\Interfaz.exe
+C:\Users\santi\OneDrive\Escritorio\obligatorioDA1\240935-235695\Obligatorio 1 - DA1\Testing\bin\Debug\Managers.dll
+C:\Users\santi\OneDrive\Escritorio\obligatorioDA1\240935-235695\Obligatorio 1 - DA1\Testing\bin\Debug\Persistencia.dll
+C:\Users\santi\OneDrive\Escritorio\obligatorioDA1\240935-235695\Obligatorio 1 - DA1\Testing\bin\Debug\Interfaz.pdb
+C:\Users\santi\OneDrive\Escritorio\obligatorioDA1\240935-235695\Obligatorio 1 - DA1\Testing\bin\Debug\Interfaz.exe.config
+C:\Users\santi\OneDrive\Escritorio\obligatorioDA1\240935-235695\Obligatorio 1 - DA1\Testing\bin\Debug\Managers.pdb
+C:\Users\santi\OneDrive\Escritorio\obligatorioDA1\240935-235695\Obligatorio 1 - DA1\Testing\bin\Debug\Obligatorio 1 - DA1.dll.config
+C:\Users\santi\OneDrive\Escritorio\obligatorioDA1\240935-235695\Obligatorio 1 - DA1\Testing\bin\Debug\Persistencia.pdb
+C:\Users\santi\OneDrive\Escritorio\obligatorioDA1\240935-235695\Obligatorio 1 - DA1\Testing\bin\Debug\Persistencia.dll.config
+C:\Users\santi\OneDrive\Escritorio\obligatorioDA1\240935-235695\Obligatorio 1 - DA1\Testing\bin\Debug\EntityFramework.xml
+C:\Users\santi\OneDrive\Escritorio\obligatorioDA1\240935-235695\Obligatorio 1 - DA1\Testing\bin\Debug\EntityFramework.SqlServer.xml
+>>>>>>> feature/RefactorParaTrabajarConEF

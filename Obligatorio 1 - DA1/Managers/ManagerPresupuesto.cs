@@ -57,17 +57,27 @@ namespace Managers
             return Math.Round(unMonto, 2);
         }
 
-        public Dictionary<Categoria, decimal> CargarCategoriasPresupuesto()
+        public void CargarCategoriasPresupuesto(Presupuesto unPresupuesto)
         {
-            Dictionary<Categoria, decimal> Retorno = Repo.GetCategorias().GetAll().ToDictionary(x => x, x => 0M);
-            return Retorno;
+            List<MontoCategoria> Retorno = new List<MontoCategoria>();
+            foreach (Categoria elem in Repo.GetCategorias().GetAll()) {
+                MontoCategoria temporal = new MontoCategoria();
+                temporal.Cat = elem;
+                unPresupuesto.PresupuestosCategorias.Add(temporal);
+            }
+            Repo.GetPresupuestos().Update(unPresupuesto);
         }
 
-        public void ValidacionAgregarUnMonto(Dictionary<Categoria, decimal> unPresupuestosMonto, Categoria unaCategoria, decimal unMonto)
+        public void ValidacionAgregarUnMonto(Presupuesto unPresupuestosMonto, Categoria unaCategoria, decimal unMonto)
         {
             this.ValidacionMonto(unMonto);
             decimal MontoTransformado = this.TransformarMonto(unMonto);
-            unPresupuestosMonto[unaCategoria] = MontoTransformado;
+            foreach (MontoCategoria montoCat in unPresupuestosMonto.PresupuestosCategorias) {
+                if (montoCat.Cat.Id == unaCategoria.Id) {
+                    montoCat.Monto = MontoTransformado;
+                    Repo.GetPresupuestos().Update(unPresupuestosMonto);
+                }
+            }
         }
 
         public void ValidacionAgregarPresupuesto(Presupuesto nuevoPresupuesto)

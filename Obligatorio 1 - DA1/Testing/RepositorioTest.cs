@@ -212,7 +212,7 @@ namespace Testing
         [TestMethod]
         public void AgregarPresupuestoTest()
         {
-            Presupuesto Unpresupuesto = new Presupuesto(2018, "Octubre", new Dictionary<Categoria, decimal>());
+            Presupuesto Unpresupuesto = new Presupuesto(2018, "Octubre", new List<MontoCategoria>());
             Repositorio Repo = new Repositorio();
             Repo.AgregarPresupuesto(Unpresupuesto);
             Assert.AreEqual(Unpresupuesto.Id, Repo.GetPresupuestos().GetAll()[0].Id);
@@ -221,28 +221,30 @@ namespace Testing
         [TestMethod]
         public void ModificarMontoPresupuestoTest()
         {
-            Dictionary<Categoria, decimal> Diccionario = new Dictionary<Categoria, decimal>();
+            List<MontoCategoria> montos = new List<MontoCategoria>();
             Categoria UnaCategoria = new Categoria();
-            Diccionario.Add(UnaCategoria, 100.00M);
-            Presupuesto Unpresupuesto = new Presupuesto(2018, "Octubre", Diccionario);
+            MontoCategoria unMonto = new MontoCategoria(UnaCategoria, 100.00M);
+            montos.Add(unMonto);
+            Presupuesto Unpresupuesto = new Presupuesto(2018, "Octubre", montos);
             Repositorio Repo = new Repositorio();
             Repo.AgregarPresupuesto(Unpresupuesto);
             Repo.ModificarMontoPresupuesto(Unpresupuesto, UnaCategoria, 120.00M);
-            Assert.AreEqual(Repo.GetPresupuestos().GetAll()[0].getPresupuestosCategorias()[UnaCategoria], 120.00M);
+            Assert.AreEqual(Repo.GetPresupuestos().GetAll()[0].getPresupuestosCategorias()[0].Monto, 120.00M);
         }
 
         [TestMethod]
         public void ActualizarCategoriasEnPresupuestosTest()
         {
-            Dictionary<Categoria, decimal> Diccionario = new Dictionary<Categoria, decimal>();
             Categoria Categoria1 = new Categoria();
-            Diccionario.Add(Categoria1, 100.00M);
-            Presupuesto Unpresupuesto = new Presupuesto(2018, "Octubre", Diccionario);
+            List <MontoCategoria> montos = new List<MontoCategoria>();
+            MontoCategoria unMonto = new MontoCategoria(Categoria1, 100.00M);
+            montos.Add(unMonto);
+            Presupuesto Unpresupuesto = new Presupuesto(2018, "Octubre", montos);
             Repositorio Repo = new Repositorio();
             Repo.AgregarPresupuesto(Unpresupuesto);
             Categoria Categoria2 = new Categoria("Categoria2");
             Repo.AgregarCategoria(Categoria2);
-            Assert.IsTrue(Repo.GetPresupuestos().GetAll()[0].getPresupuestosCategorias().ContainsKey(Categoria1));
+            Assert.AreEqual(Repo.GetPresupuestos().GetAll()[0].getPresupuestosCategorias()[1].Cat.Id,Categoria2.Id);
         }
 
         [TestMethod]
@@ -281,6 +283,7 @@ namespace Testing
         { 
             using (ContextoFinanzas db = new ContextoFinanzas())
             {
+                db.Database.ExecuteSqlCommand("DELETE FROM MONTOCATEGORIAS");
                 db.Database.ExecuteSqlCommand("DELETE FROM PRESUPUESTOES;");
                 db.Database.ExecuteSqlCommand("DELETE FROM GASTOES;");
                 db.Database.ExecuteSqlCommand("DELETE FROM PALABRACLAVES;");

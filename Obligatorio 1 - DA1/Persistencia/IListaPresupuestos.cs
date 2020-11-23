@@ -28,7 +28,7 @@ namespace Persistencia
         {
             using (var Contexto = new ContextoFinanzas())
             {
-                return Contexto.Presupuestos.FirstOrDefault(u => u.Id == id);
+                return Contexto.Presupuestos.Include("PresupuestosCategorias.Cat").FirstOrDefault(u => u.Id == id);
             }
         }
 
@@ -36,7 +36,7 @@ namespace Persistencia
         {
             using (var Contexto = new ContextoFinanzas())
             {
-                return Contexto.Presupuestos.ToList();
+                return Contexto.Presupuestos.Include("PresupuestosCategorias.Cat").ToList();
             }
         }
 
@@ -52,9 +52,22 @@ namespace Persistencia
         {
             using (var Contexto = new ContextoFinanzas())
             {
-                Presupuesto unPresupuesto = Contexto.Presupuestos.FirstOrDefault(u => u.Id == entidad.Id);
+                Presupuesto unPresupuesto = Contexto.Presupuestos.Include("PresupuestosCategorias").FirstOrDefault(u => u.Id == entidad.Id);
                 unPresupuesto.Año = entidad.Año;
                 unPresupuesto.Mes = entidad.Mes;
+                for (int i = 0; i < entidad.PresupuestosCategorias.Count; i++)
+                {
+                    if (i < unPresupuesto.PresupuestosCategorias.Count)
+                    {
+                        unPresupuesto.PresupuestosCategorias[i].Monto = entidad.PresupuestosCategorias[i].Monto;
+                    }
+                    else
+                    {
+                        unPresupuesto.PresupuestosCategorias.Add(entidad.PresupuestosCategorias[i]);
+                        Contexto.Entry(unPresupuesto.PresupuestosCategorias[i].Cat).State = EntityState.Unchanged;
+
+                    }
+                }
                 Contexto.Entry(unPresupuesto).State = EntityState.Modified;
                 Contexto.SaveChanges();
             }

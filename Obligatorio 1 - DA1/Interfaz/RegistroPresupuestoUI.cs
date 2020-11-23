@@ -33,15 +33,15 @@ namespace Interfaz
         private void CargarList() {
             lstCategorias.Items.Clear();
             lstMontos.Items.Clear();
-            foreach (Categoria elemento in PresupuestoTemporal.getPresupuestosCategorias().Keys) {
-                lstCategorias.Items.Add(elemento);
-                lstMontos.Items.Add(PresupuestoTemporal.getPresupuestosCategorias()[elemento].ToString());
+            foreach (MontoCategoria elemento in PresupuestoTemporal.getPresupuestosCategorias()) {
+                lstCategorias.Items.Add(elemento.Cat.Nombre);
+                lstMontos.Items.Add(elemento.Monto);
             }
         }
         private void RegistroPresupuestoUI_Load(object sender, EventArgs e)
         {
             ManagerPresupuesto manager = new ManagerPresupuesto(Repo);
-            PresupuestoTemporal.setPresupuestosCategorias(manager.CargarCategoriasPresupuesto()) ;
+            manager.CargarCategoriasPresupuesto(PresupuestoTemporal);
             CargarList();
         }
 
@@ -54,7 +54,7 @@ namespace Interfaz
                 try
                 {
                     decimal monto = decimal.Parse(nroMonto.Text);
-                    manager.ValidacionAgregarUnMonto(PresupuestoTemporal.getPresupuestosCategorias(), CategoriaSeleccionada, monto);
+                    manager.ValidacionAgregarUnMonto(PresupuestoTemporal, CategoriaSeleccionada, monto);
                     nroMonto.Text = "0.00";
                     CargarList();
                 }
@@ -83,7 +83,7 @@ namespace Interfaz
                     cboMes.SelectedIndex = -1;
                     
                     PresupuestoTemporal = new Presupuesto();
-                    PresupuestoTemporal.setPresupuestosCategorias(manager.CargarCategoriasPresupuesto());
+                    manager.CargarCategoriasPresupuesto(PresupuestoTemporal);
                     CargarList();
                 }
                 catch (ExceptionAñoPresupuesto año) {

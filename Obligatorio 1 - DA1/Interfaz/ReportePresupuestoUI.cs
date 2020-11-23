@@ -40,13 +40,13 @@ namespace Interfaz
             decimal TotalPlanificado = VALOR_POR_DEFECTO;
             decimal TotalReal = VALOR_POR_DEFECTO;
             decimal TotalDiferencia = VALOR_POR_DEFECTO;
-            foreach (var item in Encontrado.getPresupuestosCategorias().Keys) 
+            foreach (var item in Encontrado.getPresupuestosCategorias()) 
             {
-                List<Gasto> ListaDeGastosParaEsaFecha = ManagerG.ObtenerGastosPorFechaCategoria(item, comboBox1.Text);
-                decimal resultado = RestaRealPlanificado(Encontrado.getPresupuestosCategorias()[item], decimal.Parse(ManagerG.SumaDeGastosParaFecha(ListaDeGastosParaEsaFecha)));
-                data_Presupuestos.Rows.Add(item.Nombre, Encontrado.getPresupuestosCategorias()[item], ManagerG.SumaDeGastosParaFecha(ListaDeGastosParaEsaFecha), Formato(resultado));
+                List<Gasto> ListaDeGastosParaEsaFecha = ManagerG.ObtenerGastosPorFechaCategoria(item.Cat, comboBox1.Text);
+                decimal resultado = RestaRealPlanificado(item.Monto, decimal.Parse(ManagerG.SumaDeGastosParaFecha(ListaDeGastosParaEsaFecha)));
+                data_Presupuestos.Rows.Add(item.Cat.Nombre, item.Monto, ManagerG.SumaDeGastosParaFecha(ListaDeGastosParaEsaFecha), Formato(resultado));
                 
-                TotalPlanificado += Encontrado.getPresupuestosCategorias()[item];
+                TotalPlanificado += item.Monto;
                 TotalReal += decimal.Parse(ManagerG.SumaDeGastosParaFecha(ListaDeGastosParaEsaFecha));
                 TotalDiferencia += resultado;
             }

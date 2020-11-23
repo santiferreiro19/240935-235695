@@ -49,6 +49,7 @@ namespace Testing
 
             using (ContextoFinanzas db = new ContextoFinanzas())
             {
+                db.Database.ExecuteSqlCommand("DELETE FROM MONTOCATEGORIAS");
                 db.Database.ExecuteSqlCommand("DELETE FROM PRESUPUESTOES;");
                 db.Database.ExecuteSqlCommand("DELETE FROM GASTOES;");
                 db.Database.ExecuteSqlCommand("DELETE FROM PALABRACLAVES;");

@@ -205,7 +205,12 @@ namespace Persistencia
             {
                 if (Buscado.Id == unPresupuesto.Id)
                 {
-                    unPresupuesto.getPresupuestosCategorias()[unaCategoria] = unNuevoMonto;
+                    foreach (MontoCategoria montoAmodificar in Buscado.getPresupuestosCategorias()) {
+                        if (unaCategoria.Id == montoAmodificar.Cat.Id) {
+                            montoAmodificar.Monto = unNuevoMonto;
+                            this.ListaPresupuestos.Update(Buscado);
+                        }
+                    }
                 }
             }
         }
@@ -214,7 +219,9 @@ namespace Persistencia
         {
             foreach (Presupuesto actualizar in this.ListaPresupuestos.GetAll())
             {
-                actualizar.getPresupuestosCategorias().Add(nuevaCategoria, 0M);
+                MontoCategoria nuevoMonto = new MontoCategoria(nuevaCategoria, 0M);
+                actualizar.getPresupuestosCategorias().Add(nuevoMonto);
+                this.ListaPresupuestos.Update(actualizar);
             }
         }
 

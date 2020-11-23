@@ -26,7 +26,11 @@ namespace Interfaz
         }
         private void ActualizarVincularListBox()
         {
+<<<<<<< HEAD
             lstCategorias.DataSource = null; 
+=======
+            lstCategorias.DataSource = null; //se necesita para actualizar en cada ingreso
+>>>>>>> feature/RefactorParaTrabajarConEF
             lstCategorias.DataSource = this.Repo.GetCategorias().GetAll();
         }
         private void ModificacionCategorias_Load(object sender, EventArgs e)
@@ -124,8 +128,12 @@ namespace Interfaz
             ManagerCategoria manager = new ManagerCategoria(Repo);
             manager.EliminarPalabraClave(txtPalabraClave.Text);
             lstPalabrasClave.DataSource = null;
+<<<<<<< HEAD
             CategoriaSeleccionada = Repo.GetCategorias().Get(CategoriaSeleccionada.Id);
             lstPalabrasClave.DataSource = CategoriaSeleccionada.ListaPalabras;
+=======
+            lstPalabrasClave.DataSource = Repo.GetCategorias().Get(CategoriaSeleccionada.Id).ListaPalabras;
+>>>>>>> feature/RefactorParaTrabajarConEF
             txtPalabraClave.Text = "";
         }
 

@@ -11,29 +11,34 @@ namespace Obligatorio_1___DA1
         public int Id { get; set; }
         public int Año { get; set; }
         public string Mes { get; set; }
+<<<<<<< HEAD
         public List<MontoCategoria> Montos { get; set; }
         private Dictionary<Categoria, decimal> PresupuestosCategorias { get; set; }
+=======
+        public List<MontoCategoria> PresupuestosCategorias { get; set; }
+>>>>>>> feature/RefactorParaTrabajarConEF
 
         public Presupuesto()
         {
             this.Año = 0;
             this.Mes = "";
-            this.PresupuestosCategorias = new Dictionary<Categoria, decimal>();
+            this.PresupuestosCategorias = new List<MontoCategoria>();
         }
 
-        public Presupuesto(int unAño, string unMes, Dictionary<Categoria, decimal> unPresupuestoCategorias)
+        public Presupuesto(int unAño, string unMes, List<MontoCategoria> unPresupuestoCategorias)
         {
             this.Año = unAño;
             this.Mes = unMes;
             this.PresupuestosCategorias = unPresupuestoCategorias;
         }
-        public Dictionary<Categoria, decimal> getPresupuestosCategorias() {
+        public List<MontoCategoria> getPresupuestosCategorias()
+        {
             return this.PresupuestosCategorias;
 
         }
-        public void setPresupuestosCategorias(Dictionary<Categoria, decimal> unDiccionario)
+        public void setPresupuestosCategorias(List<MontoCategoria> ListaMontos)
         {
-             this.PresupuestosCategorias = unDiccionario;
+            this.PresupuestosCategorias = ListaMontos;
 
         }
         override
