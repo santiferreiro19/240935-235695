@@ -8,7 +8,7 @@
 
         public MontoCategoria()
         {
-            
+            Monto = 0.00M;
         }
         public MontoCategoria(Categoria unaCategoria, decimal unMonto)
         {

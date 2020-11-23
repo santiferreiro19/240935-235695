@@ -208,6 +208,7 @@ namespace Persistencia
             {
                 MontoCategoria nuevoMonto = new MontoCategoria(nuevaCategoria, 0M);
                 actualizar.getPresupuestosCategorias().Add(nuevoMonto);
+                this.ListaPresupuestos.Update(actualizar);
             }
         }
 

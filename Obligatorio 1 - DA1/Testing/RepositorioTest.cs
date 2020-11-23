@@ -216,7 +216,7 @@ namespace Testing
             Repositorio Repo = new Repositorio();
             Repo.AgregarPresupuesto(Unpresupuesto);
             Repo.ModificarMontoPresupuesto(Unpresupuesto, UnaCategoria, 120.00M);
-            Assert.AreEqual(Repo.GetPresupuestos().GetAll()[0].getPresupuestosCategorias()[0], 120.00M);
+            Assert.AreEqual(Repo.GetPresupuestos().GetAll()[0].getPresupuestosCategorias()[0].Monto, 120.00M);
         }
 
         [TestMethod]
@@ -231,7 +231,7 @@ namespace Testing
             Repo.AgregarPresupuesto(Unpresupuesto);
             Categoria Categoria2 = new Categoria("Categoria2");
             Repo.AgregarCategoria(Categoria2);
-            Assert.IsTrue(Repo.GetPresupuestos().GetAll()[0].getPresupuestosCategorias()[0].Cat.Equals(Categoria2));
+            Assert.AreEqual(Repo.GetPresupuestos().GetAll()[0].getPresupuestosCategorias()[1].Cat.Id,Categoria2.Id);
         }
 
         [TestMethod]
@@ -270,6 +270,7 @@ namespace Testing
         { 
             using (ContextoFinanzas db = new ContextoFinanzas())
             {
+                db.Database.ExecuteSqlCommand("DELETE FROM MONTOCATEGORIAS");
                 db.Database.ExecuteSqlCommand("DELETE FROM PRESUPUESTOES;");
                 db.Database.ExecuteSqlCommand("DELETE FROM GASTOES;");
                 db.Database.ExecuteSqlCommand("DELETE FROM PALABRACLAVES;");

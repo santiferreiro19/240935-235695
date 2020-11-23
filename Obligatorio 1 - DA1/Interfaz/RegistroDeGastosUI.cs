@@ -39,6 +39,7 @@ namespace Interfaz
             CargarCbox();
             ManagerGasto manager = new ManagerGasto(Repo);
             string descripcion = txtDescripcion.Text;
+
             cboCategoria.SelectedItem = manager.ValidacionBusquedaCategorias(descripcion);
             listBox1.DataSource = null;
             listBox1.DataSource = Repo.GetGastos();

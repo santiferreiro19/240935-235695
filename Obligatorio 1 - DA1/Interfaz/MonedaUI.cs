@@ -32,5 +32,10 @@ namespace Interfaz
             UserControl registrarMoneda = new RegistroDeMonedasUI(Repo);
             panelGeneral.Controls.Add(registrarMoneda);
         }
+
+        private void MonedaUI_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -35,7 +35,7 @@ namespace Testing
         {
             int Año = 2020;
             string Mes = "Octubre";
-            Presupuesto UnPresupuesto = new Presupuesto(Año, Mes, new Dictionary<Categoria, decimal>());
+            Presupuesto UnPresupuesto = new Presupuesto(Año, Mes, new List<MontoCategoria>());
             Assert.IsNotNull(UnPresupuesto);
         }
 
@@ -44,7 +44,7 @@ namespace Testing
         {
             int Año = 2020;
             string Mes = "Octubre";
-            Presupuesto UnPresupuesto = new Presupuesto(Año, Mes, new Dictionary<Categoria, decimal>());
+            Presupuesto UnPresupuesto = new Presupuesto(Año, Mes, new List<MontoCategoria>());
             Assert.AreEqual("Octubre 2020", UnPresupuesto.ToString());
         }
 
@@ -53,11 +53,12 @@ namespace Testing
         {
             int Año = 2020;
             string Mes = "Octubre";
-            Dictionary<Categoria, decimal> DiccionarioCategMonto = new Dictionary<Categoria, decimal>();
-            DiccionarioCategMonto.Add(new Categoria(), 0.00M);
-            Presupuesto UnPresupuesto = new Presupuesto(Año, Mes, new Dictionary<Categoria, decimal>());
-            UnPresupuesto.setPresupuestosCategorias(DiccionarioCategMonto);
-            Assert.AreEqual(DiccionarioCategMonto, UnPresupuesto.getPresupuestosCategorias());
+            List<MontoCategoria> ListaCategoriasMonto = new List<MontoCategoria>();
+            MontoCategoria montoCategoriaTemporal = new MontoCategoria(new Categoria(), 0.00M);
+            ListaCategoriasMonto.Add(montoCategoriaTemporal);
+            Presupuesto UnPresupuesto = new Presupuesto(Año, Mes, new List<MontoCategoria>());
+            UnPresupuesto.setPresupuestosCategorias(ListaCategoriasMonto);
+            Assert.AreEqual(ListaCategoriasMonto, UnPresupuesto.getPresupuestosCategorias());
         }
 
         [TestMethod]
@@ -65,8 +66,8 @@ namespace Testing
         {
             int Año = 2021;
             string Mes = "Mayo";
-            Dictionary<Categoria, decimal> unPresupuestoMontos = new Dictionary<Categoria, decimal>();
-            Presupuesto UnPresupuesto = new Presupuesto(Año, Mes, unPresupuestoMontos);
+            List<MontoCategoria> ListaCategoriasMonto = new List<MontoCategoria>();
+            Presupuesto UnPresupuesto = new Presupuesto(Año, Mes, ListaCategoriasMonto);
             Assert.IsNotNull(UnPresupuesto);
         }
 
@@ -158,8 +159,12 @@ namespace Testing
             Categoria Categoria2 = new Categoria("Cine");
             Repositorio.AgregarCategoria(Categoria1);
             Repositorio.AgregarCategoria(Categoria2);
-            Dictionary<Categoria, decimal> MontoCategorias = Manager.CargarCategoriasPresupuesto();
-            Assert.AreEqual(MontoCategorias.ElementAt(1).Key.Id, Categoria2.Id);
+            Presupuesto unPresupuesto = new Presupuesto();
+            unPresupuesto.Año = 2020;
+            unPresupuesto.Mes = "Ebola";
+            Manager.ValidacionAgregarPresupuesto(unPresupuesto);
+            Manager.CargarCategoriasPresupuesto(unPresupuesto);
+            Assert.AreEqual(unPresupuesto.PresupuestosCategorias[1].Cat.Id, Categoria2.Id);
         }
 
         [TestMethod]
@@ -171,10 +176,14 @@ namespace Testing
             Categoria Categoria2 = new Categoria("Cine");
             Repositorio.AgregarCategoria(Categoria1);
             Repositorio.AgregarCategoria(Categoria2);
-            Dictionary<Categoria, decimal> MontoCategorias = Manager.CargarCategoriasPresupuesto();
+            Presupuesto unPresupuesto = new Presupuesto();
+            unPresupuesto.Año = 2020;
+            unPresupuesto.Mes = "Febrero";
+            Manager.ValidacionAgregarPresupuesto(unPresupuesto);
+            Manager.CargarCategoriasPresupuesto(unPresupuesto);
             decimal unMonto = 1200.00M;
-            Manager.ValidacionAgregarUnMonto(MontoCategorias, Categoria1, unMonto);
-            Assert.AreEqual(MontoCategorias[Categoria1], unMonto);
+            Manager.ValidacionAgregarUnMonto(unPresupuesto, Categoria1, unMonto);
+            Assert.AreEqual(unPresupuesto.PresupuestosCategorias[0].Monto, unMonto);
         }
 
         [ExpectedException(typeof(ExceptionPresupuestoRepetido))]
@@ -183,7 +192,7 @@ namespace Testing
         {
             Repositorio Repositorio = new Repositorio();
             ManagerPresupuesto Manager = new ManagerPresupuesto(Repositorio);
-            Presupuesto UnPresupuesto = new Presupuesto(2020, "Octubre", new Dictionary<Categoria, decimal>());
+            Presupuesto UnPresupuesto = new Presupuesto(2020, "Octubre", new List<MontoCategoria>());
             Repositorio.AgregarPresupuesto(UnPresupuesto);
             Manager.ValidacionAgregarPresupuesto(UnPresupuesto);
         }
@@ -195,12 +204,12 @@ namespace Testing
             ManagerPresupuesto Manager = new ManagerPresupuesto(Repositorio);
             Categoria UnaCategoria = new Categoria("Entretenimiento");
             Repositorio.AgregarCategoria(UnaCategoria);
-            Dictionary<Categoria, decimal> MontoCategorias = Manager.CargarCategoriasPresupuesto();
-            int unAño = 2018;
-            string unMes = "Julio";
-            Presupuesto presupuestoNuevo = new Presupuesto(unAño, unMes, MontoCategorias);
-            Manager.ValidacionAgregarPresupuesto(presupuestoNuevo);
-            Assert.AreEqual(Repositorio.GetPresupuestos().GetAll()[0].Año, unAño);
+            Presupuesto unPresupuesto = new Presupuesto();
+            unPresupuesto.Año = 2018;
+            unPresupuesto.Mes = "Julio";
+            Manager.ValidacionAgregarPresupuesto(unPresupuesto);
+            Manager.CargarCategoriasPresupuesto(unPresupuesto);
+            Assert.AreEqual(Repositorio.GetPresupuestos().GetAll()[0].Año, 2018);
         }
 
         [TestMethod]
@@ -210,21 +219,23 @@ namespace Testing
             ManagerPresupuesto Manager = new ManagerPresupuesto(Repositorio);
             Categoria UnaCategoria = new Categoria("Entretenimiento");
             Repositorio.AgregarCategoria(UnaCategoria);
+            MontoCategoria unMonto = new MontoCategoria(UnaCategoria, 0.00M);
             List<MontoCategoria> montos = new List<MontoCategoria>();
+            montos.Add(unMonto);
             int unAño = 2018;
             string unMes = "Julio";
             Presupuesto presupuestoNuevo = new Presupuesto(unAño, unMes, montos);
             Manager.ValidacionAgregarPresupuesto(presupuestoNuevo);
             decimal nuevoMontoDeC1 = 15000.00M;
             Manager.ValidacionModificarPresupuesto(Repositorio.GetPresupuestos().GetAll()[0], UnaCategoria, nuevoMontoDeC1);
-            Assert.AreEqual(Repositorio.GetPresupuestos().GetAll()[0].getPresupuestosCategorias()[0], nuevoMontoDeC1);
+            Assert.AreEqual(Repositorio.GetPresupuestos().GetAll()[0].getPresupuestosCategorias()[0].Monto, nuevoMontoDeC1);
         }
 
         [TestMethod]
         public void BuscarPresupuestosPorFechaTest() {
             Repositorio Repositorio = new Repositorio();
             ManagerPresupuesto Manager = new ManagerPresupuesto(Repositorio);
-            Presupuesto UnPresupuesto = new Presupuesto(2020, "March", new Dictionary<Categoria, decimal>());
+            Presupuesto UnPresupuesto = new Presupuesto(2020, "March", new List<MontoCategoria>());
             Repositorio.AgregarPresupuesto(UnPresupuesto);
             string Periodo = "March 2020";
             Assert.AreEqual(UnPresupuesto.Id, Manager.BuscarPresupuestosPorFecha(Periodo).Id);
@@ -234,9 +245,11 @@ namespace Testing
         public void CargarListaDondeHuboPresupuestosTest() {
             Repositorio Repositorio = new Repositorio();
             ManagerPresupuesto Manager = new ManagerPresupuesto(Repositorio);
-            Dictionary<Categoria, decimal> MontoCategorias = Manager.CargarCategoriasPresupuesto();
-            Presupuesto presupuestoNuevo = new Presupuesto(2020, "March", MontoCategorias);
+            Presupuesto presupuestoNuevo = new Presupuesto();
+            presupuestoNuevo.Año = 2020;
+            presupuestoNuevo.Mes = "March";
             Repositorio.AgregarPresupuesto(presupuestoNuevo);
+            Manager.CargarCategoriasPresupuesto(presupuestoNuevo);
             List<string> Lista = Manager.CargarListaDondeHuboPresupuestos();
             Assert.AreEqual(1, Lista.Count);
         }
@@ -247,6 +260,7 @@ namespace Testing
 
             using (ContextoFinanzas db = new ContextoFinanzas())
             {
+                db.Database.ExecuteSqlCommand("DELETE FROM MONTOCATEGORIAS");
                 db.Database.ExecuteSqlCommand("DELETE FROM PRESUPUESTOES;");
                 db.Database.ExecuteSqlCommand("DELETE FROM GASTOES;");
                 db.Database.ExecuteSqlCommand("DELETE FROM PALABRACLAVES;");

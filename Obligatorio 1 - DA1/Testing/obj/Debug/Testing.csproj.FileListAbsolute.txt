@@ -337,3 +337,17 @@ C:\Users\santi\OneDrive\Escritorio\240935-235695\Obligatorio 1 - DA1\Testing\bin
 C:\Users\santi\OneDrive\Escritorio\240935-235695\Obligatorio 1 - DA1\Testing\bin\Debug\Persistencia.dll.config
 C:\Users\santi\OneDrive\Escritorio\240935-235695\Obligatorio 1 - DA1\Testing\bin\Debug\EntityFramework.xml
 C:\Users\santi\OneDrive\Escritorio\240935-235695\Obligatorio 1 - DA1\Testing\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\santi\OneDrive\Escritorio\obligatorioDA1\240935-235695\Obligatorio 1 - DA1\Testing\bin\Debug\Testing.dll.config
+C:\Users\santi\OneDrive\Escritorio\obligatorioDA1\240935-235695\Obligatorio 1 - DA1\Testing\bin\Debug\EntityFramework.dll
+C:\Users\santi\OneDrive\Escritorio\obligatorioDA1\240935-235695\Obligatorio 1 - DA1\Testing\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\santi\OneDrive\Escritorio\obligatorioDA1\240935-235695\Obligatorio 1 - DA1\Testing\bin\Debug\Interfaz.exe
+C:\Users\santi\OneDrive\Escritorio\obligatorioDA1\240935-235695\Obligatorio 1 - DA1\Testing\bin\Debug\Managers.dll
+C:\Users\santi\OneDrive\Escritorio\obligatorioDA1\240935-235695\Obligatorio 1 - DA1\Testing\bin\Debug\Persistencia.dll
+C:\Users\santi\OneDrive\Escritorio\obligatorioDA1\240935-235695\Obligatorio 1 - DA1\Testing\bin\Debug\Interfaz.pdb
+C:\Users\santi\OneDrive\Escritorio\obligatorioDA1\240935-235695\Obligatorio 1 - DA1\Testing\bin\Debug\Interfaz.exe.config
+C:\Users\santi\OneDrive\Escritorio\obligatorioDA1\240935-235695\Obligatorio 1 - DA1\Testing\bin\Debug\Managers.pdb
+C:\Users\santi\OneDrive\Escritorio\obligatorioDA1\240935-235695\Obligatorio 1 - DA1\Testing\bin\Debug\Obligatorio 1 - DA1.dll.config
+C:\Users\santi\OneDrive\Escritorio\obligatorioDA1\240935-235695\Obligatorio 1 - DA1\Testing\bin\Debug\Persistencia.pdb
+C:\Users\santi\OneDrive\Escritorio\obligatorioDA1\240935-235695\Obligatorio 1 - DA1\Testing\bin\Debug\Persistencia.dll.config
+C:\Users\santi\OneDrive\Escritorio\obligatorioDA1\240935-235695\Obligatorio 1 - DA1\Testing\bin\Debug\EntityFramework.xml
+C:\Users\santi\OneDrive\Escritorio\obligatorioDA1\240935-235695\Obligatorio 1 - DA1\Testing\bin\Debug\EntityFramework.SqlServer.xml

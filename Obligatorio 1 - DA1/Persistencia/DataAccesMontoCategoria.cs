@@ -12,7 +12,7 @@ namespace Persistencia
         {
             using (var Contexto = new ContextoFinanzas())
             {
-                return Contexto.PresupuestosCategorias.FirstOrDefault(u => u.Id == id);
+                return Contexto.PresupuestosCategorias.Include("Cat").FirstOrDefault(u => u.Id == id);
             }
         }
 
@@ -20,7 +20,7 @@ namespace Persistencia
         {
             using (var Contexto = new ContextoFinanzas())
             {
-                return Contexto.PresupuestosCategorias.ToList();
+                return Contexto.PresupuestosCategorias.Include("Cat").ToList();
             }
         }
 

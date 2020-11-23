@@ -122,7 +122,7 @@ namespace Interfaz
             ManagerCategoria manager = new ManagerCategoria(Repo);
             manager.EliminarPalabraClave(txtPalabraClave.Text);
             lstPalabrasClave.DataSource = null;
-            lstPalabrasClave.DataSource = CategoriaSeleccionada.ListaPalabras;
+            lstPalabrasClave.DataSource = Repo.GetCategorias().Get(CategoriaSeleccionada.Id).ListaPalabras;
             txtPalabraClave.Text = "";
         }
 
