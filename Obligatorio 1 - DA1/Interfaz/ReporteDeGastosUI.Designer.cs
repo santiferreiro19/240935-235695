@@ -53,11 +53,11 @@
             // lblTotal
             // 
             this.lblTotal.AutoSize = true;
-            this.lblTotal.Location = new System.Drawing.Point(380, 233);
+            this.lblTotal.Location = new System.Drawing.Point(345, 233);
             this.lblTotal.Name = "lblTotal";
-            this.lblTotal.Size = new System.Drawing.Size(34, 13);
+            this.lblTotal.Size = new System.Drawing.Size(69, 13);
             this.lblTotal.TabIndex = 5;
-            this.lblTotal.Text = "Total:";
+            this.lblTotal.Text = "Total (UYU) :";
             // 
             // cboMes
             // 
@@ -84,11 +84,11 @@
             this.data_gastos.AllowUserToResizeColumns = false;
             this.data_gastos.AllowUserToResizeRows = false;
             this.data_gastos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.data_gastos.Location = new System.Drawing.Point(16, 55);
+            this.data_gastos.Location = new System.Drawing.Point(3, 57);
             this.data_gastos.Name = "data_gastos";
             this.data_gastos.ReadOnly = true;
             this.data_gastos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.data_gastos.Size = new System.Drawing.Size(398, 150);
+            this.data_gastos.Size = new System.Drawing.Size(493, 150);
             this.data_gastos.TabIndex = 13;
             this.data_gastos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.data_gastos_CellContentClick);
             // 

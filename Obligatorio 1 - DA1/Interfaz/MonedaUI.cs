@@ -51,5 +51,10 @@ namespace Interfaz
             UserControl borrarMoneda = new EliminacionMonedaUI(Repo);
             panelGeneral.Controls.Add(borrarMoneda);
         }
+
+        private void MonedaUI_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

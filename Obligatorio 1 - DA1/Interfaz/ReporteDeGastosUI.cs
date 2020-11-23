@@ -23,7 +23,7 @@ namespace Interfaz
 
         private void label1_Click(object sender, EventArgs e)
         {
-
+          
         }
 
         private void ReporteDeGastos_Load(object sender, EventArgs e)
@@ -51,8 +51,11 @@ namespace Interfaz
                 data_gastos.DataSource = list;
                 data_gastos.Columns["Fecha"].DisplayIndex = 0;
                 data_gastos.Columns["Fecha"].DefaultCellStyle.Format = "dd'/'MM'/'yyyy";
+                data_gastos.Columns.Remove("Id");
                 data_gastos.RowHeadersVisible = false;
-                lbl_resultado.Text = (unManager.SumaDeGastosParaFecha(unManager.FiltrarGastosPorFecha(cboMes.SelectedItem.ToString())));
+                string resultado = (unManager.SumaDeGastosParaFecha(unManager.FiltrarGastosPorFecha(cboMes.SelectedItem.ToString())));
+                decimal resultadoDecimal = Math.Round(decimal.Parse(resultado), 2);
+                lbl_resultado.Text = resultadoDecimal.ToString();
             }
         }
     }

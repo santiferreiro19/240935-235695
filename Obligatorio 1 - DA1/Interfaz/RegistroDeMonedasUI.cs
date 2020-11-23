@@ -27,7 +27,7 @@ namespace Interfaz
         private void button1_Click(object sender, EventArgs e)
         {
             ManagerMoneda manager = new ManagerMoneda(Repo);
-            if (txtNombre.Text != "" && txtSimbolo.Text != "" && nroCotizacion.Value > 0.00M)
+            if (txtNombre.Text != "" && txtSimbolo.Text != "" && nroCotizacion.Value > 0.00M && !BloqueoPesoUruguayo())
             {
                 try
                 {
@@ -57,7 +57,14 @@ namespace Interfaz
             }
             else
             {
-                MessageBox.Show("Hay campos vacios 0 cotizacion menor a 0");
+                if (txtNombre.Text == "" || txtSimbolo.Text == "" || nroCotizacion.Value <= 0.00M)
+                {
+                    MessageBox.Show("Hay campos vacios");
+                }
+                else
+                {
+                    MessageBox.Show("No se puede agregar otro Peso Uruguayo");
+                }
             }
         }
 
@@ -74,6 +81,10 @@ namespace Interfaz
         private void txtSimbolo_TextChanged(object sender, EventArgs e)
         {
 
+        }
+        public bool BloqueoPesoUruguayo()
+        {
+            return txtSimbolo.Text == "UYU";
         }
     }
 }

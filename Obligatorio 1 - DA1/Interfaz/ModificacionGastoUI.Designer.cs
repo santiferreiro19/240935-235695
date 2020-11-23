@@ -41,6 +41,8 @@
             this.button1 = new System.Windows.Forms.Button();
             this.btnSeleccionar = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.cbo_Moneda = new System.Windows.Forms.ComboBox();
             this.panelModificacion.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nroMonto)).BeginInit();
             this.SuspendLayout();
@@ -58,7 +60,7 @@
             // dateFecha
             // 
             this.dateFecha.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateFecha.Location = new System.Drawing.Point(127, 134);
+            this.dateFecha.Location = new System.Drawing.Point(127, 153);
             this.dateFecha.Name = "dateFecha";
             this.dateFecha.Size = new System.Drawing.Size(147, 20);
             this.dateFecha.TabIndex = 26;
@@ -67,7 +69,7 @@
             // cboCategoria
             // 
             this.cboCategoria.FormattingEnabled = true;
-            this.cboCategoria.Location = new System.Drawing.Point(127, 174);
+            this.cboCategoria.Location = new System.Drawing.Point(127, 177);
             this.cboCategoria.Name = "cboCategoria";
             this.cboCategoria.Size = new System.Drawing.Size(147, 21);
             this.cboCategoria.TabIndex = 25;
@@ -75,7 +77,7 @@
             // 
             // txtDescripcion
             // 
-            this.txtDescripcion.Location = new System.Drawing.Point(127, 55);
+            this.txtDescripcion.Location = new System.Drawing.Point(127, 70);
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(147, 20);
             this.txtDescripcion.TabIndex = 23;
@@ -94,7 +96,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(9, 140);
+            this.label3.Location = new System.Drawing.Point(9, 153);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(37, 13);
             this.label3.TabIndex = 21;
@@ -114,7 +116,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 58);
+            this.label1.Location = new System.Drawing.Point(9, 70);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(63, 13);
             this.label1.TabIndex = 19;
@@ -123,6 +125,8 @@
             // 
             // panelModificacion
             // 
+            this.panelModificacion.Controls.Add(this.cbo_Moneda);
+            this.panelModificacion.Controls.Add(this.label6);
             this.panelModificacion.Controls.Add(this.nroMonto);
             this.panelModificacion.Controls.Add(this.button1);
             this.panelModificacion.Controls.Add(this.txtDescripcion);
@@ -188,6 +192,24 @@
             this.label5.Text = "Lista de Gastos";
             this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(9, 127);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(46, 13);
+            this.label6.TabIndex = 30;
+            this.label6.Text = "Moneda";
+            // 
+            // cbo_Moneda
+            // 
+            this.cbo_Moneda.FormattingEnabled = true;
+            this.cbo_Moneda.Location = new System.Drawing.Point(127, 124);
+            this.cbo_Moneda.Name = "cbo_Moneda";
+            this.cbo_Moneda.Size = new System.Drawing.Size(147, 21);
+            this.cbo_Moneda.TabIndex = 31;
+            this.cbo_Moneda.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
             // ModificacionGastoUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -222,5 +244,7 @@
         private System.Windows.Forms.Button btnSeleccionar;
         private System.Windows.Forms.NumericUpDown nroMonto;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ComboBox cbo_Moneda;
+        private System.Windows.Forms.Label label6;
     }
 }

@@ -1,15 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Persistencia;
+﻿using Managers;
 using Obligatorio_1___DA1;
-using Managers;
+using Persistencia;
+using System;
+using System.Windows.Forms;
 
 namespace Interfaz
 {
@@ -31,7 +24,7 @@ namespace Interfaz
         }
         private void lstMonedas_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+
         }
 
         private void lstGastos_SelectedIndexChanged(object sender, EventArgs e)
@@ -48,8 +41,20 @@ namespace Interfaz
         {
             MonedaSeleccionada = (Moneda)lstMonedas.SelectedItem;
             ManagerMoneda manager = new ManagerMoneda(Repo);
-            manager.ValidacionEliminarMoneda(MonedaSeleccionada);
+            if (!BloqueoPesoUruguayo(MonedaSeleccionada.Simbolo))
+            {
+                manager.ValidacionEliminarMoneda(MonedaSeleccionada);
+            }
+            else
+            {
+                MessageBox.Show("El peso uruguayo no se puede eliminar");
+            }
             CargarListBox();
+        }
+
+        public bool BloqueoPesoUruguayo(string Simbolo)
+        {
+            return Simbolo == "UYU";
         }
     }
 }

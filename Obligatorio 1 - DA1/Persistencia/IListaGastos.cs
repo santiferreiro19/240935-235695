@@ -13,6 +13,8 @@ namespace Persistencia
             using (var Contexto = new ContextoFinanzas())
             {
                 Contexto.Gastos.Add(entidad);
+                Contexto.Entry(entidad.Categoria).State = EntityState.Unchanged;
+                Contexto.Entry(entidad.Moneda).State = EntityState.Unchanged;
                 Contexto.SaveChanges();
             }
         }
@@ -20,7 +22,9 @@ namespace Persistencia
         {
             using (var Contexto = new ContextoFinanzas())
             {
-                Gasto unGasto = Contexto.Gastos.FirstOrDefault(u => u.Id == entidad.Id);
+                Gasto unGasto = Contexto.Gastos.Include("Categoria").Include("Moneda").FirstOrDefault(u => u.Id == entidad.Id);
+                Contexto.Entry(unGasto.Categoria).State = EntityState.Unchanged;
+                Contexto.Entry(unGasto.Moneda).State = EntityState.Unchanged;
                 Contexto.Gastos.Remove(unGasto);
                 Contexto.SaveChanges();
             }
@@ -30,7 +34,7 @@ namespace Persistencia
         {
             using (var Contexto = new ContextoFinanzas())
             {
-                Gasto unGasto = Contexto.Gastos.Include("Categoria").FirstOrDefault(u => u.Id == id);
+                Gasto unGasto = Contexto.Gastos.Include("Categoria").Include("Moneda").FirstOrDefault(u => u.Id == id);
                 return unGasto;
             }
         }
@@ -39,7 +43,7 @@ namespace Persistencia
         {
             using (var Contexto = new ContextoFinanzas())
             {
-                return Contexto.Gastos.Include("Categoria").ToList();
+                return Contexto.Gastos.Include("Categoria").Include("Moneda").ToList();
             }
         }
 
@@ -61,6 +65,8 @@ namespace Persistencia
                 unGasto.Fecha = entidad.Fecha;
                 unGasto.Moneda = entidad.Moneda;
                 unGasto.Monto = entidad.Monto;
+                Contexto.Entry(unGasto.Categoria).State = EntityState.Unchanged;
+                Contexto.Entry(unGasto.Moneda).State = EntityState.Unchanged;
                 Contexto.Entry(unGasto).State = EntityState.Modified;
                 Contexto.SaveChanges();
             }

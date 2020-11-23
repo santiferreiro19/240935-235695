@@ -81,7 +81,7 @@ namespace Interfaz
         {
             ManagerMoneda manager = new ManagerMoneda(Repo);
 
-            if (txtNombre.Text != "" && txtSimbolo.Text != "" && nroCotizacion.Value > 0.00M)
+            if (txtNombre.Text != "" && txtSimbolo.Text != "" && nroCotizacion.Value > 0.00M && !BloqueoPesoUruguayo())
             {
                 decimal Cotizacion = decimal.Parse(nroCotizacion.Text);
                 try
@@ -112,12 +112,23 @@ namespace Interfaz
             }
             else
             {
-                MessageBox.Show("Hay campos vacios o cotizacion menor a 0");
+                if (txtNombre.Text == "" || txtSimbolo.Text == "" || nroCotizacion.Value <= 0.00M)
+                {
+                    MessageBox.Show("Hay campos vacios");
+                }
+                else {
+                    MessageBox.Show("Peso Uruguayo no se puede modificar");
+                }
+                
             }
             CargarListBox();
             txtNombre.Text = MonedaSeleccionada.Nombre;
             txtSimbolo.Text = MonedaSeleccionada.Simbolo;
             nroCotizacion.Text = MonedaSeleccionada.Cotizacion.ToString();
+        }
+
+        public bool BloqueoPesoUruguayo() {
+            return MonedaSeleccionada.Simbolo == "UYU";
         }
     }
 }

@@ -50,16 +50,18 @@ namespace Interfaz
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             ManagerGasto manager = new ManagerGasto(Repo);
-            decimal monto = decimal.Parse(nroMonto.Text);
-            monto = manager.TransformarMonto(monto);
             if (txtDescripcion.Text != "" && cboCategoria.SelectedIndex != -1)
             {
                 try
                 {
                     unGasto.Descripcion = txtDescripcion.Text;
-                    unGasto.Monto = monto;
+                    decimal monto = decimal.Parse(nroMonto.Text);
+                    monto = manager.TransformarMonto(monto);
+                    
                     unGasto.Fecha = dateFecha.Value;
                     unGasto.Moneda = (Moneda)cbo_Monedas.SelectedItem;
+                    monto = (monto * unGasto.Moneda.Cotizacion);
+                    unGasto.Monto = monto;
                     unGasto.Categoria = (Categoria)cboCategoria.SelectedItem;
                     txtDescripcion.Text = "";
                     nroMonto.Text = "";
@@ -105,6 +107,11 @@ namespace Interfaz
         }
 
         private void nroMonto_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cboCategoria_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

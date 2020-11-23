@@ -46,7 +46,7 @@
             // 
             // btnActualizar
             // 
-            this.btnActualizar.Location = new System.Drawing.Point(120, 207);
+            this.btnActualizar.Location = new System.Drawing.Point(129, 172);
             this.btnActualizar.Name = "btnActualizar";
             this.btnActualizar.Size = new System.Drawing.Size(75, 23);
             this.btnActualizar.TabIndex = 19;
@@ -57,7 +57,7 @@
             // dateFecha
             // 
             this.dateFecha.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateFecha.Location = new System.Drawing.Point(129, 140);
+            this.dateFecha.Location = new System.Drawing.Point(129, 46);
             this.dateFecha.Name = "dateFecha";
             this.dateFecha.Size = new System.Drawing.Size(147, 20);
             this.dateFecha.TabIndex = 18;
@@ -65,10 +65,11 @@
             // cboCategoria
             // 
             this.cboCategoria.FormattingEnabled = true;
-            this.cboCategoria.Location = new System.Drawing.Point(129, 180);
+            this.cboCategoria.Location = new System.Drawing.Point(129, 145);
             this.cboCategoria.Name = "cboCategoria";
             this.cboCategoria.Size = new System.Drawing.Size(147, 21);
             this.cboCategoria.TabIndex = 17;
+            this.cboCategoria.SelectedIndexChanged += new System.EventHandler(this.cboCategoria_SelectedIndexChanged);
             // 
             // txtDescripcion
             // 
@@ -80,7 +81,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(11, 183);
+            this.label4.Location = new System.Drawing.Point(11, 145);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(52, 13);
             this.label4.TabIndex = 14;
@@ -89,7 +90,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(11, 140);
+            this.label3.Location = new System.Drawing.Point(11, 52);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(37, 13);
             this.label3.TabIndex = 13;
@@ -98,7 +99,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(11, 59);
+            this.label2.Location = new System.Drawing.Point(11, 105);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(37, 13);
             this.label2.TabIndex = 12;
@@ -115,7 +116,7 @@
             // 
             // btnAceptar
             // 
-            this.btnAceptar.Location = new System.Drawing.Point(201, 207);
+            this.btnAceptar.Location = new System.Drawing.Point(14, 240);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(75, 23);
             this.btnAceptar.TabIndex = 10;
@@ -137,7 +138,7 @@
             // 
             this.nroMonto.DecimalPlaces = 2;
             this.nroMonto.InterceptArrowKeys = false;
-            this.nroMonto.Location = new System.Drawing.Point(129, 57);
+            this.nroMonto.Location = new System.Drawing.Point(129, 105);
             this.nroMonto.Maximum = new decimal(new int[] {
             -1,
             -1,
@@ -156,7 +157,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(11, 100);
+            this.label5.Location = new System.Drawing.Point(11, 79);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(46, 13);
             this.label5.TabIndex = 26;
@@ -166,7 +167,7 @@
             // cbo_Monedas
             // 
             this.cbo_Monedas.FormattingEnabled = true;
-            this.cbo_Monedas.Location = new System.Drawing.Point(129, 97);
+            this.cbo_Monedas.Location = new System.Drawing.Point(129, 76);
             this.cbo_Monedas.Name = "cbo_Monedas";
             this.cbo_Monedas.Size = new System.Drawing.Size(147, 21);
             this.cbo_Monedas.TabIndex = 27;

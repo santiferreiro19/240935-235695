@@ -21,6 +21,18 @@ namespace Persistencia
             this.ListaPresupuestos = new IListaPresupuestos();
             this.ListaMonedas = new IListaMonedas();
             this.ListaPalabrasClave = new IListaPalabraClave();
+
+            Moneda PesosPorDefecto = new Moneda("Peso Uruguayo", "UYU", 1.00M);
+            bool YaEsta = false;
+            foreach (Moneda PesoBuscado in this.ListaMonedas.GetAll()) {
+                if (PesosPorDefecto.Simbolo == PesoBuscado.Simbolo)
+                {
+                    YaEsta = true;
+                }
+            }
+            if (!YaEsta) {
+                this.ListaMonedas.Add(PesosPorDefecto);
+            }
         }
 
         public ILista<Categoria> GetCategorias()
@@ -150,17 +162,18 @@ namespace Persistencia
                     PalabraClave palabraABuscar = new PalabraClave(buscada);
                     if (cadaCategoria.ListaPalabras.Any(x => x.Palabra == buscada))
                     {
-                        if (Retorno != cadaCategoria)
+                        if(Retorno.Id != cadaCategoria.Id)
                         {
-                            Retorno = cadaCategoria;
-                            Contador++;
+                        Contador++;
+                        Retorno = cadaCategoria;
                         }
                     }
                 }
             }
 
-            if (Contador == 0)
+            if (Contador == 0 || Contador > 1)
             {
+
                 Retorno = new Categoria();
                 return Retorno;
             }
