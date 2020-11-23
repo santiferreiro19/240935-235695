@@ -62,6 +62,12 @@
     <Compile Include="EliminacionGastoUI.Designer.cs">
       <DependentUpon>EliminacionGastoUI.cs</DependentUpon>
     </Compile>
+    <Compile Include="EliminacionMonedaUI.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="EliminacionMonedaUI.Designer.cs">
+      <DependentUpon>EliminacionMonedaUI.cs</DependentUpon>
+    </Compile>
     <Compile Include="MenuUI.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -79,6 +85,12 @@
     </Compile>
     <Compile Include="ModificacionGastoUI.Designer.cs">
       <DependentUpon>ModificacionGastoUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModificacionMonedaUI.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ModificacionMonedaUI.Designer.cs">
+      <DependentUpon>ModificacionMonedaUI.cs</DependentUpon>
     </Compile>
     <Compile Include="ModificacionPresupuesto.cs">
       <SubType>UserControl</SubType>
@@ -142,6 +154,9 @@
     <EmbeddedResource Include="EliminacionGastoUI.resx">
       <DependentUpon>EliminacionGastoUI.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="EliminacionMonedaUI.resx">
+      <DependentUpon>EliminacionMonedaUI.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GastoUI.resx">
       <DependentUpon>GastoUI.cs</DependentUpon>
     </EmbeddedResource>
@@ -153,6 +168,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ModificacionGastoUI.resx">
       <DependentUpon>ModificacionGastoUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModificacionMonedaUI.resx">
+      <DependentUpon>ModificacionMonedaUI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModificacionPresupuesto.resx">
       <DependentUpon>ModificacionPresupuesto.cs</DependentUpon>

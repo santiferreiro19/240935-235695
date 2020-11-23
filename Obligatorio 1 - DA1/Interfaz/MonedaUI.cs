@@ -32,5 +32,29 @@ namespace Interfaz
             UserControl registrarMoneda = new RegistroDeMonedasUI(Repo);
             panelGeneral.Controls.Add(registrarMoneda);
         }
+
+        private void panelGeneral_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void modificarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            panelGeneral.Controls.Clear();
+            UserControl modificacionMoneda = new ModificacionMonedaUI(Repo);
+            panelGeneral.Controls.Add(modificacionMoneda);
+        }
+
+        private void borrarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            panelGeneral.Controls.Clear();
+            UserControl borrarMoneda = new EliminacionMonedaUI(Repo);
+            panelGeneral.Controls.Add(borrarMoneda);
+        }
+
+        private void MonedaUI_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

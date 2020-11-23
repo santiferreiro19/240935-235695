@@ -27,14 +27,17 @@ namespace Interfaz
         public void CargarListBox()
         {
             lstGastos.DataSource = null;
-            lstGastos.DataSource = Repo.GetGastos();
+            lstGastos.DataSource = Repo.GetGastos().GetAll();
             lstGastos.SelectedIndex = -1;
         }
         public void CargarComboBox()
         {
             cboCategoria.DataSource = null;
-            cboCategoria.DataSource = Repo.GetCategorias();
+            cboCategoria.DataSource = Repo.GetCategorias().GetAll();
             cboCategoria.SelectedIndex = -1;
+            cbo_Moneda.DataSource = null;
+            cbo_Moneda.DataSource = Repo.GetMonedas().GetAll();
+            cbo_Moneda.SelectedIndex = -1;
         }
         private void ModificacionGastoUI_Load(object sender, EventArgs e)
         {
@@ -89,19 +92,16 @@ namespace Interfaz
         {
             ManagerGasto manager = new ManagerGasto(Repo);
 
-            if (txtDescripcion.Text != "" && cboCategoria.SelectedIndex != -1 && nroMonto.Text != "")
+            if (txtDescripcion.Text != "" && cboCategoria.SelectedIndex != -1 && nroMonto.Text != "" && cbo_Moneda.Text != "")
             {
                 decimal monto = Decimal.Parse(nroMonto.Text);
                 monto = manager.TransformarMonto(monto);
                 try
                 {
-                    /*manager.ValidacionModificacionCategoriaGasto(GastoSeleccionado, (Categoria)cboCategoria.SelectedItem);
-                    manager.ValidacionModificacionDescripcionGasto(GastoSeleccionado, txtDescripcion.Text);
-                    manager.ValidacionModificacionFechaGasto(GastoSeleccionado, dateFecha.Value);
-                    manager.ValidacionModificacionMontoGasto(GastoSeleccionado, monto);*/
                     Gasto GastoTemporal = new Gasto();
                     GastoTemporal.Fecha = dateFecha.Value;
                     GastoTemporal.Categoria = (Categoria)cboCategoria.SelectedItem;
+                    GastoTemporal.Moneda = (Moneda)cbo_Moneda.SelectedItem;
                     GastoTemporal.Monto = monto;
                     GastoTemporal.Descripcion = txtDescripcion.Text;
                     manager.ValidacionModificacionGasto(GastoSeleccionado, GastoTemporal);
@@ -109,6 +109,7 @@ namespace Interfaz
                     txtDescripcion.Text = "";
                     nroMonto.Text = "";
                     cboCategoria.SelectedIndex = -1;
+                    cbo_Moneda.SelectedIndex = -1;
                     panelModificacion.Visible = false;
                 }
                 catch (ExceptionDescripcionGasto descripcion)
@@ -142,10 +143,26 @@ namespace Interfaz
                 nroMonto.Text = GastoSeleccionado.Monto.ToString();
                 CargarComboBox();
                 cboCategoria.SelectedItem = GastoSeleccionado.Categoria;
+                cbo_Moneda.SelectedItem = GastoSeleccionado.Moneda;
             }
             else {
                 MessageBox.Show("Seleccione un gasto");
             }
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panelModificacion_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

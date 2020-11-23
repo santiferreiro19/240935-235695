@@ -27,8 +27,11 @@ namespace Interfaz
         public void CargarCbox()
         {
             cboCategoria.DataSource = null;
-            cboCategoria.DataSource = Repo.GetCategorias();
+            cboCategoria.DataSource = Repo.GetCategorias().GetAll();
             cboCategoria.SelectedIndex = -1;
+            cbo_Monedas.DataSource = null;
+            cbo_Monedas.DataSource = Repo.GetMonedas().GetAll();
+            cbo_Monedas.SelectedIndex = -1;
         }
         private void RegistroDeGastosUI_Load(object sender, EventArgs e)
         {
@@ -41,21 +44,24 @@ namespace Interfaz
             string descripcion = txtDescripcion.Text;
             cboCategoria.SelectedItem = manager.ValidacionBusquedaCategorias(descripcion);
             listBox1.DataSource = null;
-            listBox1.DataSource = Repo.GetGastos();
+            listBox1.DataSource = Repo.GetGastos().GetAll();
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             ManagerGasto manager = new ManagerGasto(Repo);
-            decimal monto = Decimal.Parse(nroMonto.Text);
-            monto = manager.TransformarMonto(monto);
             if (txtDescripcion.Text != "" && cboCategoria.SelectedIndex != -1)
             {
                 try
                 {
                     unGasto.Descripcion = txtDescripcion.Text;
-                    unGasto.Monto = monto;
+                    decimal monto = decimal.Parse(nroMonto.Text);
+                    monto = manager.TransformarMonto(monto);
+                    
                     unGasto.Fecha = dateFecha.Value;
+                    unGasto.Moneda = (Moneda)cbo_Monedas.SelectedItem;
+                    monto = (monto * unGasto.Moneda.Cotizacion);
+                    unGasto.Monto = monto;
                     unGasto.Categoria = (Categoria)cboCategoria.SelectedItem;
                     txtDescripcion.Text = "";
                     nroMonto.Text = "";
@@ -82,10 +88,30 @@ namespace Interfaz
                 MessageBox.Show("Hay campos vacios");
             }
             listBox1.DataSource = null;
-            listBox1.DataSource = Repo.GetGastos();
+            listBox1.DataSource = Repo.GetGastos().GetAll();
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbo_Monedas_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void nroMonto_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cboCategoria_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

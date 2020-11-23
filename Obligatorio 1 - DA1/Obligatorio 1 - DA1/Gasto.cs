@@ -34,7 +34,7 @@ namespace Obligatorio_1___DA1
       override
       public string ToString()
         {
-            return "Descripcion: "+this.Descripcion +" Monto: "+ this.Monto +" Categoria: "+ this.Categoria +" Fecha: " + this.Fecha.ToShortDateString();
+            return "Descripcion: "+this.Descripcion +" Monto: "+ this.Monto +" Categoria: "+ this.Categoria +" Fecha: " + this.Fecha.ToShortDateString() + " Moneda: "+ this.Moneda;
         }
     }
 }

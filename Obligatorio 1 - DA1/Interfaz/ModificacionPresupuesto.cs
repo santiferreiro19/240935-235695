@@ -42,7 +42,7 @@ namespace Interfaz
         }
         private void ModificacionPresupuesto_Load(object sender, EventArgs e)
         {
-            cboxPresupuestos.DataSource = Repo.GetPresupuestos();
+            cboxPresupuestos.DataSource = Repo.GetPresupuestos().GetAll();
         }
 
         private void btnListar_Click(object sender, EventArgs e)

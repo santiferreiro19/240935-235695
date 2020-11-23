@@ -11,6 +11,7 @@ namespace Obligatorio_1___DA1
         public int Id { get; set; }
         public int Año { get; set; }
         public string Mes { get; set; }
+        public List<MontoCategoria> Montos { get; set; }
         private Dictionary<Categoria, decimal> PresupuestosCategorias { get; set; }
 
         public Presupuesto()

@@ -71,6 +71,7 @@
     <Compile Include="Excepciones\ExceptionSimboloMoneda.cs" />
     <Compile Include="Gasto.cs" />
     <Compile Include="Moneda.cs" />
+    <Compile Include="MontoCategoria.cs" />
     <Compile Include="PalabraClave.cs" />
     <Compile Include="Presupuesto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

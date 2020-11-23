@@ -57,6 +57,7 @@ namespace Interfaz
             this.nroCotizacion.Name = "nroCotizacion";
             this.nroCotizacion.Size = new System.Drawing.Size(100, 20);
             this.nroCotizacion.TabIndex = 32;
+            this.nroCotizacion.ValueChanged += new System.EventHandler(this.nroCotizacion_ValueChanged);
             // 
             // txtSimbolo
             // 
@@ -64,6 +65,7 @@ namespace Interfaz
             this.txtSimbolo.Name = "txtSimbolo";
             this.txtSimbolo.Size = new System.Drawing.Size(100, 20);
             this.txtSimbolo.TabIndex = 31;
+            this.txtSimbolo.TextChanged += new System.EventHandler(this.txtSimbolo_TextChanged);
             // 
             // txtNombre
             // 
@@ -71,6 +73,7 @@ namespace Interfaz
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(100, 20);
             this.txtNombre.TabIndex = 30;
+            this.txtNombre.TextChanged += new System.EventHandler(this.txtNombre_TextChanged);
             // 
             // label3
             // 
@@ -121,7 +124,7 @@ namespace Interfaz
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "RegistroDeMonedasUI";
-            this.Size = new System.Drawing.Size(316, 208);
+            this.Size = new System.Drawing.Size(602, 302);
             this.Load += new System.EventHandler(this.RegistroDeMonedasUI_Load);
             ((System.ComponentModel.ISupportInitialize)(this.nroCotizacion)).EndInit();
             this.ResumeLayout(false);

@@ -12,6 +12,8 @@ namespace Persistencia
         private ILista<Presupuesto> ListaPresupuestos { get; set; }
         private ILista<Moneda> ListaMonedas { get; set; }
         private ILista<PalabraClave> ListaPalabrasClave { get; set; }
+        private ILista<MontoCategoria> ListaMontos { get; set; }
+
         public Repositorio()
         {
             this.ListaCategorias = new IListaCategorias();
@@ -19,6 +21,18 @@ namespace Persistencia
             this.ListaPresupuestos = new IListaPresupuestos();
             this.ListaMonedas = new IListaMonedas();
             this.ListaPalabrasClave = new IListaPalabraClave();
+
+            Moneda PesosPorDefecto = new Moneda("Peso Uruguayo", "UYU", 1.00M);
+            bool YaEsta = false;
+            foreach (Moneda PesoBuscado in this.ListaMonedas.GetAll()) {
+                if (PesosPorDefecto.Simbolo == PesoBuscado.Simbolo)
+                {
+                    YaEsta = true;
+                }
+            }
+            if (!YaEsta) {
+                this.ListaMonedas.Add(PesosPorDefecto);
+            }
         }
 
         public ILista<Categoria> GetCategorias()
@@ -79,9 +93,9 @@ namespace Persistencia
             {
                 if (buscada.Id==unacategoria.Id)
                 {
-                    for (int i = 0; i < unacategoria.ListaPalabras.Count(); i++)
+                    for (int i = 0; i < buscada.ListaPalabras.Count(); i++)
                     {
-                        if (PalabraAnterior == unacategoria.ListaPalabras[i].Palabra)
+                        if (PalabraAnterior == buscada.ListaPalabras[i].Palabra)
                         {
                             buscada.ListaPalabras[i].Palabra = NuevaPalabra;
                             this.GetCategorias().Update(buscada);
@@ -148,17 +162,18 @@ namespace Persistencia
                     PalabraClave palabraABuscar = new PalabraClave(buscada);
                     if (cadaCategoria.ListaPalabras.Any(x => x.Palabra == buscada))
                     {
-                        if (Retorno != cadaCategoria)
+                        if(Retorno.Id != cadaCategoria.Id)
                         {
-                            Retorno = cadaCategoria;
-                            Contador++;
+                        Contador++;
+                        Retorno = cadaCategoria;
                         }
                     }
                 }
             }
 
-            if (Contador == 0)
+            if (Contador == 0 || Contador > 1)
             {
+
                 Retorno = new Categoria();
                 return Retorno;
             }

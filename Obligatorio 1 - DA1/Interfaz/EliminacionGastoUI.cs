@@ -26,12 +26,13 @@ namespace Interfaz
         public void CargarListBox()
         {
             lstGastos.DataSource = null;
-            lstGastos.DataSource = Repo.GetGastos();
+            lstGastos.DataSource = Repo.GetGastos().GetAll();
             lstGastos.SelectedIndex = -1;
         }
         private void EliminacionGastoUI_Load(object sender, EventArgs e)
         {
             CargarListBox();
+            
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)

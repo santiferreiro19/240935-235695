@@ -63,11 +63,11 @@ namespace Interfaz
         private void PalabraRepetidaEnCategoriaLocal()
         {
             PalabraClave palabraTemporal = new PalabraClave(txtPalabraClave.Text);
-            if (this.unaCategoriaLocal.ListaPalabras.Contains(palabraTemporal))
+            foreach(PalabraClave palabraBuscar in this.unaCategoriaLocal.ListaPalabras)
+            if (palabraBuscar.Palabra == palabraTemporal.Palabra)
             {
-                throw new ExceptionPalabraClaveRepetida("la palabra clave esta repetida"); ;
+                throw new ExceptionPalabraClaveRepetida("la palabra clave esta repetida");
             }
-
         }
         private void btnAceptar_Click(object sender, EventArgs e)
         {

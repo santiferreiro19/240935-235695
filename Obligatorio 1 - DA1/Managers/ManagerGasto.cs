@@ -100,7 +100,7 @@ namespace Managers
             decimal Total = 0.00M;
             foreach (Gasto unGasto in ListaGastosParaFecha)
             {
-                Total += unGasto.Monto;
+                Total += (unGasto.Monto);
             }
             return Total.ToString();
         }

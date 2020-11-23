@@ -149,7 +149,7 @@ namespace Testing
             ManagerMoneda unManager = new ManagerMoneda(Repositorio);
             Moneda NuevaMoneda = new Moneda("Dolar", "USD", 43.00M);
             unManager.ValidacionAgregarMoneda(NuevaMoneda);
-            Assert.AreEqual(NuevaMoneda.Nombre, Repositorio.GetMonedas().GetAll()[0].Nombre);
+            Assert.AreEqual(NuevaMoneda.Nombre, Repositorio.GetMonedas().GetAll()[1].Nombre);
         }
 
         [TestMethod]
