@@ -4,13 +4,6 @@
     {
         public int Id { get; set; }
         public decimal Monto { set; get; }
-<<<<<<< HEAD
-         public Categoria Cat { set; get; }
-
-        public MontoCategoria()
-        {
-            
-=======
         public Categoria Cat { set; get; }
 
         public MontoCategoria()
@@ -22,7 +15,6 @@
             this.Monto = unMonto;
             this.Cat = unaCategoria;
 
->>>>>>> feature/RefactorParaTrabajarConEF
         }
 
 

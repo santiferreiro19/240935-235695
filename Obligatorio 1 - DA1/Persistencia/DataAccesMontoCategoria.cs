@@ -12,11 +12,7 @@ namespace Persistencia
         {
             using (var Contexto = new ContextoFinanzas())
             {
-<<<<<<< HEAD
-                return Contexto.Montos.FirstOrDefault(u => u.Id == id);
-=======
                 return Contexto.PresupuestosCategorias.Include("Cat").FirstOrDefault(u => u.Id == id);
->>>>>>> feature/RefactorParaTrabajarConEF
             }
         }
 
@@ -24,11 +20,7 @@ namespace Persistencia
         {
             using (var Contexto = new ContextoFinanzas())
             {
-<<<<<<< HEAD
-                return Contexto.Montos.ToList();
-=======
                 return Contexto.PresupuestosCategorias.Include("Cat").ToList();
->>>>>>> feature/RefactorParaTrabajarConEF
             }
         }
 
@@ -36,11 +28,7 @@ namespace Persistencia
         {
             using (var Contexto = new ContextoFinanzas())
             {
-<<<<<<< HEAD
-                Contexto.Montos.Add(entidad);
-=======
                 Contexto.PresupuestosCategorias.Add(entidad);
->>>>>>> feature/RefactorParaTrabajarConEF
                 Contexto.SaveChanges();
             }
         }
@@ -49,11 +37,8 @@ namespace Persistencia
         {
             using (var Contexto = new ContextoFinanzas())
             {
-<<<<<<< HEAD
-                Contexto.Montos.Remove(entidad);
-=======
+
                 Contexto.PresupuestosCategorias.Remove(entidad);
->>>>>>> feature/RefactorParaTrabajarConEF
                 Contexto.SaveChanges();
             }
         }
@@ -62,11 +47,7 @@ namespace Persistencia
         {
             using (var Contexto = new ContextoFinanzas())
             {
-<<<<<<< HEAD
-                MontoCategoria unMonto = Contexto.Montos.FirstOrDefault(u => u.Id == entidad.Id);
-=======
                 MontoCategoria unMonto = Contexto.PresupuestosCategorias.FirstOrDefault(u => u.Id == entidad.Id);
->>>>>>> feature/RefactorParaTrabajarConEF
                 return unMonto != null;
             }
         }
@@ -75,11 +56,7 @@ namespace Persistencia
         {
             using (var Contexto = new ContextoFinanzas())
             {
-<<<<<<< HEAD
-                MontoCategoria unMonto = Contexto.Montos.FirstOrDefault(u => u.Id == entidad.Id);
-=======
                 MontoCategoria unMonto = Contexto.PresupuestosCategorias.FirstOrDefault(u => u.Id == entidad.Id);
->>>>>>> feature/RefactorParaTrabajarConEF
                 unMonto.Monto = entidad.Monto;
                 unMonto.Cat = entidad.Cat;
                 Contexto.Entry(unMonto).State = EntityState.Modified;

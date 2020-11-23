@@ -55,7 +55,7 @@ namespace Testing
             DateTime FechaRandom = new DateTime(2019, 04, 05);
             Moneda NuevaMoneda = new Moneda("Dolar", "USD", 43.00M);
             Gasto UnaGasto = new Gasto("Entradas al teatro", 1.34M, UnaCategoria, FechaRandom, NuevaMoneda);
-            Assert.AreEqual("Descripcion: Entradas al teatro Monto: 1.34 Categoria: Teatro Fecha: 05/04/2019 Moneda: USD", UnaGasto.ToString());
+            Assert.AreEqual("Descripcion: Entradas al teatro Monto: 1.34 Categoria: Teatro Fecha: 4/5/2019 Moneda: USD", UnaGasto.ToString());
         }
 
         [TestMethod]
@@ -349,7 +349,7 @@ namespace Testing
             ListParaSumarMontos.Add(Gasto2);
             ListParaSumarMontos.Add(Gasto3);
             decimal resultado = decimal.Parse(unManager.SumaDeGastosParaFecha(ListParaSumarMontos));
-            Assert.AreEqual(12900.00M, Math.Round(resultado, 2));
+            Assert.AreEqual(300.00M, Math.Round(resultado, 2));
         }
 
         [TestMethod]

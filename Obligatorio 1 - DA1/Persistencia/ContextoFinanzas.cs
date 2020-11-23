@@ -11,11 +11,8 @@ namespace Persistencia
         public DbSet<Presupuesto> Presupuestos { get; set; }
         public DbSet<Moneda> Monedas { get; set; }
         public DbSet<PalabraClave> PalabrasClave { get; set; }
-<<<<<<< HEAD
-        public DbSet<MontoCategoria> Montos { get; set; }
-=======
+
         public DbSet<MontoCategoria> PresupuestosCategorias { get; set; }
->>>>>>> feature/RefactorParaTrabajarConEF
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

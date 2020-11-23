@@ -32,8 +32,6 @@ namespace Interfaz
             UserControl registrarMoneda = new RegistroDeMonedasUI(Repo);
             panelGeneral.Controls.Add(registrarMoneda);
         }
-
-<<<<<<< HEAD
         private void panelGeneral_Paint(object sender, PaintEventArgs e)
         {
 
@@ -53,8 +51,6 @@ namespace Interfaz
             panelGeneral.Controls.Add(borrarMoneda);
         }
 
-=======
->>>>>>> feature/RefactorParaTrabajarConEF
         private void MonedaUI_Load(object sender, EventArgs e)
         {
 
