@@ -52,10 +52,12 @@ namespace Interfaz
                 data_gastos.Columns["Fecha"].DisplayIndex = 0;
                 data_gastos.Columns["Fecha"].DefaultCellStyle.Format = "dd'/'MM'/'yyyy";
                 data_gastos.Columns.Remove("Id");
+                data_gastos.Columns.Remove("CotizacionActual");
                 data_gastos.RowHeadersVisible = false;
                 string resultado = (unManager.SumaDeGastosParaFecha(unManager.FiltrarGastosPorFecha(cboMes.SelectedItem.ToString())));
                 decimal resultadoDecimal = Math.Round(decimal.Parse(resultado), 2);
                 lbl_resultado.Text = resultadoDecimal.ToString();
+                lbl_resultado.ForeColor = Color.White;
             }
         }
     }

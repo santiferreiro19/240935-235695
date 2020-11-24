@@ -60,6 +60,7 @@
     <Compile Include="CategoriaTest.cs" />
     <Compile Include="GastoTest.cs" />
     <Compile Include="MonedaTest.cs" />
+    <Compile Include="MontoCategoriaTest.cs" />
     <Compile Include="PalabraClaveTest.cs" />
     <Compile Include="PresupuestoTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

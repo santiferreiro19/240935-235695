@@ -69,6 +69,10 @@
     <Compile Include="Migrations\202011212016284_AgregoMontoCategoria.designer.cs">
       <DependentUpon>202011212016284_AgregoMontoCategoria.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202011232336199_AtributoCotizacionActual.cs" />
+    <Compile Include="Migrations\202011232336199_AtributoCotizacionActual.designer.cs">
+      <DependentUpon>202011232336199_AtributoCotizacionActual.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Repositorio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -87,6 +91,9 @@
     <EmbeddedResource Include="Migrations\202011212016284_AgregoMontoCategoria.resx">
       <DependentUpon>202011212016284_AgregoMontoCategoria.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011232336199_AtributoCotizacionActual.resx">
+      <DependentUpon>202011232336199_AtributoCotizacionActual.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

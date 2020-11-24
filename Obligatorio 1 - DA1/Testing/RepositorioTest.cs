@@ -96,7 +96,7 @@ namespace Testing
             decimal DecimalRandom = 1.22M;
             DateTime FechaRandom = new DateTime(2018, 02, 01);
             Moneda NuevaMoneda = new Moneda("Dolar", "USD", 43.00M);
-            Gasto UnGasto = new Gasto("Entradas al cine", DecimalRandom, UnaCategoria, FechaRandom, NuevaMoneda);
+            Gasto UnGasto = new Gasto("Entradas al cine", DecimalRandom, UnaCategoria, FechaRandom, NuevaMoneda, 12.00M);
             Repositorio Repo = new Repositorio();
             Repo.AgregarMoneda(NuevaMoneda);
             Repo.AgregarCategoria(UnaCategoria);
@@ -111,7 +111,7 @@ namespace Testing
             decimal DecimalRandom = 1.22M;
             DateTime FechaRandom = new DateTime(2018, 02, 01);
             Moneda NuevaMoneda = new Moneda("Dolar", "USD", 43.00M);
-            Gasto UnGasto = new Gasto("Entradas al cine", DecimalRandom, UnaCategoria, FechaRandom, NuevaMoneda);
+            Gasto UnGasto = new Gasto("Entradas al cine", DecimalRandom, UnaCategoria, FechaRandom, NuevaMoneda, 12.00M);
             Repositorio Repo = new Repositorio();
             Repo.AgregarMoneda(NuevaMoneda);
             Repo.AgregarCategoria(UnaCategoria);
@@ -128,12 +128,12 @@ namespace Testing
             decimal DecimalRandom = 1.22M;
             DateTime FechaRandom = new DateTime(2018, 02, 01);
             Moneda NuevaMoneda = new Moneda("Dolar", "USD", 43.00M);
-            Gasto UnGasto = new Gasto("Entradas al cine", DecimalRandom, UnaCategoria, FechaRandom, NuevaMoneda);
+            Gasto UnGasto = new Gasto("Entradas al cine", DecimalRandom, UnaCategoria, FechaRandom, NuevaMoneda, 12.00M);
             String nuevaDescripcion = "Hola";
             Repo.AgregarMoneda(NuevaMoneda);
             Repo.AgregarCategoria(UnaCategoria);
             Repo.AgregarGasto(UnGasto);
-            Gasto GastoModificado = new Gasto("Hola", DecimalRandom, UnaCategoria, FechaRandom, NuevaMoneda);
+            Gasto GastoModificado = new Gasto("Hola", DecimalRandom, UnaCategoria, FechaRandom, NuevaMoneda, 12.00M);
             Repo.ModificarGasto(UnGasto, GastoModificado);
             Gasto GastoModificadaBD = Repo.GetGastos().Get(UnGasto.Id);
             Assert.AreEqual(nuevaDescripcion, GastoModificadaBD.Descripcion);
@@ -149,10 +149,10 @@ namespace Testing
             DateTime FechaRandom = new DateTime(2018, 02, 01);
             Moneda NuevaMoneda = new Moneda("Dolar", "USD", 43.00M);
             Repo.AgregarMoneda(NuevaMoneda);
-            Gasto UnGasto = new Gasto("Entradas al cine", DecimalRandom, UnaCategoria, FechaRandom, NuevaMoneda);
+            Gasto UnGasto = new Gasto("Entradas al cine", DecimalRandom, UnaCategoria, FechaRandom, NuevaMoneda, 12.00M);
             decimal nuevoMonto = 102.22M;
             Repo.AgregarGasto(UnGasto);
-            Gasto GastoModificado = new Gasto("Entradas al cine", nuevoMonto, UnaCategoria, FechaRandom, NuevaMoneda);
+            Gasto GastoModificado = new Gasto("Entradas al cine", nuevoMonto, UnaCategoria, FechaRandom, NuevaMoneda, 12.00M);
             Repo.ModificarGasto(UnGasto, GastoModificado);
             Gasto GastoModificadaBD = Repo.GetGastos().Get(UnGasto.Id);
             Assert.AreEqual(nuevoMonto, GastoModificadaBD.Monto);
@@ -168,10 +168,10 @@ namespace Testing
             Moneda NuevaMoneda = new Moneda("Dolar", "USD", 43.00M);
             Repo.AgregarMoneda(NuevaMoneda);
             Repo.AgregarCategoria(UnaCategoria);
-            Gasto UnGasto = new Gasto("Entradas al cine", DecimalRandom, UnaCategoria, FechaAnterior, NuevaMoneda);
+            Gasto UnGasto = new Gasto("Entradas al cine", DecimalRandom, UnaCategoria, FechaAnterior, NuevaMoneda, 12.00M);
             DateTime nuevaFecha = new DateTime(2019, 1, 1);
             Repo.AgregarGasto(UnGasto);
-            Gasto GastoModificado = new Gasto("Entradas al cine", DecimalRandom, UnaCategoria, nuevaFecha, NuevaMoneda);
+            Gasto GastoModificado = new Gasto("Entradas al cine", DecimalRandom, UnaCategoria, nuevaFecha, NuevaMoneda, 12.00M);
             Repo.ModificarGasto(UnGasto, GastoModificado);
             Gasto GastoModificadaBD = Repo.GetGastos().Get(UnGasto.Id);
             Assert.AreEqual(nuevaFecha, GastoModificadaBD.Fecha);
@@ -201,7 +201,7 @@ namespace Testing
             Repo.AgregarCategoria(categoria);
             Moneda NuevaMoneda = new Moneda("Dolar", "USD", 43.00M);
             Repo.AgregarMoneda(NuevaMoneda);
-            Gasto gasto = new Gasto("Entradas al cine", 10.00M, categoria, FechaRandom, NuevaMoneda);
+            Gasto gasto = new Gasto("Entradas al cine", 10.00M, categoria, FechaRandom, NuevaMoneda, 12.00M);
             Repo.AgregarGasto(gasto);
             Categoria categorianueva = new Categoria("Formula 1");
             Repo.AgregarCategoria(categorianueva);

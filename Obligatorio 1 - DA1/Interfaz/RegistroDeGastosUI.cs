@@ -58,11 +58,10 @@ namespace Interfaz
                     unGasto.Descripcion = txtDescripcion.Text;
                     decimal monto = decimal.Parse(nroMonto.Text);
                     monto = manager.TransformarMonto(monto);
-                    
                     unGasto.Fecha = dateFecha.Value;
                     unGasto.Moneda = (Moneda)cbo_Monedas.SelectedItem;
-                    monto = (monto * unGasto.Moneda.Cotizacion);
                     unGasto.Monto = monto;
+                    unGasto.CotizacionActual = unGasto.Moneda.Cotizacion;
                     unGasto.Categoria = (Categoria)cboCategoria.SelectedItem;
                     txtDescripcion.Text = "";
                     nroMonto.Text = "";
