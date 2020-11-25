@@ -10,7 +10,9 @@ namespace Managers
     public class ManagerPresupuesto
     {
         private Repositorio Repo;
-
+        private const int Año_Maximo = 2030;
+        private const int Año_Minimo = 2018;
+        private const int Monto_Minimo = 0;
         public ManagerPresupuesto(Repositorio unRepositorio)
         {
             this.Repo = unRepositorio;
@@ -18,7 +20,7 @@ namespace Managers
 
         public void ValidacionAño(int unAño)
         {
-            if (unAño > 2030 || unAño < 2018)
+            if (unAño > Año_Maximo || unAño < Año_Minimo)
             {
                 throw new ExceptionAñoPresupuesto("El año debe ser entre 2018 y 2030");
             }
@@ -26,7 +28,7 @@ namespace Managers
 
         public void ValidacionMonto(decimal unMonto)
         {
-            if (unMonto < 0)
+            if (unMonto < Monto_Minimo)
             {
                 throw new ExceptionMontoPresupuesto("El monto debe ser mayor a 0");
             }

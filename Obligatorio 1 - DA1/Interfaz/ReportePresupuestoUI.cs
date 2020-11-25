@@ -12,7 +12,7 @@ namespace Interfaz
     public partial class ReportePresupuestoUI : Form
     {
         private Repositorio Repo;
-
+        private const int MAX_DECIMALES_MONTO = 2;
         private const decimal VALOR_POR_DEFECTO = 0.00M;
         public ReportePresupuestoUI(Repositorio unRepositorio)
         {
@@ -56,11 +56,12 @@ namespace Interfaz
                 foreach (var item in Encontrado.getPresupuestosCategorias())
                 {
                     List<Gasto> ListaDeGastosParaEsaFecha = ManagerG.ObtenerGastosPorFechaCategoria(item.Cat, comboBox1.Text);
-                    decimal resultado = RestaRealPlanificado(item.Monto, decimal.Parse(ManagerG.SumaDeGastosParaFecha(ListaDeGastosParaEsaFecha)));
-                    data_Presupuestos.Rows.Add(item.Cat.Nombre, item.Monto, ManagerG.SumaDeGastosParaFecha(ListaDeGastosParaEsaFecha), Formato(resultado));
+                    string SumaDeGastos = ManagerG.SumaDeGastosParaFecha(ListaDeGastosParaEsaFecha);
+                    decimal resultado = RestaRealPlanificado(item.Monto, decimal.Parse(SumaDeGastos));
+                    data_Presupuestos.Rows.Add(item.Cat.Nombre, item.Monto, SumaDeGastos, Formato(resultado));
 
-                    TotalPlanificado += Math.Round(item.Monto,2);
-                    TotalReal += Math.Round(decimal.Parse(ManagerG.SumaDeGastosParaFecha(ListaDeGastosParaEsaFecha)),2);
+                    TotalPlanificado += Math.Round(item.Monto, MAX_DECIMALES_MONTO);
+                    TotalReal += Math.Round(decimal.Parse(SumaDeGastos), MAX_DECIMALES_MONTO);
                     TotalDiferencia += Math.Round(resultado);
                 }
                 data_Presupuestos.RowHeadersVisible = false;

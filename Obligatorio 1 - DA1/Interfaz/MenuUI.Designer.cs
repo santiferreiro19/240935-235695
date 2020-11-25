@@ -36,8 +36,6 @@
             this.btnReportePresupuestos = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
             this.btn_Moneda = new System.Windows.Forms.Button();
-            this.btnEliminarDatos = new System.Windows.Forms.Button();
-            this.btbCargarDatos = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnCategoria
@@ -92,7 +90,7 @@
             // 
             // btnSalir
             // 
-            this.btnSalir.Location = new System.Drawing.Point(326, 144);
+            this.btnSalir.Location = new System.Drawing.Point(326, 78);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(124, 60);
             this.btnSalir.TabIndex = 5;
@@ -110,33 +108,12 @@
             this.btn_Moneda.UseVisualStyleBackColor = true;
             this.btn_Moneda.Click += new System.EventHandler(this.btn_Moneda_Click);
             // 
-            // btnEliminarDatos
-            // 
-            this.btnEliminarDatos.Location = new System.Drawing.Point(326, 78);
-            this.btnEliminarDatos.Name = "btnEliminarDatos";
-            this.btnEliminarDatos.Size = new System.Drawing.Size(124, 60);
-            this.btnEliminarDatos.TabIndex = 7;
-            this.btnEliminarDatos.Text = "Eliminar Datos";
-            this.btnEliminarDatos.UseVisualStyleBackColor = true;
-            this.btnEliminarDatos.Click += new System.EventHandler(this.btnEliminarDatos_Click);
-            // 
-            // btbCargarDatos
-            // 
-            this.btbCargarDatos.Location = new System.Drawing.Point(326, 12);
-            this.btbCargarDatos.Name = "btbCargarDatos";
-            this.btbCargarDatos.Size = new System.Drawing.Size(124, 60);
-            this.btbCargarDatos.TabIndex = 8;
-            this.btbCargarDatos.Text = "Cargar datos";
-            this.btbCargarDatos.UseVisualStyleBackColor = true;
-            // 
             // MenuUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.WindowFrame;
             this.ClientSize = new System.Drawing.Size(462, 211);
-            this.Controls.Add(this.btbCargarDatos);
-            this.Controls.Add(this.btnEliminarDatos);
             this.Controls.Add(this.btn_Moneda);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.btnReportePresupuestos);
@@ -161,7 +138,5 @@
         private System.Windows.Forms.Button btnReportePresupuestos;
         private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.Button btn_Moneda;
-        private System.Windows.Forms.Button btnEliminarDatos;
-        private System.Windows.Forms.Button btbCargarDatos;
     }
 }

@@ -6,20 +6,20 @@ namespace Persistencia
 {
     public class Repositorio
     {
-        private ILista<Categoria> ListaCategorias { get; set; }
-        private ILista<Gasto> ListaGastos { get; set; }
-        private ILista<Presupuesto> ListaPresupuestos { get; set; }
-        private ILista<Moneda> ListaMonedas { get; set; }
-        private ILista<PalabraClave> ListaPalabrasClave { get; set; }
-        private ILista<MontoCategoria> ListaMontos { get; set; }
+        private IDataAccess<Categoria> ListaCategorias { get; set; }
+        private IDataAccess<Gasto> ListaGastos { get; set; }
+        private IDataAccess<Presupuesto> ListaPresupuestos { get; set; }
+        private IDataAccess<Moneda> ListaMonedas { get; set; }
+        private IDataAccess<PalabraClave> ListaPalabrasClave { get; set; }
+        private IDataAccess<MontoCategoria> ListaMontos { get; set; }
 
         public Repositorio()
         {
-            this.ListaCategorias = new IListaCategorias();
-            this.ListaGastos = new IListaGastos();
-            this.ListaPresupuestos = new IListaPresupuestos();
-            this.ListaMonedas = new IListaMonedas();
-            this.ListaPalabrasClave = new IListaPalabraClave();
+            this.ListaCategorias = new DataAccessCategorias();
+            this.ListaGastos = new DataAccessGastos();
+            this.ListaPresupuestos = new DataAccessPresupuestos();
+            this.ListaMonedas = new DataAccessMonedas();
+            this.ListaPalabrasClave = new DataAccessClave();
 
             Moneda PesosPorDefecto = new Moneda("Peso Uruguayo", "UYU", 1.00M);
             bool YaEsta = false;
@@ -36,24 +36,24 @@ namespace Persistencia
             }
         }
 
-        public ILista<Categoria> GetCategorias()
+        public IDataAccess<Categoria> GetCategorias()
         {
             return this.ListaCategorias;
         }
-        public ILista<PalabraClave> GetPalabrasClave()
+        public IDataAccess<PalabraClave> GetPalabrasClave()
         {
             return this.ListaPalabrasClave;
         }
 
-        public ILista<Gasto> GetGastos()
+        public IDataAccess<Gasto> GetGastos()
         {
             return this.ListaGastos;
         }
-        public ILista<Presupuesto> GetPresupuestos()
+        public IDataAccess<Presupuesto> GetPresupuestos()
         {
             return this.ListaPresupuestos;
         }
-        public ILista<Moneda> GetMonedas()
+        public IDataAccess<Moneda> GetMonedas()
         {
             return this.ListaMonedas;
         }

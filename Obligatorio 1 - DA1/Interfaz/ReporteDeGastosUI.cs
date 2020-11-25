@@ -12,6 +12,8 @@ namespace Interfaz
     public partial class ReporteDeGastosUI : Form
     {
         private Repositorio Repo;
+        private const int MAX_DECIMALES_MONTO = 2;
+
         public ReporteDeGastosUI(Repositorio unRepositorio)
         {
             Repo = unRepositorio;
@@ -66,7 +68,7 @@ namespace Interfaz
                 data_gastos.Columns.Remove("CotizacionActual");
                 data_gastos.RowHeadersVisible = false;
                 string resultado = (unManager.SumaDeGastosParaFecha(unManager.FiltrarGastosPorFecha(cboMes.SelectedItem.ToString())));
-                decimal resultadoDecimal = Math.Round(decimal.Parse(resultado), 2);
+                decimal resultadoDecimal = Math.Round(decimal.Parse(resultado), MAX_DECIMALES_MONTO);
                 lbl_resultado.Text = resultadoDecimal.ToString();
                 lbl_resultado.ForeColor = Color.White;
             }

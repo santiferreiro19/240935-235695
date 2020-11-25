@@ -9,6 +9,12 @@ namespace Managers
     public class ManagerGasto
     {
         private Repositorio Repo;
+        private const int Largo_Maximo_Descripcion_Gasto = 20;
+        private const int Largo_Minimo_Descripcion_Gasto = 3;
+        private const int Cantidad_Maxima_Decimales = 2;
+        private const int Cantidad_Minima_Monto = 0;
+
+
         public ManagerGasto(Repositorio unRepo)
         {
             this.Repo = unRepo;
@@ -17,7 +23,7 @@ namespace Managers
         public void ValidacionDescripcionGasto(String unaDescripcion)
         {
             int cantidad = unaDescripcion.Length;
-            if (cantidad > 20 || cantidad < 3)
+            if (cantidad > Largo_Maximo_Descripcion_Gasto || cantidad < Largo_Minimo_Descripcion_Gasto)
             {
                 throw new ExceptionDescripcionGasto("La descripcion debe tener entre 3 y 15 caracteres");
             }
@@ -25,20 +31,20 @@ namespace Managers
 
         public void ValidacionFechaGasto(DateTime unaFecha)
         {
-            DateTime Minimo = new DateTime(2018, 01, 01);
-            DateTime Maximo = new DateTime(2031, 01, 01);
-            if (unaFecha.CompareTo(Minimo) == -1 || unaFecha.CompareTo(Maximo) >= 0)
+            DateTime FechaMinimo = new DateTime(2018, 01, 01);
+            DateTime FechaMaximo = new DateTime(2031, 01, 01);
+            if (unaFecha.CompareTo(FechaMinimo) == -1 || unaFecha.CompareTo(FechaMaximo) >= 0)
                 throw new ExceptionFechaGasto("La fecha debe ser entre 01/01/2018 y 31/12/2030");
         }
 
         public decimal TransformarMonto(decimal unMonto)
         {
-            return Math.Round(unMonto, 2);
+            return Math.Round(unMonto, Cantidad_Maxima_Decimales);
         }
 
         public void ValidarMonto(decimal unMonto)
         {
-            if (unMonto <= 0)
+            if (unMonto <= Cantidad_Minima_Monto)
                 throw new ExceptionMonto("El monto  debe ser mayor a 0");
         }
 

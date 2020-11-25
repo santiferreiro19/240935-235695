@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace Persistencia
 {
-    public class IListaGastos : ILista<Gasto>
+    public class DataAccessGastos : IDataAccess<Gasto>
     {
         public void Add(Gasto entidad)
         {
