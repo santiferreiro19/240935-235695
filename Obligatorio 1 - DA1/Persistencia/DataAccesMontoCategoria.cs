@@ -7,7 +7,7 @@ namespace Persistencia
 {
     public class DataAccesMontoCategoria : ILista<MontoCategoria>
     {
-      
+
         MontoCategoria ILista<MontoCategoria>.Get(int id)
         {
             using (var Contexto = new ContextoFinanzas())
@@ -29,6 +29,7 @@ namespace Persistencia
             using (var Contexto = new ContextoFinanzas())
             {
                 Contexto.PresupuestosCategorias.Add(entidad);
+                Contexto.Entry(entidad.Cat).State = EntityState.Unchanged;
                 Contexto.SaveChanges();
             }
         }

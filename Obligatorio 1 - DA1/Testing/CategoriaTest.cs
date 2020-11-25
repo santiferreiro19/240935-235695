@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using Managers;
+﻿using Managers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Obligatorio_1___DA1;
 using Obligatorio_1___DA1.Excepciones;
 using Persistencia;
+using System;
+using System.Collections.Generic;
 
 namespace Testing
 {
@@ -50,7 +50,7 @@ namespace Testing
         public void toStringTest()
         {
             Categoria UnaCategoria = new Categoria("Entretenimiento");
-            Assert.AreEqual("Entretenimiento", UnaCategoria.ToString()) ;
+            Assert.AreEqual("Entretenimiento", UnaCategoria.ToString());
         }
 
         [TestMethod]
@@ -94,7 +94,7 @@ namespace Testing
 
         [ExpectedException(typeof(ExceptionNombreCategoriaRepetido))]
         [TestMethod]
-        public void ValidacionNombreCategoriaRepetido() 
+        public void ValidacionNombreCategoriaRepetido()
         {
             Repositorio Repositorio = new Repositorio();
             ManagerCategoria Manager = new ManagerCategoria(Repositorio);
@@ -306,7 +306,7 @@ namespace Testing
             Categoria categoriaValidar = Repositorio.GetCategorias().Get(UnaCategoria.Id);
             Assert.AreEqual(9, categoriaValidar.ListaPalabras.Count);
         }
-        
+
         [TestCleanup]
         public void CleanUp()
         {

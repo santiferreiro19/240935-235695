@@ -3,7 +3,6 @@ using Obligatorio_1___DA1;
 using Obligatorio_1___DA1.Excepciones;
 using Persistencia;
 using System;
-using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace Interfaz
@@ -63,11 +62,11 @@ namespace Interfaz
         private void PalabraRepetidaEnCategoriaLocal()
         {
             PalabraClave palabraTemporal = new PalabraClave(txtPalabraClave.Text);
-            foreach(PalabraClave palabraBuscar in this.unaCategoriaLocal.ListaPalabras)
-            if (palabraBuscar.Palabra == palabraTemporal.Palabra)
-            {
-                throw new ExceptionPalabraClaveRepetida("la palabra clave esta repetida");
-            }
+            foreach (PalabraClave palabraBuscar in this.unaCategoriaLocal.ListaPalabras)
+                if (palabraBuscar.Palabra == palabraTemporal.Palabra)
+                {
+                    throw new ExceptionPalabraClaveRepetida("la palabra clave esta repetida");
+                }
         }
         private void btnAceptar_Click(object sender, EventArgs e)
         {
@@ -105,6 +104,26 @@ namespace Interfaz
 
         private void RegistroCategorias_Load(object sender, EventArgs e)
         {
+            try
+            {
+                using (ContextoFinanzas db = new ContextoFinanzas())
+                {
+                    db.Database.Connection.Open();
+                    db.Database.Connection.Close();
+
+                }
+            }
+            catch (System.Data.Entity.Core.EntityException)
+            {
+                this.Enabled = false;
+                MessageBox.Show("Error: La base de datos no se encuentra disponible");
+            }
+            catch (System.Data.SqlClient.SqlException)
+            {
+                this.Enabled = false;
+                MessageBox.Show("Error: La base de datos no se encuentra disponible");
+            }
+
         }
     }
 }

@@ -1,10 +1,7 @@
 ﻿using Obligatorio_1___DA1;
-using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Persistencia
 {
@@ -59,7 +56,7 @@ namespace Persistencia
         {
             using (var Contexto = new ContextoFinanzas())
             {
-                PalabraClave unaPalabraClave = Contexto.PalabrasClave.FirstOrDefault(u => u.Id == entidad.Id); 
+                PalabraClave unaPalabraClave = Contexto.PalabrasClave.FirstOrDefault(u => u.Id == entidad.Id);
                 unaPalabraClave.Palabra = entidad.Palabra;
                 Contexto.Entry(unaPalabraClave).State = EntityState.Modified;
                 Contexto.SaveChanges();

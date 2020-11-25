@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Obligatorio_1___DA1;
+﻿using Obligatorio_1___DA1;
 using Obligatorio_1___DA1.Excepciones;
 using Persistencia;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Managers
 {
@@ -23,7 +21,7 @@ namespace Managers
             Repo.AgregarCategoria(unacategoria);
         }
 
-         public void ValidacionModificarNombreCategoria(Categoria unacategoria,String NuevoNombre)
+        public void ValidacionModificarNombreCategoria(Categoria unacategoria, String NuevoNombre)
         {
             this.ValidarNombreCategoria(NuevoNombre);
             Repo.ModificarNombreCategoria(unacategoria, NuevoNombre);
@@ -36,7 +34,7 @@ namespace Managers
             Repo.AgregarPalabraClave(unacategoria, NuevaPalabra);
         }
 
-        public void ValidacionModificacionDePalabraClave(Categoria unacategoria,String PalabraBuscada, String NuevaPalabraClave)
+        public void ValidacionModificacionDePalabraClave(Categoria unacategoria, String PalabraBuscada, String NuevaPalabraClave)
         {
             this.ValidarPalabraClaveRepetida(NuevaPalabraClave);
             Repo.ModificarPalabraClave(unacategoria, NuevaPalabraClave, PalabraBuscada);
@@ -69,12 +67,12 @@ namespace Managers
             }
         }
         public void ListaPalabrasClaveLLena(Categoria Unacategoria)
-          {
+        {
             if (Unacategoria.ListaPalabras.Count() >= 10)
             {
                 throw new ExceptionListaPalabrasClaveLlena("Lista de palabras clave llena");
             }
-          }
+        }
         public void EliminarPalabraClave(String PalabraEliminar)
         {
             List<Categoria> categorias = Repo.GetCategorias().GetAll();

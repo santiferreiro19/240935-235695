@@ -1,7 +1,4 @@
 ﻿using Interfaz;
-using Managers;
-using Obligatorio_1___DA1;
-using Obligatorio_1___DA1.Excepciones;
 using Persistencia;
 using System;
 using System.Windows.Forms;
@@ -18,7 +15,6 @@ namespace Interfaces
         }
         private void Categoria_Load(object sender, EventArgs e)
         {
-
         }
         private void agregarToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -42,6 +38,11 @@ namespace Interfaces
         private void panelAgregar_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void cerrarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
         }
     }
 }

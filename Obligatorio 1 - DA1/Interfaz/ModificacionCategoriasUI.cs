@@ -1,16 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Persistencia;
+﻿using Managers;
 using Obligatorio_1___DA1;
-using Managers;
 using Obligatorio_1___DA1.Excepciones;
+using Persistencia;
+using System;
+using System.Windows.Forms;
 
 namespace Interfaz
 {
@@ -32,17 +25,31 @@ namespace Interfaz
         }
         private void ModificacionCategorias_Load(object sender, EventArgs e)
         {
-            ActualizarVincularListBox();
-            lstCategorias.SelectedIndex = -1;
-            txtNombre.Text ="";
-            txtPalabraClave.Text = "";
-            lstPalabrasClave.DataSource = null;
+            try
+            {
+                ActualizarVincularListBox();
+                lstCategorias.SelectedIndex = -1;
+                txtNombre.Text = "";
+                txtPalabraClave.Text = "";
+                lstPalabrasClave.DataSource = null;
+            }
+            catch (System.Data.Entity.Core.EntityException)
+            {
+                this.Enabled = false;
+                MessageBox.Show("Error: La base de datos no se encuentra disponible");
+            }
+            catch (System.Data.SqlClient.SqlException)
+            {
+                this.Enabled = false;
+                MessageBox.Show("Error: La base de datos no se encuentra disponible");
+            }
         }
 
         private void lstCategorias_SelectedIndexChanged(object sender, EventArgs e)
         {
             CategoriaSeleccionada = (Categoria)lstCategorias.SelectedItem;
-            if (lstCategorias.SelectedIndex != -1) {
+            if (lstCategorias.SelectedIndex != -1)
+            {
                 txtNombre.Text = CategoriaSeleccionada.Nombre;
                 lstPalabrasClave.DataSource = CategoriaSeleccionada.ListaPalabras;
                 panel1.Visible = true;
@@ -75,7 +82,8 @@ namespace Interfaz
                         lstPalabrasClave.DataSource = null;
                         lstPalabrasClave.DataSource = CategoriaSeleccionada.ListaPalabras;
                     }
-                    catch (ExceptionPalabraClaveRepetida repetida) {
+                    catch (ExceptionPalabraClaveRepetida repetida)
+                    {
                         MessageBox.Show("La palabra clave esta repetida");
                     };
                 }
@@ -102,9 +110,11 @@ namespace Interfaz
                         manager.ValidacionModificarNombreCategoria(CategoriaSeleccionada, txtNombre.Text);
                         ActualizarVincularListBox();
                     }
-                    catch (ExceptionNombreCategoria NoValido) {
+                    catch (ExceptionNombreCategoria NoValido)
+                    {
                         MessageBox.Show("El largo del nombre debe de ser mayor a 3 y menor que 15");
-                    }catch (ExceptionNombreCategoriaRepetido Repetido)
+                    }
+                    catch (ExceptionNombreCategoriaRepetido Repetido)
                     {
                         MessageBox.Show("El nombre de la categoria esta repetido");
                     }
@@ -143,7 +153,8 @@ namespace Interfaz
                     lstPalabrasClave.DataSource = CategoriaSeleccionada.ListaPalabras;
                     txtPalabraClave.Text = "";
                 }
-                catch (ExceptionPalabraClaveRepetida Repetida) {
+                catch (ExceptionPalabraClaveRepetida Repetida)
+                {
                     MessageBox.Show("La palabra clave esta repetida");
                 }
                 catch (ExceptionListaPalabrasClaveLlena Llena)

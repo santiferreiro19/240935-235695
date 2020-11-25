@@ -1,11 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Obligatorio_1___DA1;
 using Persistencia;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Testing
 {
@@ -23,7 +18,7 @@ namespace Testing
         }
 
         [TestMethod]
-        public void ConstructorSinParametrosTest() 
+        public void ConstructorSinParametrosTest()
         {
             PalabraClave p = new PalabraClave();
             Assert.IsNotNull(p);

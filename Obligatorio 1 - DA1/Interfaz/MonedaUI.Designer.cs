@@ -36,6 +36,7 @@ namespace Interfaz
             this.modificarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.borrarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelGeneral = new System.Windows.Forms.Panel();
+            this.cerrarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -44,7 +45,8 @@ namespace Interfaz
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.agregarToolStripMenuItem,
             this.modificarToolStripMenuItem,
-            this.borrarToolStripMenuItem});
+            this.borrarToolStripMenuItem,
+            this.cerrarToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(586, 24);
@@ -81,6 +83,14 @@ namespace Interfaz
             this.panelGeneral.TabIndex = 13;
             this.panelGeneral.Paint += new System.Windows.Forms.PaintEventHandler(this.panelGeneral_Paint);
             // 
+            // cerrarToolStripMenuItem
+            // 
+            this.cerrarToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.cerrarToolStripMenuItem.Name = "cerrarToolStripMenuItem";
+            this.cerrarToolStripMenuItem.Size = new System.Drawing.Size(51, 20);
+            this.cerrarToolStripMenuItem.Text = "Cerrar";
+            this.cerrarToolStripMenuItem.Click += new System.EventHandler(this.cerrarToolStripMenuItem_Click);
+            // 
             // MonedaUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -105,5 +115,6 @@ namespace Interfaz
         private System.Windows.Forms.ToolStripMenuItem modificarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem borrarToolStripMenuItem;
         private System.Windows.Forms.Panel panelGeneral;
+        private System.Windows.Forms.ToolStripMenuItem cerrarToolStripMenuItem;
     }
 }

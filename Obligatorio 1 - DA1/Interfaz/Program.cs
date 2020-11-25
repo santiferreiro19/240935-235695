@@ -1,9 +1,5 @@
-﻿using Interfaces;
-using Persistencia;
+﻿using Persistencia;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Interfaz
@@ -16,11 +12,21 @@ namespace Interfaz
         [STAThread]
         static void Main()
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Repositorio Repo = new Repositorio();
-            Application.Run(new MenuUI(Repo));
-         
+            try
+            {
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+                Repositorio Repo = new Repositorio();
+                Application.Run(new MenuUI(Repo));
+            }
+            catch (System.Data.Entity.Core.EntityException)
+            {
+                MessageBox.Show("Error: La base de datos no se encuentra disponible");
+            }
+            catch (System.Data.SqlClient.SqlException)
+            {
+                MessageBox.Show("Error: La base de datos no se encuentra disponible");
+            }
         }
     }
 }

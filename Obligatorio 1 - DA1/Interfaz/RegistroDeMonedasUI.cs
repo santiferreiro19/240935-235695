@@ -21,7 +21,25 @@ namespace Interfaz
 
         private void RegistroDeMonedasUI_Load(object sender, EventArgs e)
         {
+            try
+            {
+                using (ContextoFinanzas db = new ContextoFinanzas())
+                {
+                    db.Database.Connection.Open();
+                    db.Database.Connection.Close();
 
+                }
+            }
+            catch (System.Data.Entity.Core.EntityException)
+            {
+                this.Enabled = false;
+                MessageBox.Show("Error: La base de datos no se encuentra disponible");
+            }
+            catch (System.Data.SqlClient.SqlException)
+            {
+                this.Enabled = false;
+                MessageBox.Show("Error: La base de datos no se encuentra disponible");
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -38,7 +56,7 @@ namespace Interfaz
                     unaMonedaLocal.Nombre = "";
                     unaMonedaLocal.Simbolo = "";
                     unaMonedaLocal.Cotizacion = 0.00M;
-                    
+
                     MessageBox.Show("La moneda fue registrada correctamente");
                     unaMonedaLocal = new Moneda();
                 }

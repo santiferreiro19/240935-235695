@@ -40,7 +40,7 @@ namespace Testing
         public void toStringTest()
         {
             Categoria unaCategoria = new Categoria("unaCategoria");
-            MontoCategoria unMonto = new MontoCategoria(unaCategoria, 0.00M); 
+            MontoCategoria unMonto = new MontoCategoria(unaCategoria, 0.00M);
             Assert.AreEqual(unMonto.ToString(), "unaCategoria");
         }
 

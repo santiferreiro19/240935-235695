@@ -1,14 +1,6 @@
 ﻿using Interfaces;
-using Obligatorio_1___DA1;
 using Persistencia;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Interfaz
@@ -25,7 +17,7 @@ namespace Interfaz
 
         private void MenuUI_Load(object sender, EventArgs e)
         {
-            
+
         }
         private void btnReporteGastos_Click(object sender, EventArgs e)
         {
@@ -71,6 +63,20 @@ namespace Interfaz
             MonedaUI unaMoneda = new MonedaUI(Repo);
             this.Hide();
             unaMoneda.Show();
+        }
+
+        private void btnEliminarDatos_Click(object sender, EventArgs e)
+        {
+            using (ContextoFinanzas db = new ContextoFinanzas())
+            {
+                db.Database.ExecuteSqlCommand("DELETE FROM MONTOCATEGORIAS");
+                db.Database.ExecuteSqlCommand("DELETE FROM PRESUPUESTOES;");
+                db.Database.ExecuteSqlCommand("DELETE FROM GASTOES;");
+                db.Database.ExecuteSqlCommand("DELETE FROM PALABRACLAVES;");
+                db.Database.ExecuteSqlCommand("DELETE FROM CATEGORIAS;");
+                db.Database.ExecuteSqlCommand("DELETE FROM MONEDAS;");
+
+            }
         }
     }
 }

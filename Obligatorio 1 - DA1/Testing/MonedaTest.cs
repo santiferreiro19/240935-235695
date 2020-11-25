@@ -3,11 +3,6 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Obligatorio_1___DA1;
 using Obligatorio_1___DA1.Excepciones;
 using Persistencia;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Testing
 {
@@ -25,13 +20,15 @@ namespace Testing
         }
 
         [TestMethod]
-        public void MonedaValidaTest() {
+        public void MonedaValidaTest()
+        {
             Moneda unaMoneda = new Moneda("Pesos Uruguayos", "UYU", 1.00M);
             Assert.IsNotNull(unaMoneda);
         }
 
         [TestMethod]
-        public void ContructorSinParametrosTest() {
+        public void ContructorSinParametrosTest()
+        {
             Moneda unaMoneda = new Moneda();
             Assert.AreEqual(unaMoneda.Nombre, "");
         }
@@ -55,7 +52,8 @@ namespace Testing
 
         [ExpectedException(typeof(ExceptionNombreMoneda))]
         [TestMethod]
-        public void ValidacionNombreConMasDe20CaracteresTest() {
+        public void ValidacionNombreConMasDe20CaracteresTest()
+        {
             Moneda unaMoneda = new Moneda("Pesos Uruguayos123456789", "UYU", 1.00M);
             Repositorio unRepositorio = new Repositorio();
             ManagerMoneda unManager = new ManagerMoneda(unRepositorio);
@@ -121,7 +119,7 @@ namespace Testing
             ManagerMoneda unManager = new ManagerMoneda(unRepositorio);
             unManager.ValidacionCotizacionMoneda(unaMoneda.Cotizacion);
         }
-        
+
         [ExpectedException(typeof(ExceptionCotizacion))]
         [TestMethod]
         public void ValidacionCotizacionMenos2DecimalesTest()
@@ -201,7 +199,7 @@ namespace Testing
             Moneda MonedaDbVieja = Repositorio.GetMonedas().Get(MonedaVieja.Id);
             Assert.AreEqual(55.00M, MonedaDbVieja.Cotizacion);
         }
-       
+
         [TestCleanup]
         public void CleanUp()
         {

@@ -248,6 +248,10 @@
       <Project>{F2FC4F44-421D-4F17-8049-BB2C624F0472}</Project>
       <Name>Persistencia</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Serialiazcion\Serialiazcion.csproj">
+      <Project>{992c9d23-c0ba-4002-a445-c9c3133fb5a5}</Project>
+      <Name>Serialiazcion</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

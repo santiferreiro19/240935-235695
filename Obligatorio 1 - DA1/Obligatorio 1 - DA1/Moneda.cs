@@ -13,7 +13,8 @@
             this.Simbolo = unSimbolo;
             this.Cotizacion = unaCotizacion;
         }
-        public Moneda() {
+        public Moneda()
+        {
             this.Nombre = "";
             this.Simbolo = "";
             this.Cotizacion = 0.00M;

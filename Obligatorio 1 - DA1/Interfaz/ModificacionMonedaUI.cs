@@ -1,16 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Persistencia;
+﻿using Managers;
 using Obligatorio_1___DA1;
-using Managers;
 using Obligatorio_1___DA1.Excepciones;
+using Persistencia;
+using System;
+using System.Windows.Forms;
 
 namespace Interfaz
 {
@@ -27,7 +20,21 @@ namespace Interfaz
 
         private void ModificacionMonedaUI_Load(object sender, EventArgs e)
         {
-            CargarListBox();
+            try
+            {
+                CargarListBox();
+            }
+            catch (System.Data.Entity.Core.EntityException)
+            {
+                this.Enabled = false;
+                MessageBox.Show("Error: La base de datos no se encuentra disponible");
+            }
+            catch (System.Data.SqlClient.SqlException)
+            {
+                this.Enabled = false;
+                MessageBox.Show("Error: La base de datos no se encuentra disponible");
+            }
+
         }
         public void CargarListBox()
         {
@@ -116,10 +123,11 @@ namespace Interfaz
                 {
                     MessageBox.Show("Hay campos vacios");
                 }
-                else {
+                else
+                {
                     MessageBox.Show("Peso Uruguayo no se puede modificar");
                 }
-                
+
             }
             CargarListBox();
             txtNombre.Text = MonedaSeleccionada.Nombre;
@@ -127,7 +135,8 @@ namespace Interfaz
             nroCotizacion.Text = MonedaSeleccionada.Cotizacion.ToString();
         }
 
-        public bool BloqueoPesoUruguayo() {
+        public bool BloqueoPesoUruguayo()
+        {
             return MonedaSeleccionada.Simbolo == "UYU";
         }
     }

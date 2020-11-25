@@ -34,7 +34,21 @@ namespace Interfaz
 
         private void EliminacionMonedaUI_Load(object sender, EventArgs e)
         {
-            CargarListBox();
+            try
+            {
+                CargarListBox();
+
+            }
+            catch (System.Data.Entity.Core.EntityException)
+            {
+                this.Enabled = false;
+                MessageBox.Show("Error: La base de datos no se encuentra disponible");
+            }
+            catch (System.Data.SqlClient.SqlException)
+            {
+                this.Enabled = false;
+                MessageBox.Show("Error: La base de datos no se encuentra disponible");
+            }
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)

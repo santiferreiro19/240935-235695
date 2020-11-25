@@ -53,12 +53,14 @@ namespace Persistencia
             using (var Contexto = new ContextoFinanzas())
             {
                 Categoria unaCategoria = Contexto.Categorias.Include("ListaPalabras").FirstOrDefault(u => u.Id == entidad.Id);
-                for(int i=0;i < entidad.ListaPalabras.Count; i++) {
+                for (int i = 0; i < entidad.ListaPalabras.Count; i++)
+                {
                     if (i < unaCategoria.ListaPalabras.Count)
                     {
                         unaCategoria.ListaPalabras[i].Palabra = entidad.ListaPalabras[i].Palabra;
                     }
-                    else {
+                    else
+                    {
                         unaCategoria.ListaPalabras.Add(entidad.ListaPalabras[i]);
                     }
                 }

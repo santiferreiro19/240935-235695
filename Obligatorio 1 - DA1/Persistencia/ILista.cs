@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Persistencia
 {
-    public interface ILista<T> 
+    public interface ILista<T>
     {
         T Get(int id);
         List<T> GetAll();

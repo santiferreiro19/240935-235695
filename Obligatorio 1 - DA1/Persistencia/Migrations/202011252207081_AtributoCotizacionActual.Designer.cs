@@ -13,7 +13,7 @@ namespace Persistencia.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202011232336199_AtributoCotizacionActual"; }
+            get { return "202011252207081_AtributoCotizacionActual"; }
         }
         
         string IMigrationMetadata.Source

@@ -1,17 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Persistencia;
-using Interfaces;
+﻿using Managers;
 using Obligatorio_1___DA1;
-using Managers;
 using Obligatorio_1___DA1.Excepciones;
+using Persistencia;
+using System;
+using System.Windows.Forms;
 
 namespace Interfaz
 {
@@ -30,19 +22,38 @@ namespace Interfaz
         {
 
         }
-        private void CargarList() {
+        private void CargarList()
+        {
             lstCategorias.Items.Clear();
             lstMontos.Items.Clear();
-            foreach (MontoCategoria elemento in PresupuestoTemporal.getPresupuestosCategorias()) {
-                lstCategorias.Items.Add(elemento.Cat.Nombre);
+
+            foreach (MontoCategoria elemento in PresupuestoTemporal.getPresupuestosCategorias())
+            {
+                lstCategorias.Items.Add(elemento.Cat);
                 lstMontos.Items.Add(elemento.Monto);
             }
         }
         private void RegistroPresupuestoUI_Load(object sender, EventArgs e)
         {
-            ManagerPresupuesto manager = new ManagerPresupuesto(Repo);
-            manager.CargarCategoriasPresupuesto(PresupuestoTemporal);
-            CargarList();
+            try
+            {
+
+                ManagerPresupuesto manager = new ManagerPresupuesto(Repo);
+                manager.CargarCategoriasPresupuesto(PresupuestoTemporal);
+                CargarList();
+
+            }
+            catch (System.Data.Entity.Core.EntityException)
+            {
+                this.Enabled = false;
+                MessageBox.Show("Error: La base de datos no se encuentra disponible");
+            }
+            catch (System.Data.SqlClient.SqlException)
+            {
+                this.Enabled = false;
+                MessageBox.Show("Error: La base de datos no se encuentra disponible");
+            }
+
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -58,11 +69,13 @@ namespace Interfaz
                     nroMonto.Text = "0.00";
                     CargarList();
                 }
-                catch (ExceptionMontoPresupuesto monto) {
+                catch (ExceptionMontoPresupuesto monto)
+                {
                     MessageBox.Show("El monto debe ser mayor a cero, y tener dos decimales");
                 }
             }
-            else {
+            else
+            {
                 MessageBox.Show("La categoria no fue seleccionada o el monto esta vacio");
             }
 
@@ -71,7 +84,8 @@ namespace Interfaz
         private void button1_Click(object sender, EventArgs e)
         {
             ManagerPresupuesto manager = new ManagerPresupuesto(Repo);
-            if (nmr_Año.Text != "" && cboMes.SelectedIndex != -1) {
+            if (nmr_Año.Text != "" && cboMes.SelectedIndex != -1)
+            {
                 Presupuesto PresupuestoGuardar = new Presupuesto();
                 try
                 {
@@ -81,12 +95,12 @@ namespace Interfaz
                     manager.ValidacionAgregarPresupuesto(PresupuestoGuardar);
                     nmr_Año.Text = "";
                     cboMes.SelectedIndex = -1;
-                    
                     PresupuestoTemporal = new Presupuesto();
                     manager.CargarCategoriasPresupuesto(PresupuestoTemporal);
                     CargarList();
                 }
-                catch (ExceptionAñoPresupuesto año) {
+                catch (ExceptionAñoPresupuesto año)
+                {
                     MessageBox.Show("El año tiene que ser entre 2018 - 2030");
                 }
                 catch (ExceptionPresupuestoRepetido repetido)

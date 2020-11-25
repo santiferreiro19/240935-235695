@@ -20,7 +20,7 @@ namespace Interfaces
                 components.Dispose();
             }
             base.Dispose(disposing);
-            MenuUI inicio = new MenuUI(Repo);
+            MenuUI inicio = new MenuUI(this.Repo);
             inicio.Show();
         }
 
@@ -38,6 +38,7 @@ namespace Interfaces
             this.agregarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.modificarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.borrarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.CerrarStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -55,7 +56,8 @@ namespace Interfaces
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.agregarToolStripMenuItem,
             this.modificarToolStripMenuItem,
-            this.borrarToolStripMenuItem});
+            this.borrarToolStripMenuItem,
+            this.CerrarStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(658, 24);
@@ -83,6 +85,14 @@ namespace Interfaces
             this.borrarToolStripMenuItem.Text = "Borrar";
             this.borrarToolStripMenuItem.Click += new System.EventHandler(this.borrarToolStripMenuItem_Click);
             // 
+            // CerrarStripMenuItem
+            // 
+            this.CerrarStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.CerrarStripMenuItem.Name = "CerrarStripMenuItem";
+            this.CerrarStripMenuItem.Size = new System.Drawing.Size(51, 20);
+            this.CerrarStripMenuItem.Text = "Cerrar";
+            this.CerrarStripMenuItem.Click += new System.EventHandler(this.CerrarStripMenuItem_Click);
+            // 
             // GastoUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -108,5 +118,6 @@ namespace Interfaces
         private System.Windows.Forms.ToolStripMenuItem agregarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem modificarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem borrarToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem CerrarStripMenuItem;
     }
 }

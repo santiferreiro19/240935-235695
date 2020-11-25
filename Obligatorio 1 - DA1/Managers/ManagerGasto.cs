@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Obligatorio_1___DA1;
+﻿using Obligatorio_1___DA1;
 using Obligatorio_1___DA1.Excepciones;
 using Persistencia;
+using System;
+using System.Collections.Generic;
 
 namespace Managers
 {
@@ -39,12 +36,14 @@ namespace Managers
             return Math.Round(unMonto, 2);
         }
 
-        public void ValidarMonto(decimal unMonto) {
+        public void ValidarMonto(decimal unMonto)
+        {
             if (unMonto <= 0)
                 throw new ExceptionMonto("El monto  debe ser mayor a 0");
         }
 
-        public void ValidacionAgregarGasto(Gasto unGasto) {
+        public void ValidacionAgregarGasto(Gasto unGasto)
+        {
             this.ValidacionDescripcionGasto(unGasto.Descripcion);
             this.ValidacionFechaGasto(unGasto.Fecha);
             this.ValidarMonto(unGasto.Monto);
@@ -55,16 +54,27 @@ namespace Managers
             Repo.EliminarGasto(unGasto);
         }
 
-       public void ValidacionModificacionGasto(Gasto unGasto, Gasto Modificado) {
-            this.ValidacionDescripcionGasto(Modificado.Descripcion);
-            this.ValidarMonto(Modificado.Monto);
-            this.ValidacionFechaGasto(Modificado.Fecha);
-            Repo.ModificarGasto(unGasto, Modificado);
+        public void ValidacionModificacionGasto(Gasto unGasto, Gasto Modificado)
+        {
+            this.ValidacionEliminarGasto(unGasto);
+            this.ValidacionAgregarGasto(Modificado);
+            
         }
-        public Categoria ValidacionBusquedaCategorias(String Descripcion) {
+        public List<Categoria> ValidacionBusquedaCategorias(String Descripcion)
+        {
             String[] PalabrasParaBuscar = Descripcion.Split(' ');
             Categoria CategoriaEncontrada = Repo.BusquedaCategorias(PalabrasParaBuscar);
-            return CategoriaEncontrada;
+            List<Categoria> categoriasEncontradas = new List<Categoria>();
+            if (CategoriaEncontrada.Nombre == "")
+            {
+                categoriasEncontradas = Repo.GetCategorias().GetAll();
+            }
+            else
+            {
+                categoriasEncontradas.Add(CategoriaEncontrada);
+            }
+
+            return categoriasEncontradas;
         }
 
         public List<String> CargarFechasDondeHuboGastos()
@@ -100,7 +110,7 @@ namespace Managers
             decimal Total = 0.00M;
             foreach (Gasto unGasto in ListaGastosParaFecha)
             {
-                Total += (unGasto.Monto * unGasto.CotizacionActual);
+                Total += Math.Round((unGasto.Monto * unGasto.CotizacionActual),2);
             }
             return Total.ToString();
         }

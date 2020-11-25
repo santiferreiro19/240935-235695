@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Obligatorio_1___DA1;
+﻿using Obligatorio_1___DA1;
 using Obligatorio_1___DA1.Excepciones;
 using Persistencia;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Managers
 {
@@ -60,22 +60,23 @@ namespace Managers
         public void CargarCategoriasPresupuesto(Presupuesto unPresupuesto)
         {
             List<MontoCategoria> Retorno = new List<MontoCategoria>();
-            foreach (Categoria elem in Repo.GetCategorias().GetAll()) {
+            foreach (Categoria elem in Repo.GetCategorias().GetAll())
+            {
                 MontoCategoria temporal = new MontoCategoria();
                 temporal.Cat = elem;
                 unPresupuesto.PresupuestosCategorias.Add(temporal);
             }
-            Repo.GetPresupuestos().Update(unPresupuesto);
         }
 
         public void ValidacionAgregarUnMonto(Presupuesto unPresupuestosMonto, Categoria unaCategoria, decimal unMonto)
         {
             this.ValidacionMonto(unMonto);
             decimal MontoTransformado = this.TransformarMonto(unMonto);
-            foreach (MontoCategoria montoCat in unPresupuestosMonto.PresupuestosCategorias) {
-                if (montoCat.Cat.Id == unaCategoria.Id) {
+            foreach (MontoCategoria montoCat in unPresupuestosMonto.PresupuestosCategorias)
+            {
+                if (montoCat.Cat.Id == unaCategoria.Id)
+                {
                     montoCat.Monto = MontoTransformado;
-                    Repo.GetPresupuestos().Update(unPresupuestosMonto);
                 }
             }
         }

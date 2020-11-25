@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Managers;
+﻿using Managers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Obligatorio_1___DA1;
 using Obligatorio_1___DA1.Excepciones;
 using Persistencia;
+using System.Collections.Generic;
 
 namespace Testing
 {
@@ -188,7 +184,7 @@ namespace Testing
 
         [ExpectedException(typeof(ExceptionPresupuestoRepetido))]
         [TestMethod]
-        public void PresupuestoRepetidoTest() 
+        public void PresupuestoRepetidoTest()
         {
             Repositorio Repositorio = new Repositorio();
             ManagerPresupuesto Manager = new ManagerPresupuesto(Repositorio);
@@ -232,7 +228,8 @@ namespace Testing
         }
 
         [TestMethod]
-        public void BuscarPresupuestosPorFechaTest() {
+        public void BuscarPresupuestosPorFechaTest()
+        {
             Repositorio Repositorio = new Repositorio();
             ManagerPresupuesto Manager = new ManagerPresupuesto(Repositorio);
             Presupuesto UnPresupuesto = new Presupuesto(2020, "March", new List<MontoCategoria>());
@@ -242,7 +239,8 @@ namespace Testing
         }
 
         [TestMethod]
-        public void CargarListaDondeHuboPresupuestosTest() {
+        public void CargarListaDondeHuboPresupuestosTest()
+        {
             Repositorio Repositorio = new Repositorio();
             ManagerPresupuesto Manager = new ManagerPresupuesto(Repositorio);
             Presupuesto presupuestoNuevo = new Presupuesto();

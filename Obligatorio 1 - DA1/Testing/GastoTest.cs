@@ -191,7 +191,7 @@ namespace Testing
             unManager.ValidacionAgregarGasto(UnGasto);
             Gasto GastoModificado = new Gasto("Nueva descrp", 100.00M, UnaCategoria, new DateTime(2018, 1, 1), NuevaMoneda, 12.00M);
             unManager.ValidacionModificacionGasto(UnGasto, GastoModificado);
-            Gasto gastoValidar = Repositorio.GetGastos().Get(UnGasto.Id);
+            Gasto gastoValidar = Repositorio.GetGastos().Get(GastoModificado.Id);
             Assert.AreEqual(gastoValidar.Descripcion, nuevaDescripcion);
         }
 
@@ -208,7 +208,7 @@ namespace Testing
             unManager.ValidacionAgregarGasto(UnGasto);
             Gasto GastoModificado = new Gasto("Descripcion x", 102.00M, UnaCategoria, new DateTime(2018, 1, 1), NuevaMoneda, 12.00M);
             unManager.ValidacionModificacionGasto(UnGasto, GastoModificado);
-            Gasto gastoValidar = Repositorio.GetGastos().Get(UnGasto.Id);
+            Gasto gastoValidar = Repositorio.GetGastos().Get(GastoModificado.Id);
             Assert.AreEqual((decimal)102.00M, gastoValidar.Monto);
         }
 
@@ -226,7 +226,7 @@ namespace Testing
             DateTime nuevaFecha = new DateTime(2019, 1, 1);
             Gasto GastoModificado = new Gasto("Descripcion x", 100.00M, UnaCategoria, nuevaFecha, NuevaMoneda, 12.00M);
             unManager.ValidacionModificacionGasto(UnGasto, GastoModificado);
-            Gasto gastoValidar = Repositorio.GetGastos().Get(UnGasto.Id);
+            Gasto gastoValidar = Repositorio.GetGastos().Get(GastoModificado.Id);
             Assert.AreEqual(nuevaFecha, gastoValidar.Fecha);
         }
 
@@ -243,8 +243,8 @@ namespace Testing
             Categoria UnaCategoria = new Categoria("CategoriaAuto", Lista);
             String DescripcionGasto = "Autos";
             unRepositorio.AgregarCategoria(UnaCategoria);
-            Assert.IsTrue(UnaCategoria.Id == unManager.ValidacionBusquedaCategorias(DescripcionGasto).Id);
-        } 
+            Assert.IsTrue(UnaCategoria.Id == unManager.ValidacionBusquedaCategorias(DescripcionGasto)[0].Id);
+        }
         [TestMethod]
         public void ValidacionBusquedaCategoriaMultiplesPalabrasClaveGastoTest()
         {
@@ -258,7 +258,7 @@ namespace Testing
             Categoria UnaCategoria = new Categoria("CategoriaAutos", Lista);
             String DescripcionGasto = "Autos de Carreras";
             unRepositorio.AgregarCategoria(UnaCategoria);
-            Assert.IsTrue(UnaCategoria.Id == unManager.ValidacionBusquedaCategorias(DescripcionGasto).Id);
+            Assert.IsTrue(UnaCategoria.Id == unManager.ValidacionBusquedaCategorias(DescripcionGasto)[0].Id);
         }
 
         [TestMethod]
@@ -277,7 +277,7 @@ namespace Testing
             Repo.AgregarCategoria(categoriaNueva);
             Gasto GastoModificado = new Gasto("Entradas al cine", 10.00M, categoriaNueva, FechaRandom, NuevaMoneda, 12.00M);
             unManager.ValidacionModificacionGasto(UnGasto, GastoModificado);
-            Categoria categoriaValidar = Repo.GetGastos().Get(UnGasto.Id).Categoria;
+            Categoria categoriaValidar = Repo.GetGastos().Get(GastoModificado.Id).Categoria;
             Assert.AreEqual("Formula 1", categoriaValidar.Nombre);
         }
 

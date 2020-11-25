@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Obligatorio_1___DA1;
+using System;
 using System.Linq;
-using Obligatorio_1___DA1;
 
 namespace Persistencia
 {
@@ -24,13 +23,15 @@ namespace Persistencia
 
             Moneda PesosPorDefecto = new Moneda("Peso Uruguayo", "UYU", 1.00M);
             bool YaEsta = false;
-            foreach (Moneda PesoBuscado in this.ListaMonedas.GetAll()) {
+            foreach (Moneda PesoBuscado in this.ListaMonedas.GetAll())
+            {
                 if (PesosPorDefecto.Simbolo == PesoBuscado.Simbolo)
                 {
                     YaEsta = true;
                 }
             }
-            if (!YaEsta) {
+            if (!YaEsta)
+            {
                 this.ListaMonedas.Add(PesosPorDefecto);
             }
         }
@@ -91,7 +92,7 @@ namespace Persistencia
         {
             foreach (Categoria buscada in this.ListaCategorias.GetAll())
             {
-                if (buscada.Id==unacategoria.Id)
+                if (buscada.Id == unacategoria.Id)
                 {
                     for (int i = 0; i < buscada.ListaPalabras.Count(); i++)
                     {
@@ -99,7 +100,7 @@ namespace Persistencia
                         {
                             buscada.ListaPalabras[i].Palabra = NuevaPalabra;
                             this.GetCategorias().Update(buscada);
-                            
+
                         }
                     }
                 }
@@ -162,10 +163,10 @@ namespace Persistencia
                     PalabraClave palabraABuscar = new PalabraClave(buscada);
                     if (cadaCategoria.ListaPalabras.Any(x => x.Palabra == buscada))
                     {
-                        if(Retorno.Id != cadaCategoria.Id)
+                        if (Retorno.Id != cadaCategoria.Id)
                         {
-                        Contador++;
-                        Retorno = cadaCategoria;
+                            Contador++;
+                            Retorno = cadaCategoria;
                         }
                     }
                 }
@@ -205,8 +206,10 @@ namespace Persistencia
             {
                 if (Buscado.Id == unPresupuesto.Id)
                 {
-                    foreach (MontoCategoria montoAmodificar in Buscado.getPresupuestosCategorias()) {
-                        if (unaCategoria.Id == montoAmodificar.Cat.Id) {
+                    foreach (MontoCategoria montoAmodificar in Buscado.getPresupuestosCategorias())
+                    {
+                        if (unaCategoria.Id == montoAmodificar.Cat.Id)
+                        {
                             montoAmodificar.Monto = unNuevoMonto;
                             this.ListaPresupuestos.Update(Buscado);
                         }
@@ -225,19 +228,19 @@ namespace Persistencia
             }
         }
 
-        public void AgregarMoneda(Moneda NuevaMoneda) 
+        public void AgregarMoneda(Moneda NuevaMoneda)
         {
             this.ListaMonedas.Add(NuevaMoneda);
         }
 
-        public void EliminarMoneda(Moneda MonedaBorrar) 
+        public void EliminarMoneda(Moneda MonedaBorrar)
         {
             this.ListaMonedas.Remove(MonedaBorrar);
         }
 
         public void ModificarMoneda(Moneda unaMoneda, Moneda MonedaModificada)
         {
-                    MonedaModificada.Id = unaMoneda.Id;
+            MonedaModificada.Id = unaMoneda.Id;
             this.ListaMonedas.Update(MonedaModificada);
         }
     }

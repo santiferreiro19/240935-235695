@@ -11,6 +11,11 @@ namespace Persistencia
         {
             using (var Contexto = new ContextoFinanzas())
             {
+                foreach (MontoCategoria monto in entidad.PresupuestosCategorias)
+                {
+                    Contexto.Entry(monto.Cat).State = EntityState.Unchanged;
+
+                }
                 Contexto.Presupuestos.Add(entidad);
                 Contexto.SaveChanges();
             }

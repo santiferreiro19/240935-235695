@@ -1,5 +1,4 @@
 ﻿using Obligatorio_1___DA1;
-using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -12,9 +11,9 @@ namespace Persistencia
         {
             using (var Contexto = new ContextoFinanzas())
             {
-                Contexto.Gastos.Add(entidad);
                 Contexto.Entry(entidad.Categoria).State = EntityState.Unchanged;
                 Contexto.Entry(entidad.Moneda).State = EntityState.Unchanged;
+                Contexto.Gastos.Add(entidad);
                 Contexto.SaveChanges();
             }
         }
@@ -59,14 +58,14 @@ namespace Persistencia
         {
             using (var Contexto = new ContextoFinanzas())
             {
-                Gasto unGasto = Contexto.Gastos.FirstOrDefault(u => u.Id == entidad.Id);
+                Gasto unGasto = Contexto.Gastos.SingleOrDefault(u => u.Id == entidad.Id);
                 unGasto.Descripcion = entidad.Descripcion;
+                Contexto.Entry(entidad.Categoria).State = EntityState.Unchanged;
+                Contexto.Entry(entidad.Moneda).State = EntityState.Unchanged;
                 unGasto.Categoria = entidad.Categoria;
                 unGasto.Fecha = entidad.Fecha;
                 unGasto.Moneda = entidad.Moneda;
                 unGasto.Monto = entidad.Monto;
-                Contexto.Entry(unGasto.Categoria).State = EntityState.Unchanged;
-                Contexto.Entry(unGasto.Moneda).State = EntityState.Unchanged;
                 Contexto.Entry(unGasto).State = EntityState.Modified;
                 Contexto.SaveChanges();
             }
