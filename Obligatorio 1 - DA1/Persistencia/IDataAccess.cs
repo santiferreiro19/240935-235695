@@ -2,7 +2,7 @@
 
 namespace Persistencia
 {
-    public interface ILista<T>
+    public interface IDataAccess<T>
     {
         T Get(int id);
         List<T> GetAll();

@@ -5,10 +5,10 @@ using System.Linq;
 
 namespace Persistencia
 {
-    public class DataAccesMontoCategoria : ILista<MontoCategoria>
+    public class DataAccessMontoCategoria : IDataAccess<MontoCategoria>
     {
 
-        MontoCategoria ILista<MontoCategoria>.Get(int id)
+        MontoCategoria IDataAccess<MontoCategoria>.Get(int id)
         {
             using (var Contexto = new ContextoFinanzas())
             {
@@ -16,7 +16,7 @@ namespace Persistencia
             }
         }
 
-        List<MontoCategoria> ILista<MontoCategoria>.GetAll()
+        List<MontoCategoria> IDataAccess<MontoCategoria>.GetAll()
         {
             using (var Contexto = new ContextoFinanzas())
             {

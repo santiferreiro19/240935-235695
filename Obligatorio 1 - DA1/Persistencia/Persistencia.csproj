@@ -53,18 +53,18 @@
   <ItemGroup>
     <Compile Include="Configuraciones\ConfiguracionMontoCategoria.cs" />
     <Compile Include="Configuraciones\ConfiguracionPalabraClave.cs" />
-    <Compile Include="DataAccesMontoCategoria.cs" />
-    <Compile Include="IListaCategorias.cs" />
+    <Compile Include="DataAccessMontoCategoria.cs" />
+    <Compile Include="DataAccessCategorias.cs" />
     <Compile Include="Configuraciones\ConfiguracionCategoria.cs" />
     <Compile Include="Configuraciones\ConfiguracionGasto.cs" />
     <Compile Include="Configuraciones\ConfiguracionMoneda.cs" />
     <Compile Include="Configuraciones\ConfiguracionPresupuesto.cs" />
     <Compile Include="ContextoFinanzas.cs" />
-    <Compile Include="IListaGastos.cs" />
-    <Compile Include="ILista.cs" />
-    <Compile Include="IListaMonedas.cs" />
-    <Compile Include="IListaPalabraClave.cs" />
-    <Compile Include="IListaPresupuestos.cs" />
+    <Compile Include="DataAccessGastos.cs" />
+    <Compile Include="IDataAccess.cs" />
+    <Compile Include="DataAccessMonedas.cs" />
+    <Compile Include="DataAccessClave.cs" />
+    <Compile Include="DataAccessPresupuestos.cs" />
     <Compile Include="Migrations\202011212016284_AgregoMontoCategoria.cs" />
     <Compile Include="Migrations\202011212016284_AgregoMontoCategoria.designer.cs">
       <DependentUpon>202011212016284_AgregoMontoCategoria.cs</DependentUpon>

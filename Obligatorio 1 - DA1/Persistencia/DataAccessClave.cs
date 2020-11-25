@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace Persistencia
 {
-    class IListaPalabraClave : ILista<PalabraClave>
+    class DataAccessClave : IDataAccess<PalabraClave>
     {
         public void Add(PalabraClave entidad)
         {

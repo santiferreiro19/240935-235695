@@ -10,6 +10,11 @@ namespace Managers
     public class ManagerCategoria
     {
         private Repositorio Repo;
+        private const int Largo_Maximo_Nombre_Categoria = 15;
+        private const int Largo_Minimo_Nombre_Categoria = 3;
+        private const int Cantidad_Maxima_De_Palabras_Clave = 10;
+
+
         public ManagerCategoria(Repositorio unRepo)
         {
             this.Repo = unRepo;
@@ -48,7 +53,8 @@ namespace Managers
                 throw new ExceptionNombreCategoriaRepetido("El nombre de la categoria tiene que ser unico");
             }
             int cantidad = nombreCategoria.Length;
-            if (cantidad > 15 || cantidad < 3)
+            
+            if (cantidad > Largo_Maximo_Nombre_Categoria || cantidad < Largo_Minimo_Nombre_Categoria)
             {
                 throw new ExceptionNombreCategoria("El nombre debe tener entre 3 y 15 caracteres");
             }
@@ -68,7 +74,7 @@ namespace Managers
         }
         public void ListaPalabrasClaveLLena(Categoria Unacategoria)
         {
-            if (Unacategoria.ListaPalabras.Count() >= 10)
+            if (Unacategoria.ListaPalabras.Count() >= Cantidad_Maxima_De_Palabras_Clave)
             {
                 throw new ExceptionListaPalabrasClaveLlena("Lista de palabras clave llena");
             }

@@ -20,7 +20,7 @@ namespace Interfaz
         private void ActualizarVincularListBox()
         {
 
-            lstCategorias.DataSource = null; //se necesita para actualizar en cada ingreso
+            lstCategorias.DataSource = null;
             lstCategorias.DataSource = this.Repo.GetCategorias().GetAll();
         }
         private void ModificacionCategorias_Load(object sender, EventArgs e)

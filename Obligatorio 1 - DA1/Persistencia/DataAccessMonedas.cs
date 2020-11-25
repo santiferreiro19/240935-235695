@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace Persistencia
 {
-    public class IListaMonedas : ILista<Moneda>
+    public class DataAccessMonedas : IDataAccess<Moneda>
     {
         public void Add(Moneda entidad)
         {
