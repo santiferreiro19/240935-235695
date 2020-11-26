@@ -5,9 +5,9 @@ namespace Obligatorio_1___DA1.Serializacion
 {
     public class EstrategiaExportarTXT : IEstrategiaExportar
     {
-        public void Imprimir(DataGridView datos, string DireccionArchivo)
+        public void Imprimir(DataGridView datos, string direccionArchivo)
         {
-            System.IO.StreamWriter file = new System.IO.StreamWriter(DireccionArchivo);
+            System.IO.StreamWriter file = new System.IO.StreamWriter(direccionArchivo);
             try
             {
                 string sLine = "";

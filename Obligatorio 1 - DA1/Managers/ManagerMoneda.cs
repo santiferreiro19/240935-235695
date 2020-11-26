@@ -69,12 +69,12 @@ namespace Managers
         {
             Repo.EliminarMoneda(unaMoneda);
         }
-        public void ValidacionModificacionMoneda(Moneda unaMoneda, Moneda Modificada)
+        public void ValidacionModificacionMoneda(Moneda unaMoneda, Moneda modificada)
         {
-            this.ValidacionNombreMoneda(Modificada.Nombre);
-            this.ValidacionSimboloMoneda(Modificada.Simbolo);
-            this.ValidacionCotizacionMoneda(Modificada.Cotizacion);
-            Repo.ModificarMoneda(unaMoneda, Modificada);
+            this.ValidacionNombreMoneda(modificada.Nombre);
+            this.ValidacionSimboloMoneda(modificada.Simbolo);
+            this.ValidacionCotizacionMoneda(modificada.Cotizacion);
+            Repo.ModificarMoneda(unaMoneda, modificada);
         }
     }
 }

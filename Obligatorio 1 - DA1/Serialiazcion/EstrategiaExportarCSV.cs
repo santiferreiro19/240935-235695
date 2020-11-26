@@ -7,9 +7,9 @@ namespace Obligatorio_1___DA1.Serializacion
 {
     public class EstrategiaExportarCSV : IEstrategiaExportar
     {
-        public void Imprimir(DataGridView datos, string DireccionArchivo)
+        public void Imprimir(DataGridView datos, string direccionArchivo)
         {
-            StreamWriter sw = new StreamWriter(DireccionArchivo, false);
+            StreamWriter sw = new StreamWriter(direccionArchivo, false);
             //headers    
             sw.WriteLine("FECHA,DESCRIPCION,CATEGORIA,MONEDA,MONTO");
             foreach (DataGridViewRow dr in datos.Rows)

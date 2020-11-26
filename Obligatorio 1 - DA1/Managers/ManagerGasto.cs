@@ -60,15 +60,15 @@ namespace Managers
             Repo.EliminarGasto(unGasto);
         }
 
-        public void ValidacionModificacionGasto(Gasto unGasto, Gasto Modificado)
+        public void ValidacionModificacionGasto(Gasto unGasto, Gasto modificado)
         {
             this.ValidacionEliminarGasto(unGasto);
-            this.ValidacionAgregarGasto(Modificado);
+            this.ValidacionAgregarGasto(modificado);
             
         }
-        public List<Categoria> ValidacionBusquedaCategorias(String Descripcion)
+        public List<Categoria> ValidacionBusquedaCategorias(String descripcion)
         {
-            String[] PalabrasParaBuscar = Descripcion.Split(' ');
+            String[] PalabrasParaBuscar = descripcion.Split(' ');
             Categoria CategoriaEncontrada = Repo.BusquedaCategorias(PalabrasParaBuscar);
             List<Categoria> categoriasEncontradas = new List<Categoria>();
             if (CategoriaEncontrada.Nombre == "")
@@ -88,10 +88,10 @@ namespace Managers
             List<String> ListaDeFechasGastos = new List<String>();
             foreach (Gasto unGasto in Repo.GetGastos().GetAll())
             {
-                String FechaFormateada = unGasto.Fecha.ToString("MMMM yyyy");
-                if (!ListaDeFechasGastos.Contains(FechaFormateada))
+                String fechaFormateada = unGasto.Fecha.ToString("MMMM yyyy");
+                if (!ListaDeFechasGastos.Contains(fechaFormateada))
                 {
-                    ListaDeFechasGastos.Add(FechaFormateada);
+                    ListaDeFechasGastos.Add(fechaFormateada);
                 }
             }
             return ListaDeFechasGastos;
@@ -111,10 +111,10 @@ namespace Managers
             return ListaDeGastosParaFecha;
         }
 
-        public string SumaDeGastosParaFecha(List<Gasto> ListaGastosParaFecha)
+        public string SumaDeGastosParaFecha(List<Gasto> listaGastosParaFecha)
         {
             decimal Total = 0.00M;
-            foreach (Gasto unGasto in ListaGastosParaFecha)
+            foreach (Gasto unGasto in listaGastosParaFecha)
             {
                 Total += Math.Round((unGasto.Monto * unGasto.CotizacionActual),2);
             }

@@ -39,7 +39,9 @@ namespace Interfaz
             }
         }
 
-            private void btn_Consultar_Click(object sender, EventArgs e)
+        private void btn_Consultar_Click(object sender, EventArgs e)
+        {
+            if (comboBox1.Text != "")
             {
                 ManagerPresupuesto ManagerP = new ManagerPresupuesto(Repo);
                 ManagerGasto ManagerG = new ManagerGasto(Repo);
@@ -68,46 +70,51 @@ namespace Interfaz
                 data_Presupuestos.Rows.Add("Total", TotalPlanificado, TotalReal, Formato(TotalDiferencia));
                 ColorNegativo();
             }
-
-            public decimal RestaRealPlanificado(decimal p, decimal r)
+            else
             {
-                decimal resultado = p - r;
-                return resultado;
-            }
-
-            public string Formato(decimal unNumero)
-            {
-                string Retorno = unNumero.ToString();
-                if (unNumero < 0)
-                {
-                    Retorno = "(" + unNumero + ")";
-                }
-                return Retorno;
-            }
-
-            public void ColorNegativo()
-            {
-                foreach (DataGridViewRow row in data_Presupuestos.Rows)
-                {
-                    if (row.Cells["Diferencia"].Value.ToString().Contains('(') && row.Cells["Diferencia"].Value.ToString().Contains(')'))
-                    {
-                        row.Cells["Diferencia"].Style = new DataGridViewCellStyle { ForeColor = Color.Red };
-                    }
-                }
-            }
-            private void data_Presupuestos_CellContentClick(object sender, DataGridViewCellEventArgs e)
-            {
-
-            }
-
-            private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-            {
-
-            }
-
-            private void btnCerrar_Click(object sender, EventArgs e)
-            {
-                this.Dispose();
+                MessageBox.Show("Seleccione un presupuesto");
             }
         }
+
+        public decimal RestaRealPlanificado(decimal p, decimal r)
+        {
+            decimal resultado = p - r;
+            return resultado;
+        }
+
+        public string Formato(decimal unNumero)
+        {
+            string Retorno = unNumero.ToString();
+            if (unNumero < 0)
+            {
+                Retorno = "(" + unNumero + ")";
+            }
+            return Retorno;
+        }
+
+        public void ColorNegativo()
+        {
+            foreach (DataGridViewRow row in data_Presupuestos.Rows)
+            {
+                if (row.Cells["Diferencia"].Value.ToString().Contains('(') && row.Cells["Diferencia"].Value.ToString().Contains(')'))
+                {
+                    row.Cells["Diferencia"].Style = new DataGridViewCellStyle { ForeColor = Color.Red };
+                }
+            }
+        }
+        private void data_Presupuestos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+        }
     }
+}

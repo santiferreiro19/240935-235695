@@ -72,9 +72,9 @@ namespace Interfaz
             }
         }
 
-        public bool BloqueoPesoUruguayo(string Simbolo)
+        public bool BloqueoPesoUruguayo(string simbolo)
         {
-            return Simbolo == "UYU";
+            return simbolo == "UYU";
         }
     }
 }

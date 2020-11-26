@@ -26,9 +26,9 @@ namespace Obligatorio_1___DA1
             return this.PresupuestosCategorias;
 
         }
-        public void setPresupuestosCategorias(List<MontoCategoria> ListaMontos)
+        public void setPresupuestosCategorias(List<MontoCategoria> listaMontos)
         {
-            this.PresupuestosCategorias = ListaMontos;
+            this.PresupuestosCategorias = listaMontos;
 
         }
         override
