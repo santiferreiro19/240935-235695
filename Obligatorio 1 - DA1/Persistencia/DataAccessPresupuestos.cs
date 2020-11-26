@@ -68,9 +68,8 @@ namespace Persistencia
                     }
                     else
                     {
+                        Contexto.Entry(entidad.PresupuestosCategorias[i].Cat).State = EntityState.Unchanged;
                         unPresupuesto.PresupuestosCategorias.Add(entidad.PresupuestosCategorias[i]);
-                        Contexto.Entry(unPresupuesto.PresupuestosCategorias[i].Cat).State = EntityState.Unchanged;
-
                     }
                 }
                 Contexto.Entry(unPresupuesto).State = EntityState.Modified;
