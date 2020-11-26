@@ -1,16 +1,6 @@
 ﻿using Interfaz;
-using Managers;
-using Obligatorio_1___DA1;
-using Obligatorio_1___DA1.Excepciones;
 using Persistencia;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Interfaces
@@ -23,7 +13,7 @@ namespace Interfaces
             Repo = unRepositorio;
             InitializeComponent();
         }
-            
+
         private void Gasto_Load(object sender, EventArgs e)
         {
 
@@ -48,6 +38,16 @@ namespace Interfaces
             panelGeneral.Controls.Clear();
             UserControl eliminarGasto = new EliminacionGastoUI(Repo);
             panelGeneral.Controls.Add(eliminarGasto);
+        }
+
+        private void panelGeneral_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void CerrarStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
         }
     }
 }

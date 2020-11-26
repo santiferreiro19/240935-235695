@@ -1,17 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Obligatorio_1___DA1;
+﻿using Obligatorio_1___DA1;
 using Obligatorio_1___DA1.Excepciones;
 using Persistencia;
+using System;
+using System.Collections.Generic;
 
 namespace Managers
 {
     public class ManagerGasto
     {
         private Repositorio Repo;
+        private const int Largo_Maximo_Descripcion_Gasto = 20;
+        private const int Largo_Minimo_Descripcion_Gasto = 3;
+        private const int Cantidad_Maxima_Decimales = 2;
+        private const int Cantidad_Minima_Monto = 0;
+
+
         public ManagerGasto(Repositorio unRepo)
         {
             this.Repo = unRepo;
@@ -20,7 +23,7 @@ namespace Managers
         public void ValidacionDescripcionGasto(String unaDescripcion)
         {
             int cantidad = unaDescripcion.Length;
-            if (cantidad > 20 || cantidad < 3)
+            if (cantidad > Largo_Maximo_Descripcion_Gasto || cantidad < Largo_Minimo_Descripcion_Gasto)
             {
                 throw new ExceptionDescripcionGasto("La descripcion debe tener entre 3 y 15 caracteres");
             }
@@ -28,23 +31,25 @@ namespace Managers
 
         public void ValidacionFechaGasto(DateTime unaFecha)
         {
-            DateTime Minimo = new DateTime(2018, 01, 01);
-            DateTime Maximo = new DateTime(2031, 01, 01);
-            if (unaFecha.CompareTo(Minimo) == -1 || unaFecha.CompareTo(Maximo) >= 0)
+            DateTime FechaMinimo = new DateTime(2018, 01, 01);
+            DateTime FechaMaximo = new DateTime(2031, 01, 01);
+            if (unaFecha.CompareTo(FechaMinimo) == -1 || unaFecha.CompareTo(FechaMaximo) >= 0)
                 throw new ExceptionFechaGasto("La fecha debe ser entre 01/01/2018 y 31/12/2030");
         }
 
         public decimal TransformarMonto(decimal unMonto)
         {
-            return Math.Round(unMonto, 2);
+            return Math.Round(unMonto, Cantidad_Maxima_Decimales);
         }
 
-        public void ValidarMonto(decimal unMonto) {
-            if (unMonto <= 0)
+        public void ValidarMonto(decimal unMonto)
+        {
+            if (unMonto <= Cantidad_Minima_Monto)
                 throw new ExceptionMonto("El monto  debe ser mayor a 0");
         }
 
-        public void ValidacionAgregarGasto(Gasto unGasto) {
+        public void ValidacionAgregarGasto(Gasto unGasto)
+        {
             this.ValidacionDescripcionGasto(unGasto.Descripcion);
             this.ValidacionFechaGasto(unGasto.Fecha);
             this.ValidarMonto(unGasto.Monto);
@@ -55,27 +60,38 @@ namespace Managers
             Repo.EliminarGasto(unGasto);
         }
 
-       public void ValidacionModificacionGasto(Gasto unGasto, Gasto Modificado) {
-            this.ValidacionDescripcionGasto(Modificado.Descripcion);
-            this.ValidarMonto(Modificado.Monto);
-            this.ValidacionFechaGasto(Modificado.Fecha);
-            Repo.ModificarGasto(unGasto, Modificado);
+        public void ValidacionModificacionGasto(Gasto unGasto, Gasto modificado)
+        {
+            this.ValidacionEliminarGasto(unGasto);
+            this.ValidacionAgregarGasto(modificado);
+            
         }
-        public Categoria ValidacionBusquedaCategorias(String Descripcion) {
-            String[] PalabrasParaBuscar = Descripcion.Split(' ');
+        public List<Categoria> ValidacionBusquedaCategorias(String descripcion)
+        {
+            String[] PalabrasParaBuscar = descripcion.Split(' ');
             Categoria CategoriaEncontrada = Repo.BusquedaCategorias(PalabrasParaBuscar);
-            return CategoriaEncontrada;
+            List<Categoria> categoriasEncontradas = new List<Categoria>();
+            if (CategoriaEncontrada.Nombre == "")
+            {
+                categoriasEncontradas = Repo.GetCategorias().GetAll();
+            }
+            else
+            {
+                categoriasEncontradas.Add(CategoriaEncontrada);
+            }
+
+            return categoriasEncontradas;
         }
 
         public List<String> CargarFechasDondeHuboGastos()
         {
             List<String> ListaDeFechasGastos = new List<String>();
-            foreach (Gasto unGasto in Repo.GetGastos())
+            foreach (Gasto unGasto in Repo.GetGastos().GetAll())
             {
-                String FechaFormateada = unGasto.Fecha.ToString("MMMM yyyy");
-                if (!ListaDeFechasGastos.Contains(FechaFormateada))
+                String fechaFormateada = unGasto.Fecha.ToString("MMMM yyyy");
+                if (!ListaDeFechasGastos.Contains(fechaFormateada))
                 {
-                    ListaDeFechasGastos.Add(FechaFormateada);
+                    ListaDeFechasGastos.Add(fechaFormateada);
                 }
             }
             return ListaDeFechasGastos;
@@ -84,7 +100,7 @@ namespace Managers
         public List<Gasto> FiltrarGastosPorFecha(String unPeriodo)
         {
             List<Gasto> ListaDeGastosParaFecha = new List<Gasto>();
-            foreach (Gasto unGasto in Repo.GetGastos())
+            foreach (Gasto unGasto in Repo.GetGastos().GetAll())
             {
                 String FechaFormateada = unGasto.Fecha.ToString("MMMM yyyy");
                 if (FechaFormateada == unPeriodo)
@@ -95,12 +111,12 @@ namespace Managers
             return ListaDeGastosParaFecha;
         }
 
-        public string SumaDeGastosParaFecha(List<Gasto> ListaGastosParaFecha)
+        public string SumaDeGastosParaFecha(List<Gasto> listaGastosParaFecha)
         {
             decimal Total = 0.00M;
-            foreach (Gasto unGasto in ListaGastosParaFecha)
+            foreach (Gasto unGasto in listaGastosParaFecha)
             {
-                Total += unGasto.Monto;
+                Total += Math.Round((unGasto.Monto * unGasto.CotizacionActual),2);
             }
             return Total.ToString();
         }
@@ -108,10 +124,10 @@ namespace Managers
         public List<Gasto> ObtenerGastosPorFechaCategoria(Categoria unaCategoriaP, string unaFecha)
         {
             List<Gasto> ListaDeGastosParaFechaCategoria = new List<Gasto>();
-            foreach (Gasto unGasto in Repo.GetGastos())
+            foreach (Gasto unGasto in Repo.GetGastos().GetAll())
             {
                 string FechaFormateada = unGasto.Fecha.ToString("MMMM yyyy");
-                if (FechaFormateada == unaFecha && unGasto.Categoria.Equals(unaCategoriaP))
+                if (FechaFormateada == unaFecha && unGasto.Categoria.Id == unaCategoriaP.Id)
                 {
                     ListaDeGastosParaFechaCategoria.Add(unGasto);
                 }

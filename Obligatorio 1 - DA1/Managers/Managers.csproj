@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="ManagerCategoria.cs" />
     <Compile Include="ManagerGasto.cs" />
+    <Compile Include="ManagerMoneda.cs" />
     <Compile Include="ManagerPresupuesto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

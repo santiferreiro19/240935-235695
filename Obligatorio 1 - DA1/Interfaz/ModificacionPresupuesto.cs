@@ -1,17 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Persistencia;
+﻿using Managers;
 using Obligatorio_1___DA1;
-using System.Globalization;
-using Managers;
 using Obligatorio_1___DA1.Excepciones;
+using Persistencia;
+using System;
+using System.Windows.Forms;
 
 namespace Interfaz
 {
@@ -25,24 +17,40 @@ namespace Interfaz
             this.PresupuestoAModificar = new Presupuesto();
             InitializeComponent();
         }
-        private void CargarListas() {
+        private void CargarListas()
+        {
             lstCategorias.Items.Clear();
             lstMontos.Items.Clear();
+            PresupuestoAModificar = Repo.GetPresupuestos().Get(PresupuestoAModificar.Id);
             if (cboxPresupuestos.Text != "")
             {
-                foreach (Categoria elemento in PresupuestoAModificar.getPresupuestosCategorias().Keys)
+                foreach (MontoCategoria elemento in PresupuestoAModificar.getPresupuestosCategorias())
                 {
-                    lstCategorias.Items.Add(elemento);
-                    lstMontos.Items.Add(PresupuestoAModificar.getPresupuestosCategorias()[elemento].ToString());
+                    lstCategorias.Items.Add(elemento.Cat);
+                    lstMontos.Items.Add(elemento.Monto);
                 }
             }
-            else {
+            else
+            {
                 MessageBox.Show("Seleccione un presupuesto");
             }
         }
         private void ModificacionPresupuesto_Load(object sender, EventArgs e)
         {
-            cboxPresupuestos.DataSource = Repo.GetPresupuestos();
+            try
+            {
+               cboxPresupuestos.DataSource = Repo.GetPresupuestos().GetAll();
+            }
+            catch (System.Data.Entity.Core.EntityException)
+            {
+                this.Enabled = false;
+                MessageBox.Show("Error: La base de datos no se encuentra disponible");
+            }
+            catch (System.Data.SqlClient.SqlException)
+            {
+                this.Enabled = false;
+                MessageBox.Show("Error: La base de datos no se encuentra disponible");
+            }
         }
 
         private void btnListar_Click(object sender, EventArgs e)

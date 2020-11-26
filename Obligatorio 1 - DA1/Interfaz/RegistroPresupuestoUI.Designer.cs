@@ -94,7 +94,7 @@
             // 
             // btnGuardar
             // 
-            this.btnGuardar.Location = new System.Drawing.Point(269, 145);
+            this.btnGuardar.Location = new System.Drawing.Point(276, 150);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(90, 30);
             this.btnGuardar.TabIndex = 10;
@@ -206,7 +206,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnGuardar);
             this.Name = "RegistroPresupuestoUI";
-            this.Size = new System.Drawing.Size(382, 333);
+            this.Size = new System.Drawing.Size(382, 294);
             this.Load += new System.EventHandler(this.RegistroPresupuestoUI_Load);
             ((System.ComponentModel.ISupportInitialize)(this.nroMonto)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nmr_Año)).EndInit();

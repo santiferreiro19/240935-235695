@@ -1,17 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Obligatorio_1___DA1;
+﻿using Obligatorio_1___DA1;
 using Obligatorio_1___DA1.Excepciones;
 using Persistencia;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Managers
 {
     public class ManagerCategoria
     {
         private Repositorio Repo;
+        private const int Largo_Maximo_Nombre_Categoria = 15;
+        private const int Largo_Minimo_Nombre_Categoria = 3;
+        private const int Cantidad_Maxima_De_Palabras_Clave = 10;
+
+
         public ManagerCategoria(Repositorio unRepo)
         {
             this.Repo = unRepo;
@@ -23,59 +26,69 @@ namespace Managers
             Repo.AgregarCategoria(unacategoria);
         }
 
-         public void ValidacionModificarNombreCategoria(Categoria unacategoria,String NuevoNombre)
+        public void ValidacionModificarNombreCategoria(Categoria unacategoria, String nuevoNombre)
         {
-            this.ValidarNombreCategoria(NuevoNombre);
-            Repo.ModificarNombreCategoria(unacategoria, NuevoNombre);
+            this.ValidarNombreCategoria(nuevoNombre);
+            Repo.ModificarNombreCategoria(unacategoria, nuevoNombre);
         }
 
-        public void ValidacionAgregarUnaPalabraClave(Categoria unacategoria,String NuevaPalabra)
+        public void ValidacionAgregarUnaPalabraClave(Categoria unacategoria, string nuevaPalabra)
         {
             this.ListaPalabrasClaveLLena(unacategoria);
-            this.ValidarPalabraClaveRepetida(NuevaPalabra);
-            Repo.AgregarPalabraClave(unacategoria,NuevaPalabra);
+            this.ValidarPalabraClaveRepetida(nuevaPalabra);
+            Repo.AgregarPalabraClave(unacategoria, nuevaPalabra);
         }
 
-        public void ValidacionModificacionDePalabraClave(Categoria unacategoria,String PalabraBuscada, String NuevaPalabraClave)
+        public void ValidacionModificacionDePalabraClave(Categoria unacategoria, String palabraBuscada, String nuevaPalabraClave)
         {
-            this.ValidarPalabraClaveRepetida(NuevaPalabraClave);
-            Repo.ModificarPalabraClave(unacategoria, NuevaPalabraClave, PalabraBuscada);
+            this.ValidarPalabraClaveRepetida(nuevaPalabraClave);
+            Repo.ModificarPalabraClave(unacategoria, nuevaPalabraClave, palabraBuscada);
         }
 
         public void ValidarNombreCategoria(String nombreCategoria)
         {
-            List<Categoria> categorias = Repo.GetCategorias();
+            List<Categoria> categorias = Repo.GetCategorias().GetAll();
             if (categorias.Any(categoria => categoria.Nombre.Equals(nombreCategoria)))
             {
                 throw new ExceptionNombreCategoriaRepetido("El nombre de la categoria tiene que ser unico");
             }
             int cantidad = nombreCategoria.Length;
-            if (cantidad > 15 || cantidad < 3)
+            
+            if (cantidad > Largo_Maximo_Nombre_Categoria || cantidad < Largo_Minimo_Nombre_Categoria)
             {
                 throw new ExceptionNombreCategoria("El nombre debe tener entre 3 y 15 caracteres");
             }
         }
 
-        public void ValidarPalabraClaveRepetida(String PalabraBuscar)
+        public void ValidarPalabraClaveRepetida(String palabraBuscar)
         {
-            List<Categoria> categorias = Repo.GetCategorias();
-            if (categorias.Any(categoria => categoria.ListaPalabras.Contains(PalabraBuscar)))
+            List<Categoria> categorias = Repo.GetCategorias().GetAll();
+            PalabraClave palabra = new PalabraClave(palabraBuscar);
+            foreach (Categoria cadaCategoria in categorias)
             {
-                throw new ExceptionPalabraClaveRepetida("El nombre de la palabra clave debe de ser unico");
+                if (cadaCategoria.ListaPalabras.Any(x => x.Palabra == palabraBuscar))
+                {
+                    throw new ExceptionPalabraClaveRepetida("El nombre de la palabra clave debe de ser unico");
+                }
             }
         }
-          public void ListaPalabrasClaveLLena(Categoria Unacategoria)
-          {
-            if (Unacategoria.ListaPalabras.Count() >= 10)
+        public void ListaPalabrasClaveLLena(Categoria unacategoria)
+        {
+            if (unacategoria.ListaPalabras.Count() >= Cantidad_Maxima_De_Palabras_Clave)
             {
                 throw new ExceptionListaPalabrasClaveLlena("Lista de palabras clave llena");
             }
-          }
-        public void EliminarPalabraClave(String PalabraEliminar) {
-            List<Categoria> categorias = Repo.GetCategorias();
-            if (categorias.Any(categoria => categoria.ListaPalabras.Contains(PalabraEliminar)))
+        }
+        public void EliminarPalabraClave(String palabraEliminar)
+        {
+            List<Categoria> categorias = Repo.GetCategorias().GetAll();
+            PalabraClave palabra = new PalabraClave(palabraEliminar);
+            foreach (Categoria cadaCategoria in categorias)
             {
-                Repo.EliminarPalabraClave(PalabraEliminar);
+                if (cadaCategoria.ListaPalabras.Any(x => x.Palabra == palabraEliminar))
+                {
+                    Repo.EliminarPalabraClave(palabraEliminar);
+                }
             }
         }
     }

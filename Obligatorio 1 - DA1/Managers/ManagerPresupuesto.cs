@@ -1,16 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Obligatorio_1___DA1;
+﻿using Obligatorio_1___DA1;
 using Obligatorio_1___DA1.Excepciones;
 using Persistencia;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Managers
 {
     public class ManagerPresupuesto
     {
         private Repositorio Repo;
-
+        private const int Año_Maximo = 2030;
+        private const int Año_Minimo = 2018;
+        private const int Monto_Minimo = 0;
         public ManagerPresupuesto(Repositorio unRepositorio)
         {
             this.Repo = unRepositorio;
@@ -18,7 +20,7 @@ namespace Managers
 
         public void ValidacionAño(int unAño)
         {
-            if (unAño > 2030 || unAño < 2018)
+            if (unAño > Año_Maximo || unAño < Año_Minimo)
             {
                 throw new ExceptionAñoPresupuesto("El año debe ser entre 2018 y 2030");
             }
@@ -26,7 +28,7 @@ namespace Managers
 
         public void ValidacionMonto(decimal unMonto)
         {
-            if (unMonto < 0)
+            if (unMonto < Monto_Minimo)
             {
                 throw new ExceptionMontoPresupuesto("El monto debe ser mayor a 0");
             }
@@ -57,24 +59,35 @@ namespace Managers
             return Math.Round(unMonto, 2);
         }
 
-        public Dictionary<Categoria, decimal> CargarCategoriasPresupuesto()
+        public void CargarCategoriasPresupuesto(Presupuesto unPresupuesto)
         {
-            Dictionary<Categoria, decimal> Retorno = Repo.GetCategorias().ToDictionary(x => x, x => 0M);
-            return Retorno;
+            List<MontoCategoria> Retorno = new List<MontoCategoria>();
+            foreach (Categoria elem in Repo.GetCategorias().GetAll())
+            {
+                MontoCategoria temporal = new MontoCategoria();
+                temporal.Cat = elem;
+                unPresupuesto.PresupuestosCategorias.Add(temporal);
+            }
         }
 
-        public void ValidacionAgregarUnMonto(Dictionary<Categoria, decimal> unPresupuestosMonto, Categoria unaCategoria, decimal unMonto)
+        public void ValidacionAgregarUnMonto(Presupuesto unPresupuestosMonto, Categoria unaCategoria, decimal unMonto)
         {
             this.ValidacionMonto(unMonto);
             decimal MontoTransformado = this.TransformarMonto(unMonto);
-            unPresupuestosMonto[unaCategoria] = MontoTransformado;
+            foreach (MontoCategoria montoCat in unPresupuestosMonto.PresupuestosCategorias)
+            {
+                if (montoCat.Cat.Id == unaCategoria.Id)
+                {
+                    montoCat.Monto = MontoTransformado;
+                }
+            }
         }
 
         public void ValidacionAgregarPresupuesto(Presupuesto nuevoPresupuesto)
         {
             this.ValidacionAño(nuevoPresupuesto.Año);
             bool repetido = false;
-            foreach (Presupuesto unPresupuesto in Repo.GetPresupuestos())
+            foreach (Presupuesto unPresupuesto in Repo.GetPresupuestos().GetAll())
             {
                 if (nuevoPresupuesto.Mes == unPresupuesto.Mes && unPresupuesto.Año == nuevoPresupuesto.Año)
                 {
@@ -102,7 +115,7 @@ namespace Managers
         public List<string> CargarListaDondeHuboPresupuestos()
         {
             List<string> ListaDePresupuestosFecha = new List<string>();
-            foreach (Presupuesto unPresupuesto in Repo.GetPresupuestos())
+            foreach (Presupuesto unPresupuesto in Repo.GetPresupuestos().GetAll())
             {
                 string BuscarMes = unPresupuesto.Mes;
                 string BuscarAño = unPresupuesto.Año.ToString();
@@ -121,7 +134,7 @@ namespace Managers
             string[] PalabraDividida = unPeriodo.Split(' ');
             string unMes = PalabraDividida[0];
             string unAño = PalabraDividida[1];
-            foreach (Presupuesto unPresupuesto in Repo.GetPresupuestos())
+            foreach (Presupuesto unPresupuesto in Repo.GetPresupuestos().GetAll())
             {
                 if (unPresupuesto.Mes == unMes && unPresupuesto.Año == int.Parse(unAño))
                 {

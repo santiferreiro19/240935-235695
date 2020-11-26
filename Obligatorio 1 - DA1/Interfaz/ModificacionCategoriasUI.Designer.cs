@@ -1,6 +1,6 @@
 ﻿namespace Interfaz
 {
-    partial class ModificacionCategoriasUI
+    partial class ModificacionMonedasUI
     {
         /// <summary> 
         /// Required designer variable.
@@ -159,14 +159,14 @@
             this.panel1.TabIndex = 20;
             this.panel1.Visible = false;
             // 
-            // ModificacionCategorias
+            // ModificacionCategoriasUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.lstCategorias);
-            this.Name = "ModificacionCategorias";
+            this.Name = "ModificacionCategoriasUI";
             this.Size = new System.Drawing.Size(605, 250);
             this.Load += new System.EventHandler(this.ModificacionCategorias_Load);
             this.panel1.ResumeLayout(false);
