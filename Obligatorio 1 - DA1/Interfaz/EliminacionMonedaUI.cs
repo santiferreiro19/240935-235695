@@ -53,17 +53,23 @@ namespace Interfaz
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            MonedaSeleccionada = (Moneda)lstMonedas.SelectedItem;
-            ManagerMoneda manager = new ManagerMoneda(Repo);
-            if (!BloqueoPesoUruguayo(MonedaSeleccionada.Simbolo))
+            if (lstMonedas.SelectedIndex != -1)
             {
-                manager.ValidacionEliminarMoneda(MonedaSeleccionada);
+                MonedaSeleccionada = (Moneda)lstMonedas.SelectedItem;
+                ManagerMoneda manager = new ManagerMoneda(Repo);
+                if (!BloqueoPesoUruguayo(MonedaSeleccionada.Simbolo))
+                {
+                    manager.ValidacionEliminarMoneda(MonedaSeleccionada);
+                }
+                else
+                {
+                    MessageBox.Show("El peso uruguayo no se puede eliminar");
+                }
+                CargarListBox();
             }
-            else
-            {
-                MessageBox.Show("El peso uruguayo no se puede eliminar");
+            else {
+                MessageBox.Show("Seleccione una moneda");
             }
-            CargarListBox();
         }
 
         public bool BloqueoPesoUruguayo(string Simbolo)

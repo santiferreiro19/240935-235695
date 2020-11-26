@@ -55,7 +55,7 @@ namespace Interfaz
 
         private void btnSalir_Click(object sender, EventArgs e)
         {
-            this.Dispose();
+            Application.Exit();
         }
 
         private void btn_Moneda_Click(object sender, EventArgs e)

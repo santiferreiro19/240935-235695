@@ -68,7 +68,7 @@ namespace Interfaz
 
         private void btnModificarPalabra_Click(object sender, EventArgs e)
         {
-            if (txtPalabraClave.Text != "")
+            if (txtPalabraClave.Text != "" && lstPalabrasClave.SelectedIndex != -1)
             {
                 ManagerCategoria manager = new ManagerCategoria(Repo);
                 if (CategoriaSeleccionada != null)
@@ -94,7 +94,7 @@ namespace Interfaz
             }
             else
             {
-                MessageBox.Show("La palabra clave no puede ser vacia");
+                MessageBox.Show("La palabra clave no puede ser vacia o seleccione una palabra para modificar");
             }
         }
 
